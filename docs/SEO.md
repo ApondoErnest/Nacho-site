@@ -1,0 +1,93 @@
+# SEO - NACHO Vehicle Inspection
+
+SEO is prepared during development and finalized (sitemap submission, etc.) after deployment.
+
+## 1. Per-page SEO requirements
+
+Every public page provides:
+
+- page title
+- meta description
+- canonical URL
+- clean URL
+- Open Graph title
+- Open Graph description
+- Open Graph image (where relevant)
+
+Plus structured data (JSON-LD) where appropriate (see section 5).
+
+## 2. URL map
+
+Clean, single (locale-less) URLs:
+
+- `/` - Home
+- `/about` - About
+- `/centers` - Centers index
+- `/centers/{slug}` - Center detail
+- `/services` - Services index
+- `/services/{slug}` - Service detail
+- `/book-inspection` - Booking
+- `/tariffs` - Tariffs
+- `/inspection-process` - Inspection process
+- `/blog` - Blog index
+- `/blog/{slug}` - Blog detail
+- `/careers` - Careers index
+- `/careers/{slug}` - Career detail
+- `/contact` - Contact
+- `/privacy-policy`, `/terms-and-conditions`, `/cookie-policy`, `/legal-notice` - Legal
+- `/compliance-quality` - Compliance & quality
+
+Service URLs use **English slugs** (locked decision): `periodic-inspection`, `counter-visit`, `heavy-vehicles`, `pre-purchase`, `road-safety`. Center URLs use city/center-name slugs under `/centers/{slug}`.
+
+French SEO keywords are targeted via `seo_title_fr`, meta descriptions, and page content — not via URL segments. See section 8 for target keyword list.
+
+## 3. SEO content fields in admin
+
+SEO fields are editable for: services, blog posts, pages, centers (and careers if needed). Fields: SEO title, meta description, Open Graph image (where needed). Backed by `seo_title_*` / `meta_description_*` columns ([DATABASE.md](DATABASE.md)).
+
+## 4. Sitemap & robots
+
+- `GET /sitemap.xml` - generated from active centers, active services, published blog posts, open career posts, and static pages.
+- `GET /robots.txt` - allows public content, disallows `/admin` and auth routes, references the sitemap.
+- Sitemap submission to search engines happens post-deployment ([DEPLOYMENT.md](DEPLOYMENT.md)).
+
+## 5. Structured data (JSON-LD)
+
+- **Organization** (or **LocalBusiness** / `AutomotiveBusiness`) on the homepage: name, URL, logo, contact, **slogan** (*Drive Safe. Stay Compliant. Trust NACHO.* / FR equivalent).
+- Optionally per-center `LocalBusiness` with address/geo on center detail pages.
+- Optionally `Article` on blog detail pages.
+
+## 6. i18n & SEO trade-off (documented decision)
+
+Because locale is session-based on single URLs (see [I18N.md](I18N.md) and ADR 002), each page exposes one canonical URL whose language depends on the visitor's session. Implications:
+
+- Canonical URLs are stable and clean (good).
+- Per-language indexing is limited: search engines may primarily index the default (French) rendering.
+- `hreflang` cannot point to distinct per-language URLs because there is only one URL per page.
+
+Recommendation:
+- Default content is French; ensure French copy is complete and high quality for indexing.
+- Set `og:locale` and `<html lang>` to the active locale at render time.
+- If strong English organic visibility becomes a requirement later, introduce optional locale-prefixed URLs (e.g. `/en/...`) with proper `hreflang` as a future enhancement. This is recorded as a possible follow-up, not part of the current scope.
+
+## 7. Technical hygiene
+
+- Semantic HTML (one `h1` per page, logical heading order).
+- Descriptive, bilingual image alt text.
+- Fast, responsive pages (lazy images, minimal blocking assets via Vite).
+- Meaningful 404 handling.
+
+## 8. Target keywords (French-first indexing)
+
+Optimize titles and meta descriptions for terms such as:
+
+- contrôle technique automobile Cameroun
+- visite technique automobile Cameroun
+- centre de contrôle technique Douala / Yaoundé
+- vehicle inspection Cameroon / technical inspection Cameroon
+- contrôle technique poids lourds
+- contre-visite automobile
+- visite technique taxi / camion Cameroun
+- inspection véhicule avant achat Cameroun
+
+Post-deployment: submit sitemap via Google Search Console; optional privacy-friendly analytics. See [DEPLOYMENT.md](DEPLOYMENT.md) Step 50.

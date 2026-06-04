@@ -1,0 +1,135 @@
+# Backend Architecture - NACHO Vehicle Inspection
+
+Laravel full-stack, organized for clarity and separation of concerns.
+
+## 1. Layered structure
+
+```
+app/
+  Http/
+    Controllers/
+      Public/        # public website controllers
+      Admin/         # admin dashboard controllers
+    Requests/        # form request validation classes
+    Middleware/      # locale, role/ability, maintenance
+  Models/            # Eloquent models (one per table)
+  Services/          # domain/business logic (e.g. BookingReferenceService)
+  Support/           # helpers (e.g. AdminAccess ability helper)
+  Enums/             # status enums (booking, center, etc.)
+  Notifications/Mail # staff notifications (booking/contact/application)
+database/
+  migrations/        # one additive migration per table/change
+  seeders/           # default data
+  factories/         # model factories for tests
+resources/
+  views/
+    layouts/         # public + admin layouts
+    components/      # reusable Blade components
+    public/          # public pages
+    admin/           # admin pages
+lang/
+  fr/  en/           # translation files
+routes/
+  web.php            # public + admin + auth routes
+```
+
+## 2. Public controllers (spec 7.2)
+
+One controller per public area:
+
+- `HomeController`
+- `AboutController` (or `PageController@about`)
+- `CenterController` (index + show)
+- `ServiceController` (index + show)
+- `BookingController` (create + store)
+- `TariffController` (index)
+- `InspectionProcessController`
+- `BlogController` (index + show)
+- `ComplianceController`
+- `CareerController` (index + show + apply)
+- `ContactController` (index + store)
+- `PageController` (legal/static pages)
+- `LanguageController` (switch locale)
+
+## 3. Admin controllers (spec 7.3)
+
+- `DashboardController`
+- `CenterController`
+- `ServiceController`
+- `TariffController`
+- `BookingController`
+- `BlogCategoryController`
+- `BlogPostController`
+- `CareerPostController`
+- `JobApplicationController`
+- `ContactMessageController`
+- `PageController`
+- `UserController`
+- `MediaController`
+- `SiteSettingController`
+
+Each supports the CRUD operations relevant to its module (see [ADMIN_MODULES.md](ADMIN_MODULES.md)).
+
+## 4. Models (spec 7.4)
+
+One model per core table: `User`, `Role`, `Center`, `Service`, `Tariff`, `Booking`, `ContactMessage`, `BlogCategory`, `BlogPost`, `CareerPost`, `JobApplication`, `Page`, `Media`, `SiteSetting` (+ `TariffAuditLog`). Each defines casts, fillables, relationships (per [DATABASE.md](DATABASE.md)), scopes (e.g. `active()`, `published()`, `operational()`), and bilingual accessors with FR fallback.
+
+## 5. Form request validation (spec 7.5)
+
+Dedicated `FormRequest` classes for every public and admin form:
+
+- Public: booking, contact, career application.
+- Admin: center, service, tariff, blog post, blog category, career post, page, user, media upload, settings.
+
+Rules enforce required fields, valid email/phone, allowed file types and max sizes, valid dates, existence of selected center/service/tariff, and accepted consent where required. Details in [SECURITY.md](SECURITY.md).
+
+## 6. Services & support
+
+- `BookingReferenceService` - generates unique `NACHO-YYYYMMDD-XXXX` references.
+- `AdminAccess` (Support) - centralizes the permission matrix ([ROLES.md](ROLES.md)).
+- `LocaleService` (optional) - locale helpers for views.
+- Status enums for booking/center/etc. keep status strings consistent.
+
+## 7. Middleware
+
+- `SetLocaleFromSession` - applies the session locale (FR default) to every public request.
+- `EnsureRole` / `EnsureAdminAbility` - role/ability gating for admin routes.
+- `MaintenanceMode` (optional) - honors the `maintenance_mode` site setting for the public site while leaving admin reachable.
+
+## 8. Notifications / mail (enhancement)
+
+Transactional **staff** notifications only (not customer reminders):
+
+- New booking -> email to `BOOKING_NOTIFICATION_EMAIL`.
+- New contact message -> email to `CONTACT_NOTIFICATION_EMAIL`.
+- New job application -> email to a careers address.
+
+Local dev uses the `log` mail driver. This is explicitly NOT the excluded SMS/WhatsApp reminder system.
+
+## 9. Routing
+
+- Public routes use single clean URLs (no locale prefix); locale comes from session. See [I18N.md](I18N.md) and [SEO.md](SEO.md).
+- `GET /language/{locale}` switches and redirects back.
+- Admin routes live under `/admin`, behind auth + role/ability middleware.
+- `GET /sitemap.xml` and `GET /robots.txt` for SEO.
+
+## 10. Data flow (request lifecycle)
+
+```mermaid
+flowchart LR
+    req[HTTP request] --> mw[Middleware: locale, auth, ability]
+    mw --> ctrl[Controller]
+    ctrl --> fr[FormRequest validation]
+    fr --> svc[Service / Model]
+    svc --> db[(MySQL)]
+    svc --> view[Blade view + components]
+    view --> resp[Response]
+```
+
+## 11. Conventions
+
+- Thin controllers, validation in FormRequests, reusable logic in Services.
+- Eloquent relationships and query scopes over raw queries.
+- Blade components for all repeated UI ([FRONTEND.md](FRONTEND.md)).
+- Additive migrations; seeders idempotent (`updateOrCreate`).
+- Tests via PHPUnit with factories ([TESTING.md](TESTING.md)).

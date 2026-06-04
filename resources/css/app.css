@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        @apply scroll-smooth antialiased;
+    }
+
+    body {
+        @apply bg-white font-sans text-base leading-relaxed text-nacho-dark;
+    }
+
+    h1 {
+        @apply text-3xl font-bold tracking-tight sm:text-4xl;
+    }
+
+    h2 {
+        @apply text-2xl font-semibold tracking-tight sm:text-3xl;
+    }
+
+    h3 {
+        @apply text-xl font-semibold;
+    }
+
+    h4 {
+        @apply text-lg font-semibold;
+    }
+
+    a {
+        @apply transition-colors;
+    }
+
+    :focus-visible {
+        @apply outline-none ring-2 ring-nacho-primary ring-offset-2;
+    }
+}
+
+@layer components {
+    .btn-nacho-primary {
+        @apply inline-flex items-center justify-center rounded-md bg-nacho-primary px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-nacho-primary-dark focus-visible:ring-2 focus-visible:ring-nacho-primary focus-visible:ring-offset-2;
+    }
+
+    .btn-nacho-secondary {
+        @apply inline-flex items-center justify-center rounded-md border border-nacho-dark/20 bg-white px-5 py-2.5 text-sm font-semibold text-nacho-dark shadow-sm transition-colors hover:bg-nacho-cream focus-visible:ring-2 focus-visible:ring-nacho-primary focus-visible:ring-offset-2;
+    }
+
+    .nacho-container {
+        @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    }
+
+    .nacho-section {
+        @apply py-12 sm:py-16;
+    }
+
+    .nav-utility-bar {
+        @apply border-b border-white/10 bg-nacho-dark text-white;
+    }
+
+    .nav-main-bar {
+        @apply overflow-visible border-b border-nacho-dark/10 bg-white shadow-[0_4px_24px_-4px_rgba(42,39,36,0.12)];
+    }
+
+    .nav-main-inner {
+        @apply mx-auto flex w-full max-w-7xl items-center justify-between py-0 pl-1 pr-1 sm:pl-2 sm:pr-2 lg:pl-3 lg:pr-3;
+    }
+
+    .nav-main-actions {
+        @apply hidden shrink-0 items-center justify-end gap-0.5 xl:flex;
+    }
+
+    .nav-link {
+        @apply relative whitespace-nowrap px-2.5 py-1.5 text-base font-medium text-nacho-dark/75 transition-colors hover:text-nacho-primary;
+    }
+
+    .nav-link-active {
+        @apply font-semibold text-nacho-primary after:absolute after:inset-x-2 after:-bottom-0.5 after:h-0.5 after:rounded-full after:bg-nacho-primary;
+    }
+
+    .nav-cta {
+        @apply inline-flex shrink-0 items-center whitespace-nowrap rounded-full bg-nacho-primary px-4 py-2 text-base font-semibold text-white shadow-sm shadow-nacho-primary/25 transition-all hover:bg-nacho-primary-dark;
+    }
+
+    .footer-heading {
+        @apply text-sm font-bold uppercase tracking-wider text-nacho-primary sm:text-base;
+    }
+
+    .footer-link {
+        @apply text-base leading-relaxed text-white/80 transition-colors hover:text-white sm:text-[1.0625rem];
+    }
+
+    .footer-tagline {
+        @apply text-base leading-relaxed text-white/75 sm:text-lg;
+    }
+
+    .card-nacho {
+        @apply overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-nacho-dark/10 transition-shadow hover:shadow-md;
+    }
+
+    .badge-operational {
+        @apply inline-flex items-center rounded-full bg-nacho-success/10 px-2.5 py-0.5 text-xs font-semibold text-nacho-success;
+    }
+
+    .badge-construction {
+        @apply inline-flex items-center rounded-full bg-nacho-warning/10 px-2.5 py-0.5 text-xs font-semibold text-nacho-warning;
+    }
+
+    .form-shell {
+        @apply space-y-5 rounded-2xl bg-white p-6 shadow-sm ring-1 ring-nacho-dark/10 sm:p-8;
+    }
+
+    .form-label {
+        @apply block text-sm font-semibold text-nacho-dark;
+    }
+
+    .form-input {
+        @apply mt-1 block w-full rounded-lg border-gray-300 shadow-sm focus:border-nacho-primary focus:ring-nacho-primary;
+    }
+
+    .form-hint {
+        @apply mt-1 text-xs text-nacho-dark/60;
+    }
+}
+
+[x-cloak] {
+    display: none !important;
+}
