@@ -12,7 +12,7 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('/about', 'public.placeholder', ['pageTitle' => 'navigation.about'])->name('about');
+Route::view('/about', 'public.about')->name('about');
 Route::view('/centers', 'public.centers-index')->name('centers.index');
 Route::view('/services', 'public.services-index')->name('services.index');
 Route::view('/book-inspection', 'public.placeholder', ['pageTitle' => 'navigation.book'])->name('book-inspection');
