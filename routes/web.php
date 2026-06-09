@@ -12,11 +12,9 @@ Route::get('/', function () {
     return view('welcome');
 })->name('home');
 
-Route::view('/design-system', 'public.design-system')->name('design-system');
-
 Route::view('/about', 'public.placeholder', ['pageTitle' => 'navigation.about'])->name('about');
-Route::view('/centers', 'public.placeholder', ['pageTitle' => 'navigation.centers'])->name('centers.index');
-Route::view('/services', 'public.placeholder', ['pageTitle' => 'navigation.services'])->name('services.index');
+Route::view('/centers', 'public.centers-index')->name('centers.index');
+Route::view('/services', 'public.services-index')->name('services.index');
 Route::view('/book-inspection', 'public.placeholder', ['pageTitle' => 'navigation.book'])->name('book-inspection');
 Route::view('/tariffs', 'public.placeholder', ['pageTitle' => 'navigation.tariffs'])->name('tariffs');
 Route::view('/inspection-process', 'public.placeholder', ['pageTitle' => 'navigation.inspection_process'])->name('inspection-process');

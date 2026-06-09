@@ -3,22 +3,25 @@
 ])
 
 @php
-    $steps = $steps ?? [
-        __('components.process.step_1'),
-        __('components.process.step_2'),
-        __('components.process.step_3'),
-        __('components.process.step_4'),
-        __('components.process.step_5'),
-    ];
+    $steps = $steps ?? __('components.process.steps');
 @endphp
 
-<ol {{ $attributes->class(['grid gap-6 sm:grid-cols-2 lg:grid-cols-5']) }}>
+<ol {{ $attributes->class(['process-timeline']) }} role="list">
     @foreach ($steps as $index => $step)
-        <li class="relative rounded-2xl bg-white p-5 shadow-sm ring-1 ring-nacho-dark/10">
-            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-nacho-primary text-sm font-bold text-white">
-                {{ $index + 1 }}
-            </span>
-            <p class="mt-3 text-sm font-medium leading-relaxed text-nacho-dark">{{ $step }}</p>
+        <li class="process-timeline-step">
+            @if (! $loop->last)
+                <span class="process-timeline-connector" aria-hidden="true"></span>
+            @endif
+            <div class="process-timeline-card">
+                <div class="flex items-center gap-3">
+                    <span class="process-timeline-number">{{ $index + 1 }}</span>
+                    <span class="process-timeline-icon" aria-hidden="true">
+                        <x-dynamic-component :component="'lucide-' . $step['icon']" class="h-5 w-5" />
+                    </span>
+                </div>
+                <p class="mt-3 text-sm font-bold text-nacho-dark">{{ $step['title'] }}</p>
+                <p class="mt-1 text-sm leading-relaxed text-nacho-dark/70">{{ $step['text'] }}</p>
+            </div>
         </li>
     @endforeach
 </ol>

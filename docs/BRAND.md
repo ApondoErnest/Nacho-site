@@ -1,6 +1,6 @@
 # Brand & Visual Identity - NACHO Vehicle Inspection
 
-NACHO's preferred theme color is a brownish red / burnt orange. The design must look modern, serious, trustworthy, mobile-friendly, and road-safety focused.
+NACHO's preferred theme color is a brownish red / burnt orange. The site should read as a **premium vehicle inspection and road-safety platform** — not a simple brochure. Full UX direction: [DESIGN.md](DESIGN.md).
 
 ## 1. Color system
 
@@ -12,9 +12,9 @@ Recommended brand direction: **burnt orange + dark charcoal + white + small gree
 | Primary (dark) | Deeper burnt orange | Hover/active states | `#8F3414` |
 | Dark | Deep charcoal / dark brown | Trust and seriousness | `#2A2724` |
 | Background | White / warm cream | Clean professional look | `#FFFFFF` / `#FAF6F0` |
-| Success | Green | Accepted / valid / compliant | `#2E7D32` |
-| Warning | Amber | Attention / counter-visit / under construction | `#F59E0B` |
-| Danger | Red | Refused / serious defect | `#C62828` |
+| Success | Green | Accepted, Operational, Compliant | `#2E7D32` |
+| Warning | Amber | Suspended, counter-visit, Under construction | `#F59E0B` |
+| Danger | Red | Refused, serious defect | `#C62828` |
 
 > Hex values are the recommended starting palette and may be fine-tuned once a final logo is supplied. They are encoded as Tailwind tokens (see below) so a change is one-line.
 
@@ -56,7 +56,9 @@ Professional, trustworthy, clear, and reassuring. Emphasizes road safety, compli
 
 ## 7. UI principles
 
-- Mobile-first and fully responsive.
-- The "Book an Inspection" action is always visually highlighted (primary color) as the main conversion.
-- Accessible: sufficient color contrast (target WCAG AA), focus states, semantic HTML, keyboard navigability.
-- Consistent reusable components across pages (see [FRONTEND.md](FRONTEND.md)).
+- Mobile-first; sticky nav; floating/fixed Book Inspection on scroll (see [DESIGN.md](DESIGN.md)).
+- Burnt orange CTAs on charcoal/white — avoid generic blue/green inspection-site clichés.
+- Status badges: green (Operational/Accepted), amber (Under construction/Suspended), red (Refused).
+- Prefer real center photos over stock; specific microcopy CTAs (not vague “Learn More”).
+- Accessible: WCAG AA, focus states, semantic HTML, keyboard navigability.
+- Components: [FRONTEND.md](FRONTEND.md).

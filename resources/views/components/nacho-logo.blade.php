@@ -9,7 +9,7 @@
 
     // Wide logo (~3:2). Boxes sized so the mark stays readable without crowding the nav.
     $boxClass = match ($context) {
-        'nav' => 'h-20 w-max max-w-[18rem] sm:h-24 sm:max-w-[22rem] lg:h-28 lg:max-w-[26rem] xl:h-32 xl:max-w-[30rem]',
+        'nav' => 'h-16 w-[10rem] sm:h-20 sm:w-[12rem] lg:h-[5.25rem] lg:w-[12.25rem] 2xl:w-[14rem]',
         'footer' => 'h-16 w-[13.5rem] sm:h-20 sm:w-[17rem]',
         'auth' => 'h-20 w-[15rem] sm:h-24 sm:w-[18.5rem]',
         'sm' => 'h-10 w-[8.5rem]',

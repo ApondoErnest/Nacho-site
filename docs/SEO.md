@@ -37,7 +37,7 @@ Clean, single (locale-less) URLs:
 - `/privacy-policy`, `/terms-and-conditions`, `/cookie-policy`, `/legal-notice` - Legal
 - `/compliance-quality` - Compliance & quality
 
-Service URLs use **English slugs** (locked decision): `periodic-inspection`, `counter-visit`, `heavy-vehicles`, `pre-purchase`, `road-safety`. Center URLs use city/center-name slugs under `/centers/{slug}`.
+Service URLs use **English slugs** (locked decision): `periodic-inspection`, `counter-visit`, `heavy-vehicles`, `pre-purchase`, `road-safety`. Center URLs: `/centers/{slug}` — e.g. `nacho-yaounde`, `nacho-nkwen-bamenda`, `nacho-mankon-bamenda`, `nacho-douala`, `nacho-kumba` ([CENTERS_DATA.md](CENTERS_DATA.md)).
 
 French SEO keywords are targeted via `seo_title_fr`, meta descriptions, and page content — not via URL segments. See section 8 for target keyword list.
 
@@ -83,7 +83,9 @@ Optimize titles and meta descriptions for terms such as:
 
 - contrôle technique automobile Cameroun
 - visite technique automobile Cameroun
-- centre de contrôle technique Douala / Yaoundé
+- centre de contrôle technique Yaoundé / Bamenda
+- centre de contrôle technique Douala / Kumba (expansion — under construction)
+- contrôle technique Bamenda / visite technique Bamenda
 - vehicle inspection Cameroon / technical inspection Cameroon
 - contrôle technique poids lourds
 - contre-visite automobile

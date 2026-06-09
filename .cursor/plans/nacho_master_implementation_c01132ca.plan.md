@@ -18,8 +18,8 @@ todos:
     content: "Phase 5 (Step 5): Reusable Blade components library"
     status: done
   - id: phase-06
-    content: "Phase 6 (Step 6): Static homepage — 10 sections"
-    status: pending
+    content: "Phase 6 (Step 6): Static homepage — 14 sections per DESIGN.md"
+    status: done
   - id: phase-07
     content: "Phase 7 (Step 7): Static About page"
     status: pending
@@ -198,7 +198,7 @@ flowchart TB
 |:--:|------|------|------|
 | **4** | Public layout: contact bar, nav (proposal §7 order), logo, `FR \| EN` switcher, mobile menu, footer | §4.2, §7 | `layouts/public.blade.php` |
 | **5** | Reusable components: hero (+ slogan tagline), cards, tables, forms shell, alert, breadcrumb, CTA, pagination | §4.4, §3 | `components/public/*` |
-| **6** | Homepage — 10 sections; must answer who/what/where/why/next (proposal §8) | §4.5, §8–9, §21 | `/` complete |
+| **6** | Homepage — 14 sections per [DESIGN.md](docs/DESIGN.md) (split hero, 6-step timeline, technical checks, result cards, footer CTA) | §4–§10 design spec | `/` complete |
 
 ---
 
@@ -213,7 +213,7 @@ Built as **static Blade** first; wired to DB at Step 22. Content rules: 3 operat
 | **9** | Services index | §5.3 | `/services` |
 | **10** | Service detail pages (×5) with full inspection-point copy per §10.1–10.5 | §5.4–5.8 | `/services/{slug}` (English slugs) |
 | **11** | Tariffs (search + table with documents column + June 2022 footnote + notice) | §5.9, §13 | `/tariffs` |
-| **12** | Inspection process — 5-step timeline + Accepted/Suspended/Refused | §5.10, §14 | `/inspection-process` |
+| **12** | Inspection process — 6-step timeline + Accepted/Suspended/Refused | §5.10, §14, [DESIGN.md](docs/DESIGN.md) | `/inspection-process` |
 | **13** | Booking form **UI only** | §5.11 | `/book-inspection` |
 | **14** | Contact page (form UI + map + optional WhatsApp click-to-chat placeholder) | §5.15, §19 | `/contact` |
 | **15** | Blog / road-safety education — index + detail; 10 topic titles as placeholders | §5.12, §16 | `/blog`, `/blog/{slug}` |
@@ -430,9 +430,9 @@ Cross-check against the updated unified proposal. **Already aligned** — no pla
 | **Slogan in UI** | §3 | Show slogan in hero tagline and JSON-LD: *Drive Safe. Stay Compliant. Trust NACHO.* / FR equivalent | 6, 40 |
 | **Homepage content audit** | §8 | Step 6 exit criteria: homepage must answer who / what / where / why / next (five questions) | 6 |
 | **Nav order** | §7 | Main nav order: Home → About → Centers → Services → **Book** → Tariffs → Process → Blog → Compliance → Careers → Contact; Book stays highlighted CTA | 4 |
-| **Center cards** | §9.2, §11 | Add **nearby landmark** and **vehicle categories accepted** to center schema, admin, and cards | 8, 19, 28 |
+| **Center cards** | §9.2, §11 | **Verified data:** [CENTERS_DATA.md](docs/CENTERS_DATA.md) from `CCTs of NACHO.docx`. Schema fields + seed/static pages use real Yaounde/Bamenda/Douala/Kumba network | 8, 19, 20, 28 |
 | **Tariff table** | §13 | Add **required documents** column (`required_documents_fr/en` on `tariffs`); optional footnote referencing homologation from **1 June 2022** | 11, 19, 20, 30 |
-| **Inspection process** | §14 | Use **5 steps** on process page (arrival/registration → machine → visual → result validation → report/PV); merge document check into step 1 | 12 |
+| **Inspection process** | §14, DESIGN | Use **6 steps** on homepage and process page (book → register → machine → visual → validation → report/PV) | 6, 12 |
 | **Service page depth** | §10.1–10.5 | Step 10 static copy must include full inspection-point lists (periodic, heavy vehicle, pre-purchase, road safety topics) per proposal | 10 |
 | **Blog topics** | §16 | Seed or document **10 recommended article titles** as placeholder posts or admin content backlog | 15, 20 |
 | **WhatsApp contact** | §19 | Optional click-to-chat on contact page + footer via `whatsapp_contact` setting (general contact only — not reminders) | 14, 38 |
@@ -441,7 +441,7 @@ Cross-check against the updated unified proposal. **Already aligned** — no pla
 
 **Intentionally kept beyond proposal minimum:**
 
-- Homepage **10 sections** (includes tariffs preview + blog preview) — proposal §21 lists core blocks; extras improve conversion and SEO
+- Homepage **14 sections** per [DESIGN.md](docs/DESIGN.md) (premium platform UX — split hero, technical checks, result cards, footer CTA band, floating book button)
 - **Tailwind** over Bootstrap — already locked in ADR 001
 - **Media library** admin module — supports center photos and blog images
 
@@ -458,7 +458,7 @@ Cross-check against the updated unified proposal. **Already aligned** — no pla
 
 ## Inputs needed from NACHO
 
-Real center data, logo, legal text, certifications, contact details — [ROADMAP.md](docs/ROADMAP.md).
+Center names/addresses/phones/GPS partially supplied — [CENTERS_DATA.md](docs/CENTERS_DATA.md). Still pending: photos, per-center vehicle categories, Douala/Kumba final addresses, legal text, certifications. See [ROADMAP.md](docs/ROADMAP.md).
 
 ---
 

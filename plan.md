@@ -18,7 +18,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Local environment (Step 1) | **Done** |
 | Step 3 — Visual identity | **Done** |
 | Step 5 — Reusable Blade components | **Done** |
-| Next step | **Step 6** — static homepage (10 sections) |
+| Step 6 — Static homepage (14 sections, DESIGN.md) | **Done** |
+| Next step | **Step 7** — static About page |
 
 ## Timeline overview
 
@@ -44,7 +45,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 3 | Tailwind `nacho-*` tokens, Breeze, base CSS |
 | 4 | Public layout (nav, footer, `FR \| EN` switcher) |
 | 5 | Reusable Blade components |
-| 6 | Homepage — 10 sections; answers who/what/where/why/next |
+| 6 | Homepage — 14 sections per [docs/DESIGN.md](docs/DESIGN.md) |
 | 7 | About page |
 | 8 | Centers index + detail |
 | 9 | Services index |
@@ -121,12 +122,14 @@ ADRs: [docs/adr/](docs/adr/)
 | [docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md) | Identity, scope, audience |
 | [docs/BRAND.md](docs/BRAND.md) | Colors, typography, tone |
 | [docs/CONTENT_GUIDELINES.md](docs/CONTENT_GUIDELINES.md) | Messaging rules |
+| [docs/DESIGN.md](docs/DESIGN.md) | UX direction (homepage, nav, footer) |
 | [docs/FRONTEND.md](docs/FRONTEND.md) | Layout, components, pages |
 | [docs/DATABASE.md](docs/DATABASE.md) | Schema and ERD |
 | [docs/SEEDING.md](docs/SEEDING.md) | Default data |
+| [docs/CENTERS_DATA.md](docs/CENTERS_DATA.md) | Verified centers + HQ (from CCTs docx) |
 | [docs/ROADMAP.md](docs/ROADMAP.md) | Step status tracker |
 | [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | Docker/VPS (later) |
 
 ## Next action
 
-Say **"do Step 6"** to build the static homepage (10 sections) using these components.
+Say **"do Step 7"** to build the static About page.

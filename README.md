@@ -4,7 +4,7 @@ Professional, bilingual (French default / English), mobile-responsive website an
 
 Built with **Laravel** (full-stack, Blade + Tailwind CSS) on **MySQL**. Local-first development; Docker and VPS deployment come later.
 
-> NACHO currently operates **3 vehicle technical inspection centers**, with **2 additional centers under construction**, expected to open **before October 2026**. The site must never present NACHO as having 5 fully operational centers until all 5 are functioning.
+> NACHO currently operates **3 vehicle technical inspection centers**, with **2 additional centers under construction**, expected to open **before November 2026**. The site must never present NACHO as having 5 fully operational centers until all 5 are functioning.
 
 **Slogan:** *Drive Safe. Stay Compliant. Trust NACHO.* / *Roulez en sécurité. Restez conforme. Faites confiance à NACHO.*
 
@@ -20,12 +20,13 @@ Built with **Laravel** (full-stack, Blade + Tailwind CSS) on **MySQL**. Local-fi
 | Step 3 — Visual identity | **Done** |
 | Step 4 — Public layout shell | **Done** |
 | Step 5 — Reusable Blade components | **Done** |
-| Steps 6–44 — Application build | Pending (approval-gated, one step at a time) |
+| Step 6 — Static homepage (14 sections per DESIGN.md) | **Done** |
+| Steps 7–44 — Application build | Pending (approval-gated, one step at a time) |
 | Steps 45–50 — Deployment | Deferred until local UAT passes |
 
-Public layout and a reusable Blade component library are in place. Preview all components at `/design-system` (smoke-test page; remove or protect before production). See [plan.md](plan.md) for the full 50-step build plan and [docs/ROADMAP.md](docs/ROADMAP.md) for live step status.
+Public layout, component library, and the **14-section homepage** ([docs/DESIGN.md](docs/DESIGN.md)) are live at `/` — verified centers, 6-step process, bilingual copy. Preview: `/design-system`. See [plan.md](plan.md) and [docs/ROADMAP.md](docs/ROADMAP.md).
 
-To continue building: say **"do Step 6"**.
+To continue building: say **"do Step 7"**.
 
 ---
 
@@ -90,12 +91,14 @@ Full setup: [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md).
 | [docs/PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md) | Identity, scope, audience |
 | [docs/BRAND.md](docs/BRAND.md) | Visual identity |
 | [docs/CONTENT_GUIDELINES.md](docs/CONTENT_GUIDELINES.md) | Messaging rules |
+| [docs/DESIGN.md](docs/DESIGN.md) | Premium UX direction — nav, homepage, footer, CTAs |
 | [docs/FRONTEND.md](docs/FRONTEND.md) | Layout, components, pages |
 | [docs/DATABASE.md](docs/DATABASE.md) | Schema and ERD |
 | [docs/ROLES.md](docs/ROLES.md) | Roles and permissions |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Backend structure |
 | [docs/ADMIN_MODULES.md](docs/ADMIN_MODULES.md) | Admin dashboard modules |
 | [docs/SEEDING.md](docs/SEEDING.md) | Default seed data |
+| [docs/CENTERS_DATA.md](docs/CENTERS_DATA.md) | Verified inspection centers + HQ (`CCTs of NACHO.docx`) |
 | [docs/I18N.md](docs/I18N.md) | Bilingual implementation |
 | [docs/SEO.md](docs/SEO.md) | SEO and URL map |
 | [docs/SECURITY.md](docs/SECURITY.md) | Security measures |

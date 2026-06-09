@@ -26,7 +26,9 @@ It also provides an admin dashboard for authorized staff to manage content, cent
 
 ### Center status rule (critical)
 
-NACHO has **3 operational centers today**, with **2 additional centers under construction**, expected to open **before October 2026**. The website must **not** present NACHO as having 5 fully operational centers until all 5 are functioning. See [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md).
+NACHO has **3 operational centers today**, with **2 additional centers under construction**, expected to open **before November 2026**. The website must **not** present NACHO as having 5 fully operational centers until all 5 are functioning. See [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md).
+
+**Geographic footprint (verified):** Operational — NACHO Yaounde (Centre), NACHO Nkwen-Bamenda and NACHO Nacho-Bamenda (Northwest). Under construction — NACHO Douala, NACHO Kumba. Corporate HQ — Atuakum Mankon, P.O. Box 100 Bamenda. Full contacts: [CENTERS_DATA.md](CENTERS_DATA.md).
 
 ## 3. Brand positioning
 

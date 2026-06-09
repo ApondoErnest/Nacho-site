@@ -17,9 +17,7 @@
         @foreach ($items as $item)
             <li class="flex flex-col items-center gap-2 px-2">
                 <span class="flex h-10 w-10 items-center justify-center rounded-full bg-nacho-primary/10 text-nacho-primary">
-                    <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                    </svg>
+                    <x-lucide-check class="h-5 w-5" aria-hidden="true" />
                 </span>
                 <span class="text-sm font-semibold text-nacho-dark">{{ $item }}</span>
             </li>

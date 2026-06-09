@@ -1,72 +1,79 @@
 # Frontend Design - NACHO Vehicle Inspection
 
-Blade + Tailwind CSS, mobile-first, one consistent public layout, reusable components, and brand styling from [BRAND.md](BRAND.md).
+Blade + Tailwind CSS, mobile-first, premium inspection-platform UX. **Canonical UX spec:** [DESIGN.md](DESIGN.md). **Brand tokens:** [BRAND.md](BRAND.md).
 
 ## 1. Public layout
 
-A single layout wraps all public pages and includes:
+Single layout (`layouts/public.blade.php`) on every public page:
 
-- top contact bar (phone / email, language switcher)
-- main navigation bar with logo
-- mobile menu (hamburger)
-- main content area
-- footer: contact info, quick links, social links (if available), legal page links
-- cookie consent banner
+1. Top contact bar (dark) — see [DESIGN.md](DESIGN.md) §3.1  
+2. Main navbar (sticky, shrink on scroll) — §3.2–3.3  
+3. Main content  
+4. Optional floating Book Inspection (desktop right / mobile bottom) — §3.4  
+5. Footer CTA band + main footer + footer bottom — [DESIGN.md](DESIGN.md) §6  
+6. Cookie consent banner  
 
-The layout stays consistent across every public page.
+**Compliance & Quality** remains at `/compliance-quality` but is linked from footer/About, not main nav.
 
 ## 2. Navigation menu
 
-Main nav order (Book stays a highlighted button, not a plain link):
+Main nav order (Book Inspection = CTA button at end):
 
-1. Home
-2. About
-3. Centers
-4. Services
-5. **Book an Inspection** (highlighted button — primary conversion action)
-6. Tariffs
-7. Inspection Process
-8. Blog (Road Safety Education)
-9. Compliance & Quality
-10. Careers
-11. Contact
+1. Home  
+2. About  
+3. Centers  
+4. Services  
+5. Tariffs  
+6. Inspection Process  
+7. Blog  
+8. Careers  
+9. Contact  
+10. **Book Inspection** (primary CTA — burnt orange button)  
 
-Language switcher: `FR | EN` in the top contact bar.
+`FR | EN` in the top contact bar. Mobile: slide-in panel per [DESIGN.md](DESIGN.md) §4.
 
 ## 3. Reusable components
 
-Built as Blade components (`resources/views/components/`):
+Blade components (`resources/views/components/public/`):
 
-- header, footer
-- hero section (includes slogan tagline), page-title / breadcrumb
-- service card, center card
-- tariff table (desktop), tariff mobile card
-- blog card, career card
-- contact form, booking form (and career application form)
-- alert message (success/error)
-- call-to-action section
-- language switcher
-- pagination
-- process steps / inspection-result blocks
-- trust strip
-- admin table component, admin form component (admin side)
+**Layout & chrome:** header (top bar + nav), footer (CTA band + columns + bottom), language switcher, mobile-menu (slide-in), floating-booking-button  
 
-Components keep markup DRY and visually consistent.
+**Marketing blocks:** hero-split (with status overlay card), center-availability-strip, trust-strip, about-preview-cards, cta-section (final + footer band)  
 
-## 4. Home page (10 sections, in order)
+**Content cards:** service-card, center-card (status badges), tariff-card, tariff-table, tariff-category-selector, blog-card, career-card  
 
-The homepage must answer five visitor questions: **who** is NACHO, **what** it does, **where** it operates, **why** to trust it, and **what to do next**.
+**Process & trust:** process-steps (6-step timeline), technical-checks-grid (6 checks), inspection-result (Accepted/Suspended/Refused)  
 
-1. **Hero** - title "Professional Vehicle Technical Inspection for Safer Roads"; slogan tagline (*Drive Safe. Stay Compliant. Trust NACHO.* / FR equivalent); subtitle stating 3 operational + 2 under construction (before Oct 2026); actions: Book an Inspection, Find a Center, View Tariffs, Contact NACHO.
-2. **Trust strip** - Approved Centers, Modern Equipment, Trained Inspectors, Clear Tariffs, Road Safety Focus.
-3. **About preview** - brief intro; inspection as a road-safety commitment, not just a legal requirement.
-4. **Center status preview** - center cards showing 3 operational + 2 under construction (opening before Oct 2026).
-5. **Services preview** - the 5 services.
-6. **Why choose NACHO** - approved centers, trained technicians, modern equipment, transparent process, clear tariffs, professional service, road-safety commitment.
-7. **Inspection journey** - 5 simple steps (book/walk-in -> register -> machine inspection -> visual control & validation -> report/sticker/PV & guidance).
-8. **Tariffs preview** - category preview linking to full tariffs page.
-9. **Blog preview** - recent road-safety articles.
-10. **Final CTA** - "Ready to inspect your vehicle? Book your visit today at the nearest NACHO center."
+**Forms:** form-field, booking-form, contact-form, career-application-form  
+
+**Utility:** page-title, breadcrumb, alert, pagination  
+
+**Admin:** admin table/form components (admin side)
+
+Design-system preview: `/design-system` (Step 5).
+
+## 4. Home page (14 sections + layout chrome)
+
+Full spec: [DESIGN.md](DESIGN.md) §5. Summary:
+
+| # | Section |
+|---|---------|
+| 1 | Hero (split + floating 3+2 status card + trust icons + CTAs) |
+| 2 | Center availability strip |
+| 3 | About preview (3 cards) |
+| 4 | Services preview (5 cards) |
+| 5 | Inspection process timeline (**6 steps**) |
+| 6 | Six technical checks |
+| 7 | Tariffs preview (+ category selector) |
+| 8 | Centers (verified data — [CENTERS_DATA.md](CENTERS_DATA.md)) |
+| 9 | Why choose NACHO (6 benefits) |
+| 10 | Inspection result explanation (3 cards) |
+| 11 | Blog preview (3 articles) |
+| 12 | Final CTA |
+| 13 | Footer CTA band |
+| 14 | Main footer + footer bottom |
+
+**Note:** Step 6 build may require enhancing Steps 4–5 layout/components to match this spec if the first homepage pass used the older 10-section structure.
 
 ## 5. Public pages
 
@@ -74,61 +81,55 @@ The homepage must answer five visitor questions: **who** is NACHO, **what** it d
 Company intro, mission, vision, values, road-safety commitment, professional inspection approach, center-expansion statement, CTA.
 
 ### Centers (index + detail)
-Index lists centers via cards: name, city, region, status, address, **nearby landmark**, phone, email, opening hours, map link, services available, **vehicle categories accepted**, photo, "Book at this center" + "Get directions". Status is Operational or Under Construction (with "Opening before October 2026"). Each center has a detail page: full description, address, landmark, map, opening hours, services, vehicle categories, image gallery, contact details, booking button. Booking CTA only for operational centers.
 
-Routes: `/centers`, `/centers/{slug}` (English paths; slugs use city/center name).
+**Data source:** [CENTERS_DATA.md](CENTERS_DATA.md).
+
+Index: center cards — name, city, status badge (Operational green / Opening before November 2026 amber), hours, phone, address, landmark, services, vehicle categories, photo, Get Directions, Book at this Center (operational only).
+
+Routes: `/centers`, `/centers/{slug}`.
 
 ### Services (index + 5 detail pages)
-Index shows all services (title, short description, image/icon, link, booking button where applicable). Detail pages:
-- **Periodic Technical Inspection** - definition, why required, who needs it, accepted categories, required documents, duration, possible results, failure handling, inspection points (braking, suspension, alignment/ripage, lights/headlamp alignment, pollution/emissions, tires, chassis, mirrors, seat belts, horn, windshield, wipers, visual), CTA.
-- **Counter-Visit** - what it is, when required, example defects, what to repair, documents to bring, how to book; results (Accepted/Suspended/Refused).
-- **Heavy Vehicle Inspection** - trucks, buses, semi-trailers, transport/utility/special vehicles; why stricter (passenger safety, goods, heavy loads, road risk). Inspection points: braking, chassis, suspension, tires, lights, emissions, body structure, safety equipment, heavy-duty vehicle identification.
-- **Pre-Purchase Inspection** - reduce risk before buying; checks visible mechanical/brake/suspension condition, emissions, visible defects, accident signs, safety risks, recommendation.
-- **Road Safety Advisory** - prepare a vehicle before inspection; why brakes/tires/lighting/visibility matter; risk of expired inspection; maintenance for road safety.
+
+Index: 5 service cards (icon, description, Learn more / Book now). Detail pages per existing spec (periodic, counter-visit, heavy, pre-purchase, road safety) with full inspection-point copy.
 
 ### Tariffs
-Searchable, mobile-friendly table with category, vehicle type, price, validity, **required documents**, notes, booking button. Includes the official tariff notice and optional homologation footnote (1 June 2022) per [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md). Mobile uses tariff cards. Booking buttons can preselect the tariff.
+
+Full page: searchable table, mobile cards, required documents, Ministry notice, optional June 2022 footnote, **category selector** (Private Car | Taxi | Pickup | Bus | Truck | Other). Homepage shows preview subset — [DESIGN.md](DESIGN.md) §10.
 
 ### Inspection Process
-Visual **5-step** timeline: (1) arrival & registration (includes document check), (2) machine-based inspection, (3) visual inspection, (4) result validation, (5) report/sticker/PV & customer guidance. Explains Accepted / Suspended / Refused with colored result blocks. Icons, simple language.
+
+**6-step** visual timeline (same steps as homepage §5.1). Accepted / Suspended / Refused blocks. CTA to book. Horizontal timeline on desktop, vertical on mobile.
 
 ### Booking
-Form fields: full name, phone, email (optional), preferred center, vehicle registration, vehicle category, service type, preferred date, preferred time, document upload (optional), comment (optional), data-processing consent. After submit: confirmation message + booking reference. Never collects expiry/reminder fields. See [SECURITY.md](SECURITY.md).
+
+Form fields unchanged — no reminder/expiry fields. See [SECURITY.md](SECURITY.md).
 
 ### Blog (index + detail)
-Road-safety education focus. Index cards: title, featured image, category, excerpt, publish date, read more. Detail: title, image, author, publish date, content, related articles, SEO metadata.
 
-Recommended placeholder topics (seed or static phase):
-
-1. What is vehicle technical inspection?
-2. Documents required for vehicle inspection in Cameroon
-3. How to prepare your vehicle before inspection
-4. Why brake testing matters for road safety
-5. What happens when a vehicle fails inspection?
-6. Difference between Accepted, Suspended, and Refused results
-7. How often should taxis, buses, trucks, and private vehicles be inspected?
-8. Why you should not wait until your vehicle inspection expires
-9. How technical inspection improves road safety in Cameroon
-10. Basic vehicle maintenance tips before going for inspection
+Road-safety education. Cards: image, category, title, excerpt, read more. Ten topic titles in [DESIGN.md](DESIGN.md) / prior FRONTEND list for seeds.
 
 ### Compliance & Quality
-Authorization/agrement details only if real proof exists; equipment standards, staff training, inspection procedure, QA process, complaint process, data-protection statement. Uses safe wording when credentials unconfirmed ([CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md)).
+
+Linked from footer; safe certification wording — [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md).
 
 ### Careers (index + detail + apply)
-Index lists jobs (title, location, department, employment type, deadline, apply button). Detail shows description and requirements. Application form: full name, email, phone, selected position, CV upload, cover letter (optional).
+
+Standard job listing + application form with CV upload.
 
 ### Contact
-General phone, email, main office/center address, map, center contact links, optional **WhatsApp click-to-chat** (general contact only — via `whatsapp_contact` setting, not reminders), contact form (full name, email, phone optional, subject, message). After submit: confirmation; admin sees message in dashboard.
+
+HQ data from [CENTERS_DATA.md](CENTERS_DATA.md); map; optional WhatsApp; contact form.
 
 ### Legal pages
-Privacy Policy, Terms and Conditions, Cookie Policy, Legal Notice - rendered from the `pages` table, editable in admin.
+
+Privacy, Terms, Cookies, Legal Notice — from `pages` table when wired.
 
 ## 6. Responsiveness & accessibility
 
-- Mobile-first; tables collapse to cards on small screens (tariffs, where useful).
-- Target WCAG AA contrast; visible focus states; semantic landmarks; alt text on images (bilingual).
-- Lazy-loaded, responsive images.
+- Mobile-first; tariff tables → cards on small screens  
+- WCAG AA contrast; focus states; semantic landmarks; bilingual alt text  
+- Lazy-loaded images; prefer real NACHO photos — [DESIGN.md](DESIGN.md) §9  
 
 ## 7. Language switcher
 
-`FR | EN` in the header/top bar; selecting a language stores it in the session and re-renders the current page in that language. See [I18N.md](I18N.md).
+`FR | EN` in top bar; session persistence — [I18N.md](I18N.md). No mixed FR/EN on one rendered page.

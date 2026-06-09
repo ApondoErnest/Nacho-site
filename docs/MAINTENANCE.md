@@ -13,7 +13,7 @@ Ongoing tasks after launch to keep the website healthy, secure, and current.
 ## 2. Content
 
 - publish road-safety blog posts regularly
-- update center information (status, hours, contacts, photos)
+- update center information per [CENTERS_DATA.md](CENTERS_DATA.md) (status, hours, contacts, photos); sync doc when NACHO supplies changes
 - promote under-construction centers to operational once they open (and update all counts/messaging - see [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md))
 - update tariffs when official changes occur (audit-logged)
 - keep legal pages current with NACHO's legal team
@@ -28,7 +28,7 @@ Ongoing tasks after launch to keep the website healthy, secure, and current.
 
 - check SEO basics (titles, meta, sitemap freshness)
 - review user accounts and roles; deactivate unused accounts
-- confirm placeholder data has been replaced with real data (centers, contact details, logo)
+- confirm [CENTERS_DATA.md](CENTERS_DATA.md) matches live site (centers, HQ contact, logo); update doc and seeders when data changes
 
 ## 5. Cadence (suggested)
 

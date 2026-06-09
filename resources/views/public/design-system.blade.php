@@ -63,7 +63,7 @@
                 <x-public.service-card
                     :title="app()->getLocale() === 'fr' ? 'Visite périodique' : 'Periodic Technical Inspection'"
                     :description="app()->getLocale() === 'fr' ? 'Description courte du service.' : 'Short service description.'"
-                    icon="🔧"
+                    icon="clipboard-check"
                 />
             </div>
         </section>

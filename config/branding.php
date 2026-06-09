@@ -28,4 +28,10 @@ return [
 
     'favicon' => 'images/nacho-logo.png',
 
+    /*
+    | Homepage / marketing imagery (replace SVG placeholders with real photos).
+    */
+
+    'home_hero_image' => 'images/hero-inspection.svg',
+
 ];

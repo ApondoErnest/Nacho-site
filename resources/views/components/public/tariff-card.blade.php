@@ -8,7 +8,7 @@
     'bookUrl' => null,
 ])
 
-<article {{ $attributes->class(['card-nacho p-5 lg:hidden']) }}>
+<article {{ $attributes->class(['card-nacho p-5']) }}>
     <p class="text-xs font-bold uppercase tracking-wide text-nacho-primary">{{ $category }}</p>
     <h3 class="mt-1 text-lg font-bold text-nacho-dark">{{ $vehicleType }}</h3>
     <p class="mt-2 text-2xl font-bold text-nacho-primary">{{ $price }}</p>

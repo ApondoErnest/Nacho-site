@@ -1,59 +1,126 @@
+@php
+    $locale = app()->getLocale();
+    $navItems = collect(config('navigation.main'));
+    $navLinks = $navItems->reject(fn ($item) => $item['cta'] ?? false);
+    $navCta = $navItems->first(fn ($item) => $item['cta'] ?? false);
+    $centerMenuItems = collect(config('centers.centers', []))->map(function (array $center) use ($locale) {
+        $suffix = $locale === 'fr' ? ($center['name_suffix_fr'] ?? '') : ($center['name_suffix_en'] ?? '');
+
+        return [
+            'label' => trim($center['name'] . ' ' . $suffix),
+            'text' => $center['status'] === 'operational'
+                ? trim(($center['city'] ?? '') . ' · ' . __('components.center.operational'))
+                : trim(($center['city'] ?? '') . ' · ' . __('components.center.opening_badge')),
+            'href' => route('centers.index') . '#' . $center['slug'],
+            'status' => $center['status'],
+        ];
+    })->values();
+    $serviceMenuItems = collect(config('home.services', []))->map(fn (array $service) => [
+        'label' => __('home.services.' . $service['key'] . '.title'),
+        'text' => __('home.services.' . $service['key'] . '.description'),
+        'href' => route('services.index') . '#' . $service['slug'],
+        'icon' => $service['icon'],
+    ])->values();
+@endphp
+
 <header
-    x-data="{ mobileOpen: false }"
+    x-data="{ mobileOpen: false, scrolled: false }"
     @keydown.escape.window="mobileOpen = false"
-    class="sticky top-0 z-40"
+    @scroll.window="scrolled = window.scrollY > 24"
+    :class="scrolled ? 'nav-header--scrolled' : ''"
+    class="nav-header sticky top-0 z-50"
 >
-    {{-- Slim utility bar --}}
     <div class="nav-utility-bar">
-        <div class="nacho-container flex h-9 items-center justify-between gap-3 text-xs sm:h-10 sm:text-sm">
-            <div class="flex min-w-0 flex-1 items-center gap-4 sm:gap-6">
-                <a
-                    href="tel:{{ preg_replace('/\s+/', '', config('navigation.phone')) }}"
-                    class="inline-flex items-center gap-1.5 truncate text-white/90 transition-colors hover:text-white"
-                >
-                    <svg class="h-3.5 w-3.5 shrink-0 text-nacho-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                    </svg>
-                    <span class="truncate">{{ config('navigation.phone') }}</span>
+        <div class="nacho-container nav-utility-inner">
+            <p class="nav-utility-tagline">
+                <span class="nav-utility-dot" aria-hidden="true"></span>
+                <span>{{ __(config('navigation.utility_tagline_key')) }}</span>
+            </p>
+
+            <div class="nav-utility-cluster nav-utility-cluster--right">
+                <a href="tel:{{ config('centers.headquarters.phone_primary_tel') }}" class="nav-utility-item">
+                    <x-lucide-phone class="nav-utility-icon" aria-hidden="true" />
+                    <span>{{ config('centers.headquarters.phone_primary') }}</span>
                 </a>
-                <a
-                    href="mailto:{{ config('navigation.email') }}"
-                    class="hidden items-center gap-1.5 truncate text-white/90 transition-colors hover:text-white sm:inline-flex"
-                >
-                    <svg class="h-3.5 w-3.5 shrink-0 text-nacho-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                    {{ config('navigation.email') }}
+
+                <a href="mailto:{{ config('centers.headquarters.email') }}" class="nav-utility-item hidden lg:inline-flex">
+                    <x-lucide-mail class="nav-utility-icon" aria-hidden="true" />
+                    <span>{{ config('centers.headquarters.email') }}</span>
                 </a>
+
+                <span class="nav-utility-item nav-utility-location hidden lg:inline-flex">
+                    <x-lucide-map-pin class="nav-utility-icon" aria-hidden="true" />
+                    <span>{{ config('centers.headquarters.address') }}</span>
+                </span>
+
+                <span class="nav-utility-item hidden md:inline-flex">
+                    <x-lucide-clock class="nav-utility-icon" aria-hidden="true" />
+                    <span>{{ __(config('navigation.opening_hours_key')) }}</span>
+                </span>
+
+                <x-public.language-switcher variant="dark" class="nav-utility-language" />
             </div>
-            <x-public.language-switcher variant="dark" class="shrink-0 text-xs sm:text-sm" />
         </div>
     </div>
 
-    {{-- Main nav: logo left | menu on the right (config order: Book after Services) --}}
-    <div class="nav-main-bar overflow-hidden">
-        <div class="nav-main-inner">
-            <a
-                href="{{ route('home') }}"
-                class="shrink-0 focus-visible:rounded-md"
-                aria-label="{{ __('branding.logo_alt') }}"
-            >
+    <div class="nav-main-bar">
+        <div class="nacho-container nav-main-inner">
+            <a href="{{ route('home') }}" class="nav-brand" aria-label="{{ __('branding.logo_alt') }}">
                 <x-nacho-logo context="nav" />
             </a>
 
             <nav class="nav-main-actions" aria-label="{{ __('navigation.main_navigation') }}">
-                @foreach (config('navigation.main') as $item)
-                    @if ($item['cta'] ?? false)
-                        <a href="{{ route($item['route']) }}" class="nav-cta ml-1">
-                            {{ __($item['label']) }}
-                        </a>
+                @foreach ($navLinks as $item)
+                    @if ($item['route'] === 'centers.index' || $item['route'] === 'services.index')
+                        @php
+                            $dropdownItems = $item['route'] === 'centers.index' ? $centerMenuItems : $serviceMenuItems;
+                            $columnSize = max(1, (int) ceil($dropdownItems->count() / 2));
+                            $columns = $dropdownItems->chunk($columnSize);
+                        @endphp
+
+                        <div class="nav-dropdown">
+                            <a
+                                href="{{ route($item['route']) }}"
+                                @class(['nav-link nav-link-dropdown', 'nav-link-active' => request()->routeIs($item['route'])])
+                            >
+                                <span>{{ __($item['label']) }}</span>
+                                <x-lucide-chevron-down class="h-3.5 w-3.5" aria-hidden="true" />
+                            </a>
+
+                            <div class="nav-dropdown-panel">
+                                <div class="nav-dropdown-grid">
+                                    @foreach ($columns as $column)
+                                        <div class="nav-dropdown-column">
+                                            @foreach ($column as $dropdownItem)
+                                                <a href="{{ $dropdownItem['href'] }}" class="nav-mega-item">
+                                                    <span @class([
+                                                        'nav-mega-icon',
+                                                        'nav-mega-icon--status' => $item['route'] === 'centers.index',
+                                                        'is-operational' => ($dropdownItem['status'] ?? null) === 'operational',
+                                                    ])>
+                                                        @if ($item['route'] === 'centers.index')
+                                                            <x-lucide-building-2 aria-hidden="true" />
+                                                        @else
+                                                            <x-dynamic-component :component="'lucide-' . $dropdownItem['icon']" aria-hidden="true" />
+                                                        @endif
+                                                    </span>
+                                                    <span>
+                                                        <span class="nav-mega-title">{{ $dropdownItem['label'] }}</span>
+                                                        <span class="nav-mega-text">{{ $dropdownItem['text'] }}</span>
+                                                    </span>
+                                                </a>
+                                            @endforeach
+                                        </div>
+                                    @endforeach
+                                </div>
+
+                                <p class="nav-dropdown-footer">{{ __('navigation.dropdown_footer') }}</p>
+                            </div>
+                        </div>
                     @else
                         <a
                             href="{{ route($item['route']) }}"
-                            @class([
-                                'nav-link',
-                                'nav-link-active' => request()->routeIs($item['route']),
-                            ])
+                            @class(['nav-link', 'nav-link-active' => request()->routeIs($item['route'])])
                         >
                             {{ __($item['label']) }}
                         </a>
@@ -61,67 +128,86 @@
                 @endforeach
             </nav>
 
+            @if ($navCta)
+                <a href="{{ route($navCta['route']) }}" class="nav-book-button">
+                    <x-lucide-calendar-check class="h-5 w-5 shrink-0" aria-hidden="true" />
+                    <span>{{ __($navCta['label']) }}</span>
+                </a>
+            @endif
+
             <button
                 type="button"
-                class="nav-mobile-toggle ml-auto inline-flex shrink-0 items-center justify-center rounded-lg border border-nacho-dark/10 p-2 text-nacho-dark transition-colors hover:border-nacho-primary/30 hover:bg-nacho-cream xl:hidden"
-                @click="mobileOpen = ! mobileOpen"
-                :aria-expanded="mobileOpen.toString()"
+                class="nav-mobile-toggle"
+                @click="mobileOpen = true"
                 aria-controls="mobile-navigation"
+                :aria-expanded="mobileOpen.toString()"
             >
-                <span class="sr-only" x-text="mobileOpen ? '{{ __('navigation.menu_close') }}' : '{{ __('navigation.menu_open') }}'"></span>
-                <svg x-show="! mobileOpen" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-                <svg x-show="mobileOpen" x-cloak class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
-                </svg>
+                <span class="sr-only">{{ __('navigation.menu_open') }}</span>
+                <x-lucide-menu class="h-6 w-6" aria-hidden="true" />
             </button>
         </div>
     </div>
 
-    {{-- Mobile menu --}}
     <div
-        id="mobile-navigation"
         x-show="mobileOpen"
         x-cloak
-        x-transition:enter="transition ease-out duration-200"
-        x-transition:enter-start="opacity-0 -translate-y-2"
-        x-transition:enter-end="opacity-100 translate-y-0"
-        x-transition:leave="transition ease-in duration-150"
-        x-transition:leave-start="opacity-100 translate-y-0"
-        x-transition:leave-end="opacity-0 -translate-y-2"
-        class="border-b border-nacho-dark/10 bg-white shadow-lg xl:hidden"
-        @click.outside="mobileOpen = false"
+        class="fixed inset-0 z-[80] xl:hidden"
+        role="dialog"
+        aria-modal="true"
+        id="mobile-navigation"
     >
-        <nav class="nacho-container max-h-[min(70vh,28rem)] overflow-y-auto py-3" aria-label="{{ __('navigation.main_navigation') }}">
-            <div class="grid gap-0.5">
-                @foreach (config('navigation.main') as $item)
-                    @if ($item['cta'] ?? false)
-                        <a
-                            href="{{ route($item['route']) }}"
-                            class="nav-cta mt-2 justify-center"
-                            @click="mobileOpen = false"
-                        >
-                            {{ __($item['label']) }}
-                        </a>
-                    @else
-                        <a
-                            href="{{ route($item['route']) }}"
-                            @class([
-                                'rounded-lg px-3 py-2.5 text-base font-medium transition-colors',
-                                'bg-nacho-primary/10 font-semibold text-nacho-primary' => request()->routeIs($item['route']),
-                                'text-nacho-dark hover:bg-nacho-cream' => ! request()->routeIs($item['route']),
-                            ])
-                            @click="mobileOpen = false"
-                        >
-                            {{ __($item['label']) }}
-                        </a>
-                    @endif
-                @endforeach
+        <div class="absolute inset-0 bg-nacho-dark/60" @click="mobileOpen = false" aria-hidden="true"></div>
+        <div
+            x-show="mobileOpen"
+            x-transition:enter="transition ease-out duration-300"
+            x-transition:enter-start="translate-x-full"
+            x-transition:enter-end="translate-x-0"
+            x-transition:leave="transition ease-in duration-200"
+            x-transition:leave-start="translate-x-0"
+            x-transition:leave-end="translate-x-full"
+            class="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-white shadow-2xl"
+        >
+            <div class="flex items-center justify-between border-b border-nacho-dark/10 px-4 py-3">
+                <x-nacho-logo context="sm" />
+                <button type="button" class="rounded-lg p-2 text-nacho-dark hover:bg-nacho-cream" @click="mobileOpen = false">
+                    <span class="sr-only">{{ __('navigation.menu_close') }}</span>
+                    <x-lucide-x class="h-5 w-5" aria-hidden="true" />
+                </button>
             </div>
-            <div class="mt-3 flex items-center justify-between border-t border-nacho-dark/10 pt-3">
-                <x-public.language-switcher variant="light" />
+
+            <nav class="flex-1 overflow-y-auto px-4 py-4" aria-label="{{ __('navigation.main_navigation') }}">
+                <ul class="space-y-1">
+                    @foreach ($navLinks as $item)
+                        <li>
+                            <a
+                                href="{{ route($item['route']) }}"
+                                @class([
+                                    'block rounded-lg px-3 py-3 text-base font-semibold',
+                                    'bg-nacho-primary/10 text-nacho-primary' => request()->routeIs($item['route']),
+                                    'text-nacho-dark hover:bg-nacho-cream' => ! request()->routeIs($item['route']),
+                                ])
+                                @click="mobileOpen = false"
+                            >
+                                {{ __($item['label']) }}
+                            </a>
+                        </li>
+                    @endforeach
+                </ul>
+            </nav>
+
+            <div class="space-y-4 border-t border-nacho-dark/10 p-4">
+                @if ($navCta)
+                    <a href="{{ route($navCta['route']) }}" class="nav-cta flex w-full justify-center" @click="mobileOpen = false">
+                        {{ __($navCta['label']) }}
+                    </a>
+                @endif
+                <a href="tel:{{ config('centers.headquarters.phone_primary_tel') }}" class="block text-center text-sm font-semibold text-nacho-dark">
+                    {{ config('centers.headquarters.phone_primary') }}
+                </a>
+                <div class="flex justify-center">
+                    <x-public.language-switcher variant="light" />
+                </div>
             </div>
-        </nav>
+        </div>
     </div>
 </header>

@@ -7,9 +7,9 @@
 
     <x-public.form-field :label="__('components.forms.center')" name="center_id" type="select" required>
         <option value="">{{ __('components.forms.select_placeholder') }}</option>
-        <option value="1">NACHO Yaoundé — Centre opérationnel (exemple)</option>
-        <option value="2">NACHO Douala — Centre opérationnel (exemple)</option>
-        <option value="3">NACHO Bafoussam — Centre opérationnel (exemple)</option>
+        @foreach (collect(config('centers.centers'))->where('status', 'operational') as $center)
+            <option value="{{ $center['slug'] }}">{{ $center['name'] }} — {{ $center['city'] }}</option>
+        @endforeach
     </x-public.form-field>
 
     <x-public.form-field :label="__('components.forms.registration')" name="vehicle_registration" required />

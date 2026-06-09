@@ -4,8 +4,65 @@ return [
     'slogan' => 'Drive Safe. Stay Compliant. Trust NACHO.',
 
     'hero' => [
+        'eyebrow' => 'Safe vehicles. Safer roads.',
         'title' => 'Professional Vehicle Technical Inspection for Safer Roads',
-        'subtitle' => '3 operational centers and 2 centers under construction — opening before October 2026.',
+        'subtitle' => 'At NACHO, we ensure every vehicle meets safety, environmental, and quality standards for a safer Cameroon.',
+    ],
+
+    'hero_features' => [
+        [
+            'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h16M6 20V8l6-4 6 4v12M9 20v-6h6v6M8 10h.01M12 10h.01M16 10h.01" /></svg>',
+            'title' => '3 Operational Inspection Centers',
+            'text' => 'Across Cameroon',
+        ],
+        [
+            'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="6" /><path stroke-linecap="round" stroke-linejoin="round" d="M16 16l4 4M9 9l4 4M13 9l-4 4" /></svg>',
+            'title' => 'Full Technical & Environmental',
+            'text' => 'Checks',
+        ],
+        [
+            'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l2.2 4.5 5 .7-3.6 3.5.9 5-4.5-2.4-4.5 2.4.9-5L4.8 8.2l5-.7L12 3z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9 21h6" /></svg>',
+            'title' => 'Expert & Certified',
+            'text' => 'Inspectors',
+        ],
+        [
+            'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 3v5c0 4.4-2.8 8.4-7 10-4.2-1.6-7-5.6-7-10V6l7-3z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-5" /></svg>',
+            'title' => 'Auto, Truck & Motorcycle',
+            'text' => 'Inspections',
+        ],
+        [
+            'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 14h13l3 3h2M5 17h1M14 17h1M6 17a2 2 0 104 0M15 17a2 2 0 104 0M5 14V9h8l3 5" /></svg>',
+            'title' => 'Fast & Reliable',
+            'text' => 'Service',
+        ],
+    ],
+
+    'hero_stats' => [
+        [
+            'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l1.5-4.5A2 2 0 018.4 7h7.2a2 2 0 011.9 1.5L19 13M4 13h16v5H4zM7 18v2M17 18v2M7.5 15.5h.01M16.5 15.5h.01" /></svg>',
+            'value' => '500K+',
+            'label' => 'Vehicles Inspected',
+        ],
+        [
+            'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4" /><path stroke-linecap="round" stroke-linejoin="round" d="M4 21a8 8 0 0116 0M15 18l2 2 4-5" /></svg>',
+            'value' => '10+',
+            'label' => 'Certified Technicians',
+        ],
+        [
+            'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7l7-4z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6M12 9v6" /></svg>',
+            'value' => '5',
+            'label' => 'Inspection Centers',
+        ],
+        [
+            'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" stroke-linejoin="round" d="M8 12l3 3 5-6" /></svg>',
+            'value' => '98%',
+            'label' => 'Customer Satisfaction',
+        ],
+        [
+            'icon' => '<span class="hero-stat-google">G</span>',
+            'value' => '4.9/5 ★★★★★',
+            'label' => 'Based on 250+ Reviews',
+        ],
     ],
 
     'trust' => [
@@ -19,8 +76,11 @@ return [
     'center' => [
         'operational' => 'Operational',
         'under_construction' => 'Under Construction',
-        'opening_notice' => 'Opening before October 2026.',
+        'opening_badge' => 'Opening before November 2026',
+        'opening_notice' => 'Opening before November 2026.',
         'landmark' => 'Nearby landmark',
+        'phone' => 'Phone',
+        'hours' => 'Opening hours',
         'book_at_center' => 'Book at this center',
         'directions' => 'Get directions',
         'vehicle_categories' => 'Vehicle categories accepted',
@@ -50,16 +110,19 @@ return [
         'validity' => 'Validity',
         'documents' => 'Required documents',
         'notes' => 'Notes',
-        'book' => 'Book',
+        'book' => 'Book this category',
         'search_placeholder' => 'Search category or vehicle type…',
     ],
 
     'process' => [
-        'step_1' => 'Arrival & registration (includes document check)',
-        'step_2' => 'Machine-based inspection',
-        'step_3' => 'Visual inspection',
-        'step_4' => 'Result validation',
-        'step_5' => 'Report, sticker, certificate & guidance',
+        'steps' => [
+            ['icon' => 'calendar-check', 'title' => 'Book or walk in', 'text' => 'Reserve online or arrive at your chosen center.'],
+            ['icon' => 'clipboard-list', 'title' => 'Register vehicle and documents', 'text' => 'Present registration, insurance, and required papers.'],
+            ['icon' => 'cog', 'title' => 'Machine-based inspection', 'text' => 'Braking, alignment, emissions, and equipment tests.'],
+            ['icon' => 'eye', 'title' => 'Visual control', 'text' => 'Tyres, lights, belts, glass, and visible safety items.'],
+            ['icon' => 'circle-check', 'title' => 'Result validation', 'text' => 'Inspector confirms Accepted, Suspended, or Refused.'],
+            ['icon' => 'file-text', 'title' => 'Report, sticker/PV, and guidance', 'text' => 'Receive your report and next-step advice.'],
+        ],
     ],
 
     'results' => [
@@ -72,8 +135,8 @@ return [
     ],
 
     'cta' => [
-        'default_title' => 'Ready to inspect your vehicle?',
-        'default_text' => 'Book your visit today at the nearest NACHO center.',
+        'default_title' => 'Ready for Your Vehicle Inspection?',
+        'default_text' => 'Choose your nearest NACHO center and request your inspection booking today.',
     ],
 
     'forms' => [

@@ -178,21 +178,21 @@ Relationships: a role has many users; a user belongs to one role.
 - `address` (text, nullable)
 - `phone` (string, nullable)
 - `email` (string, nullable)
-- `opening_hours` (json or text, nullable)
+- `opening_hours` (json or text, nullable) — structured schedules; see [CENTERS_DATA.md](CENTERS_DATA.md) for examples. **Simple:** one Mon–Sat block (Bamenda centers). **Split:** separate weekday vs Saturday/holiday blocks (Yaounde). Shape: `{ "timezone": "Africa/Douala", "schedules": [{ "label_fr", "label_en", "days": [], "open", "close", optional "note_fr"/"note_en" }] }`
 - `status` (string: `operational`, `under_construction`; default `operational`)
 - `description_fr` (text, nullable)
 - `description_en` (text, nullable)
 - `latitude` (decimal 10,7, nullable)
 - `longitude` (decimal 10,7, nullable)
 - `map_url` (string, nullable)
-- `nearby_landmark` (string, nullable) - e.g. "Near Douala Central Market"
+- `nearby_landmark` (string, nullable) - e.g. "Mendong market", "NTEFINKI Quarter mile 6 Nkwen"
 - `vehicle_categories_fr` (text, nullable) - accepted vehicle types (French)
 - `vehicle_categories_en` (text, nullable) - accepted vehicle types (English)
 - `featured_image` (string, nullable)
 - `is_active` (boolean, default true)
 - soft deletes
 
-Note: center name is treated as language-neutral (proper noun, e.g. "NACHO Douala 1"); bilingual narrative lives in `description_fr/_en`.
+Note: center name is treated as language-neutral (proper noun, e.g. "NACHO Yaounde"); bilingual narrative lives in `description_fr/_en`. Verified center list: [CENTERS_DATA.md](CENTERS_DATA.md).
 
 ### 3.4 services
 - `slug` (string, unique)

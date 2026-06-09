@@ -7,8 +7,8 @@
 
 <article {{ $attributes->class(['card-nacho flex flex-col p-6']) }}>
     @if ($icon)
-        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-nacho-primary/10 text-2xl" aria-hidden="true">
-            {{ $icon }}
+        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-nacho-primary/10 text-nacho-primary" aria-hidden="true">
+            <x-dynamic-component :component="'lucide-' . $icon" class="h-6 w-6" />
         </div>
     @endif
     <h3 class="text-lg font-bold text-nacho-dark">

@@ -39,7 +39,7 @@ flowchart LR
 | 3 | Visual identity (Tailwind `nacho-*`, Breeze) | done |
 | 4 | Public layout shell | done |
 | 5 | Reusable Blade components | done |
-| 6 | Static homepage (10 sections) | pending |
+| 6 | Static homepage (14 sections per [DESIGN.md](DESIGN.md)) | done |
 | 7 | Static About page | pending |
 | 8 | Static Centers index + detail | pending |
 | 9 | Static Services index | pending |
@@ -95,8 +95,19 @@ Steps 45–50 start only after Step 44 UAT sign-off. See [DEPLOYMENT.md](DEPLOYM
 
 ## Outstanding inputs from NACHO
 
-- Final center data (names, addresses, phones, hours, coordinates, photos, landmarks)
-- Official logo and brand assets
+**Partially supplied** (see [CENTERS_DATA.md](CENTERS_DATA.md), source: `CCTs of NACHO.docx`):
+
+- Center names, addresses, phones, emails, hours, GPS for 3 operational centers
+- HQ contact (email, phones, P.O. Box 100 Bamenda)
+- Under-construction centers: Douala, Kumba (addresses TBA)
+
+**Still pending:**
+
+- Center photos and gallery images
+- Per-center vehicle categories accepted
+- Final Douala/Kumba address and contact when sites open
 - Confirmed legal page content
 - Verified certifications/approvals (otherwise safe wording is used)
-- Real contact details (phone, email, address, social links, WhatsApp for general contact)
+- WhatsApp number for general click-to-chat (optional)
+
+**Build steps using center data:** Step 6 (homepage preview), Step 8 (static centers), Step 14 (contact/HQ), Step 20 (seeders), Step 28 (admin centers).

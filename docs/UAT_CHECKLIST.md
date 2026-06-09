@@ -4,8 +4,8 @@ The local version is considered stable (ready for Dockerization) only when all i
 
 ## 1. Public site
 
-- [ ] Home page renders all 10 sections correctly
-- [ ] Center status shows 3 operational + 2 under construction (opening before Oct 2026)
+- [ ] Home page renders all 14 sections per [DESIGN.md](DESIGN.md) (hero split, center strip, 6-step timeline, technical checks, result cards, footer CTA, floating book button)
+- [ ] Center status shows 3 operational + 2 under construction (opening before Nov 2026)
 - [ ] About page complete (mission, vision, values, road safety, expansion, CTA)
 - [ ] Centers index + each center detail page work (map, hours, services, gallery)
 - [ ] Services index + all 5 service detail pages render full content
@@ -64,5 +64,7 @@ The local version is considered stable (ready for Dockerization) only when all i
 
 ## 7. Sign-off
 
-- [ ] Stakeholder review of placeholder content (centers, legal, contact details) completed
-- [ ] Real center data, logo, and legal text supplied or flagged as pending
+- [ ] Center cards and detail pages match [CENTERS_DATA.md](CENTERS_DATA.md) (not deprecated Douala/Bafoussam/Garoua placeholders)
+- [ ] HQ contact on footer/contact matches Main Headquarter in CENTERS_DATA.md
+- [ ] Stakeholder review of remaining placeholder content (legal, vehicle categories per center, photos) completed
+- [ ] Logo and legal text supplied or flagged as pending

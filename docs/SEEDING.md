@@ -57,19 +57,23 @@ Optional footnote on the tariffs page: prices homologated by the Ministry of Tra
 
 ## 6. Initial centers
 
-Seed 5 centers respecting the status rule (3 operational + 2 under construction). Exact center names, cities, and regions to be confirmed with NACHO; placeholder set:
+**Authoritative data:** [CENTERS_DATA.md](CENTERS_DATA.md) (from `CCTs of NACHO.docx`). Seed 5 centers: **3 operational + 2 under construction**.
 
-| Slug | City | Region | Status | Placeholder landmark |
-|------|------|--------|--------|----------------------|
-| douala-1 | Douala | Littoral | operational | Placeholder — confirm with NACHO |
-| yaounde-1 | Yaounde | Centre | operational | Placeholder — confirm with NACHO |
-| douala-2 | Douala | Littoral | operational | Placeholder — confirm with NACHO |
-| bafoussam | Bafoussam | Ouest | under_construction | Placeholder — confirm with NACHO |
-| garoua | Garoua | Nord | under_construction | Placeholder — confirm with NACHO |
+| Slug | Name | City | Region | Status |
+|------|------|------|--------|--------|
+| `nacho-yaounde` | NACHO Yaounde | Yaounde | Centre | operational |
+| `nacho-nkwen-bamenda` | NACHO Nkwen-Bamenda | Bamenda | Northwest | operational |
+| `nacho-mankon-bamenda` | NACHO Nacho-Bamenda | Bamenda | Northwest | operational |
+| `nacho-douala` | NACHO Douala | Douala | Littoral | under_construction |
+| `nacho-kumba` | NACHO Kumba | Kumba | Southwest | under_construction |
 
-Each center also gets placeholder `vehicle_categories_fr/en` (e.g. taxis, private cars, light utility — adjusted per center when real data is supplied).
+Per center, seed from [CENTERS_DATA.md](CENTERS_DATA.md): `name`, `address`, `nearby_landmark`, phones, email, `latitude`, `longitude`, `opening_hours` (JSON), bilingual descriptions (short placeholder OK).
 
-Under-construction centers carry the "Opening before October 2026" notice and no booking CTA. Operational centers are linked to the bookable services via `center_service`. Address/phone/hours/coordinates are placeholders until confirmed. See [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md).
+- **Operational:** link all bookable services via `center_service`; enable booking CTA.
+- **Under construction:** no booking CTA; EN/FR opening notice per [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md).
+- **`vehicle_categories_fr/en`:** generic placeholder until NACHO supplies per-center lists (see CENTERS_DATA.md).
+
+**Do not seed** deprecated placeholders: `douala-1`, `douala-2`, `bafoussam`, `garoua`.
 
 ## 7. Default blog categories
 
@@ -97,8 +101,11 @@ Seed `site_settings` keys:
 
 - `site_name` = "NACHO Vehicle Inspection"
 - `default_language` = `fr`
-- `contact_email`, `contact_phone`, `address` (placeholders)
-- `logo` (empty until provided)
+- `contact_email` = `nachovehicletestingstation@yahoo.com` (Main HQ — see [CENTERS_DATA.md](CENTERS_DATA.md))
+- `contact_phone` = `(+237) 675615478` (primary HQ line; also `656901833`, `677789391` — see [CENTERS_DATA.md](CENTERS_DATA.md))
+- `address` = `Atuakum Mankon, P.O. Box 100 Bamenda, Cameroon`
+- `postal_box` = `P.O. Box 100 Bamenda` (optional key if implemented)
+- `logo` = path from [BRAND.md](BRAND.md) / `config/branding.php` when asset exists
 - `footer_text_fr`, `footer_text_en`
 - `facebook_url` (empty), `whatsapp_contact` (empty)
 - `primary_color` = brand burnt orange (see [BRAND.md](BRAND.md))

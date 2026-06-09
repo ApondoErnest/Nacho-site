@@ -8,6 +8,28 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 6 — Static homepage (10 sections).** `/` answers who/what/where/why/next: hero (4 CTAs), trust strip, about preview, centers grid (`config/centers.php`), 5 services, why-choose list, 5-step process, tariff preview, 3 blog placeholders, final CTA. Copy in `lang/{fr,en}/home.php`; tariffs/services structure in `config/home.php`. `<x-public.section-heading>` component.
+
+- **Verified center data in the UI.** `config/centers.php` drives header/footer HQ contact, `/centers` index, `/contact` page (HQ + centers grid + form), home page center preview, booking form center select (operational only), and design-system center cards. `<x-public.centers-grid>` component; center cards show phones and hours.
+
+- **Verified center documentation from CCTs of NACHO.** [docs/CENTERS_DATA.md](docs/CENTERS_DATA.md) (5 inspection centers + Main HQ); [docs/sources/README.md](docs/sources/README.md) tracks `CCTs of NACHO.docx` as source.
+
+### Added
+
+- **[docs/DESIGN.md](docs/DESIGN.md)** — Premium UX spec: nav (top bar, sticky, mobile slide-in), homepage 14 sections, 6-step process, six technical checks, footer CTA band, floating booking, microcopy, anti-patterns.
+
+### Changed
+
+- **Steps 4–6 aligned with [docs/DESIGN.md](docs/DESIGN.md).** Nav: Book last, Compliance footer-only, utility tagline + hours; mobile slide-in panel; floating Book button; footer columns (services, 5 centers, HQ). Homepage rebuilt to **14 sections** (hero split + status card, availability strip, about 3 cards, 6-step process, six technical checks, tariff category chips). Process timeline **6 steps** (was 5). New components: `hero-split`, `center-availability-strip`, `about-preview-cards`, `technical-checks-grid`, `tariff-category-selector`, `floating-booking-button`.
+
+- **Frontend docs aligned with design vision.** [FRONTEND.md](docs/FRONTEND.md), [BRAND.md](docs/BRAND.md), [CONTENT_GUIDELINES.md](docs/CONTENT_GUIDELINES.md), [plan.md](plan.md), [ROADMAP.md](docs/ROADMAP.md) — homepage 14 sections (was 10); inspection process **6 steps** (was 5); Compliance moved to footer nav; nav order matches design spec.
+
+- **Center names and phones corrected per NACHO source.** Official name is **NACHO Yaounde** (not “Yaounde 1”); slug `nacho-yaounde`; phones stored as `(+237) 675117327` format; labels A–E; Douala/Kumba “Coming soon” + October 2026 notice.
+
+- **Center data docs aligned with CCTs docx.** Replaced incorrect placeholder cities (Douala×2 operational, Bafoussam/Garoua) with Yaounde + Bamenda (operational) and Douala/Kumba (under construction). Updated [docs/SEEDING.md](docs/SEEDING.md), [CONTENT_GUIDELINES.md](docs/CONTENT_GUIDELINES.md), [FRONTEND.md](docs/FRONTEND.md), [DATABASE.md](docs/DATABASE.md), [SEO.md](docs/SEO.md), [ROADMAP.md](docs/ROADMAP.md), [PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md), [UAT_CHECKLIST.md](docs/UAT_CHECKLIST.md), [MAINTENANCE.md](docs/MAINTENANCE.md), [README.md](README.md), [plan.md](plan.md).
+
+### Added
+
 - **Step 5 — Reusable Blade components.** Public components: hero, page-title, trust-strip, alerts, CTA, process-steps, inspection-result, service/center/blog/career cards, tariff table + mobile card, form-field, booking/contact/career forms (UI only, no expiry/reminder fields), pagination (`vendor/pagination/nacho`). Shared styles: `.card-nacho`, badges, `.form-shell`. Bilingual `lang/*/components.php`. Design-system preview at `/design-system`.
 
 - **Navbar & footer polish.** Logo contained inside white nav bar (no bleed into utility bar); footer columns (logo, quick links, contact, legal) on one row from `md` breakpoint.

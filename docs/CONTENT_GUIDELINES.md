@@ -4,15 +4,19 @@ These rules govern all public-facing copy, in both French and English.
 
 ## 1. Center status messaging (critical, non-negotiable)
 
-NACHO has **3 operational centers** and **2 centers under construction**, opening **before October 2026**.
+NACHO has **3 operational centers** and **2 centers under construction**, opening **before November 2026**.
 
 - Never state or imply NACHO has 5 operational centers.
 - Operational centers use status **Operational** / **Operationnel**.
 - Future centers use status **Under Construction** / **En construction**, paired with the line:
-  - EN: "Opening before October 2026."
-  - FR: "Ouverture avant octobre 2026."
+  - EN: "Opening before November 2026."
+  - FR: "Ouverture avant novembre 2026."
 - Center counts shown anywhere (home, about, centers) must reflect 3 operational + 2 under construction.
 - Booking is offered only for operational centers; under-construction centers show the opening notice instead of a booking CTA.
+
+**Geography (verified network):** Operational centers are **NACHO Yaounde** (Centre), **NACHO Nkwen-Bamenda**, and **NACHO Nacho-Bamenda** (Northwest). Under construction: **NACHO Douala** and **NACHO Kumba** (Littoral / Southwest) — may show “Coming soon” plus the November 2026 line. Do not reference Bafoussam, Garoua, or multiple operational Douala sites. Full contacts: [CENTERS_DATA.md](CENTERS_DATA.md) (labels A–E).
+
+**Headquarters:** Main HQ (Atuakum Mankon, P.O. Box 100 Bamenda) is corporate contact for footer/contact — not a sixth operational center in the 5-center grid.
 
 ## 2. Bilingual parity
 
@@ -61,8 +65,33 @@ Professional, reassuring, plain-language. Prioritize clarity over jargon. Frame 
 ## 8. Calls to action
 
 - Primary CTA everywhere: "Book an Inspection" / "Reserver une inspection".
-- Homepage closing CTA: "Ready to inspect your vehicle? Book your visit today at the nearest NACHO center." / French equivalent.
+- Homepage final CTA headline: "Ready for Your Vehicle Inspection?" / French equivalent (see [DESIGN.md](DESIGN.md)).
 - Secondary CTAs: Find a Center, View Tariffs, Contact NACHO.
+
+**Preferred specific microcopy** (avoid generic "Learn More" on key actions):
+
+| EN | FR (faithful) |
+|----|----------------|
+| View Inspection Steps | Voir les etapes d'inspection |
+| Check Tariffs | Consulter les tarifs |
+| Find Nearest Center | Trouver le centre le plus proche |
+| Book This Service | Reserver ce service |
+| Get Directions | Obtenir l'itineraire |
+| Learn About NACHO | Decouvrir NACHO |
+
+## 8b. Design & content to avoid
+
+Do not use on the public site:
+
+- Outdated image sliders, excessive animation, empty or demo pages, copied template filler
+- Mixed French and English on the same page
+- Unclear center counts (always 3 operational + 2 under construction)
+- Fake or non-functional booking buttons
+- Unsupported certification claims
+- Poor-quality icons, overloaded footer, long text blocks on homepage
+- Hidden contact details, inconsistent colors
+
+See [DESIGN.md](DESIGN.md) for full UX rules.
 
 ## 9. Privacy & data
 
