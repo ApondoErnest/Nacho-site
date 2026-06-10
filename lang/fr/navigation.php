@@ -3,6 +3,8 @@
 return [
     'utility_tagline' => 'Centres de contrôle technique automobile agréés au Cameroun',
     'opening_hours_summary' => 'Lun–sam',
+    'utility_email_label' => 'E-mail',
+    'utility_headquarters_label' => 'Siège principal',
     'support_label' => 'Assistance client 24h/24',
     'learn' => 'Découvrir',
     'dropdown_footer' => 'Travailler ensemble pour des routes plus sûres',

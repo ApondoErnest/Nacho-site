@@ -3,6 +3,8 @@
 return [
     'utility_tagline' => 'Approved Vehicle Technical Inspection Centers in Cameroon',
     'opening_hours_summary' => 'Mon–Sat',
+    'utility_email_label' => 'Email',
+    'utility_headquarters_label' => 'Headquarters',
     'support_label' => '24/7 Customer Support',
     'learn' => 'Learn',
     'dropdown_footer' => 'Working together for safer roads',

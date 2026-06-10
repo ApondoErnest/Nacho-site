@@ -66,15 +66,15 @@
     }
 
     .nav-utility-inner {
-        @apply flex min-h-[2.75rem] items-center justify-between gap-4 py-2 text-xs font-bold sm:text-sm;
+        @apply mx-auto flex min-h-[2.75rem] w-full max-w-none flex-col items-stretch justify-center gap-1.5 px-8 py-2 text-[0.6875rem] font-bold sm:text-xs xl:flex-row xl:items-center xl:justify-between xl:gap-6 2xl:text-sm;
     }
 
     .nav-utility-tagline {
-        @apply flex min-w-0 items-center gap-2 text-white/90;
+        @apply flex min-w-0 items-center justify-center gap-2 text-center leading-snug text-white/90 xl:justify-start xl:text-left;
     }
 
     .nav-utility-tagline span:last-child {
-        @apply truncate;
+        @apply min-w-0;
     }
 
     .nav-utility-dot {
@@ -82,35 +82,27 @@
     }
 
     .nav-utility-cluster {
-        @apply flex min-w-0 items-center gap-3;
+        @apply flex min-w-0 items-center;
     }
 
     .nav-utility-cluster--right {
-        @apply hidden shrink-0 sm:flex;
+        @apply flex w-full flex-wrap justify-center gap-x-3 gap-y-1 xl:w-auto xl:flex-nowrap xl:justify-end xl:gap-x-5 2xl:gap-x-7;
     }
 
     .nav-utility-item {
-        @apply inline-flex min-w-0 items-center gap-2 whitespace-nowrap text-white/85 transition-colors hover:text-white;
+        @apply inline-flex min-w-0 max-w-full items-center gap-2 whitespace-nowrap rounded-full bg-white/5 px-2 py-1 leading-none text-white/85 transition-colors hover:text-white xl:rounded-none xl:bg-transparent xl:px-0 xl:py-0 2xl:gap-2.5;
     }
 
     .nav-utility-item span {
-        @apply truncate;
-    }
-
-    .nav-utility-item[href^='mailto'] span {
-        @apply max-w-[15rem];
-    }
-
-    .nav-utility-location span {
-        @apply max-w-[12.5rem];
+        @apply min-w-0;
     }
 
     .nav-utility-icon {
-        @apply h-5 w-5 shrink-0 text-nacho-primary;
+        @apply h-4 w-4 shrink-0 text-nacho-primary sm:h-5 sm:w-5;
     }
 
     .nav-utility-language {
-        @apply shrink-0 font-bold;
+        @apply shrink-0 rounded-full bg-white/5 px-2 py-1 text-[0.6875rem] font-bold leading-none sm:text-xs xl:rounded-none xl:bg-transparent xl:px-0 xl:py-0 xl:text-sm;
     }
 
     .nav-language-menu {
@@ -135,7 +127,7 @@
     }
 
     .nav-main-inner {
-        @apply flex min-h-[6.25rem] items-center justify-between gap-3 py-0 transition-all duration-200;
+        @apply flex min-h-[5.25rem] items-center justify-between gap-3 py-0 transition-all duration-200 sm:min-h-[6.25rem];
     }
 
     .nav-header--scrolled .nav-main-inner {

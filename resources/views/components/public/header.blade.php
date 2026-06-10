@@ -31,7 +31,7 @@
     class="nav-header sticky top-0 z-50"
 >
     <div class="nav-utility-bar">
-        <div class="nacho-container nav-utility-inner">
+        <div class="nav-utility-inner">
             <p class="nav-utility-tagline">
                 <span class="nav-utility-dot" aria-hidden="true"></span>
                 <span>{{ __(config('navigation.utility_tagline_key')) }}</span>
@@ -43,17 +43,26 @@
                     <span>{{ config('centers.headquarters.phone_primary') }}</span>
                 </a>
 
-                <a href="mailto:{{ config('centers.headquarters.email') }}" class="nav-utility-item hidden lg:inline-flex">
+                <a
+                    href="mailto:{{ config('centers.headquarters.email') }}"
+                    class="nav-utility-item nav-utility-item--email"
+                    aria-label="{{ __('navigation.utility_email_label') }}: {{ config('centers.headquarters.email') }}"
+                    title="{{ config('centers.headquarters.email') }}"
+                >
                     <x-lucide-mail class="nav-utility-icon" aria-hidden="true" />
                     <span>{{ config('centers.headquarters.email') }}</span>
                 </a>
 
-                <span class="nav-utility-item nav-utility-location hidden lg:inline-flex">
+                <span
+                    class="nav-utility-item nav-utility-location"
+                    aria-label="{{ __('navigation.utility_headquarters_label') }}: {{ config('centers.headquarters.address') }}"
+                    title="{{ config('centers.headquarters.address') }}"
+                >
                     <x-lucide-map-pin class="nav-utility-icon" aria-hidden="true" />
                     <span>{{ config('centers.headquarters.address') }}</span>
                 </span>
 
-                <span class="nav-utility-item hidden md:inline-flex">
+                <span class="nav-utility-item">
                     <x-lucide-clock class="nav-utility-icon" aria-hidden="true" />
                     <span>{{ __(config('navigation.opening_hours_key')) }}</span>
                 </span>
