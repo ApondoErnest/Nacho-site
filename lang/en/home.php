@@ -57,15 +57,149 @@ return [
 
     'services' => [
         'title' => 'Our Vehicle Inspection Services',
-        'intro' => 'Five inspection and advisory services for private, commercial, and heavy vehicles.',
+        'intro' => 'Six inspection and advisory services for private, commercial, and heavy vehicles.',
         'view_all' => 'View all services',
+        'hero' => [
+            'eyebrow' => 'Our Services',
+            'title_line_1' => 'Professional Services.',
+            'title_line_2' => 'Safer Roads. Greater Confidence.',
+            'subtitle' => 'NACHO provides a full range of vehicle inspection services designed to keep your vehicle compliant, reliable, and safe.',
+            'proof_label' => 'Service strengths',
+            'proof' => [
+                'advanced_testing' => 'Advanced Testing',
+                'experienced_technicians' => 'Experienced Technicians',
+                'transparent_process' => 'Transparent Process',
+                'customer_care' => 'Customer Care',
+            ],
+        ],
+        'featured' => [
+            'checks_label' => 'Periodic inspection steps',
+            'checks' => [
+                'Vehicle identification & document verification',
+                'Machine-based inspection',
+                'Visual safety control',
+                'Result validation & customer guidance',
+            ],
+            'process_label' => 'View Process',
+        ],
+        'inspection_checks' => [
+            'title' => 'What We Check During Technical Inspection',
+            'items' => [
+                [
+                    'key' => 'brake_performance',
+                    'title' => 'Brake Performance',
+                    'text' => 'Braking force and response.',
+                ],
+                [
+                    'key' => 'emission_compliance',
+                    'title' => 'Emission Compliance',
+                    'text' => 'Pollution and exhaust control.',
+                ],
+                [
+                    'key' => 'side_slip_alignment',
+                    'title' => 'Side/Slip Alignment',
+                    'text' => 'Wheel stability and direction.',
+                ],
+                [
+                    'key' => 'suspension_balance',
+                    'title' => 'Suspension Balance',
+                    'text' => 'Road comfort and vehicle control.',
+                ],
+                [
+                    'key' => 'headlamp_precision',
+                    'title' => 'Headlamp Precision',
+                    'text' => 'Brightness, aim and visibility.',
+                ],
+                [
+                    'key' => 'engine_indicators',
+                    'title' => 'Engine Indicators',
+                    'text' => 'Visible engine-related concerns.',
+                ],
+                [
+                    'key' => 'tyre_safety',
+                    'title' => 'Tyre Safety',
+                    'text' => 'Tread, pressure and tyre condition.',
+                ],
+                [
+                    'key' => 'visual_elements',
+                    'title' => 'Visual Elements',
+                    'text' => 'Lights, mirrors, horn, body and safety items.',
+                ],
+            ],
+        ],
+        'lifecycle' => [
+            'title_prefix' => 'A Simple,',
+            'title_highlight' => 'Transparent',
+            'title_suffix' => 'Inspection Lifecycle',
+            'steps' => [
+                [
+                    'key' => 'select_service',
+                    'title' => 'Select Service',
+                    'text' => 'Choose the inspection service you need.',
+                ],
+                [
+                    'key' => 'quick_book',
+                    'title' => 'Quick Book',
+                    'text' => 'Select center, date and time.',
+                ],
+                [
+                    'key' => 'arrival_checkin',
+                    'title' => 'Arrival & Check-in',
+                    'text' => 'Present your vehicle and documents.',
+                ],
+                [
+                    'key' => 'technical_testing',
+                    'title' => 'Technical Testing',
+                    'text' => 'Our experts perform all required checks.',
+                ],
+                [
+                    'key' => 'report_delivery',
+                    'title' => 'Report Delivery',
+                    'text' => 'Receive clear results and guidance.',
+                ],
+            ],
+        ],
+        'result_summary' => [
+            'title_prefix' => 'Understanding',
+            'title_highlight' => 'Your Inspection Result',
+            'items' => [
+                [
+                    'key' => 'accepted',
+                    'title' => 'Accepted',
+                    'text' => 'Your vehicle meets the required safety and technical conditions.',
+                ],
+                [
+                    'key' => 'suspended',
+                    'title' => 'Suspended',
+                    'text' => 'Defects were found and must be corrected before final validation.',
+                ],
+                [
+                    'key' => 'refused',
+                    'title' => 'Refused',
+                    'text' => 'Critical non-compliance or serious safety defects identified.',
+                ],
+            ],
+        ],
+        'cta' => [
+            'title_prefix' => 'Ready to Choose Your',
+            'title_highlight' => 'Inspection Service?',
+            'text' => 'Select your service, choose your nearest NACHO center, and request your inspection appointment today.',
+            'book' => 'Book an Inspection',
+            'tariffs' => 'View Official Tariffs',
+            'contact' => 'Contact Us',
+        ],
         'periodic' => [
-            'title' => 'Periodic Technical Inspection',
+            'title' => 'Periodic Vehicle Technical Inspection',
             'description' => 'Official periodic inspection for compliance and safer roads.',
+            'long_description' => 'Our core inspection service verifies the condition of key vehicle safety and environmental systems using a structured process and professional testing equipment.',
         ],
         'counter' => [
             'title' => 'Counter-Visit / Re-inspection',
             'description' => 'Re-inspection after repairs following a suspended result.',
+        ],
+        'light' => [
+            'title' => 'Light Vehicle Inspection',
+            'description' => 'Professional checks for cars, SUVs, pickups, and light utility vehicles.',
         ],
         'heavy' => [
             'title' => 'Heavy Vehicle Inspection',

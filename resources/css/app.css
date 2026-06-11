@@ -1636,6 +1636,711 @@
         @apply text-base leading-relaxed text-white/75 sm:text-lg;
     }
 
+    .services-hero {
+        @apply relative isolate overflow-hidden bg-white text-nacho-dark;
+        min-height: 35rem;
+    }
+
+    .services-hero-image {
+        @apply absolute inset-y-0 right-0 -z-20 h-full w-full object-cover;
+        object-position: 63% center;
+    }
+
+    .services-hero-overlay {
+        @apply absolute inset-0 -z-10;
+        background:
+            linear-gradient(90deg, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.97) 29%, rgba(255, 255, 255, 0.78) 48%, rgba(255, 255, 255, 0.18) 71%, rgba(255, 255, 255, 0) 100%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.78) 100%);
+    }
+
+    .services-hero-inner {
+        @apply mx-auto flex min-h-[35rem] w-full items-center px-4 py-10 sm:px-6 sm:py-12 lg:px-8;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .services-hero-copy {
+        @apply w-full max-w-[58rem];
+    }
+
+    .services-hero-kicker {
+        @apply text-base font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-xl;
+        letter-spacing: 0;
+    }
+
+    .services-hero-title {
+        @apply mt-4 text-[2.45rem] font-extrabold leading-[1.08] tracking-normal text-[#071016] sm:text-[3.25rem] lg:text-[4rem];
+        letter-spacing: 0;
+    }
+
+    .services-hero-rule {
+        @apply mt-6 block h-1.5 w-[8.25rem] rounded-full bg-[#f15a24];
+    }
+
+    .services-hero-text {
+        @apply mt-6 max-w-[53rem] text-lg font-semibold leading-8 tracking-normal text-[#071016]/80 sm:text-xl lg:text-2xl lg:leading-10;
+        letter-spacing: 0;
+    }
+
+    .services-proof-grid {
+        @apply mt-7 grid max-w-[58rem] grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4;
+    }
+
+    .services-proof-card {
+        @apply flex min-h-[4.85rem] min-w-0 items-center gap-3 rounded-lg border border-nacho-dark/10 bg-white/95 px-4 py-3 text-sm font-extrabold leading-tight tracking-normal text-[#071016] shadow-[0_12px_28px_-24px_rgba(7,16,22,0.9)] backdrop-blur sm:text-base;
+        letter-spacing: 0;
+    }
+
+    .services-proof-icon {
+        @apply flex h-11 w-11 shrink-0 items-center justify-center text-[#f15a24];
+    }
+
+    .services-proof-icon svg {
+        @apply h-9 w-9 stroke-[2.15];
+    }
+
+    .services-showcase-section {
+        @apply bg-white pb-14 pt-5 sm:pb-16 lg:pb-20 lg:pt-0;
+    }
+
+    .services-showcase-grid {
+        @apply mx-auto grid w-full items-stretch gap-7 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.08fr)_minmax(24rem,0.84fr)] lg:px-8;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .services-featured-card {
+        @apply relative isolate min-h-[36rem] scroll-mt-32 overflow-hidden rounded-lg bg-[#071016] text-white shadow-[0_20px_52px_-34px_rgba(7,16,22,0.95)] ring-1 ring-nacho-dark/10;
+    }
+
+    .services-featured-image {
+        @apply absolute inset-0 -z-20 h-full w-full object-cover;
+        object-position: 55% center;
+    }
+
+    .services-featured-shade {
+        @apply absolute inset-0 -z-10;
+        background:
+            linear-gradient(90deg, rgba(7, 16, 22, 0.98) 0%, rgba(7, 16, 22, 0.86) 34%, rgba(7, 16, 22, 0.54) 62%, rgba(7, 16, 22, 0.1) 100%),
+            linear-gradient(180deg, rgba(7, 16, 22, 0.12) 0%, rgba(7, 16, 22, 0.8) 100%);
+    }
+
+    .services-featured-content {
+        @apply relative z-10 flex min-h-[36rem] max-w-[42rem] flex-col justify-center px-6 py-8 sm:px-8 lg:px-10 xl:px-12;
+    }
+
+    .services-featured-icon {
+        @apply mb-5 flex h-[5.75rem] w-[5.75rem] shrink-0 items-center justify-center rounded-lg border-2 border-[#f15a24] text-[#f15a24];
+    }
+
+    .services-featured-icon svg {
+        @apply h-14 w-14 stroke-[2.05];
+    }
+
+    .services-featured-content h2 {
+        @apply text-[2.2rem] font-extrabold leading-[1.08] tracking-normal text-white sm:text-[3rem] lg:text-[3.15rem];
+        letter-spacing: 0;
+    }
+
+    .services-featured-content p {
+        @apply mt-4 max-w-[38rem] text-base font-semibold leading-7 tracking-normal text-white/90 sm:text-lg sm:leading-8;
+        letter-spacing: 0;
+    }
+
+    .services-featured-checks {
+        @apply mt-7 grid gap-3;
+    }
+
+    .services-featured-checks li {
+        @apply flex min-w-0 items-start gap-3 text-base font-semibold leading-7 tracking-normal text-white/90 sm:text-lg;
+        letter-spacing: 0;
+    }
+
+    .services-featured-checks svg {
+        @apply mt-0.5 h-6 w-6 shrink-0 fill-[#f15a24] text-[#f15a24] stroke-white;
+    }
+
+    .services-featured-actions {
+        @apply mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5;
+    }
+
+    .services-featured-button {
+        @apply inline-flex min-h-[4rem] items-center justify-center gap-3 rounded-lg px-6 text-center text-base font-extrabold tracking-normal transition-all sm:min-w-[13.5rem] sm:text-lg;
+        letter-spacing: 0;
+    }
+
+    .services-featured-button svg {
+        @apply h-6 w-6 shrink-0;
+    }
+
+    .services-featured-button--primary {
+        @apply bg-[#f15a24] text-white shadow-lg shadow-[#f15a24]/25 hover:bg-nacho-primary;
+    }
+
+    .services-featured-button--secondary {
+        @apply border-2 border-white/70 bg-[#071016]/35 text-white shadow-lg shadow-black/20 backdrop-blur-sm hover:border-white hover:bg-white/10;
+    }
+
+    .services-list {
+        @apply grid content-start gap-5;
+    }
+
+    .services-list-card {
+        @apply grid min-h-[7.45rem] scroll-mt-32 grid-cols-[4.75rem_minmax(0,1fr)_3.5rem] items-center gap-5 rounded-lg border border-nacho-dark/10 bg-white px-6 py-5 text-[#071016] shadow-[0_14px_34px_-28px_rgba(7,16,22,0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f15a24]/30 hover:shadow-[0_18px_42px_-30px_rgba(191,75,35,0.5)];
+    }
+
+    .services-list-icon {
+        @apply flex h-[4.75rem] w-[4.75rem] shrink-0 items-center justify-center text-[#f15a24];
+    }
+
+    .services-list-icon svg {
+        @apply h-full w-full stroke-[1.95];
+    }
+
+    .services-list-copy {
+        @apply block min-w-0;
+    }
+
+    .services-list-title {
+        @apply block text-[1.45rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[1.7rem];
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .services-list-text {
+        @apply mt-2 block text-base font-semibold leading-7 tracking-normal text-[#071016]/75 sm:text-lg;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .services-list-arrow {
+        @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#f15a24] text-white shadow-lg shadow-[#f15a24]/20 transition-colors;
+    }
+
+    .services-list-card:hover .services-list-arrow {
+        @apply bg-nacho-primary-dark;
+    }
+
+    .services-list-arrow svg {
+        @apply h-6 w-6;
+    }
+
+    .services-checks-section {
+        @apply bg-white pb-14 pt-0 sm:pb-16 lg:pb-20;
+    }
+
+    .services-checks-inner {
+        @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .services-checks-heading {
+        @apply text-center;
+    }
+
+    .services-checks-heading h2 {
+        @apply text-[2rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[2.55rem] lg:text-[3rem];
+        letter-spacing: 0;
+    }
+
+    .services-checks-heading span {
+        @apply mx-auto mt-3 block h-1.5 w-[4.25rem] rounded-full;
+        background: linear-gradient(90deg, #f15a24 0 22%, transparent 22% 38%, #f15a24 38% 62%, transparent 62% 78%, #f15a24 78% 100%);
+    }
+
+    .services-checks-grid {
+        @apply mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-4;
+    }
+
+    .services-check-card {
+        @apply flex min-h-[11.75rem] min-w-0 flex-col items-center justify-start rounded-lg border border-[#edf0f2] bg-white px-5 py-6 text-center shadow-[0_12px_32px_-28px_rgba(7,16,22,0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f15a24]/25 hover:shadow-[0_18px_40px_-30px_rgba(191,75,35,0.35)];
+    }
+
+    .services-check-icon {
+        @apply relative isolate flex h-[5.15rem] w-[5.15rem] shrink-0 items-center justify-center text-[#f15a24];
+    }
+
+    .services-check-icon::before {
+        content: '';
+        @apply absolute left-1/2 top-1/2 -z-10 h-[4.6rem] w-[4.6rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f4f4f4];
+    }
+
+    .services-check-icon svg {
+        @apply h-[4.05rem] w-[4.05rem] stroke-[1.95];
+    }
+
+    .services-check-card h3 {
+        @apply mt-2 text-xl font-extrabold leading-tight tracking-normal text-[#071016] sm:text-2xl;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .services-check-card p {
+        @apply mt-2 max-w-[16rem] text-base font-semibold leading-7 tracking-normal text-[#071016]/75 sm:text-lg;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .services-lifecycle-section {
+        @apply bg-white pb-14 pt-0 sm:pb-16 lg:pb-20;
+    }
+
+    .services-lifecycle-panel {
+        @apply relative isolate mx-auto grid w-full overflow-hidden rounded-lg bg-[#071016] px-5 py-8 text-white shadow-[0_20px_54px_-34px_rgba(7,16,22,0.95)] ring-1 ring-white/10 sm:px-8 sm:py-9 lg:grid-cols-[minmax(0,1.62fr)_1px_minmax(22rem,0.98fr)] lg:gap-9 lg:px-10 xl:gap-12 xl:px-14;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .services-lifecycle-panel::before {
+        content: '';
+        @apply pointer-events-none absolute inset-0 -z-10 opacity-60;
+        background:
+            linear-gradient(115deg, rgba(255, 255, 255, 0.06) 0%, transparent 34%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 55%);
+    }
+
+    .services-lifecycle-flow,
+    .services-result-summary {
+        @apply min-w-0;
+    }
+
+    .services-dark-heading h2 {
+        @apply max-w-[34rem] text-[2rem] font-extrabold leading-[1.14] tracking-normal text-white sm:text-[2.55rem] lg:text-[2.45rem] xl:text-[2.85rem];
+        letter-spacing: 0;
+    }
+
+    .services-dark-heading h2 span,
+    .services-dark-heading h2 strong {
+        @apply inline;
+    }
+
+    .services-dark-heading h2 strong {
+        @apply font-extrabold text-[#f15a24];
+    }
+
+    .services-dark-heading > span {
+        @apply mt-4 block h-1 w-10 rounded-full;
+        background: linear-gradient(90deg, #f15a24 0 72%, transparent 72% 86%, #f15a24 86% 100%);
+    }
+
+    .services-dark-heading--result > span {
+        background: linear-gradient(90deg, #f15a24 0 58%, transparent 58% 76%, #2fb344 76% 100%);
+    }
+
+    .services-lifecycle-steps {
+        @apply relative mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4;
+    }
+
+    .services-lifecycle-steps::before {
+        content: '';
+        @apply pointer-events-none absolute left-[4%] right-[4%] top-[1.35rem] hidden border-t-2 border-dashed border-white/55 lg:block;
+    }
+
+    .services-lifecycle-step {
+        @apply relative min-w-0 text-center;
+    }
+
+    .services-lifecycle-number {
+        @apply relative z-10 mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-[#f15a24] text-2xl font-extrabold leading-none text-white shadow-lg shadow-[#f15a24]/25;
+    }
+
+    .services-lifecycle-icon {
+        @apply mx-auto mt-5 flex h-[4.35rem] w-[4.35rem] items-center justify-center text-white/90;
+    }
+
+    .services-lifecycle-icon svg {
+        @apply h-full w-full stroke-[1.85];
+    }
+
+    .services-lifecycle-step h3 {
+        @apply mt-4 text-base font-extrabold leading-snug tracking-normal text-white sm:text-lg xl:text-xl;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .services-lifecycle-step p {
+        @apply mx-auto mt-2 max-w-[11rem] text-sm font-semibold leading-6 tracking-normal text-white/75 sm:text-base;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .services-lifecycle-divider {
+        @apply hidden bg-white/35 lg:block;
+    }
+
+    .services-result-list {
+        @apply mt-6 grid;
+    }
+
+    .services-result-row {
+        @apply grid min-w-0 grid-cols-[4.6rem_minmax(6.5rem,0.42fr)_minmax(0,1fr)] items-center gap-4 border-b border-white/10 py-5;
+    }
+
+    .services-result-row:last-child {
+        @apply border-b-0 pb-0;
+    }
+
+    .services-result-icon {
+        @apply flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-4;
+    }
+
+    .services-result-icon svg {
+        @apply h-11 w-11 stroke-[2.15];
+    }
+
+    .services-result-row h3 {
+        @apply text-xl font-extrabold leading-tight tracking-normal sm:text-2xl;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .services-result-row p {
+        @apply text-sm font-semibold leading-6 tracking-normal text-white/80 sm:text-base sm:leading-7;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .services-result-row--accepted .services-result-icon {
+        @apply border-[#42c653] bg-[#143d21]/70 text-[#67e070];
+    }
+
+    .services-result-row--accepted h3 {
+        @apply text-[#54d95f];
+    }
+
+    .services-result-row--suspended .services-result-icon {
+        @apply border-[#f2b500] bg-[#4a3905]/70 text-[#ffd21a];
+    }
+
+    .services-result-row--suspended h3 {
+        @apply text-[#ffd21a];
+    }
+
+    .services-result-row--refused .services-result-icon {
+        @apply border-[#e6242f] bg-[#4d1117]/70 text-[#ff3d45];
+    }
+
+    .services-result-row--refused h3 {
+        @apply text-[#ff3d45];
+    }
+
+    .services-booking-cta-section {
+        @apply bg-white pb-14 pt-0 sm:pb-16 lg:pb-20;
+    }
+
+    .services-booking-cta {
+        @apply relative isolate mx-auto grid min-h-[10.75rem] w-full overflow-hidden rounded-lg bg-[#071016] px-5 py-7 text-white shadow-[0_20px_54px_-34px_rgba(7,16,22,0.95)] ring-1 ring-white/10 sm:px-8 lg:grid-cols-[minmax(0,1fr)_8.5rem] lg:items-center lg:px-14 lg:py-7;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .services-booking-cta-image {
+        @apply absolute inset-0 -z-20 h-full w-full object-cover;
+        object-position: 0% 44%;
+    }
+
+    .services-booking-cta-overlay {
+        @apply absolute inset-0 -z-10;
+        background:
+            linear-gradient(90deg, rgba(7, 16, 22, 0.05) 0%, rgba(7, 16, 22, 0.58) 33%, rgba(7, 16, 22, 0.96) 47%, #071016 100%),
+            linear-gradient(180deg, rgba(7, 16, 22, 0.12) 0%, rgba(7, 16, 22, 0.36) 100%);
+    }
+
+    .services-booking-cta-content {
+        @apply min-w-0 lg:ml-[38%];
+    }
+
+    .services-booking-cta-content h2 {
+        @apply max-w-[48rem] text-[2rem] font-extrabold leading-tight tracking-normal text-white sm:text-[2.45rem] lg:text-[3rem];
+        letter-spacing: 0;
+    }
+
+    .services-booking-cta-content h2 span,
+    .services-booking-cta-content h2 strong {
+        @apply inline;
+    }
+
+    .services-booking-cta-content h2 strong {
+        @apply font-extrabold text-[#f15a24];
+    }
+
+    .services-booking-cta-content p {
+        @apply mt-2 max-w-[43rem] text-base font-semibold leading-7 tracking-normal text-white/90 sm:text-xl sm:leading-8;
+        letter-spacing: 0;
+    }
+
+    .services-booking-cta-actions {
+        @apply mt-5 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-6;
+    }
+
+    .services-booking-cta-button,
+    .services-booking-cta-link,
+    .services-booking-cta-contact {
+        @apply inline-flex min-h-[3.65rem] items-center justify-center gap-4 rounded-lg text-lg font-extrabold tracking-normal transition-all;
+        letter-spacing: 0;
+    }
+
+    .services-booking-cta-button {
+        @apply bg-[#f15a24] px-8 text-white shadow-lg shadow-[#f15a24]/25 hover:bg-nacho-primary;
+    }
+
+    .services-booking-cta-link {
+        @apply px-1 text-white hover:text-[#f15a24];
+    }
+
+    .services-booking-cta-contact {
+        @apply border border-white/40 px-6 text-white hover:border-[#f15a24] hover:bg-white/10 hover:text-white;
+    }
+
+    .services-booking-cta-button svg,
+    .services-booking-cta-link svg,
+    .services-booking-cta-contact svg {
+        @apply h-7 w-7 shrink-0;
+    }
+
+    .services-booking-cta-link svg,
+    .services-booking-cta-contact svg {
+        @apply text-[#f15a24];
+    }
+
+    .services-booking-cta-separator {
+        @apply hidden h-12 w-px bg-white/35 sm:block;
+    }
+
+    .services-booking-cta-mark {
+        @apply pointer-events-none absolute right-8 top-1/2 hidden h-28 w-28 -translate-y-1/2 items-center justify-center text-[#f15a24] lg:flex xl:right-12 xl:h-32 xl:w-32;
+    }
+
+    .services-booking-cta-mark svg {
+        @apply h-full w-full stroke-[1.55];
+    }
+
+    @media (max-width: 1023px) {
+        .services-hero-image {
+            object-position: 70% center;
+        }
+
+        .services-hero-overlay {
+            background:
+                linear-gradient(90deg, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.96) 47%, rgba(255, 255, 255, 0.58) 82%, rgba(255, 255, 255, 0.26) 100%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.88) 100%);
+        }
+
+        .services-showcase-grid {
+            @apply grid-cols-1;
+        }
+
+        .services-lifecycle-panel {
+            @apply gap-9;
+        }
+
+        .services-result-summary {
+            @apply border-t border-white/20 pt-8;
+        }
+
+        .services-booking-cta {
+            @apply min-h-[18rem] content-end;
+        }
+
+        .services-booking-cta-overlay {
+            background:
+                linear-gradient(180deg, rgba(7, 16, 22, 0.22) 0%, rgba(7, 16, 22, 0.78) 46%, #071016 100%),
+                linear-gradient(90deg, rgba(7, 16, 22, 0.08) 0%, rgba(7, 16, 22, 0.44) 100%);
+        }
+
+        .services-booking-cta-content {
+            @apply ml-0;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .services-hero,
+        .services-hero-inner {
+            min-height: 0;
+        }
+
+        .services-hero-inner {
+            @apply py-8;
+        }
+
+        .services-hero-title {
+            @apply text-[2.05rem];
+        }
+
+        .services-hero-text {
+            @apply mt-5 text-base leading-7;
+        }
+
+        .services-proof-grid {
+            @apply mt-6;
+        }
+
+        .services-proof-card {
+            @apply min-h-[4.25rem] px-4 text-sm;
+        }
+
+        .services-showcase-section {
+            @apply pt-3;
+        }
+
+        .services-featured-card,
+        .services-featured-content {
+            min-height: 0;
+        }
+
+        .services-featured-content {
+            @apply px-5 py-7;
+        }
+
+        .services-featured-icon {
+            @apply h-20 w-20;
+        }
+
+        .services-featured-icon svg {
+            @apply h-12 w-12;
+        }
+
+        .services-featured-content h2 {
+            @apply text-[2rem];
+        }
+
+        .services-featured-content p,
+        .services-featured-checks li {
+            @apply text-base leading-7;
+        }
+
+        .services-featured-actions {
+            @apply mt-6 gap-3;
+        }
+
+        .services-featured-button {
+            @apply min-h-[3.5rem] w-full px-4 text-base;
+        }
+
+        .services-list-card {
+            @apply min-h-[6.5rem] grid-cols-[3.75rem_minmax(0,1fr)_2.75rem] gap-3 px-4 py-4;
+        }
+
+        .services-list-icon {
+            @apply h-[3.75rem] w-[3.75rem];
+        }
+
+        .services-list-title {
+            @apply text-xl;
+        }
+
+        .services-list-text {
+            @apply mt-1 text-sm leading-6;
+        }
+
+        .services-list-arrow {
+            @apply h-10 w-10;
+        }
+
+        .services-list-arrow svg {
+            @apply h-5 w-5;
+        }
+
+        .services-checks-section {
+            @apply pb-12;
+        }
+
+        .services-checks-heading h2 {
+            @apply text-[1.9rem];
+        }
+
+        .services-checks-grid {
+            @apply mt-5 grid-cols-1;
+        }
+
+        .services-check-card {
+            @apply min-h-[10.5rem] px-5 py-5;
+        }
+
+        .services-check-card h3 {
+            @apply text-xl;
+        }
+
+        .services-check-card p {
+            @apply text-base leading-7;
+        }
+
+        .services-lifecycle-section {
+            @apply pb-12;
+        }
+
+        .services-lifecycle-panel {
+            @apply px-5 py-7;
+        }
+
+        .services-dark-heading h2 {
+            @apply text-[1.85rem];
+        }
+
+        .services-lifecycle-steps {
+            @apply mt-6 grid-cols-1 gap-7;
+        }
+
+        .services-lifecycle-icon {
+            @apply mt-4 h-16 w-16;
+        }
+
+        .services-lifecycle-step h3 {
+            @apply mt-3 text-lg;
+        }
+
+        .services-result-row {
+            @apply grid-cols-[4rem_minmax(0,1fr)] gap-x-4 gap-y-1 py-4;
+        }
+
+        .services-result-icon {
+            @apply row-span-2 h-14 w-14 border-[3px];
+        }
+
+        .services-result-icon svg {
+            @apply h-9 w-9;
+        }
+
+        .services-result-row h3 {
+            @apply text-xl;
+        }
+
+        .services-result-row p {
+            @apply text-sm leading-6;
+        }
+
+        .services-booking-cta-section {
+            @apply pb-12;
+        }
+
+        .services-booking-cta {
+            @apply min-h-[23rem] px-5 py-6;
+        }
+
+        .services-booking-cta-image {
+            object-position: 28% center;
+        }
+
+        .services-booking-cta-content h2 {
+            @apply text-[1.85rem];
+        }
+
+        .services-booking-cta-content p {
+            @apply text-base leading-7;
+        }
+
+        .services-booking-cta-actions {
+            @apply mt-4 gap-3;
+        }
+
+        .services-booking-cta-button,
+        .services-booking-cta-link,
+        .services-booking-cta-contact {
+            @apply min-h-[3.35rem] w-full text-base;
+        }
+
+        .services-booking-cta-button,
+        .services-booking-cta-contact {
+            @apply px-5;
+        }
+    }
+
     .card-nacho {
         @apply overflow-hidden rounded-2xl bg-white shadow-sm ring-1 ring-nacho-dark/10 transition-shadow hover:shadow-md;
     }

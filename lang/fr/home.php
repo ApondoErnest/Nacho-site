@@ -57,15 +57,149 @@ return [
 
     'services' => [
         'title' => 'Nos services d\'inspection automobile',
-        'intro' => 'Cinq services d\'inspection et de conseil pour véhicules particuliers, commerciaux et poids lourds.',
+        'intro' => 'Six services d\'inspection et de conseil pour véhicules particuliers, commerciaux et poids lourds.',
         'view_all' => 'Voir tous les services',
+        'hero' => [
+            'eyebrow' => 'Nos services',
+            'title_line_1' => 'Services professionnels.',
+            'title_line_2' => 'Routes plus sûres. Confiance renforcée.',
+            'subtitle' => 'NACHO propose une gamme complète de services d\'inspection automobile pour garder votre véhicule conforme, fiable et sûr.',
+            'proof_label' => 'Points forts du service',
+            'proof' => [
+                'advanced_testing' => 'Tests avancés',
+                'experienced_technicians' => 'Techniciens expérimentés',
+                'transparent_process' => 'Processus transparent',
+                'customer_care' => 'Service client',
+            ],
+        ],
+        'featured' => [
+            'checks_label' => 'Étapes de la visite périodique',
+            'checks' => [
+                'Identification du véhicule et vérification des documents',
+                'Inspection sur banc d\'essai',
+                'Contrôle visuel de sécurité',
+                'Validation du résultat et accompagnement client',
+            ],
+            'process_label' => 'Voir le processus',
+        ],
+        'inspection_checks' => [
+            'title' => 'Ce que nous vérifions pendant le contrôle technique',
+            'items' => [
+                [
+                    'key' => 'brake_performance',
+                    'title' => 'Performance du freinage',
+                    'text' => 'Force de freinage et réponse.',
+                ],
+                [
+                    'key' => 'emission_compliance',
+                    'title' => 'Conformité des émissions',
+                    'text' => 'Contrôle pollution et échappement.',
+                ],
+                [
+                    'key' => 'side_slip_alignment',
+                    'title' => 'Alignement / ripage',
+                    'text' => 'Stabilité des roues et direction.',
+                ],
+                [
+                    'key' => 'suspension_balance',
+                    'title' => 'Équilibre de suspension',
+                    'text' => 'Confort routier et contrôle du véhicule.',
+                ],
+                [
+                    'key' => 'headlamp_precision',
+                    'title' => 'Précision des phares',
+                    'text' => 'Luminosité, orientation et visibilité.',
+                ],
+                [
+                    'key' => 'engine_indicators',
+                    'title' => 'Indicateurs moteur',
+                    'text' => 'Anomalies visibles liées au moteur.',
+                ],
+                [
+                    'key' => 'tyre_safety',
+                    'title' => 'Sécurité des pneus',
+                    'text' => 'Bande de roulement, pression et état.',
+                ],
+                [
+                    'key' => 'visual_elements',
+                    'title' => 'Éléments visuels',
+                    'text' => 'Feux, rétroviseurs, klaxon, carrosserie et sécurité.',
+                ],
+            ],
+        ],
+        'lifecycle' => [
+            'title_prefix' => 'Un cycle d\'inspection',
+            'title_highlight' => 'simple et transparent',
+            'title_suffix' => '',
+            'steps' => [
+                [
+                    'key' => 'select_service',
+                    'title' => 'Choisir le service',
+                    'text' => 'Sélectionnez l\'inspection dont vous avez besoin.',
+                ],
+                [
+                    'key' => 'quick_book',
+                    'title' => 'Réservation rapide',
+                    'text' => 'Choisissez le centre, la date et l\'heure.',
+                ],
+                [
+                    'key' => 'arrival_checkin',
+                    'title' => 'Arrivée & accueil',
+                    'text' => 'Présentez le véhicule et les documents.',
+                ],
+                [
+                    'key' => 'technical_testing',
+                    'title' => 'Tests techniques',
+                    'text' => 'Nos experts effectuent tous les contrôles requis.',
+                ],
+                [
+                    'key' => 'report_delivery',
+                    'title' => 'Remise du rapport',
+                    'text' => 'Recevez des résultats clairs et des conseils.',
+                ],
+            ],
+        ],
+        'result_summary' => [
+            'title_prefix' => 'Comprendre',
+            'title_highlight' => 'votre résultat d\'inspection',
+            'items' => [
+                [
+                    'key' => 'accepted',
+                    'title' => 'Accepté',
+                    'text' => 'Votre véhicule respecte les conditions de sécurité et techniques requises.',
+                ],
+                [
+                    'key' => 'suspended',
+                    'title' => 'Suspendu',
+                    'text' => 'Des défauts ont été trouvés et doivent être corrigés avant validation finale.',
+                ],
+                [
+                    'key' => 'refused',
+                    'title' => 'Refusé',
+                    'text' => 'Non-conformité critique ou défauts de sécurité sérieux identifiés.',
+                ],
+            ],
+        ],
+        'cta' => [
+            'title_prefix' => 'Prêt à choisir votre',
+            'title_highlight' => 'service d\'inspection ?',
+            'text' => 'Sélectionnez votre service, choisissez le centre NACHO le plus proche et demandez votre rendez-vous d\'inspection dès aujourd\'hui.',
+            'book' => 'Réserver une inspection',
+            'tariffs' => 'Voir les tarifs officiels',
+            'contact' => 'Nous contacter',
+        ],
         'periodic' => [
-            'title' => 'Visite périodique',
+            'title' => 'Visite technique périodique du véhicule',
             'description' => 'Contrôle technique périodique officiel pour la conformité et la sécurité.',
+            'long_description' => 'Notre service d\'inspection principal vérifie l\'état des systèmes essentiels de sécurité et d\'environnement du véhicule grâce à un processus structuré et des équipements professionnels.',
         ],
         'counter' => [
             'title' => 'Contre-visite / ré-inspection',
             'description' => 'Ré-inspection après réparation suite à un résultat suspendu.',
+        ],
+        'light' => [
+            'title' => 'Inspection véhicules légers',
+            'description' => 'Contrôles professionnels pour voitures, SUV, pick-up et véhicules utilitaires légers.',
         ],
         'heavy' => [
             'title' => 'Inspection poids lourds',

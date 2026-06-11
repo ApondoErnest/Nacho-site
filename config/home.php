@@ -7,8 +7,9 @@ return [
 
     'services' => [
         ['key' => 'periodic', 'slug' => 'periodic-inspection', 'icon' => 'clipboard-check', 'bookable' => true],
-        ['key' => 'counter', 'slug' => 'counter-visit', 'icon' => 'refresh-cw', 'bookable' => true],
+        ['key' => 'light', 'slug' => 'light-vehicles', 'icon' => 'car-front', 'bookable' => true],
         ['key' => 'heavy', 'slug' => 'heavy-vehicles', 'icon' => 'truck', 'bookable' => true],
+        ['key' => 'counter', 'slug' => 'counter-visit', 'icon' => 'refresh-cw', 'bookable' => true],
         ['key' => 'pre_purchase', 'slug' => 'pre-purchase', 'icon' => 'scan-search', 'bookable' => true],
         ['key' => 'road_safety', 'slug' => 'road-safety', 'icon' => 'shield-check', 'bookable' => false],
     ],
