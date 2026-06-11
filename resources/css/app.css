@@ -254,6 +254,759 @@
         @apply inline-flex items-center justify-center gap-2 rounded-md border border-white/35 bg-[#071016]/35 px-6 py-4 text-base font-extrabold text-white shadow-lg shadow-black/20 backdrop-blur-sm transition-all hover:-translate-y-0.5 hover:border-white/55 hover:bg-white/10;
     }
 
+    .contact-hero {
+        @apply relative isolate overflow-hidden bg-white text-[#071016];
+        min-height: 39rem;
+    }
+
+    .contact-hero-image {
+        @apply absolute inset-0 -z-20 h-full w-full object-cover;
+        object-position: 58% center;
+    }
+
+    .contact-hero-overlay {
+        @apply absolute inset-0 -z-10;
+        background:
+            linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.99) 21%, rgba(255, 255, 255, 0.86) 43%, rgba(255, 255, 255, 0.3) 63%, rgba(255, 255, 255, 0) 100%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.66) 78%, #ffffff 100%);
+    }
+
+    .contact-hero-inner {
+        @apply mx-auto flex min-h-[39rem] w-full flex-col justify-center px-4 py-8 sm:px-6 sm:py-10 lg:px-8;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .contact-hero-copy {
+        @apply max-w-[48rem];
+    }
+
+    .contact-hero-brand {
+        @apply mb-8 inline-flex items-center gap-4;
+    }
+
+    .contact-hero-brand-mark {
+        @apply flex h-[5.25rem] w-[5.25rem] shrink-0 items-center justify-center text-[#f15a24];
+    }
+
+    .contact-hero-brand-mark svg {
+        @apply h-full w-full stroke-[1.9];
+    }
+
+    .contact-hero-brand-copy {
+        @apply block leading-none;
+    }
+
+    .contact-hero-brand-name {
+        @apply block text-[2.55rem] font-extrabold leading-none tracking-normal text-[#071016] sm:text-[3.15rem];
+        letter-spacing: 0;
+    }
+
+    .contact-hero-brand-subtitle {
+        @apply mt-2 block text-base font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-xl;
+        letter-spacing: 0;
+    }
+
+    .contact-hero-title {
+        @apply max-w-[48rem] text-[2.7rem] font-extrabold leading-[1.08] tracking-normal text-[#071016] sm:text-[3.55rem] lg:text-[4.2rem];
+        letter-spacing: 0;
+    }
+
+    .contact-hero-text {
+        @apply mt-6 max-w-[47rem] text-lg font-semibold leading-8 tracking-normal text-[#071016]/75 sm:text-xl lg:text-[1.55rem] lg:leading-10;
+        letter-spacing: 0;
+    }
+
+    .contact-hero-actions {
+        @apply mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4;
+    }
+
+    .contact-hero-card {
+        @apply relative grid min-h-[12rem] min-w-0 content-start rounded-lg border border-[#edf0f2] bg-white/95 px-6 py-6 pr-16 text-[#071016] shadow-[0_18px_42px_-32px_rgba(7,16,22,0.72)] backdrop-blur-sm transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f15a24]/35 hover:shadow-[0_22px_48px_-34px_rgba(191,75,35,0.45)];
+    }
+
+    .contact-hero-card-icon {
+        @apply flex h-16 w-16 shrink-0 items-center justify-center text-[#f15a24];
+    }
+
+    .contact-hero-card-icon svg {
+        @apply h-14 w-14 stroke-[1.85];
+    }
+
+    .contact-hero-card-copy {
+        @apply mt-4 block min-w-0;
+    }
+
+    .contact-hero-card-title {
+        @apply block text-[1.35rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[1.55rem];
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-hero-card-text {
+        @apply mt-3 block text-base font-semibold leading-7 tracking-normal text-[#071016]/75 sm:text-lg;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-hero-card-arrow {
+        @apply absolute right-6 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center text-[#f15a24] transition-transform duration-200;
+    }
+
+    .contact-hero-card:hover .contact-hero-card-arrow {
+        @apply translate-x-1;
+    }
+
+    .contact-hero-card-arrow svg {
+        @apply h-9 w-9 stroke-[2.35];
+    }
+
+    @media (max-width: 1023px) {
+        .contact-hero-image {
+            object-position: 67% center;
+        }
+
+        .contact-hero-overlay {
+            background:
+                linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.98) 42%, rgba(255, 255, 255, 0.64) 82%, rgba(255, 255, 255, 0.38) 100%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.9) 100%);
+        }
+    }
+
+    @media (max-width: 767px) {
+        .contact-hero,
+        .contact-hero-inner {
+            min-height: 0;
+        }
+
+        .contact-hero-inner {
+            @apply py-8;
+        }
+
+        .contact-hero-brand {
+            @apply mb-7 gap-3;
+        }
+
+        .contact-hero-brand-mark {
+            @apply h-14 w-14;
+        }
+
+        .contact-hero-brand-name {
+            @apply text-[2.05rem];
+        }
+
+        .contact-hero-brand-subtitle {
+            @apply text-sm;
+        }
+
+        .contact-hero-title {
+            @apply text-[2.15rem];
+        }
+
+        .contact-hero-text {
+            @apply mt-4 text-base leading-7;
+        }
+
+        .contact-hero-actions {
+            @apply mt-7 grid-cols-1 gap-4;
+        }
+
+        .contact-hero-card {
+            @apply min-h-[9.25rem] px-5 py-5 pr-14;
+        }
+
+        .contact-hero-card-icon {
+            @apply h-12 w-12;
+        }
+
+        .contact-hero-card-icon svg {
+            @apply h-11 w-11;
+        }
+
+        .contact-hero-card-copy {
+            @apply mt-3;
+        }
+
+        .contact-hero-card-title {
+            @apply text-xl;
+        }
+
+        .contact-hero-card-text {
+            @apply mt-2 text-sm leading-6;
+        }
+
+        .contact-hero-card-arrow {
+            @apply right-4 h-8 w-8;
+        }
+
+        .contact-hero-card-arrow svg {
+            @apply h-8 w-8;
+        }
+    }
+
+    .contact-centers-section {
+        @apply bg-[#f5f8fb] py-10 sm:py-12 lg:py-14;
+        scroll-margin-top: 9rem;
+    }
+
+    .contact-centers-inner {
+        @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .contact-centers-title {
+        @apply text-[2rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[2.45rem] lg:text-[2.7rem];
+        letter-spacing: 0;
+    }
+
+    .contact-centers-layout {
+        @apply mt-5 grid gap-6 lg:grid-cols-[minmax(26rem,0.98fr)_minmax(32rem,1.02fr)] lg:items-stretch;
+    }
+
+    .contact-centers-list {
+        @apply grid gap-4;
+    }
+
+    .contact-center-card {
+        @apply grid min-w-0 gap-5 rounded-lg border border-[#e7ebef] bg-white p-5 shadow-[0_18px_44px_-36px_rgba(7,16,22,0.75)] sm:grid-cols-[10.5rem_minmax(0,1fr)] sm:p-6;
+        scroll-margin-top: 9rem;
+    }
+
+    .contact-center-thumb {
+        @apply mx-auto h-36 w-36 shrink-0 overflow-hidden rounded-full bg-nacho-cream ring-1 ring-nacho-dark/10 sm:mx-0 sm:h-40 sm:w-40;
+    }
+
+    .contact-center-thumb img {
+        @apply h-full w-full object-cover;
+    }
+
+    .contact-center-card-body {
+        @apply min-w-0;
+    }
+
+    .contact-center-card-body h3 {
+        @apply text-[1.55rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[1.8rem];
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-center-details {
+        @apply mt-3 grid gap-2.5 text-base font-semibold leading-6 tracking-normal text-[#071016]/80 sm:text-lg sm:leading-7;
+        letter-spacing: 0;
+    }
+
+    .contact-center-details li {
+        @apply grid min-w-0 grid-cols-[1.45rem_minmax(0,1fr)] items-start gap-3;
+    }
+
+    .contact-center-details svg {
+        @apply mt-0.5 h-5 w-5 shrink-0 text-[#e14a0a] stroke-[2.25];
+    }
+
+    .contact-center-details a,
+    .contact-center-details span {
+        @apply min-w-0 break-words;
+    }
+
+    .contact-center-details a {
+        @apply hover:text-[#e14a0a];
+    }
+
+    .contact-coming-list {
+        @apply grid gap-3;
+    }
+
+    .contact-coming-card {
+        @apply grid min-w-0 grid-cols-[4.5rem_minmax(9rem,1fr)] items-center gap-x-4 gap-y-3 rounded-lg border border-dashed border-[#d7dde4] bg-white/70 px-5 py-4 text-[#071016] shadow-[0_12px_34px_-30px_rgba(7,16,22,0.55)] sm:grid-cols-[4.5rem_minmax(12rem,1fr)_12.5rem_10rem];
+    }
+
+    .contact-coming-icon {
+        @apply flex h-14 w-14 items-center justify-center rounded-full bg-[#9aa3ad] text-white;
+    }
+
+    .contact-coming-icon svg {
+        @apply h-8 w-8 stroke-[2.05];
+    }
+
+    .contact-coming-copy {
+        @apply block min-w-0;
+    }
+
+    .contact-coming-name {
+        @apply block text-xl font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .contact-coming-region {
+        @apply mt-1 block text-base font-semibold leading-6 tracking-normal text-[#071016]/60;
+        letter-spacing: 0;
+    }
+
+    .contact-coming-phase {
+        @apply inline-flex min-h-[2.85rem] items-center justify-center rounded-lg bg-[#dce1e6] px-4 text-center text-base font-extrabold leading-tight tracking-normal text-[#59616a];
+        letter-spacing: 0;
+    }
+
+    .contact-coming-date {
+        @apply text-base font-extrabold leading-6 tracking-normal text-[#071016]/70;
+        letter-spacing: 0;
+    }
+
+    .contact-centers-map-panel {
+        @apply relative isolate min-h-[38rem] overflow-hidden rounded-lg border border-[#d8dee5] bg-[#e6ecef] shadow-[0_18px_48px_-36px_rgba(7,16,22,0.75)];
+    }
+
+    .contact-centers-map-heading {
+        @apply absolute right-5 top-5 z-10 flex min-h-[4.4rem] w-[min(27rem,calc(100%-2.5rem))] items-center justify-between gap-4 rounded-lg bg-white/95 px-7 text-[1.55rem] font-extrabold leading-tight tracking-normal text-[#071016] shadow-[0_16px_38px_-30px_rgba(7,16,22,0.95)];
+        letter-spacing: 0;
+    }
+
+    .contact-centers-map-heading svg {
+        @apply h-8 w-8 shrink-0 text-[#3c4249];
+    }
+
+    .contact-leaflet-map {
+        @apply absolute inset-0 z-0 h-full w-full;
+    }
+
+    .contact-centers-map-panel .leaflet-control-container {
+        @apply font-sans;
+    }
+
+    .contact-centers-map-panel .leaflet-control-zoom {
+        @apply overflow-hidden rounded-lg border-0 shadow-[0_16px_36px_-28px_rgba(7,16,22,0.9)] ring-1 ring-nacho-dark/10;
+    }
+
+    .contact-centers-map-panel .leaflet-control-zoom a {
+        @apply border-0 text-[#071016];
+    }
+
+    .contact-centers-map-panel .leaflet-control-attribution {
+        @apply text-[0.6875rem] font-semibold;
+    }
+
+    .contact-leaflet-marker-icon {
+        @apply bg-transparent;
+    }
+
+    .contact-leaflet-marker {
+        @apply block h-12 w-10 drop-shadow-[0_9px_8px_rgba(7,16,22,0.32)];
+    }
+
+    .contact-leaflet-marker svg {
+        @apply h-full w-full;
+    }
+
+    .contact-centers-map-panel .contact-leaflet-tooltip {
+        @apply rounded-md border-0 bg-white/95 px-3 py-1.5 text-sm font-extrabold leading-tight tracking-normal text-[#071016] shadow-[0_12px_28px_-24px_rgba(7,16,22,0.9)];
+        letter-spacing: 0;
+    }
+
+    .contact-centers-map-panel .contact-leaflet-tooltip::before {
+        @apply hidden;
+    }
+
+    .contact-centers-map-panel .contact-leaflet-tooltip--coming {
+        @apply text-[#4b5563];
+    }
+
+    .contact-map-popup {
+        @apply grid gap-1 text-sm font-semibold leading-5 text-[#071016];
+    }
+
+    .contact-map-popup strong {
+        @apply text-base font-extrabold;
+    }
+
+    .contact-map-popup span {
+        @apply block;
+    }
+
+    .contact-map-popup-status {
+        @apply text-[#e14a0a];
+    }
+
+    .contact-map-loading {
+        @apply absolute left-1/2 top-1/2 z-10 w-[min(22rem,calc(100%-2rem))] -translate-x-1/2 -translate-y-1/2 rounded-lg bg-white/95 px-5 py-4 text-center text-base font-extrabold leading-6 text-[#071016] shadow-[0_16px_36px_-28px_rgba(7,16,22,0.9)] ring-1 ring-nacho-dark/10;
+    }
+
+    .contact-map-loading.is-hidden {
+        @apply hidden;
+    }
+
+    .contact-message-section {
+        @apply bg-[#f5f8fb] pb-12 pt-0 sm:pb-16;
+        scroll-margin-top: 9rem;
+    }
+
+    .contact-message-inner {
+        @apply mx-auto grid w-full gap-6 px-4 sm:px-6 lg:grid-cols-[minmax(0,1.08fr)_minmax(24rem,0.88fr)] lg:px-8;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .contact-message-form,
+    .contact-next-panel {
+        @apply min-w-0 rounded-lg border border-[#e7ebef] bg-white p-6 shadow-[0_18px_44px_-36px_rgba(7,16,22,0.75)] sm:p-8;
+    }
+
+    .contact-message-heading h2 {
+        @apply text-[1.85rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[2.2rem];
+        letter-spacing: 0;
+    }
+
+    .contact-message-heading p {
+        @apply mt-2 text-lg font-semibold leading-7 tracking-normal text-[#071016]/80;
+        letter-spacing: 0;
+    }
+
+    .contact-message-grid {
+        @apply mt-7 grid gap-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-4;
+    }
+
+    .contact-message-field {
+        @apply min-w-0;
+    }
+
+    .contact-message-field--full {
+        @apply sm:col-span-2;
+    }
+
+    .contact-message-field label {
+        @apply mb-1.5 block text-base font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .contact-message-field label span {
+        @apply text-red-600;
+    }
+
+    .contact-message-field input,
+    .contact-message-field select,
+    .contact-message-field textarea {
+        @apply block w-full rounded-lg border border-[#dfe4e9] bg-white px-4 text-base font-semibold tracking-normal text-[#071016] shadow-sm transition-colors placeholder:text-[#071016]/35 focus:border-[#e14a0a] focus:ring-[#e14a0a];
+        letter-spacing: 0;
+    }
+
+    .contact-message-field input,
+    .contact-message-field select {
+        @apply h-12;
+    }
+
+    .contact-message-field textarea {
+        @apply min-h-[6.25rem] resize-y py-3;
+    }
+
+    .contact-message-field select {
+        @apply pr-10;
+    }
+
+    .contact-message-consent {
+        @apply mt-5 flex max-w-[37rem] cursor-pointer items-start gap-3 text-base font-semibold leading-7 tracking-normal text-[#071016]/80;
+        letter-spacing: 0;
+    }
+
+    .contact-message-consent input {
+        @apply mt-1 h-6 w-6 shrink-0 rounded border-[#cfd6dc] text-[#e14a0a] focus:ring-[#e14a0a];
+    }
+
+    .contact-message-submit {
+        @apply mt-5 inline-flex min-h-[4.1rem] w-full max-w-[30rem] items-center justify-center gap-4 rounded-lg bg-[#e14a0a] px-7 text-[1.35rem] font-extrabold leading-none tracking-normal text-white shadow-lg shadow-[#e14a0a]/25 transition-colors hover:bg-nacho-primary-dark;
+        letter-spacing: 0;
+    }
+
+    .contact-message-submit svg {
+        @apply h-7 w-7 shrink-0 stroke-[2.25];
+    }
+
+    .contact-next-panel {
+        @apply flex flex-col;
+    }
+
+    .contact-next-steps {
+        @apply relative mt-8 grid gap-7;
+    }
+
+    .contact-next-steps::before {
+        content: '';
+        @apply absolute bottom-12 left-[2.35rem] top-10 w-0.5 bg-[#e14a0a]/20;
+    }
+
+    .contact-next-step {
+        @apply relative grid min-w-0 grid-cols-[4.75rem_2.25rem_minmax(0,1fr)] items-start gap-4;
+    }
+
+    .contact-next-icon {
+        @apply relative z-10 flex h-[4.75rem] w-[4.75rem] items-center justify-center rounded-full bg-[#e14a0a] text-white shadow-lg shadow-[#e14a0a]/20;
+    }
+
+    .contact-next-icon svg {
+        @apply h-9 w-9 stroke-[2.05];
+    }
+
+    .contact-next-number {
+        @apply relative z-10 mt-2 flex h-9 w-9 items-center justify-center rounded-full bg-[#e14a0a] text-lg font-extrabold leading-none text-white shadow-sm shadow-[#e14a0a]/25;
+    }
+
+    .contact-next-copy {
+        @apply block min-w-0 pt-1;
+    }
+
+    .contact-next-copy strong {
+        @apply block text-[1.45rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[1.65rem];
+        letter-spacing: 0;
+    }
+
+    .contact-next-copy span {
+        @apply mt-2 block text-lg font-semibold leading-8 tracking-normal text-[#071016]/75;
+        letter-spacing: 0;
+    }
+
+    .contact-next-note {
+        @apply mt-auto flex items-center gap-5 rounded-lg border border-[#f0c4ac] bg-[#fff4ee] px-5 py-4 text-[#934320];
+    }
+
+    .contact-next-note svg {
+        @apply h-12 w-12 shrink-0 text-[#e14a0a] stroke-[1.9];
+    }
+
+    .contact-next-note p {
+        @apply text-lg font-extrabold leading-7 tracking-normal;
+        letter-spacing: 0;
+    }
+
+    .contact-faq-section {
+        @apply bg-[#f5f8fb] pb-12 sm:pb-16;
+    }
+
+    .contact-faq-panel {
+        @apply mx-auto w-full rounded-lg border border-[#e7ebef] bg-white px-4 py-5 shadow-[0_18px_44px_-36px_rgba(7,16,22,0.75)] sm:px-6 lg:px-8;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .contact-faq-panel h2 {
+        @apply text-[1.85rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[2.2rem];
+        letter-spacing: 0;
+    }
+
+    .contact-faq-list {
+        @apply mt-3 overflow-hidden rounded-lg border border-[#e7ebef] bg-white;
+    }
+
+    .contact-faq-item {
+        @apply border-b border-[#edf0f2] bg-white;
+    }
+
+    .contact-faq-item:last-child {
+        @apply border-b-0;
+    }
+
+    .contact-faq-item--first {
+        @apply shadow-[0_14px_34px_-30px_rgba(7,16,22,0.8)];
+    }
+
+    .contact-faq-question {
+        @apply grid min-h-[4.4rem] w-full grid-cols-[3.75rem_minmax(0,1fr)_2rem] items-center gap-4 px-4 text-left transition-colors hover:bg-[#fff8f4] sm:px-5;
+    }
+
+    .contact-faq-icon {
+        @apply flex h-10 w-10 items-center justify-center rounded-full border-2 border-[#e14a0a] text-xl font-extrabold leading-none text-[#e14a0a];
+    }
+
+    .contact-faq-question-text {
+        @apply text-[1.35rem] font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .contact-faq-chevron {
+        @apply flex h-8 w-8 items-center justify-center text-[#e14a0a];
+    }
+
+    .contact-faq-chevron svg {
+        @apply h-7 w-7 stroke-[2.4];
+    }
+
+    .contact-faq-answer {
+        @apply pb-5 pl-[5.75rem] pr-12 text-lg font-semibold leading-8 tracking-normal text-[#071016]/75;
+        letter-spacing: 0;
+    }
+
+    .contact-faq-answer p {
+        @apply max-w-[72rem];
+    }
+
+
+    @media (min-width: 1024px) {
+        .contact-centers-map-panel {
+            min-height: 100%;
+        }
+    }
+
+    @media (max-width: 1279px) {
+        .contact-centers-layout {
+            @apply grid-cols-1;
+        }
+
+        .contact-centers-map-panel {
+            min-height: 42rem;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .contact-centers-section {
+            @apply py-9;
+            scroll-margin-top: 17rem;
+        }
+
+        .contact-centers-title {
+            @apply text-[1.85rem];
+        }
+
+        .contact-centers-layout {
+            @apply mt-4 gap-5;
+        }
+
+        .contact-center-card {
+            @apply grid-cols-1 gap-4 p-5;
+            scroll-margin-top: 17rem;
+        }
+
+        .contact-center-card-body h3 {
+            @apply text-[1.45rem];
+        }
+
+        .contact-center-details {
+            @apply text-base leading-7;
+        }
+
+        .contact-coming-card {
+            @apply grid-cols-[3.75rem_minmax(0,1fr)] px-4;
+        }
+
+        .contact-coming-icon {
+            @apply h-12 w-12;
+        }
+
+        .contact-coming-icon svg {
+            @apply h-7 w-7;
+        }
+
+        .contact-coming-phase,
+        .contact-coming-date {
+            @apply col-span-2;
+        }
+
+        .contact-centers-map-panel {
+            min-height: 34rem;
+        }
+
+        .contact-centers-map-heading {
+            @apply left-4 right-4 top-4 min-h-[3.75rem] w-auto px-5 text-lg;
+        }
+
+        .contact-centers-map-heading svg {
+            @apply h-6 w-6;
+        }
+
+        .contact-message-section {
+            scroll-margin-top: 17rem;
+        }
+
+        .contact-message-inner {
+            @apply gap-5;
+        }
+
+        .contact-message-form,
+        .contact-next-panel {
+            @apply p-5;
+        }
+
+        .contact-message-heading h2 {
+            @apply text-[1.65rem];
+        }
+
+        .contact-message-heading p,
+        .contact-next-copy span,
+        .contact-next-note p {
+            @apply text-base leading-7;
+        }
+
+        .contact-message-grid {
+            @apply grid-cols-1;
+        }
+
+        .contact-message-field--full {
+            @apply col-span-1;
+        }
+
+        .contact-message-submit {
+            @apply max-w-none text-lg;
+        }
+
+        .contact-next-steps {
+            @apply mt-6 gap-6;
+        }
+
+        .contact-next-step {
+            @apply grid-cols-[4rem_1.85rem_minmax(0,1fr)] gap-3;
+        }
+
+        .contact-next-steps::before {
+            @apply left-8;
+        }
+
+        .contact-next-icon {
+            @apply h-16 w-16;
+        }
+
+        .contact-next-icon svg {
+            @apply h-8 w-8;
+        }
+
+        .contact-next-number {
+            @apply h-8 w-8 text-base;
+        }
+
+        .contact-next-copy strong {
+            @apply text-xl;
+        }
+
+        .contact-next-note {
+            @apply mt-7 items-start gap-4;
+        }
+
+        .contact-next-note svg {
+            @apply h-10 w-10;
+        }
+
+        .contact-faq-panel {
+            @apply px-4 py-5;
+        }
+
+        .contact-faq-panel h2 {
+            @apply text-[1.65rem];
+        }
+
+        .contact-faq-question {
+            @apply min-h-[4rem] grid-cols-[3rem_minmax(0,1fr)_1.75rem] gap-3 px-3;
+        }
+
+        .contact-faq-icon {
+            @apply h-8 w-8 text-base;
+        }
+
+        .contact-faq-question-text {
+            @apply text-lg;
+        }
+
+        .contact-faq-chevron svg {
+            @apply h-6 w-6;
+        }
+
+        .contact-faq-answer {
+            @apply pb-4 pl-[4.25rem] pr-4 text-base leading-7;
+        }
+    }
+
     .about-page-hero {
         @apply relative isolate flex min-h-[32rem] overflow-hidden bg-[#071016] text-white sm:min-h-[34rem] lg:min-h-[33.5rem];
     }

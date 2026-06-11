@@ -1,3 +1,4 @@
+@unless (request()->routeIs('contact'))
 <div
     x-data="{
         show: false,
@@ -28,3 +29,4 @@
         </a>
     </div>
 </div>
+@endunless

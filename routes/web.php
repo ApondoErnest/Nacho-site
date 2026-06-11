@@ -21,7 +21,7 @@ Route::view('/inspection-process', 'public.placeholder', ['pageTitle' => 'naviga
 Route::view('/blog', 'public.placeholder', ['pageTitle' => 'navigation.blog'])->name('blog.index');
 Route::view('/compliance-quality', 'public.placeholder', ['pageTitle' => 'navigation.compliance'])->name('compliance');
 Route::view('/careers', 'public.placeholder', ['pageTitle' => 'navigation.careers'])->name('careers.index');
-Route::view('/contact', 'public.placeholder', ['pageTitle' => 'navigation.contact'])->name('contact');
+Route::view('/contact', 'public.contact')->name('contact');
 
 Route::view('/privacy-policy', 'public.placeholder', ['pageTitle' => 'footer.privacy'])->name('legal.privacy');
 Route::view('/terms-and-conditions', 'public.placeholder', ['pageTitle' => 'footer.terms'])->name('legal.terms');
