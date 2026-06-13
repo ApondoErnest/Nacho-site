@@ -2434,6 +2434,704 @@
         letter-spacing: 0;
     }
 
+    .inspection-process-hero {
+        @apply relative isolate overflow-hidden bg-white text-[#071016];
+        min-height: 35.5rem;
+    }
+
+    .inspection-process-hero-image {
+        @apply absolute inset-0 -z-20 h-full w-full object-cover;
+        object-position: 54% center;
+    }
+
+    .inspection-process-hero-overlay {
+        @apply absolute inset-0 -z-10;
+        background: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.99) 26%, rgba(255, 255, 255, 0.88) 40%, rgba(255, 255, 255, 0.3) 54%, rgba(255, 255, 255, 0) 68%);
+    }
+
+    .inspection-process-hero-inner {
+        @apply mx-auto flex min-h-[35.5rem] w-full items-center px-4 py-10 sm:px-6 sm:py-12 lg:px-8;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .inspection-process-hero-copy {
+        @apply w-full max-w-[58rem];
+    }
+
+    .inspection-process-hero-kicker {
+        @apply text-base font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-xl;
+        letter-spacing: 0;
+    }
+
+    .inspection-process-hero-title {
+        @apply mt-7 max-w-[50rem] text-[2.55rem] font-extrabold leading-[1.12] tracking-normal text-[#071016] sm:text-[3.35rem] lg:text-[3.7rem] 2xl:max-w-[65rem] 2xl:text-[4.1rem];
+        letter-spacing: 0;
+    }
+
+    .inspection-process-hero-title span {
+        @apply block;
+    }
+
+    .inspection-process-hero-text {
+        @apply mt-7 max-w-[44rem] text-lg font-semibold leading-8 tracking-normal text-[#071016]/80 sm:text-xl lg:text-2xl lg:leading-10;
+        letter-spacing: 0;
+    }
+
+    .inspection-process-proof-grid {
+        @apply mt-10 grid max-w-[52rem] grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4;
+    }
+
+    .inspection-process-proof-item {
+        @apply flex min-h-[5rem] min-w-0 items-center gap-4 text-sm font-extrabold leading-tight tracking-normal text-[#071016] sm:text-base;
+        letter-spacing: 0;
+    }
+
+    .inspection-process-proof-icon {
+        @apply flex h-[3.35rem] w-[3.35rem] shrink-0 items-center justify-center text-[#f15a24];
+    }
+
+    .inspection-process-proof-icon svg {
+        @apply h-[2.75rem] w-[2.75rem] stroke-[1.85];
+    }
+
+    .inspection-journey-section {
+        @apply bg-white text-[#071016];
+    }
+
+    @media (min-width: 1024px) {
+        .inspection-journey-section {
+            width: min(120rem, max(100%, calc(100vw - 16rem)));
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .inspection-journey-shell {
+        @apply overflow-hidden rounded-lg border border-[#e2e7ec] bg-white p-5 shadow-[0_18px_48px_-40px_rgba(7,16,22,0.72)] sm:p-7 lg:p-8;
+    }
+
+    .inspection-journey-heading p {
+        @apply text-base font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-xl;
+        letter-spacing: 0;
+    }
+
+    .inspection-journey-heading h2 {
+        @apply mt-3 text-[2rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[2.55rem] lg:text-[3rem];
+        letter-spacing: 0;
+    }
+
+    .inspection-stage-tabs {
+        @apply relative mt-8 hidden grid-cols-5 gap-5 border-b border-[#e3e8ed] pb-0 lg:grid;
+    }
+
+    .inspection-stage-tabs::before {
+        content: '';
+        @apply pointer-events-none absolute left-[6.5%] right-[6.5%] top-8 h-px bg-[#d8dee4];
+    }
+
+    .inspection-stage-tab {
+        @apply relative grid min-w-0 justify-items-center gap-3 pb-6 text-center text-[#071016] transition-colors;
+    }
+
+    .inspection-stage-tab::after {
+        content: '';
+        @apply absolute bottom-0 h-1 w-0 rounded-full bg-[#f15a24] transition-all duration-200;
+    }
+
+    .inspection-stage-tab.is-active::after {
+        @apply w-full;
+    }
+
+    .inspection-stage-number {
+        @apply relative z-10 flex h-12 w-12 items-center justify-center rounded-full bg-[#e5e8eb] text-xl font-extrabold leading-none text-[#071016] shadow-[0_10px_22px_-18px_rgba(7,16,22,0.9)];
+    }
+
+    .inspection-stage-tab.is-active .inspection-stage-number,
+    .inspection-stage-accordion-trigger.is-active .inspection-stage-number {
+        @apply bg-[#f15a24] text-white shadow-[#f15a24]/30;
+    }
+
+    .inspection-stage-icon {
+        @apply flex h-14 w-14 items-center justify-center text-[#324150];
+    }
+
+    .inspection-stage-icon svg {
+        @apply h-11 w-11 stroke-[1.9];
+    }
+
+    .inspection-stage-tab.is-active .inspection-stage-icon {
+        @apply text-[#f15a24];
+    }
+
+    .inspection-stage-title {
+        @apply max-w-[10.5rem] text-lg font-extrabold leading-tight tracking-normal;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .inspection-stage-panels {
+        @apply hidden lg:block;
+    }
+
+    .inspection-stage-panel {
+        @apply mt-7 rounded-lg border border-[#e3e8ed] bg-white p-6 shadow-[0_16px_40px_-36px_rgba(7,16,22,0.7)] xl:p-7;
+    }
+
+    .inspection-stage-accordion {
+        @apply mt-6 grid gap-4 lg:hidden;
+    }
+
+    .inspection-stage-accordion-item {
+        @apply overflow-hidden rounded-lg border border-[#e3e8ed] bg-white shadow-[0_14px_34px_-30px_rgba(7,16,22,0.65)];
+    }
+
+    .inspection-stage-accordion-trigger {
+        @apply grid w-full scroll-mt-36 grid-cols-[3rem_3rem_minmax(0,1fr)_2rem] items-center gap-3 px-4 py-4 text-left text-base font-extrabold leading-tight text-[#071016] sm:px-5;
+    }
+
+    .inspection-stage-accordion-icon {
+        @apply flex h-11 w-11 items-center justify-center text-[#f15a24];
+    }
+
+    .inspection-stage-accordion-icon svg,
+    .inspection-stage-accordion-chevron {
+        @apply h-6 w-6;
+    }
+
+    .inspection-stage-accordion-chevron {
+        @apply justify-self-end text-[#6b747d] transition-transform duration-200;
+    }
+
+    .inspection-stage-accordion-trigger.is-active .inspection-stage-accordion-chevron {
+        @apply rotate-180 text-[#f15a24];
+    }
+
+    .inspection-stage-accordion-panel {
+        @apply border-t border-[#e3e8ed] p-4 sm:p-5;
+    }
+
+    .inspection-stage-content {
+        @apply min-w-0;
+    }
+
+    .inspection-stage-copy {
+        @apply grid min-w-0 gap-4 sm:grid-cols-[4rem_minmax(0,1fr)] sm:items-start;
+    }
+
+    .inspection-stage-copy-number {
+        @apply flex h-14 w-14 items-center justify-center rounded-full bg-[#f15a24] text-2xl font-extrabold leading-none text-white shadow-lg shadow-[#f15a24]/25;
+    }
+
+    .inspection-stage-copy h3 {
+        @apply text-[1.8rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[2.2rem] lg:text-[2.45rem];
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .inspection-stage-copy p {
+        @apply mt-3 max-w-[48rem] text-base font-semibold leading-7 tracking-normal text-[#071016]/75 sm:text-lg sm:leading-8;
+        letter-spacing: 0;
+    }
+
+    .inspection-booking-layout {
+        @apply mt-6 grid gap-6 lg:grid-cols-[minmax(21rem,0.9fr)_minmax(18rem,0.72fr)_minmax(20rem,0.9fr)] lg:items-center;
+    }
+
+    .inspection-booking-card {
+        @apply grid gap-4 rounded-lg border border-[#e3e8ed] bg-white p-5 shadow-[0_16px_38px_-34px_rgba(7,16,22,0.75)] sm:p-6;
+    }
+
+    .inspection-booking-card h4,
+    .inspection-booking-receives h4,
+    .inspection-checkin-list h4,
+    .inspection-report-preview h4,
+    .inspection-certificate-summary h4 {
+        @apply text-xl font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .inspection-booking-card label {
+        @apply grid gap-2 text-sm font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .inspection-booking-input {
+        @apply flex min-h-[3.25rem] min-w-0 items-center justify-between gap-3 rounded-md border border-[#dce2e8] bg-[#fbfcfd] px-4 text-base font-bold text-[#071016]/80 shadow-inner shadow-[#071016]/5;
+    }
+
+    .inspection-booking-input svg {
+        @apply h-5 w-5 shrink-0 text-[#6d7883];
+    }
+
+    .inspection-booking-card button,
+    .inspection-certificate-primary {
+        @apply inline-flex min-h-[3.55rem] items-center justify-center rounded-md bg-[#f15a24] px-6 text-base font-extrabold tracking-normal text-white shadow-lg shadow-[#f15a24]/25 transition-colors hover:bg-nacho-primary-dark;
+        letter-spacing: 0;
+    }
+
+    .inspection-booking-receives {
+        @apply rounded-lg border border-[#e3e8ed] bg-[#fbfcfd] p-5 sm:p-6 lg:border-0 lg:bg-transparent lg:p-0;
+    }
+
+    .inspection-booking-receives ul,
+    .inspection-checkin-list ul {
+        @apply mt-4 grid gap-3;
+    }
+
+    .inspection-booking-receives li,
+    .inspection-checkin-list li {
+        @apply flex min-w-0 items-start gap-3 text-base font-bold leading-7 tracking-normal text-[#071016]/80 sm:text-lg;
+        letter-spacing: 0;
+    }
+
+    .inspection-booking-receives svg,
+    .inspection-checkin-list svg {
+        @apply mt-1 h-5 w-5 shrink-0 text-[#f15a24] stroke-[2.4];
+    }
+
+    .inspection-booking-visual {
+        @apply relative min-h-[17rem] overflow-hidden rounded-lg border border-[#e3e8ed] bg-[#eef3f6];
+    }
+
+    .inspection-booking-calendar {
+        @apply absolute left-7 top-7 grid h-48 w-48 grid-cols-3 gap-3 rounded-lg border-[10px] border-[#273b4a] bg-white p-5 shadow-[0_18px_34px_-26px_rgba(7,16,22,0.95)];
+    }
+
+    .inspection-booking-calendar span,
+    .inspection-booking-calendar strong {
+        @apply flex items-center justify-center rounded-md bg-[#eef2f5] text-sm font-extrabold text-[#071016]/45;
+    }
+
+    .inspection-booking-calendar strong {
+        @apply bg-[#f15a24] text-white;
+    }
+
+    .inspection-booking-pin {
+        @apply absolute right-20 top-9 flex h-24 w-24 items-center justify-center text-[#f15a24];
+    }
+
+    .inspection-booking-pin svg,
+    .inspection-booking-car svg {
+        @apply h-full w-full stroke-[1.7];
+    }
+
+    .inspection-booking-car {
+        @apply absolute bottom-7 right-8 flex h-32 w-40 items-center justify-center rounded-lg bg-white text-[#243644] shadow-[0_18px_36px_-28px_rgba(7,16,22,0.9)];
+    }
+
+    .inspection-checkin-layout {
+        @apply mt-6 grid gap-6 lg:grid-cols-[minmax(0,1.1fr)_minmax(20rem,0.76fr)] lg:items-stretch;
+    }
+
+    .inspection-checkin-visual {
+        @apply overflow-hidden rounded-lg border border-[#e3e8ed] bg-[#f6f8fa] shadow-[0_16px_38px_-34px_rgba(7,16,22,0.75)];
+    }
+
+    .inspection-checkin-visual img {
+        @apply h-full min-h-[22rem] w-full object-cover;
+    }
+
+    .inspection-checkin-list {
+        @apply rounded-lg border border-[#e3e8ed] bg-white p-5 shadow-[0_16px_38px_-34px_rgba(7,16,22,0.75)] sm:p-6;
+    }
+
+    .inspection-technical-layout {
+        @apply mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(18rem,0.34fr)] lg:items-start;
+    }
+
+    .inspection-lane-scroll {
+        @apply overflow-x-auto rounded-lg border border-[#dfe5ea] bg-[#f8fafc] p-3 shadow-inner shadow-[#071016]/5;
+    }
+
+    .inspection-lane-diagram {
+        @apply block h-auto min-w-[42rem] text-[#071016];
+    }
+
+    .inspection-lane-equipment rect {
+        fill: #263746;
+        stroke: #f15a24;
+        stroke-width: 4;
+    }
+
+    .inspection-lane-hotspot {
+        @apply cursor-pointer outline-none;
+    }
+
+    .inspection-lane-hotspot-label {
+        fill: rgba(255, 255, 255, 0.94);
+        stroke: #cfd8df;
+        stroke-width: 2;
+        transition: fill 160ms ease, stroke 160ms ease;
+    }
+
+    .inspection-lane-hotspot-ring {
+        fill: #ffffff;
+        stroke: #f15a24;
+        stroke-width: 5;
+        transition: fill 160ms ease, stroke 160ms ease;
+    }
+
+    .inspection-lane-hotspot-dot {
+        fill: #f15a24;
+    }
+
+    .inspection-lane-hotspot-number {
+        fill: #ffffff;
+        font-size: 20px;
+        font-weight: 900;
+        pointer-events: none;
+    }
+
+    .inspection-lane-hotspot-text {
+        fill: #071016;
+        font-size: 18px;
+        font-weight: 900;
+        letter-spacing: 0;
+        pointer-events: none;
+    }
+
+    .inspection-lane-hotspot:is(:hover, :focus-visible) .inspection-lane-hotspot-label,
+    .inspection-lane-hotspot.is-active .inspection-lane-hotspot-label {
+        fill: #fff7f2;
+        stroke: #f15a24;
+    }
+
+    .inspection-lane-hotspot:is(:hover, :focus-visible) .inspection-lane-hotspot-ring,
+    .inspection-lane-hotspot.is-active .inspection-lane-hotspot-ring {
+        fill: #fff2ea;
+        stroke: #071016;
+    }
+
+    .inspection-hotspot-card {
+        @apply rounded-lg border border-[#e3e8ed] bg-white p-5 shadow-[0_16px_38px_-34px_rgba(7,16,22,0.75)] sm:p-6;
+    }
+
+    .inspection-hotspot-card p {
+        @apply text-sm font-extrabold uppercase leading-none tracking-normal text-[#f15a24];
+        letter-spacing: 0;
+    }
+
+    .inspection-hotspot-card h4 {
+        @apply mt-3 text-2xl font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .inspection-hotspot-card span {
+        @apply mt-3 block text-base font-semibold leading-7 tracking-normal text-[#071016]/75;
+        letter-spacing: 0;
+    }
+
+    .inspection-report-layout {
+        @apply mt-6 grid gap-6 lg:grid-cols-[minmax(0,0.92fr)_minmax(21rem,1fr)] lg:items-start;
+    }
+
+    .inspection-report-preview {
+        @apply rounded-lg border border-[#dfe5ea] bg-white p-5 shadow-[0_18px_42px_-34px_rgba(7,16,22,0.78)] sm:p-6;
+    }
+
+    .inspection-report-header {
+        @apply flex items-center justify-between gap-4 border-b border-[#e3e8ed] pb-4;
+    }
+
+    .inspection-report-brand {
+        @apply text-xl font-extrabold leading-tight tracking-normal text-[#f15a24] sm:text-2xl;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .inspection-report-badge {
+        @apply rounded-full bg-[#e8f7ec] px-3 py-1 text-sm font-extrabold text-[#17823b];
+    }
+
+    .inspection-report-details {
+        @apply mt-5 grid gap-3 sm:grid-cols-2;
+    }
+
+    .inspection-report-details div,
+    .inspection-certificate-summary dl div {
+        @apply rounded-md border border-[#e3e8ed] bg-[#fbfcfd] px-4 py-3;
+    }
+
+    .inspection-report-details dt,
+    .inspection-certificate-summary dt {
+        @apply text-xs font-extrabold uppercase leading-none tracking-normal text-[#6d7883];
+        letter-spacing: 0;
+    }
+
+    .inspection-report-details dd,
+    .inspection-certificate-summary dd {
+        @apply mt-2 text-base font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .inspection-report-systems {
+        @apply mt-5;
+    }
+
+    .inspection-report-systems ul {
+        @apply mt-3 grid gap-2;
+    }
+
+    .inspection-report-systems li {
+        @apply flex items-center justify-between gap-3 rounded-md bg-[#f5f7f9] px-4 py-2 text-sm font-bold text-[#071016]/80;
+    }
+
+    .inspection-report-systems svg {
+        @apply h-5 w-5 shrink-0 text-[#2e9f4b];
+    }
+
+    .inspection-report-observation {
+        @apply mt-5 rounded-md border border-[#e3e8ed] bg-[#fbfcfd] p-4;
+    }
+
+    .inspection-report-observation p {
+        @apply mt-2 text-sm font-semibold leading-6 text-[#071016]/70;
+    }
+
+    .inspection-report-action {
+        @apply mt-5 rounded-md bg-[#071016] p-4 text-white;
+    }
+
+    .inspection-report-action span {
+        @apply block text-xs font-extrabold uppercase text-white/60;
+    }
+
+    .inspection-report-action strong {
+        @apply mt-2 block text-base font-extrabold leading-6;
+    }
+
+    .inspection-outcome-grid {
+        @apply grid gap-4 md:grid-cols-3 lg:grid-cols-1;
+    }
+
+    .inspection-outcome-card {
+        @apply rounded-lg border bg-white p-5 shadow-[0_14px_34px_-30px_rgba(7,16,22,0.72)];
+    }
+
+    .inspection-outcome-card > span {
+        @apply flex h-12 w-12 items-center justify-center rounded-full border-4;
+    }
+
+    .inspection-outcome-card svg {
+        @apply h-8 w-8;
+    }
+
+    .inspection-outcome-card h4 {
+        @apply mt-4 text-xl font-extrabold leading-tight tracking-normal;
+        letter-spacing: 0;
+    }
+
+    .inspection-outcome-card p {
+        @apply mt-2 text-sm font-semibold leading-6 tracking-normal text-[#071016]/70;
+        letter-spacing: 0;
+    }
+
+    .inspection-outcome-card--accepted {
+        @apply border-[#b9e6c2];
+    }
+
+    .inspection-outcome-card--accepted > span {
+        @apply border-[#2e9f4b] bg-[#e8f7ec] text-[#2e9f4b];
+    }
+
+    .inspection-outcome-card--accepted h4 {
+        @apply text-[#227f38];
+    }
+
+    .inspection-outcome-card--suspended {
+        @apply border-[#f5d997];
+    }
+
+    .inspection-outcome-card--suspended > span {
+        @apply border-[#d9940a] bg-[#fff8e7] text-[#d9940a];
+    }
+
+    .inspection-outcome-card--suspended h4 {
+        @apply text-[#a66905];
+    }
+
+    .inspection-outcome-card--refused {
+        @apply border-[#f0b3b3];
+    }
+
+    .inspection-outcome-card--refused > span {
+        @apply border-[#cf2d2d] bg-[#fff0f0] text-[#cf2d2d];
+    }
+
+    .inspection-outcome-card--refused h4 {
+        @apply text-[#b32020];
+    }
+
+    .inspection-report-note {
+        @apply rounded-md border border-dashed border-[#d7dde3] bg-[#fbfcfd] px-4 py-3 text-sm font-semibold leading-6 text-[#071016]/70 lg:col-span-2;
+    }
+
+    .inspection-certificate-layout {
+        @apply mt-6 grid gap-6 lg:grid-cols-[minmax(20rem,0.75fr)_minmax(0,1fr)] lg:items-center;
+    }
+
+    .inspection-certificate-preview {
+        @apply rounded-lg border border-[#e3e8ed] bg-[#f5f7f9] p-6 shadow-[0_16px_38px_-34px_rgba(7,16,22,0.75)];
+    }
+
+    .inspection-certificate-paper {
+        @apply relative mx-auto grid min-h-[26rem] max-w-[22rem] content-start justify-items-center rounded-md border-[10px] border-[#dfe5ea] bg-white px-8 py-8 text-center shadow-[0_18px_42px_-34px_rgba(7,16,22,0.85)];
+    }
+
+    .inspection-certificate-mark {
+        @apply text-xl font-extrabold leading-tight text-[#f15a24] sm:text-2xl;
+        overflow-wrap: anywhere;
+    }
+
+    .inspection-certificate-paper strong {
+        @apply mt-5 text-xl font-extrabold uppercase leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .inspection-certificate-paper em {
+        @apply mt-5 rounded-md bg-[#edf1f4] px-5 py-2 text-lg font-extrabold not-italic text-[#071016];
+    }
+
+    .inspection-certificate-paper > span:not(.inspection-certificate-mark) {
+        @apply mt-5 block h-3 w-full rounded-full bg-[#dce3e9];
+    }
+
+    .inspection-certificate-paper > span:nth-of-type(3) {
+        @apply w-4/5;
+    }
+
+    .inspection-certificate-paper svg {
+        @apply absolute bottom-7 right-7 h-16 w-16 fill-[#2e9f4b] text-white;
+    }
+
+    .inspection-certificate-summary {
+        @apply rounded-lg border border-[#e3e8ed] bg-white p-5 shadow-[0_16px_38px_-34px_rgba(7,16,22,0.75)] sm:p-6;
+    }
+
+    .inspection-certificate-summary dl {
+        @apply mt-5 grid gap-3 sm:grid-cols-2;
+    }
+
+    .inspection-certificate-actions {
+        @apply mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center;
+    }
+
+    .inspection-certificate-link {
+        @apply inline-flex min-h-[3.3rem] items-center justify-center rounded-md border border-[#f15a24]/35 px-5 text-center text-base font-extrabold tracking-normal text-[#f15a24] transition-colors hover:border-[#f15a24] hover:bg-[#fff4ee];
+        letter-spacing: 0;
+    }
+
+    .inspection-preparation-section {
+        @apply bg-white text-[#071016];
+    }
+
+    @media (min-width: 1024px) {
+        .inspection-preparation-section {
+            width: min(120rem, max(100%, calc(100vw - 8rem)));
+            margin-left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+
+    .inspection-preparation-shell {
+        @apply rounded-lg border border-[#e2e7ec] bg-[#f8fafc] p-5 shadow-[0_18px_48px_-42px_rgba(7,16,22,0.7)] sm:p-7 lg:p-8;
+    }
+
+    .inspection-preparation-kicker {
+        @apply text-base font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-xl;
+        letter-spacing: 0;
+    }
+
+    .inspection-preparation-grid {
+        @apply mt-7 grid gap-7 lg:grid-cols-[minmax(0,0.96fr)_1px_minmax(0,1.04fr)] lg:items-start lg:gap-8;
+    }
+
+    .inspection-preparation-grid::before {
+        content: '';
+        @apply hidden h-full w-px bg-[#dce2e8] lg:block;
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .inspection-preparation-admin {
+        @apply min-w-0 lg:col-start-1 lg:row-start-1;
+    }
+
+    .inspection-preparation-vehicle {
+        @apply min-w-0 lg:col-start-3 lg:row-start-1;
+    }
+
+    .inspection-preparation-heading {
+        @apply flex min-w-0 items-center gap-4;
+    }
+
+    .inspection-preparation-heading > span {
+        @apply flex h-14 w-14 shrink-0 items-center justify-center text-[#24313d];
+    }
+
+    .inspection-preparation-heading svg {
+        @apply h-12 w-12 stroke-[1.85];
+    }
+
+    .inspection-preparation-heading h2 {
+        @apply text-[1.55rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[1.85rem] lg:text-[2rem];
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .inspection-preparation-admin-body {
+        @apply mt-5 grid gap-5 md:grid-cols-[minmax(12rem,0.76fr)_minmax(0,1fr)] md:items-center;
+    }
+
+    .inspection-preparation-image {
+        @apply mx-auto w-full max-w-[18rem] overflow-hidden;
+    }
+
+    .inspection-preparation-image img {
+        @apply block h-auto w-full;
+    }
+
+    .inspection-preparation-list {
+        @apply grid gap-4;
+    }
+
+    .inspection-preparation-list--vehicle {
+        @apply mt-7 sm:grid-cols-2 sm:gap-x-8;
+    }
+
+    @media (min-width: 640px) {
+        .inspection-preparation-list--vehicle {
+            grid-auto-flow: column;
+            grid-template-rows: repeat(4, minmax(0, auto));
+        }
+    }
+
+    .inspection-preparation-list li {
+        @apply grid min-w-0 grid-cols-[1.65rem_minmax(0,1fr)] items-start gap-3 text-base font-bold leading-7 tracking-normal text-[#071016]/80 sm:text-lg;
+        letter-spacing: 0;
+    }
+
+    .inspection-preparation-list svg {
+        @apply mt-1 h-5 w-5 shrink-0 text-[#f15a24] stroke-[2.35];
+    }
+
+    .inspection-preparation-note {
+        @apply mx-auto mt-8 flex max-w-[90rem] items-start justify-center gap-3 text-center text-base font-semibold leading-7 tracking-normal text-[#071016]/80;
+        letter-spacing: 0;
+    }
+
+    .inspection-preparation-note > svg {
+        @apply mt-0.5 h-6 w-6 shrink-0 text-[#24313d];
+    }
+
+    .inspection-preparation-note strong {
+        @apply mr-1 font-extrabold not-italic text-[#071016];
+    }
+
+    .inspection-preparation-note em {
+        @apply not-italic;
+    }
+
     .services-proof-grid {
         @apply mt-7 grid max-w-[58rem] grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4;
     }
@@ -2865,6 +3563,16 @@
     }
 
     @media (max-width: 1023px) {
+        .inspection-process-hero-image {
+            object-position: 66% center;
+        }
+
+        .inspection-process-hero-overlay {
+            background:
+                linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.98) 47%, rgba(255, 255, 255, 0.66) 82%, rgba(255, 255, 255, 0.3) 100%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.88) 100%);
+        }
+
         .services-hero-image {
             object-position: 70% center;
         }
@@ -2903,6 +3611,99 @@
     }
 
     @media (max-width: 767px) {
+        .inspection-journey-shell {
+            @apply p-4;
+        }
+
+        .inspection-journey-heading h2 {
+            @apply text-[2.05rem];
+        }
+
+        .inspection-stage-copy h3 {
+            @apply text-[1.65rem];
+        }
+
+        .inspection-booking-visual {
+            @apply min-h-[14rem];
+        }
+
+        .inspection-booking-calendar {
+            @apply left-5 top-5 h-36 w-36 border-[8px] p-4;
+        }
+
+        .inspection-booking-pin {
+            @apply right-8 top-8 h-16 w-16;
+        }
+
+        .inspection-booking-car {
+            @apply bottom-5 right-5 h-24 w-32;
+        }
+
+        .inspection-checkin-visual img {
+            @apply min-h-[15rem];
+        }
+
+        .inspection-certificate-paper {
+            @apply min-h-[22rem] px-6;
+        }
+
+        .inspection-preparation-shell {
+            @apply p-4;
+        }
+
+        .inspection-preparation-grid {
+            @apply gap-8;
+        }
+
+        .inspection-preparation-heading h2 {
+            @apply text-[1.45rem];
+        }
+
+        .inspection-preparation-heading > span {
+            @apply h-12 w-12;
+        }
+
+        .inspection-preparation-heading svg {
+            @apply h-10 w-10;
+        }
+
+        .inspection-preparation-note {
+            @apply text-left text-sm leading-6;
+        }
+
+        .inspection-process-hero,
+        .inspection-process-hero-inner {
+            min-height: 0;
+        }
+
+        .inspection-process-hero-inner {
+            @apply py-8;
+        }
+
+        .inspection-process-hero-title {
+            @apply mt-5 text-[2.05rem];
+        }
+
+        .inspection-process-hero-text {
+            @apply mt-5 text-base leading-7;
+        }
+
+        .inspection-process-proof-grid {
+            @apply mt-7 gap-3;
+        }
+
+        .inspection-process-proof-item {
+            @apply min-h-[4.35rem] gap-3 text-sm;
+        }
+
+        .inspection-process-proof-icon {
+            @apply h-12 w-12;
+        }
+
+        .inspection-process-proof-icon svg {
+            @apply h-10 w-10;
+        }
+
         .services-hero,
         .services-hero-inner {
             min-height: 0;

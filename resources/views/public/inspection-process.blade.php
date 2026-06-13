@@ -1,25 +1,53 @@
 @extends('layouts.public')
 
-@section('title', __('navigation.inspection_process'))
+@section('title', __('inspection_process.meta_title'))
 
 @section('content')
-    <div class="nacho-container nacho-section space-y-12">
-        <x-public.page-title
-            :title="__('navigation.inspection_process')"
-            :description="app()->getLocale() === 'fr' ? 'Le déroulement de votre inspection, étape par étape.' : 'How your inspection works, step by step.'"
+    @php
+        $heroProofItems = __('inspection_process.hero.proof');
+    @endphp
+
+    <section class="inspection-process-hero" aria-labelledby="inspection-process-hero-title">
+        <img
+            src="{{ asset('images/hero-inspection-process.png') }}"
+            alt=""
+            class="inspection-process-hero-image"
+            loading="eager"
+            fetchpriority="high"
         />
+        <div class="inspection-process-hero-overlay" aria-hidden="true"></div>
 
-        <x-public.process-steps />
+        <div class="inspection-process-hero-inner">
+            <div class="inspection-process-hero-copy">
+                <p class="inspection-process-hero-kicker">
+                    {{ __('inspection_process.hero.eyebrow') }}
+                </p>
 
-        <section class="space-y-6">
-            <h2 class="text-nacho-dark">{{ app()->getLocale() === 'fr' ? 'Comprendre votre résultat' : 'Understand your result' }}</h2>
-            <div class="grid gap-4 md:grid-cols-3">
-                <x-public.inspection-result type="accepted" />
-                <x-public.inspection-result type="suspended" />
-                <x-public.inspection-result type="refused" />
+                <h1 id="inspection-process-hero-title" class="inspection-process-hero-title">
+                    <span>{{ __('inspection_process.hero.title_line_1') }}</span>
+                    <span>{{ __('inspection_process.hero.title_line_2') }}</span>
+                </h1>
+
+                <p class="inspection-process-hero-text">
+                    {{ __('inspection_process.hero.subtitle') }}
+                </p>
+
+                <div class="inspection-process-proof-grid" aria-label="{{ __('inspection_process.hero.proof_label') }}">
+                    @foreach ($heroProofItems as $item)
+                        <div class="inspection-process-proof-item">
+                            <span class="inspection-process-proof-icon" aria-hidden="true">
+                                <x-dynamic-component :component="'lucide-' . $item['icon']" />
+                            </span>
+                            <span>{{ $item['title'] }}</span>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <x-public.cta-section />
+    <div class="nacho-container nacho-section space-y-12">
+        <x-public.inspection-journey />
+        <x-public.inspection-preparation />
     </div>
 @endsection
