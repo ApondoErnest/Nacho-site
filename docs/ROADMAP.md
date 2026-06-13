@@ -44,7 +44,7 @@ flowchart LR
 | 8 | Static Centers index + detail | pending |
 | 9 | Static Services index | pending |
 | 10 | Static Service detail pages (×5) | pending |
-| 11 | Static Tariffs page | pending |
+| 11 | Static Tariffs page — Master Pricing Console (4 blocks) | pending |
 | 12 | Static Inspection process page | pending |
 | 13 | Static Booking form UI | pending |
 | 14 | Static Contact page | pending |

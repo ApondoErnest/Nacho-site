@@ -203,11 +203,22 @@ Until photos exist, use tasteful placeholders; replace via [media library](ADMIN
 
 ---
 
-## 10. Tariffs UX
+## 10. Tariffs UX — Master Pricing Console
 
-- **Homepage:** preview grid/cards + category selector filter  
-- **Full page:** searchable table + mobile cards + homologation notice ([CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md))  
-- Rows: [SEEDING.md](SEEDING.md)
+Premium **digital pricing tool**, not a conventional brochure tariff table.
+
+**Full page (`/tariffs`) — four blocks:**
+
+1. **Master Pricing Console** — split-screen: category cards (left) + compact matrix or detail result card (right); booking connected to selection  
+2. **Tariff and Regulatory Information** — two-column inclusions/exclusions + metadata (effective date, last verified, reference link)  
+3. **Logistics strip** — configurable payment/docs (generic until confirmed)  
+4. **FAQ** — safe wording per [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md) §3.3  
+
+**Desktop:** split-screen console. **Mobile:** category picker → result below → sticky bottom bar (category, price, Book, Show All Tariffs via accordion/modal).
+
+**Homepage (§5 #7):** preview subset + category filter + “View All Tariffs” — no duplicate full schedule.
+
+**Data:** [SEEDING.md](SEEDING.md) (7 rows), [DATABASE.md](DATABASE.md) §3.6–3.7, `TariffService` ([ARCHITECTURE.md](ARCHITECTURE.md)).
 
 ---
 
@@ -218,7 +229,7 @@ Until photos exist, use tasteful placeholders; replace via [media library](ADMIN
 | 4 | Top bar + main nav + sticky/shrink + mobile panel shell |
 | 5 | Cards, timeline, result blocks, tariff preview, floating book button |
 | 6 | Full homepage §5 (14 sections + layout chrome §3–§6) |
-| 11 | Tariffs page + category selector |
+| 11 | Tariffs page — 4-block Master Pricing Console + mobile UX |
 | 12 | Full 6-step process page |
 
 Step 4–5 may need **enhancement pass** after Step 6 spec was expanded — align existing layout/components to this document.

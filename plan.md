@@ -50,7 +50,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 8 | Centers index + detail |
 | 9 | Services index |
 | 10 | Five service detail pages |
-| 11 | Tariffs page |
+| 11 | Tariffs page — Master Pricing Console (4 blocks) |
 | 12 | Inspection process page (5-step timeline) |
 | 13 | Booking form UI only |
 | 14 | Contact page |

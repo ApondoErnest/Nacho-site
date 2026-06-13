@@ -42,7 +42,7 @@ One controller per public area:
 - `CenterController` (index + show)
 - `ServiceController` (index + show)
 - `BookingController` (create + store)
-- `TariffController` (index)
+- `TariffController` (index — Master Pricing Console)
 - `InspectionProcessController`
 - `BlogController` (index + show)
 - `ComplianceController`
@@ -72,7 +72,7 @@ Each supports the CRUD operations relevant to its module (see [ADMIN_MODULES.md]
 
 ## 4. Models (spec 7.4)
 
-One model per core table: `User`, `Role`, `Center`, `Service`, `Tariff`, `Booking`, `ContactMessage`, `BlogCategory`, `BlogPost`, `CareerPost`, `JobApplication`, `Page`, `Media`, `SiteSetting` (+ `TariffAuditLog`). Each defines casts, fillables, relationships (per [DATABASE.md](DATABASE.md)), scopes (e.g. `active()`, `published()`, `operational()`), and bilingual accessors with FR fallback.
+One model per core table: `User`, `Role`, `Center`, `Service`, `Tariff`, `TariffRevision`, `Booking`, `ContactMessage`, `BlogCategory`, `BlogPost`, `CareerPost`, `JobApplication`, `Page`, `Media`, `SiteSetting` (+ `TariffAuditLog`). Each defines casts, fillables, relationships (per [DATABASE.md](DATABASE.md)), scopes (e.g. `active()`, `published()`, `operational()`), and bilingual accessors with FR fallback.
 
 ## 5. Form request validation (spec 7.5)
 
@@ -86,6 +86,11 @@ Rules enforce required fields, valid email/phone, allowed file types and max siz
 ## 6. Services & support
 
 - `BookingReferenceService` - generates unique `NACHO-YYYYMMDD-XXXX` references.
+- `TariffService` - resolves active tariffs for the Pricing Console and booking preselect:
+  - `resolveActiveTariffs()` — effective-date logic (ADR 007), returns rows with current `price_fcfa`
+  - `resolveTariffForBooking($id|$slug)` — single tariff for booking form deep link
+  - `resolveRevisionForTariff(Tariff $tariff)` — current revision as of today
+- Used by `TariffController`, booking form, and admin preview.
 - `AdminAccess` (Support) - centralizes the permission matrix ([ROLES.md](ROLES.md)).
 - `LocaleService` (optional) - locale helpers for views.
 - Status enums for booking/center/etc. keep status strings consistent.

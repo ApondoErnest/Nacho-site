@@ -1,4 +1,4 @@
-@unless (request()->routeIs('contact'))
+@unless (request()->routeIs('contact') || request()->routeIs('tariffs'))
 <div
     x-data="{
         show: false,

@@ -9,7 +9,9 @@ The local version is considered stable (ready for Dockerization) only when all i
 - [ ] About page complete (mission, vision, values, road safety, expansion, CTA)
 - [ ] Centers index + each center detail page work (map, hours, services, gallery)
 - [ ] Services index + all 5 service detail pages render full content
-- [ ] Tariffs page shows correct 7 rows, search works, mobile cards work, notice present
+- [ ] Tariffs page — Master Pricing Console: category select → result card → Book preselect; Show All Tariffs matrix toggle; mobile sticky bar + accordion/modal
+- [ ] Tariffs page shows safe regulatory notice (no unverified homologation claims); FAQ wording per [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md) §3.3
+- [ ] Tariffs page logistics strip uses configurable copy (not unconfirmed payment/document facts)
 - [ ] Inspection process page shows steps + Accepted/Suspended/Refused
 - [ ] Blog index + detail pages work; categories shown
 - [ ] Compliance & quality page uses safe wording
@@ -31,7 +33,8 @@ The local version is considered stable (ready for Dockerization) only when all i
 - [ ] Inactive user cannot log in
 - [ ] Dashboard summary cards show correct counts
 - [ ] Each role sees only its permitted modules
-- [ ] Center / service / tariff CRUD works (tariff change logs audit)
+- [ ] Center / service CRUD works
+- [ ] Admin tariff: create future revision, preview, auto-activation by effective date; revision + audit history visible; no hard delete of historical tariffs
 - [ ] Booking status workflow works; admin notes save
 - [ ] Contact message statuses work
 - [ ] Blog category/post CRUD + publish/draft/archive work

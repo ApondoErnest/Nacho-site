@@ -39,21 +39,32 @@ Each seeded with short descriptions (FR/EN), an icon, display order, and `is_act
 
 ## 5. Default tariffs
 
-Prices in FCFA. Exact rows from the spec:
+Seven rows for the Master Pricing Console. Prices in FCFA (integer `price_fcfa`). Schema: [DATABASE.md](DATABASE.md) §3.6.
 
-| Category | Vehicle type (FR) | Price (FCFA) | Validity |
-|----------|-------------------|-------------:|----------|
-| Categorie A | Taxi / Auto-ecole | 4,900 | 3 months |
-| Categorie B | Vehicule de tourisme | 17,900 | 12 months |
-| Categorie B1 | Pickup 3.5T / Vehicules utilitaires legers | 15,500 | 6 months |
-| Categorie C < 3.5T | Mini-bus | 15,500 | 3 months |
-| Categorie C | Grand bus / Coaster | 19,080 | 3 months |
-| Categorie D | Camions / Tracteurs / Semi-remorques / Vehicules utilitaires lourds | 26,235 | 6 months |
-| Categorie D | Autres engins | 41,750 | 6 months |
+| category_code | category_slug | name_en | price_fcfa | validity_value | validity_unit | is_bookable |
+|---------------|---------------|---------|-------------:|---------------:|:-------------:|:-----------:|
+| A | `category-a-taxi` | Taxi / Driving School | 4,900 | 3 | months | yes |
+| B | `category-b-private` | Private Vehicle | 17,900 | 12 | months | yes |
+| B1 | `category-b1-pickup` | Pickup / Light utility (≤3.5T) | 15,500 | 6 | months | yes |
+| C | `category-c-minibus` | Mini-bus | 15,500 | 3 | months | yes |
+| C | `category-c-coaster` | Grand bus / Coaster | 19,080 | 3 | months | yes |
+| D | `category-d-heavy-utility` | Trucks / Semi-trailers / Heavy utility | 26,235 | 6 | months | yes |
+| D | `category-d-other-engins` | Other engins | 41,750 | 6 | months | yes |
 
-Each seeded with EN vehicle type, FR/EN validity labels, FR/EN **required documents** (placeholder text per category), display order, and `is_active = true`.
+Each row also seeds:
 
-Optional footnote on the tariffs page: prices homologated by the Ministry of Transport from **1 June 2022** (see [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md)).
+- `name_fr` (French classification from original schedule)
+- `description_en`, `description_fr` — brief applicability placeholder (not unverified regulatory claims)
+- `vehicle_icon` — icon key for console cards
+- `display_order` (1–7)
+- `is_active` = true
+- `effective_date`, `regulatory_reference`, `last_verified_at` — **nullable** until NACHO confirms; do not seed “June 2022 homologated” as fact
+
+Optional: one initial `tariff_revisions` row per tariff mirroring seed price with `effective_date` = seed date and `status` = `active` (ADR 007).
+
+**Regulatory notice on page:** safe copy from [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md) §3.1.
+
+**Logistics defaults** (seed in `site_settings` §9): `tariff_logistics_payment_*`, `tariff_logistics_documents_*`.
 
 ## 6. Initial centers
 
@@ -110,6 +121,8 @@ Seed `site_settings` keys:
 - `facebook_url` (empty), `whatsapp_contact` (empty)
 - `primary_color` = brand burnt orange (see [BRAND.md](BRAND.md))
 - `maintenance_mode` = `false`
+- `tariff_logistics_payment_en`, `tariff_logistics_payment_fr` — generic payment copy ([CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md) §3.2)
+- `tariff_logistics_documents_en`, `tariff_logistics_documents_fr` — generic documents copy
 
 ## 10. Recommended blog placeholder posts
 

@@ -34,7 +34,19 @@ Create, edit, view, delete (soft), activate/deactivate, FR/EN content, upload im
 
 ## 5. Tariff management
 
-View, create, edit, delete, activate/deactivate, reorder, update price when official tariffs change. Manage **required documents** (FR/EN) and notes per row. Default tariffs inserted at setup. Every price/field change writes a `tariff_audit_logs` record (who/when/before-after).
+Master Pricing Console data and revision workflow (ADR 006, ADR 007):
+
+- View all tariff rows (`category_slug`, FR/EN names, price, validity, bookable flag)
+- Create and edit tariff rows; maintain `description_*`, `vehicle_icon`, weight bounds, display order
+- **Create future tariff revision** with `effective_date` and price snapshot
+- **Preview** revision before publication
+- **Activate/deactivate** categories (`is_active`, `is_bookable`)
+- Set `regulatory_reference`, `last_verified_at`, `effective_date`, optional `expiry_date`
+- View **revision history** and **audit log** (`tariff_audit_logs`)
+- **No hard delete** of historical tariffs or revisions — deactivate or mark `superseded` only
+- Public site auto-displays the revision whose `effective_date` is current (via `TariffService`) — no manual midnight price swap
+
+Every admin field change writes a `tariff_audit_logs` record (who/when/before-after). Scheduled publishes use `tariff_revisions`.
 
 ## 6. Booking management
 

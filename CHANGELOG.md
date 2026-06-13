@@ -18,11 +18,15 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - **[docs/DESIGN.md](docs/DESIGN.md)** — Premium UX spec: nav (top bar, sticky, mobile slide-in), homepage 14 sections, 6-step process, six technical checks, footer CTA band, floating booking, microcopy, anti-patterns.
 
+- **Master Pricing Console documentation.** [DESIGN.md](docs/DESIGN.md) §10, [FRONTEND.md](docs/FRONTEND.md), [CONTENT_GUIDELINES.md](docs/CONTENT_GUIDELINES.md) §3 — 4-block tariffs page (split-screen console, regulatory info, logistics strip, FAQ), safe regulatory copy, mobile UX. [DATABASE.md](docs/DATABASE.md) expanded `tariffs` schema + `tariff_revisions`; ADR 007; [SEEDING.md](docs/SEEDING.md) 7 slugs; [ADMIN_MODULES.md](docs/ADMIN_MODULES.md) revision workflow; [ARCHITECTURE.md](docs/ARCHITECTURE.md) `TariffService`.
+
 ### Changed
 
 - **Steps 4–6 aligned with [docs/DESIGN.md](docs/DESIGN.md).** Nav: Book last, Compliance footer-only, utility tagline + hours; mobile slide-in panel; floating Book button; footer columns (services, 5 centers, HQ). Homepage rebuilt to **14 sections** (hero split + status card, availability strip, about 3 cards, 6-step process, six technical checks, tariff category chips). Process timeline **6 steps** (was 5). New components: `hero-split`, `center-availability-strip`, `about-preview-cards`, `technical-checks-grid`, `tariff-category-selector`, `floating-booking-button`.
 
 - **Frontend docs aligned with design vision.** [FRONTEND.md](docs/FRONTEND.md), [BRAND.md](docs/BRAND.md), [CONTENT_GUIDELINES.md](docs/CONTENT_GUIDELINES.md), [plan.md](plan.md), [ROADMAP.md](docs/ROADMAP.md) — homepage 14 sections (was 10); inspection process **6 steps** (was 5); Compliance moved to footer nav; nav order matches design spec.
+
+- **Tariff docs:** removed unverified Ministry/June 2022 homologation as required copy; logistics strip configurable via `site_settings`; Step 11 scope is Master Pricing Console (not table-only).
 
 - **Center names and phones corrected per NACHO source.** Official name is **NACHO Yaounde** (not “Yaounde 1”); slug `nacho-yaounde`; phones stored as `(+237) 675117327` format; labels A–E; Douala/Kumba “Coming soon” + October 2026 notice.
 

@@ -33,7 +33,7 @@ todos:
     content: "Phase 10 (Step 10): Static Service detail pages (×5)"
     status: pending
   - id: phase-11
-    content: "Phase 11 (Step 11): Static Tariffs page"
+    content: "Phase 11 (Step 11): Tariffs page — Master Pricing Console (4 blocks)"
     status: pending
   - id: phase-12
     content: "Phase 12 (Step 12): Static Inspection process page"
@@ -90,7 +90,7 @@ todos:
     content: "Phase 29 (Step 29): Admin — service management"
     status: pending
   - id: phase-30
-    content: "Phase 30 (Step 30): Admin — tariff management + audit log"
+    content: "Phase 30 (Step 30): Admin — tariff management + revisions + audit log"
     status: pending
   - id: phase-31
     content: "Phase 31 (Step 31): Admin — booking management"
@@ -212,7 +212,7 @@ Built as **static Blade** first; wired to DB at Step 22. Content rules: 3 operat
 | **8** | Centers index + detail (landmark, vehicle categories, map, status wording) | §5.2, §11 | `/centers`, `/centers/{slug}` |
 | **9** | Services index | §5.3 | `/services` |
 | **10** | Service detail pages (×5) with full inspection-point copy per §10.1–10.5 | §5.4–5.8 | `/services/{slug}` (English slugs) |
-| **11** | Tariffs (search + table with documents column + June 2022 footnote + notice) | §5.9, §13 | `/tariffs` |
+| **11** | Tariffs — Master Pricing Console (4 blocks, mobile UX) | [DESIGN.md](docs/DESIGN.md), [FRONTEND.md](docs/FRONTEND.md) | `/tariffs` |
 | **12** | Inspection process — 6-step timeline + Accepted/Suspended/Refused | §5.10, §14, [DESIGN.md](docs/DESIGN.md) | `/inspection-process` |
 | **13** | Booking form **UI only** | §5.11 | `/book-inspection` |
 | **14** | Contact page (form UI + map + optional WhatsApp click-to-chat placeholder) | §5.15, §19 | `/contact` |
@@ -229,8 +229,8 @@ Built as **static Blade** first; wired to DB at Step 22. Content rules: 3 operat
 
 | Phase / Step | Task | Spec | Exit |
 |:--:|------|------|------|
-| **19** | Migrations: 15 tables + audit log; add `nearby_landmark`, `vehicle_categories_*` on centers; `required_documents_*` on tariffs | §6, §11, §13 | [DATABASE.md](docs/DATABASE.md) updated |
-| **20** | Seed data: roles, admin, services (English slugs), tariffs (with documents), centers (with landmarks), blog topics, legal, settings | §13, §16 | [SEEDING.md](docs/SEEDING.md) updated |
+| **19** | Migrations: 15 tables + audit log + `tariff_revisions`; expanded `tariffs` (`category_slug`, effective dating); center fields (`nearby_landmark`, `vehicle_categories_*`) | §6, [DATABASE.md](docs/DATABASE.md) | Migrations ready |
+| **20** | Seed data: roles, admin, services, **7 tariffs with slugs**, centers (landmarks), blog topics, legal, settings (incl. logistics keys) | §13, [SEEDING.md](docs/SEEDING.md) | `migrate:fresh --seed` OK |
 | **21** | Models, relationships, enums, factories | §7.4 | `migrate:fresh --seed` OK |
 
 Bookings table: **no** reminder/expiry columns.
@@ -265,7 +265,7 @@ Baseline security on all forms: CSRF, honeypot, throttle, upload rules ([SECURIT
 |:--:|------|------|
 | **28** | Center management | §8.3 |
 | **29** | Service management | §8.4 |
-| **30** | Tariff management (+ audit log on change) | §8.5, ADR 006 |
+| **30** | Tariff management + revisions + audit log | §8.5, ADR 006–007 |
 | **31** | Booking management | §8.6 |
 | **32** | Contact message management | §8.7 |
 | **33** | Blog categories + posts | §8.8 |
@@ -320,7 +320,7 @@ See [DEPLOYMENT.md](docs/DEPLOYMENT.md). Deploy steps run one at a time when you
 | 8 | 8 | Centers (static) |
 | 9 | 9 | Services index (static) |
 | 10 | 10 | Service details (static) |
-| 11 | 11 | Tariffs (static) |
+| 11 | 11 | Tariffs — Pricing Console |
 | 12 | 12 | Inspection process (static) |
 | 13 | 13 | Booking UI (static) |
 | 14 | 14 | Contact (static) |
@@ -417,7 +417,7 @@ Cross-check against the updated unified proposal. **Already aligned** — no pla
 - All 15 public pages + admin dashboard scope
 - Homepage hero copy, trust strip, 5 services, inspection journey, final CTA
 - Booking form fields and excluded reminder fields
-- Tariff rows (Satellite Ngono / Ministry homologated) and FR notice text
+- Master Pricing Console tariff rows (7 categories with `category_slug`) and safe regulatory notice text (FR/EN)
 - Compliance safe wording when credentials unconfirmed
 - Bilingual FR default; blog as road-safety education
 - Local-first → Docker/VPS deferred deploy strategy
@@ -431,7 +431,7 @@ Cross-check against the updated unified proposal. **Already aligned** — no pla
 | **Homepage content audit** | §8 | Step 6 exit criteria: homepage must answer who / what / where / why / next (five questions) | 6 |
 | **Nav order** | §7 | Main nav order: Home → About → Centers → Services → **Book** → Tariffs → Process → Blog → Compliance → Careers → Contact; Book stays highlighted CTA | 4 |
 | **Center cards** | §9.2, §11 | **Verified data:** [CENTERS_DATA.md](docs/CENTERS_DATA.md) from `CCTs of NACHO.docx`. Schema fields + seed/static pages use real Yaounde/Bamenda/Douala/Kumba network | 8, 19, 20, 28 |
-| **Tariff table** | §13 | Add **required documents** column (`required_documents_fr/en` on `tariffs`); optional footnote referencing homologation from **1 June 2022** | 11, 19, 20, 30 |
+| **Tariff console** | Pricing spec | **Master Pricing Console** — split-screen, safe regulatory copy, `category_slug`, `tariff_revisions`, logistics via settings | 11, 19, 20, 30, 23 |
 | **Inspection process** | §14, DESIGN | Use **6 steps** on homepage and process page (book → register → machine → visual → validation → report/PV) | 6, 12 |
 | **Service page depth** | §10.1–10.5 | Step 10 static copy must include full inspection-point lists (periodic, heavy vehicle, pre-purchase, road safety topics) per proposal | 10 |
 | **Blog topics** | §16 | Seed or document **10 recommended article titles** as placeholder posts or admin content backlog | 15, 20 |
@@ -450,7 +450,7 @@ Cross-check against the updated unified proposal. **Already aligned** — no pla
 ## Critical content rules
 
 - 3 operational + 2 under construction (before Oct 2026)
-- Tariff notice on tariffs page
+- Safe tariff notice on tariffs page (effective/last-verified dates when available — no unverified homologation claims)
 - Safe compliance wording
 - No reminder/expiry fields on booking
 

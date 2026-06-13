@@ -25,15 +25,53 @@ NACHO has **3 operational centers** and **2 centers under construction**, openin
 - Dynamic content (services, centers, blog posts, careers, legal pages, SEO fields) is stored in both languages. See [I18N.md](I18N.md).
 - If an English translation is missing for dynamic content, fall back to French rather than showing empty content (documented fallback behavior).
 
-## 3. Tariffs
+## 3. Tariffs and pricing page copy
 
-- Tariffs reflect the official homologated schedule (Ministry of Transport) for the corresponding vehicle categories.
-- Always display the tariff notice near the tariff table:
-  - FR: "Les tarifs ci-dessous suivent la grille homologuee par le Ministere des Transports et appliquee aux categories de vehicules correspondantes. Les montants peuvent etre mis a jour conformement aux decisions reglementaires en vigueur."
-  - EN: A faithful English translation conveying the same meaning.
-- Optional footnote (Satellite Ngono reference): prices homologated by the Ministry of Transport from **1 June 2022**.
-- Prices are shown in FCFA. The exact default rows are listed in [SEEDING.md](SEEDING.md).
-- Tariff table displays **required documents** per category (from `required_documents_fr/en`).
+The tariffs page uses the **Master Pricing Console** ([FRONTEND.md](FRONTEND.md)). Prices are shown in **FCFA** (integer). Default rows: [SEEDING.md](SEEDING.md).
+
+### 3.1 Regulatory section (safe wording — do not over-claim)
+
+**Section heading:** Tariff and Regulatory Information / *Informations tarifaires et reglementaires*
+
+**Primary notice (EN):** The displayed tariffs follow the applicable vehicle inspection schedule and may be revised following official regulatory decisions. Customers should confirm any recently updated rate with their selected NACHO center.
+
+**Primary notice (FR):** Les tarifs affiches suivent la grille de controle technique applicable et peuvent etre revises conformement aux decisions reglementaires en vigueur. Les clients sont invites a confirmer tout tarif recemment mis a jour aupres du centre NACHO choisi.
+
+**Do not publish as confirmed facts until operationally verified:**
+
+- “Ministry homologated” / “homologue par le Ministere” as an asserted fact
+- “Effective from June 2022” as mandatory copy
+- “Digital Safety Report”, “Official Certificate Processing”
+- Exact counter-visit charges or universal counter-visit conditions
+
+**May display when available (from database / admin):** effective date, last verified date, regulatory reference, view/download notice link.
+
+### 3.2 Logistics strip (configurable — generic until confirmed)
+
+Default placeholders (site settings or admin-editable blocks):
+
+| Topic | EN (default) | Notes |
+|-------|--------------|-------|
+| Payment methods | Accepted payment methods vary by center. Confirm the available options when booking. | Do not hard-code Cash, Mobile Money, or Carte Grise until NACHO confirms |
+| Required documents | Bring the vehicle registration documents and any additional documents required for your vehicle category. | Replace with exact list when confirmed |
+
+Per-row applicability notes may appear on the pricing console result card (`description_en/fr` on tariffs).
+
+### 3.3 Tariffs FAQ (safe answers)
+
+**Rates consistency — do NOT use unless NACHO confirms:**
+
+- ~~All rates are officially regulated and standard across our network.~~
+
+**Use instead (EN):** NACHO applies the published tariff schedule across its operational network. Customers should review the latest displayed rate or confirm with their selected center before visiting.
+
+**Failed inspection / counter-visit:** Do not imply every failed inspection automatically follows the same counter-visit process or fee unless that workflow is confirmed. Use general guidance and direct customers to their center or the counter-visit service page.
+
+### 3.4 Content to avoid on tariffs page
+
+- Duplicate price tables (console + full schedule in consecutive sections without toggle)
+- Dense spreadsheet-style default panel (use compact matrix; detail on select)
+- Unverified payment or document requirements stated as facts
 
 ## 4. Compliance & certification claims
 

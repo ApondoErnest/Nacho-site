@@ -26,7 +26,8 @@ Core spec tables (15):
 
 Plus Laravel framework tables (`password_reset_tokens`, `sessions`, `cache`, `jobs`, `failed_jobs`, etc.) and one enhancement table:
 
-16. `tariff_audit_logs` - immutable history of tariff price/field changes (see ADR 006 in [adr/](adr/) and [SECURITY.md](SECURITY.md)). Optional but recommended because tariffs are regulated.
+16. `tariff_revisions` - scheduled/regulatory price versions with effective dates (see ADR 007 in [adr/](adr/))
+17. `tariff_audit_logs` - immutable admin edit history (see ADR 006 in [adr/](adr/) and [SECURITY.md](SECURITY.md))
 
 ## 2. Entity relationship diagram
 
@@ -42,7 +43,9 @@ erDiagram
     services ||--o{ center_service : ""
     blog_categories ||--o{ blog_posts : "groups"
     career_posts ||--o{ job_applications : "receives"
+    tariffs ||--o{ tariff_revisions : "has"
     tariffs ||--o{ tariff_audit_logs : "tracked_by"
+    users ||--o{ tariff_revisions : "creates"
 
     roles {
         bigint id PK
@@ -87,10 +90,22 @@ erDiagram
     }
     tariffs {
         bigint id PK
-        string category
-        int price
-        int display_order
+        string category_code
+        string category_slug UK
+        int price_fcfa
+        int validity_value
+        string validity_unit
+        date effective_date
         boolean is_active
+        boolean is_bookable
+    }
+    tariff_revisions {
+        bigint id PK
+        bigint tariff_id FK
+        bigint created_by FK
+        json snapshot
+        date effective_date
+        datetime published_at
     }
     bookings {
         bigint id PK
@@ -217,26 +232,56 @@ Default services seeded - see [SEEDING.md](SEEDING.md).
 Many-to-many: one center offers many services; one service is available at many centers.
 
 ### 3.6 tariffs
-- `category` (string) - e.g. "Categorie A"
-- `vehicle_type_fr`, `vehicle_type_en` (string)
-- `price` (unsigned int, FCFA)
-- `validity_fr`, `validity_en` (string) - e.g. "3 mois" / "3 months"
-- `required_documents_fr`, `required_documents_en` (text, nullable) - documents needed for inspection
-- `notes_fr`, `notes_en` (text, nullable)
-- `display_order` (int, default 0)
+
+Each row is one **bookable vehicle category line** in the Master Pricing Console. `category_code` alone is **not** unique (Category D has two rows); `category_slug` is the unique public identifier.
+
+- `category_code` (string) - e.g. `A`, `B`, `B1`, `C`, `D`
+- `category_slug` (string, unique) - e.g. `category-a-taxi`, `category-d-heavy-utility`, `category-d-other-engins`
+- `name_en`, `name_fr` (string) - vehicle classification label
+- `description_en`, `description_fr` (text, nullable) - brief applicability guidance on result card
+- `price_fcfa` (unsigned int) - FCFA, no decimals
+- `validity_value` (unsigned int) - e.g. 3, 6, 12
+- `validity_unit` (string) - e.g. `months` (display labels computed or stored in accessors)
+- `minimum_weight_kg`, `maximum_weight_kg` (unsigned int, nullable) - optional classification support
+- `vehicle_icon` (string, nullable) - icon key for console cards
+- `effective_date` (date, nullable) - start of current published schedule for this row
+- `expiry_date` (date, nullable) - optional end date
+- `regulatory_reference` (string, nullable) - notice/decision reference (unverified until admin confirms)
+- `last_verified_at` (datetime, nullable) - last NACHO verification timestamp for display
 - `is_active` (boolean, default true)
+- `is_bookable` (boolean, default true)
+- `display_order` (int, default 0)
+- timestamps; soft deletes discouraged for historical rows — deactivate instead
 
-Default tariffs seeded - see [SEEDING.md](SEEDING.md).
+**Public resolution:** `TariffService` returns active rows where `is_active = true` and the current revision (if any) has `effective_date <= today` and (`expiry_date` is null or `expiry_date >= today`). See [ARCHITECTURE.md](ARCHITECTURE.md) and ADR 007.
 
-### 3.7 tariff_audit_logs (enhancement)
+**Logistics copy** (payment methods, generic documents) lives in `site_settings` or editable page blocks — not hard-coded per row unless confirmed.
+
+Default tariffs seeded — see [SEEDING.md](SEEDING.md).
+
+### 3.7 tariff_revisions
+
+Scheduled or regulatory price updates without overwriting history. See ADR 007.
+
+- `tariff_id` (FK -> tariffs, cascade)
+- `created_by` (FK -> users, nullable on delete set null)
+- `snapshot` (json) - price_fcfa and other fields at revision time
+- `effective_date` (date) - when this revision becomes public
+- `published_at` (datetime, nullable) - when admin published/previewed
+- `status` (string, default `scheduled`) - `scheduled`, `active`, `superseded`, `cancelled`
+- `created_at`, `updated_at`
+
+The application activates the revision whose `effective_date` is current — admins do not manually swap prices at midnight.
+
+### 3.8 tariff_audit_logs (enhancement)
 - `tariff_id` (FK -> tariffs, cascade)
 - `user_id` (FK -> users, nullable) - who changed it
 - `changes` (json) - before/after of changed fields
 - `created_at`
 
-Written automatically by the admin tariff update flow. No `updated_at` (append-only).
+Written automatically by the admin tariff update flow. No `updated_at` (append-only). Complements `tariff_revisions` (scheduled publishing) — see ADR 006 vs ADR 007.
 
-### 3.8 bookings
+### 3.9 bookings
 - `booking_reference` (string, unique) - format `NACHO-YYYYMMDD-XXXX`
 - `full_name` (string)
 - `phone` (string)
@@ -257,7 +302,7 @@ Status values: `pending`, `confirmed`, `arrived`, `in_inspection`, `completed`, 
 
 Must NOT include: expiry date, reminder date, reminder status, SMS status, WhatsApp status, reminder consent.
 
-### 3.9 contact_messages
+### 3.10 contact_messages
 - `full_name` (string)
 - `email` (string)
 - `phone` (string, nullable)
@@ -268,12 +313,12 @@ Must NOT include: expiry date, reminder date, reminder status, SMS status, Whats
 
 Status values: `new`, `read`, `replied`, `archived`.
 
-### 3.10 blog_categories
+### 3.11 blog_categories
 - `name_fr`, `name_en` (string)
 - `slug` (string, unique)
 - `description_fr`, `description_en` (text, nullable)
 
-### 3.11 blog_posts
+### 3.12 blog_posts
 - `blog_category_id` (FK -> blog_categories, nullable on delete set null)
 - `author_id` (FK -> users, nullable on delete set null)
 - `title_fr`, `title_en` (string)
@@ -289,7 +334,7 @@ Status values: `new`, `read`, `replied`, `archived`.
 
 Status values: `draft`, `published`, `archived`.
 
-### 3.12 career_posts
+### 3.13 career_posts
 - `title_fr`, `title_en` (string)
 - `slug` (string, unique)
 - `location` (string, nullable)
@@ -303,7 +348,7 @@ Status values: `draft`, `published`, `archived`.
 
 Status values: `draft`, `open`, `closed`.
 
-### 3.13 job_applications
+### 3.14 job_applications
 - `career_post_id` (FK -> career_posts, nullable on delete set null)
 - `full_name` (string)
 - `email` (string)
@@ -315,7 +360,7 @@ Status values: `draft`, `open`, `closed`.
 
 Status values: `new`, `reviewed`, `shortlisted`, `rejected`, `accepted`.
 
-### 3.14 pages
+### 3.15 pages
 - `title_fr`, `title_en` (string)
 - `slug` (string, unique)
 - `content_fr`, `content_en` (longtext, nullable)
@@ -326,7 +371,7 @@ Status values: `new`, `reviewed`, `shortlisted`, `rejected`, `accepted`.
 
 Used for: Privacy Policy, Terms and Conditions, Cookie Policy, Legal Notice (and optionally About / Compliance). Status values: `draft`, `published`, `archived`.
 
-### 3.15 media
+### 3.16 media
 - `uploaded_by` (FK -> users, nullable on delete set null)
 - `file_name` (string)
 - `file_path` (string)
@@ -337,12 +382,12 @@ Used for: Privacy Policy, Terms and Conditions, Cookie Policy, Legal Notice (and
 
 Stores center/service/blog/page images, career CVs, optional booking documents.
 
-### 3.16 site_settings
+### 3.17 site_settings
 - `key` (string, unique)
 - `value` (text, nullable)
 - `type` (string, default `text`) - e.g. `text`, `boolean`, `image`, `color`
 
-Example keys: `site_name`, `default_language`, `contact_email`, `contact_phone`, `address`, `logo`, `footer_text_fr`, `footer_text_en`, `facebook_url`, `whatsapp_contact`, `primary_color`, `maintenance_mode`. Defaults seeded - see [SEEDING.md](SEEDING.md).
+Example keys: `site_name`, `default_language`, `contact_email`, `contact_phone`, `address`, `logo`, `footer_text_fr`, `footer_text_en`, `facebook_url`, `whatsapp_contact`, `primary_color`, `maintenance_mode`, `tariff_logistics_payment_fr`, `tariff_logistics_payment_en`, `tariff_logistics_documents_fr`, `tariff_logistics_documents_en`. Defaults seeded - see [SEEDING.md](SEEDING.md).
 
 ## 4. Relationships summary
 
@@ -353,7 +398,7 @@ Example keys: `site_name`, `default_language`, `contact_email`, `contact_phone`,
 - one user authors many blog posts
 - one career post has many job applications; one application belongs to one career post
 - one user uploads many media files
-- one tariff has many tariff audit logs
+- one tariff has many tariff revisions and many tariff audit logs
 
 ## 5. Conventions & integrity
 

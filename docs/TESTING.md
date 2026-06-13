@@ -10,14 +10,16 @@ Testing happens incrementally after each major module. Automated tests use PHPUn
 - Run with `php artisan test`; tests use a separate test database (or SQLite in-memory) so local MySQL data is untouched.
 
 Priority coverage:
-- booking store: valid submission creates booking + reference; invalid/missing fields rejected; consent required; reminder fields absent.
+- booking store: valid submission creates booking + reference; invalid/missing fields rejected; consent required; reminder fields absent; preselected `tariff_id` from console preserved.
 - contact store and career application store (incl. file upload validation).
 - admin auth: guest redirected; inactive user blocked; each role sees only permitted modules.
-- tariff update writes an audit log.
+- tariff admin update writes an audit log (`tariff_audit_logs`).
+- `TariffService::resolveActiveTariffs()` returns correct price for current date given scheduled revisions (ADR 007).
+- tariff revision: future revision not public before `effective_date`; becomes active on/after effective date.
 
 ## 2. Frontend testing (manual)
 
-homepage layout, mobile responsiveness, navigation, language switcher, center cards, service cards, tariff table/cards, booking page, contact page, blog listing, careers page, legal pages.
+homepage layout, mobile responsiveness, navigation, language switcher, center cards, service cards, **Master Pricing Console** (desktop split-screen, mobile sticky bar), booking page, contact page, blog listing, careers page, legal pages.
 
 ## 3. Backend testing (manual)
 

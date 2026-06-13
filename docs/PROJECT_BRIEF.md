@@ -8,7 +8,7 @@ The website helps visitors:
 
 - understand NACHO's services
 - locate NACHO inspection centers
-- view official vehicle inspection tariffs
+- view official vehicle inspection tariffs via the **Master Pricing Console** (`/tariffs`)
 - understand the inspection process
 - request an inspection booking
 - contact NACHO

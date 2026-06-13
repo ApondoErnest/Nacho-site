@@ -16,7 +16,7 @@ Route::view('/about', 'public.about')->name('about');
 Route::view('/centers', 'public.centers-index')->name('centers.index');
 Route::view('/services', 'public.services-index')->name('services.index');
 Route::view('/book-inspection', 'public.placeholder', ['pageTitle' => 'navigation.book'])->name('book-inspection');
-Route::view('/tariffs', 'public.placeholder', ['pageTitle' => 'navigation.tariffs'])->name('tariffs');
+Route::view('/tariffs', 'public.tariffs')->name('tariffs');
 Route::view('/inspection-process', 'public.placeholder', ['pageTitle' => 'navigation.inspection_process'])->name('inspection-process');
 Route::view('/blog', 'public.placeholder', ['pageTitle' => 'navigation.blog'])->name('blog.index');
 Route::view('/compliance-quality', 'public.placeholder', ['pageTitle' => 'navigation.compliance'])->name('compliance');
