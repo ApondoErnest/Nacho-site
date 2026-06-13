@@ -54,11 +54,11 @@
     }
 
     .nav-header {
-        @apply bg-white transition-shadow duration-200;
+        @apply contents bg-white transition-shadow duration-200 xl:sticky xl:top-0 xl:z-50 xl:block;
     }
 
     .nav-header--scrolled {
-        @apply shadow-lg shadow-black/10;
+        @apply xl:shadow-lg xl:shadow-black/10;
     }
 
     .nav-utility-bar {
@@ -123,7 +123,7 @@
     }
 
     .nav-main-bar {
-        @apply relative border-b border-nacho-dark/10 bg-white shadow-[0_7px_26px_-18px_rgba(0,0,0,0.75)];
+        @apply sticky top-0 z-50 border-b border-nacho-dark/10 bg-white shadow-[0_7px_26px_-18px_rgba(0,0,0,0.75)] xl:static xl:z-auto;
     }
 
     .nav-main-inner {

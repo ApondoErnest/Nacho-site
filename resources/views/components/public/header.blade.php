@@ -28,7 +28,7 @@
     @keydown.escape.window="mobileOpen = false"
     @scroll.window="scrolled = window.scrollY > 24"
     :class="scrolled ? 'nav-header--scrolled' : ''"
-    class="nav-header sticky top-0 z-50"
+    class="nav-header"
 >
     <div class="nav-utility-bar">
         <div class="nav-utility-inner">
