@@ -4588,6 +4588,472 @@
         @apply mt-1 text-xs text-nacho-dark/60;
     }
 
+    .book-inspection-page {
+        @apply bg-[#f8fafc] py-10 text-[#071016] sm:py-12 lg:py-14;
+    }
+
+    .book-inspection-inner {
+        @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
+        max-width: min(calc(100vw - 2rem), 74rem);
+    }
+
+    .book-inspection-heading {
+        @apply max-w-[47rem];
+    }
+
+    .book-inspection-heading p {
+        @apply text-sm font-extrabold uppercase leading-none tracking-normal text-[#ff5a00] sm:text-base;
+        letter-spacing: 0;
+    }
+
+    .book-inspection-heading h1 {
+        @apply mt-3 text-[2.25rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[2.95rem] lg:text-[3.2rem];
+        letter-spacing: 0;
+    }
+
+    .book-inspection-heading span {
+        @apply mt-3 block max-w-[46rem] text-base font-semibold leading-7 tracking-normal text-[#071016]/70 sm:text-lg;
+        letter-spacing: 0;
+    }
+
+    .book-inspection-notice {
+        @apply mt-6 grid min-h-[3.75rem] max-w-[46.5rem] grid-cols-[2rem_minmax(0,1fr)] items-center gap-3 rounded-lg border border-[#ffc9ad] bg-[#fff4ee] px-5 py-3 text-[#071016] shadow-sm;
+    }
+
+    .book-inspection-notice-icon {
+        @apply h-6 w-6 text-[#ff5a00] stroke-[2.2];
+    }
+
+    .book-inspection-notice p {
+        @apply text-sm font-extrabold leading-6 tracking-normal text-[#071016]/80;
+        letter-spacing: 0;
+    }
+
+    .book-inspection-layout {
+        @apply mt-5 grid gap-6 lg:grid-cols-[minmax(0,1fr)_21.5rem];
+    }
+
+    .book-inspection-form,
+    .book-inspection-summary {
+        @apply rounded-lg border border-[#e6e9ec] bg-white shadow-[0_18px_44px_-36px_rgba(7,16,22,0.75)];
+    }
+
+    .book-inspection-form {
+        @apply min-w-0 px-5 py-6 sm:px-6 lg:px-5;
+    }
+
+    .book-inspection-fieldset {
+        @apply min-w-0 border-0 p-0;
+    }
+
+    .book-inspection-fieldset + .book-inspection-fieldset {
+        @apply mt-6 border-t border-[#e6e9ec] pt-5;
+    }
+
+    .book-inspection-fieldset legend {
+        @apply mb-5 flex items-center gap-2.5 text-base font-extrabold uppercase leading-none tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .book-inspection-fieldset legend svg {
+        @apply h-6 w-6 text-[#ff5a00] stroke-[2.35];
+    }
+
+    .book-inspection-form-grid {
+        @apply grid min-w-0 gap-x-5 gap-y-5 md:grid-cols-2;
+    }
+
+    .book-inspection-field {
+        @apply relative min-w-0;
+    }
+
+    .book-inspection-field--full {
+        @apply mt-5;
+    }
+
+    .book-inspection-field label {
+        @apply mb-2 block text-sm font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .book-inspection-field label > span[aria-hidden='true'] {
+        @apply text-[#ff5a00];
+    }
+
+    .book-inspection-optional {
+        @apply ml-1 text-xs font-semibold text-[#071016]/50;
+    }
+
+    .book-inspection-field input:not([type='hidden']),
+    .book-inspection-field select,
+    .book-inspection-field textarea,
+    .book-inspection-phone-row select,
+    .book-inspection-phone-row input,
+    .book-inspection-date-trigger {
+        @apply block w-full rounded-md border border-[#dfe4e9] bg-white text-sm font-semibold tracking-normal text-[#071016] shadow-sm transition-colors placeholder:text-[#071016]/40 focus:border-[#ff5a00] focus:ring-[#ff5a00];
+        letter-spacing: 0;
+    }
+
+    .book-inspection-field input:not([type='hidden']),
+    .book-inspection-field select,
+    .book-inspection-phone-row select,
+    .book-inspection-phone-row input,
+    .book-inspection-date-trigger {
+        @apply h-11 px-3.5;
+    }
+
+    .book-inspection-field select,
+    .book-inspection-phone-row select {
+        @apply pr-9;
+    }
+
+    .book-inspection-field textarea {
+        @apply min-h-[4.65rem] resize-y px-3.5 py-3;
+    }
+
+    .book-inspection-field p {
+        @apply mt-2 text-sm font-semibold leading-5 tracking-normal text-[#071016]/60;
+        letter-spacing: 0;
+    }
+
+    .book-inspection-registration-row {
+        @apply grid gap-3 sm:grid-cols-[minmax(8.5rem,0.78fr)_11rem];
+    }
+
+    .book-inspection-plate {
+        @apply grid h-11 min-w-0 grid-cols-[1.45rem_minmax(0,1fr)_1.35rem] items-center overflow-hidden rounded-md border border-[#aeb5bc] bg-[#f8fafc] text-[#071016] shadow-sm;
+    }
+
+    .book-inspection-plate span {
+        @apply mx-auto block h-7 w-3 rounded-sm bg-[#008753];
+        box-shadow: inset 0 0 0 2px #f4f7f9, inset 5px 0 0 #e31b23;
+    }
+
+    .book-inspection-plate strong {
+        @apply truncate text-center text-lg font-extrabold leading-none tracking-normal;
+        letter-spacing: 0;
+    }
+
+    .book-inspection-plate small {
+        @apply self-end pb-1 text-[0.55rem] font-extrabold leading-none text-[#071016]/75;
+    }
+
+    .book-inspection-tariff-strip {
+        @apply mt-5 flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2 rounded-md border border-[#cfe8d5] bg-[#f2fbf5] px-4 py-3 text-sm font-extrabold leading-5 tracking-normal text-[#183d2a];
+        letter-spacing: 0;
+    }
+
+    .book-inspection-tariff-strip svg {
+        @apply h-5 w-5 shrink-0 text-[#2e7d32] stroke-[2.3];
+    }
+
+    .book-inspection-checkbox {
+        @apply mt-3 flex cursor-pointer items-start gap-3 text-sm font-semibold leading-6 tracking-normal text-[#071016]/80;
+        letter-spacing: 0;
+    }
+
+    .book-inspection-checkbox input {
+        @apply mt-0.5 h-5 w-5 shrink-0 rounded border-[#cbd2d9] text-[#ff5a00] focus:ring-[#ff5a00];
+    }
+
+    .book-inspection-consent {
+        @apply mt-5;
+    }
+
+    .book-inspection-phone-row {
+        @apply grid grid-cols-[5.6rem_minmax(0,1fr)] gap-2.5;
+    }
+
+    .book-inspection-date-shell {
+        @apply relative;
+    }
+
+    .book-inspection-date-trigger {
+        @apply flex items-center justify-between gap-3 text-left hover:border-[#ffb28d] hover:bg-[#fffaf7];
+    }
+
+    .book-inspection-date-trigger svg {
+        @apply h-5 w-5 shrink-0 text-[#ff5a00] stroke-[2.15];
+    }
+
+    .book-inspection-date-value {
+        @apply min-w-0 truncate;
+    }
+
+    .book-inspection-date-value.is-empty {
+        @apply text-[#071016]/40;
+    }
+
+    .book-inspection-date-picker {
+        @apply pointer-events-none hidden absolute left-0 right-0 top-[calc(100%+0.55rem)] z-30 rounded-lg border border-[#dde4ea] bg-white p-3 shadow-[0_22px_60px_-32px_rgba(7,16,22,0.85)] ring-1 ring-black/5;
+    }
+
+    .book-inspection-date-picker.is-open {
+        @apply pointer-events-auto block;
+    }
+
+    .book-inspection-date-picker-header {
+        @apply grid grid-cols-[2.5rem_minmax(0,1fr)_2.5rem] items-center gap-2 rounded-md bg-[#f6f8fa] px-2 py-2;
+    }
+
+    .book-inspection-date-picker-header button {
+        @apply flex h-9 w-9 items-center justify-center rounded-md text-[#071016] transition-colors hover:bg-white hover:text-[#ff5a00] focus-visible:ring-[#ff5a00];
+    }
+
+    .book-inspection-date-picker-header svg {
+        @apply h-5 w-5 stroke-[2.3];
+    }
+
+    .book-inspection-date-picker-header strong {
+        @apply truncate text-center text-sm font-extrabold capitalize leading-none tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .book-inspection-date-weekdays,
+    .book-inspection-date-days {
+        @apply mt-3 grid grid-cols-7 gap-1;
+    }
+
+    .book-inspection-date-weekdays span {
+        @apply text-center text-[0.69rem] font-extrabold uppercase leading-none tracking-normal text-[#66717b];
+        letter-spacing: 0;
+    }
+
+    .book-inspection-date-day {
+        @apply flex aspect-square min-h-9 items-center justify-center rounded-md border border-transparent text-sm font-extrabold leading-none text-[#071016] transition-colors hover:border-[#ffb28d] hover:bg-[#fff4ee] hover:text-[#ff5a00] focus-visible:ring-[#ff5a00];
+    }
+
+    .book-inspection-date-day.is-muted {
+        @apply text-[#9aa3ad];
+    }
+
+    .book-inspection-date-day.is-today {
+        @apply border-[#ffb28d] bg-[#fff9f5] text-[#ff5a00];
+    }
+
+    .book-inspection-date-day.is-selected {
+        @apply border-[#ff5a00] bg-[#ff5a00] text-white shadow-sm shadow-[#ff5a00]/25 hover:bg-[#ff5a00] hover:text-white;
+    }
+
+    .book-inspection-time-selects {
+        @apply grid grid-cols-2 gap-2.5;
+    }
+
+    .book-inspection-submit {
+        @apply mt-5 inline-flex min-h-[3.45rem] w-full items-center justify-center gap-4 rounded-md bg-[#ff4b0b] px-6 text-lg font-extrabold leading-none tracking-normal text-white shadow-lg shadow-[#ff4b0b]/25 transition-colors hover:bg-[#d73e05];
+        letter-spacing: 0;
+    }
+
+    .book-inspection-submit svg {
+        @apply h-6 w-6 shrink-0 stroke-[2.35];
+    }
+
+    .book-inspection-payment-note {
+        @apply mt-3 flex items-center justify-center gap-3 text-sm font-semibold leading-6 tracking-normal text-[#071016]/70;
+        letter-spacing: 0;
+    }
+
+    .book-inspection-payment-note svg {
+        @apply h-5 w-5 shrink-0 text-[#66717b] stroke-[2.2];
+    }
+
+    .book-inspection-summary {
+        @apply sticky top-28 min-w-0 self-stretch overflow-hidden bg-[#101c27] px-6 py-7 text-white;
+        background:
+            radial-gradient(circle at 100% 0%, rgba(44, 76, 102, 0.42), transparent 18rem),
+            linear-gradient(145deg, #142230 0%, #0b1722 100%);
+    }
+
+    .book-inspection-summary h2 {
+        @apply text-base font-extrabold uppercase leading-none tracking-normal text-white/90;
+        letter-spacing: 0;
+    }
+
+    .book-inspection-summary-list {
+        @apply mt-7 grid gap-7;
+    }
+
+    .book-inspection-summary-item {
+        @apply grid min-w-0 grid-cols-[2.2rem_minmax(0,1fr)] items-start gap-4;
+    }
+
+    .book-inspection-summary-item > svg {
+        @apply h-7 w-7 text-[#ff5a00] stroke-[2.05];
+    }
+
+    .book-inspection-summary-item h3,
+    .book-inspection-secure h3 {
+        @apply text-base font-extrabold leading-tight tracking-normal text-white;
+        letter-spacing: 0;
+    }
+
+    .book-inspection-summary-item p,
+    .book-inspection-secure p {
+        @apply mt-1 text-sm font-semibold leading-6 tracking-normal text-white/75;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .book-inspection-secure {
+        @apply mt-10 grid border-t border-white/20 pt-7 grid-cols-[2rem_minmax(0,1fr)] gap-4;
+    }
+
+    .book-inspection-secure > svg {
+        @apply h-7 w-7 text-[#62bd6f] stroke-[2.05];
+    }
+
+    .book-inspection-support-panel {
+        @apply mt-8 grid rounded-lg border border-[#e4e8ec] bg-white shadow-[0_18px_44px_-36px_rgba(7,16,22,0.75)] lg:grid-cols-[minmax(0,1.04fr)_minmax(0,1fr)];
+    }
+
+    @media (min-width: 1280px) {
+        .book-inspection-support-panel {
+            width: calc(100vw - 16rem);
+            margin-left: calc(50% - 50vw + 8rem);
+            margin-right: calc(50% - 50vw + 8rem);
+        }
+    }
+
+    .book-inspection-support-block,
+    .book-inspection-benefits-block {
+        @apply min-w-0 px-5 py-5 sm:px-6;
+    }
+
+    .book-inspection-benefits-block {
+        @apply border-t border-[#e8ecef] lg:border-l lg:border-t-0;
+    }
+
+    .book-inspection-support-panel h2 {
+        @apply text-sm font-extrabold uppercase leading-none tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .book-inspection-assistance-grid {
+        @apply mt-4 grid gap-4 sm:grid-cols-2;
+    }
+
+    .book-inspection-assistance-card {
+        @apply grid min-w-0 grid-cols-[3.8rem_minmax(0,1fr)] items-center gap-4 rounded-md bg-[#f7f8fa] px-4 py-4 shadow-[inset_0_0_0_1px_rgba(7,16,22,0.02)];
+    }
+
+    .book-inspection-assistance-icon {
+        @apply flex h-12 w-12 items-center justify-center rounded-full border-2 border-[#ff5a00] text-[#ff5a00];
+    }
+
+    .book-inspection-assistance-icon svg {
+        @apply h-8 w-8 stroke-[2.15];
+    }
+
+    .book-inspection-assistance-card h3 {
+        @apply text-sm font-extrabold leading-5 tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .book-inspection-assistance-card a {
+        @apply mt-3 inline-flex min-h-9 items-center justify-center rounded-md border border-[#d5dce3] bg-white px-4 text-sm font-extrabold leading-none tracking-normal text-[#071016] shadow-sm transition-colors hover:border-[#ff5a00] hover:text-[#ff5a00];
+        letter-spacing: 0;
+    }
+
+    .book-inspection-benefits-grid {
+        @apply mt-5 grid gap-4 sm:grid-cols-2 xl:grid-cols-4;
+    }
+
+    .book-inspection-benefit-item {
+        @apply min-w-0;
+    }
+
+    .book-inspection-benefit-icon {
+        @apply flex h-11 w-11 items-center justify-center text-[#ff5a00];
+    }
+
+    .book-inspection-benefit-icon svg {
+        @apply h-9 w-9 stroke-[2.05];
+    }
+
+    .book-inspection-benefit-item h3 {
+        @apply mt-2 max-w-[8rem] text-sm font-semibold leading-5 tracking-normal text-[#071016]/80;
+        letter-spacing: 0;
+    }
+
+    @media (max-width: 1023px) {
+        .book-inspection-layout {
+            @apply grid-cols-1;
+        }
+
+        .book-inspection-summary {
+            @apply static;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .book-inspection-page {
+            @apply py-8;
+        }
+
+        .book-inspection-heading h1 {
+            @apply text-[2rem];
+        }
+
+        .book-inspection-heading span {
+            @apply text-base leading-7;
+        }
+
+        .book-inspection-notice {
+            @apply max-w-none px-4;
+        }
+
+        .book-inspection-layout {
+            @apply gap-5;
+        }
+
+        .book-inspection-form,
+        .book-inspection-summary {
+            @apply px-4 py-5;
+        }
+
+        .book-inspection-form-grid {
+            @apply grid-cols-1;
+        }
+
+        .book-inspection-registration-row {
+            @apply grid-cols-1;
+        }
+
+        .book-inspection-plate {
+            @apply w-full max-w-[12rem];
+        }
+
+        .book-inspection-submit {
+            @apply text-base;
+        }
+
+        .book-inspection-summary-list {
+            @apply gap-5;
+        }
+
+        .book-inspection-support-panel {
+            @apply mt-6;
+        }
+
+        .book-inspection-support-block,
+        .book-inspection-benefits-block {
+            @apply px-4 py-5;
+        }
+
+        .book-inspection-assistance-grid,
+        .book-inspection-benefits-grid {
+            @apply grid-cols-1;
+        }
+
+        .book-inspection-benefit-item {
+            @apply grid grid-cols-[3rem_minmax(0,1fr)] items-center gap-3;
+        }
+
+        .book-inspection-benefit-item h3 {
+            @apply mt-0 max-w-none;
+        }
+    }
+
     .process-timeline {
         @apply relative grid gap-6 md:grid-cols-2 xl:grid-cols-6 xl:gap-4;
     }

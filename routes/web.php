@@ -15,7 +15,7 @@ Route::get('/', function () {
 Route::view('/about', 'public.about')->name('about');
 Route::view('/centers', 'public.centers-index')->name('centers.index');
 Route::view('/services', 'public.services-index')->name('services.index');
-Route::view('/book-inspection', 'public.placeholder', ['pageTitle' => 'navigation.book'])->name('book-inspection');
+Route::view('/book-inspection', 'public.book-inspection')->name('book-inspection');
 Route::view('/tariffs', 'public.tariffs')->name('tariffs');
 Route::view('/inspection-process', 'public.inspection-process')->name('inspection-process');
 Route::view('/blog', 'public.placeholder', ['pageTitle' => 'navigation.blog'])->name('blog.index');
