@@ -40,7 +40,7 @@ Blade components (`resources/views/components/public/`):
 
 **Marketing blocks:** hero-split (with status overlay card), center-availability-strip, trust-strip, about-preview-cards, cta-section (final + footer band)  
 
-**Content cards:** service-card, center-card (status badges), tariff-card, tariff-table, tariff-category-selector, pricing-console, tariff-matrix, tariff-result-card, tariff-regulatory-section, tariff-logistics-strip, tariff-faq, tariff-mobile-action-bar, blog-card, career-card  
+**Content cards:** service-card, center-card (homepage preview), center-network-intro, center-filters, center-finder, center-list-item, center-profile-panel, center-expansion-card, center-expansion-detail, centers-visit-cta, center-map (lazy), tariff-card, tariff-table, tariff-category-selector, pricing-console, tariff-matrix, tariff-result-card, tariff-regulatory-section, tariff-logistics-strip, tariff-faq, tariff-mobile-action-bar, blog-card, career-card  
 
 **Process & trust:** process-steps (6-step timeline), technical-checks-grid (6 checks), inspection-result (Accepted/Suspended/Refused)  
 
@@ -80,13 +80,62 @@ Full spec: [DESIGN.md](DESIGN.md) §5. Summary:
 ### About
 Company intro, mission, vision, values, road-safety commitment, professional inspection approach, center-expansion statement, CTA.
 
-### Centers (index + detail)
+### Centers page (`/centers`) — Dynamic Center Finder (4 blocks)
 
-**Data source:** [CENTERS_DATA.md](CENTERS_DATA.md).
+**Data source:** [CENTERS_DATA.md](CENTERS_DATA.md). **Index-only** — no `/centers/{slug}` detail route. Reuse lazy-map patterns from contact page where applicable.
 
-Index: center cards — name, city, status badge (Operational green / Opening before November 2026 amber), hours, phone, address, landmark, services, vehicle categories, photo, Get Directions, Book at this Center (operational only).
+**Block 1 — Network introduction and search controls**
 
-Routes: `/centers`, `/centers/{slug}`.
+Compact off-white intro (no photographic hero):
+
+- Eyebrow: **OUR INSPECTION CENTERS**
+- Headline: Find the NACHO Center Nearest to You
+- Supporting text + network indicators: **3** current centers, **2** expansion, **5** locations, **10+ years** experience
+- Search bar — placeholder: "Search by city or center name" (matches keywords in CENTERS_DATA)
+- Region filter: All Regions, Centre, Northwest, Littoral, Southwest
+- Service filter: All Services + 5 services from [SEEDING.md](SEEDING.md) §4 — only centers with `center_service.is_available` match
+- **Reset Filters**
+- **List View | Map View** toggle — desktop default: split List+Map; mobile default: List View
+- Optional **Find Nearest Center** — requests geolocation **only** after user taps; manual search remains if denied
+
+**Do not** show large "Open Now" or "Operational" badges on current-center cards — section separation communicates availability.
+
+**Block 2 — Dynamic Center Finder**
+
+| Layout | Behaviour |
+|--------|-----------|
+| Desktop | **42%** center list \| **58%** map + selected-center profile |
+| Mobile | Filters → toggle → cards → selected details → expandable map |
+
+**List View** works fully without map JavaScript.
+
+**Current-center card (collapsed):** photo, name, short address, primary hours, primary phone, service summary (from pivot), expand control, **Book**, **Directions**.
+
+**On select/expand:** full hours, alternative phones, email, services, map action; HQ card uses progressive disclosure ([CENTERS_DATA.md](CENTERS_DATA.md) §C).
+
+**Selected-center profile (desktop):** photo, name, address, hours, primary phone, email, services, **Book at This Center**, Call, Send Email, View on Google Maps — no raw GPS coordinates.
+
+**Map View:** lazy-load map library only when selected. Markers: solid burnt-orange (active), outlined grey-orange (expansion). Card ↔ marker sync. On load failure: message + revert to List View + preserve selection + keep Google Maps links.
+
+**Booking:** `/book-inspection?center={slug}` — customer can change center in form.
+
+**Block 3 — Expansion Network**
+
+Separate section below finder — Douala and Kumba only:
+
+- Heading: Expanding the NACHO Network
+- Muted project cards: region, Under Construction, verified phase, target opening, last updated
+- **View Expansion Details** (disclosure/modal) — **no** booking, call, directions, Notify Me, or SMS subscription
+
+**Block 4 — Visit planning CTA**
+
+Dark charcoal band: "Found Your Nearest NACHO Center?" + **Book an Inspection** primary; secondary links to Tariffs, Inspection Process, Contact.
+
+**Mobile order:** intro → search/filters → toggle → current cards → selected details → expansion → CTA. No sticky bottom bar covering content.
+
+**Finder components:** `center-network-intro`, `center-filters`, `center-finder`, `center-list-item`, `center-profile-panel`, `center-expansion-card`, `center-expansion-detail`, `centers-visit-cta`, `center-map`.
+
+**Homepage (§4 #8):** compact centers preview linking to `/centers` — do not duplicate full finder ([DESIGN.md](DESIGN.md) §11).
 
 ### Services (index + 5 detail pages)
 
@@ -134,7 +183,7 @@ Rates consistency and failed-inspection/counter-visit answers per CONTENT_GUIDEL
 
 ### Booking
 
-Form fields unchanged — no reminder/expiry fields. See [SECURITY.md](SECURITY.md).
+Form fields unchanged — no reminder/expiry fields. Accepts `?center={slug}` query param from Centers finder (preselect center; user may change). See [SECURITY.md](SECURITY.md).
 
 ### Blog (index + detail)
 
@@ -161,6 +210,7 @@ Privacy, Terms, Cookies, Legal Notice — from `pages` table when wired.
 - Mobile-first; tariff tables → cards on small screens  
 - WCAG AA contrast; focus states; semantic landmarks; bilingual alt text  
 - Lazy-loaded images; prefer real NACHO photos — [DESIGN.md](DESIGN.md) §9  
+- **Centers finder:** keyboard navigation; visible focus on List/Map toggle and expandable cards (`aria-expanded`); screen-reader labels on phone/actions; map-independent access to all center info; marker distinction by colour **and** shape; geolocation consent copy before request  
 
 ## 7. Language switcher
 

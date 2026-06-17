@@ -22,8 +22,7 @@ Clean, single (locale-less) URLs:
 
 - `/` - Home
 - `/about` - About
-- `/centers` - Centers index
-- `/centers/{slug}` - Center detail
+- `/centers` - Dynamic Center Finder (index-only)
 - `/services` - Services index
 - `/services/{slug}` - Service detail
 - `/book-inspection` - Booking
@@ -37,7 +36,7 @@ Clean, single (locale-less) URLs:
 - `/privacy-policy`, `/terms-and-conditions`, `/cookie-policy`, `/legal-notice` - Legal
 - `/compliance-quality` - Compliance & quality
 
-Service URLs use **English slugs** (locked decision): `periodic-inspection`, `counter-visit`, `heavy-vehicles`, `pre-purchase`, `road-safety`. Center URLs: `/centers/{slug}` — e.g. `nacho-yaounde`, `nacho-nkwen-bamenda`, `nacho-mankon-bamenda`, `nacho-douala`, `nacho-kumba` ([CENTERS_DATA.md](CENTERS_DATA.md)).
+Service URLs use **English slugs** (locked decision): `periodic-inspection`, `counter-visit`, `heavy-vehicles`, `pre-purchase`, `road-safety`. Center booking preselect: `/book-inspection?center={slug}` — e.g. `nacho-yaounde` ([CENTERS_DATA.md](CENTERS_DATA.md)). No public `/centers/{slug}` detail route.
 
 French SEO keywords are targeted via `seo_title_fr`, meta descriptions, and page content — not via URL segments. See section 8 for target keyword list.
 
@@ -54,7 +53,7 @@ SEO fields are editable for: services, blog posts, pages, centers (and careers i
 ## 5. Structured data (JSON-LD)
 
 - **Organization** (or **LocalBusiness** / `AutomotiveBusiness`) on the homepage: name, URL, logo, contact, **slogan** (*Drive Safe. Stay Compliant. Trust NACHO.* / FR equivalent).
-- Optionally per-center `LocalBusiness` with address/geo on center detail pages.
+- **`ItemList` or multiple `LocalBusiness`** entries on `/centers` index JSON-LD for active centers (address, geo internal to schema — not raw coordinates on page).
 - Optionally `Article` on blog detail pages.
 
 ## 6. i18n & SEO trade-off (documented decision)

@@ -7,7 +7,7 @@ Build a modern, professional, bilingual, mobile-responsive website for **NACHO V
 The website helps visitors:
 
 - understand NACHO's services
-- locate NACHO inspection centers
+- locate NACHO inspection centers via the **Dynamic Center Finder** (`/centers`) — search, filters, list/map, and booking preselect
 - view official vehicle inspection tariffs via the **Master Pricing Console** (`/tariffs`)
 - understand the inspection process
 - request an inspection booking

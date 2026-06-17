@@ -41,7 +41,7 @@ flowchart LR
 | 5 | Reusable Blade components | done |
 | 6 | Static homepage (14 sections per [DESIGN.md](DESIGN.md)) | done |
 | 7 | Static About page | pending |
-| 8 | Static Centers index + detail | pending |
+| 8 | Centers page — Dynamic Center Finder (4 blocks) | pending |
 | 9 | Static Services index | pending |
 | 10 | Static Service detail pages (×5) | pending |
 | 11 | Static Tariffs page — Master Pricing Console (4 blocks) | pending |
@@ -110,4 +110,4 @@ Steps 45–50 start only after Step 44 UAT sign-off. See [DEPLOYMENT.md](DEPLOYM
 - Verified certifications/approvals (otherwise safe wording is used)
 - WhatsApp number for general click-to-chat (optional)
 
-**Build steps using center data:** Step 6 (homepage preview), Step 8 (static centers), Step 14 (contact/HQ), Step 20 (seeders), Step 28 (admin centers).
+**Build steps using center data:** Step 6 (homepage preview), Step 8 (Dynamic Center Finder), Step 14 (contact/HQ), Step 20 (seeders: contacts, hours, pivot), Step 28 (admin centers).

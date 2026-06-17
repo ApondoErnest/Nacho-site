@@ -6,28 +6,31 @@ The schema is designed only for the confirmed scope. There are **no** reminder, 
 
 ## 1. Tables overview
 
-Core spec tables (15):
+Core spec tables (18):
 
 1. `roles`
 2. `users`
 3. `centers`
-4. `services`
-5. `center_service`
-6. `tariffs`
-7. `bookings`
-8. `contact_messages`
-9. `blog_categories`
-10. `blog_posts`
-11. `career_posts`
-12. `job_applications`
-13. `pages`
-14. `media`
-15. `site_settings`
+4. `center_contacts`
+5. `center_hours`
+6. `services`
+7. `center_service`
+8. `center_progress_updates`
+9. `tariffs`
+10. `bookings`
+11. `contact_messages`
+12. `blog_categories`
+13. `blog_posts`
+14. `career_posts`
+15. `job_applications`
+16. `pages`
+17. `media`
+18. `site_settings`
 
-Plus Laravel framework tables (`password_reset_tokens`, `sessions`, `cache`, `jobs`, `failed_jobs`, etc.) and one enhancement table:
+Plus Laravel framework tables (`password_reset_tokens`, `sessions`, `cache`, `jobs`, `failed_jobs`, etc.) and enhancement tables:
 
-16. `tariff_revisions` - scheduled/regulatory price versions with effective dates (see ADR 007 in [adr/](adr/))
-17. `tariff_audit_logs` - immutable admin edit history (see ADR 006 in [adr/](adr/) and [SECURITY.md](SECURITY.md))
+19. `tariff_revisions` - scheduled/regulatory price versions with effective dates (see ADR 007 in [adr/](adr/))
+20. `tariff_audit_logs` - immutable admin edit history (see ADR 006 in [adr/](adr/) and [SECURITY.md](SECURITY.md))
 
 ## 2. Entity relationship diagram
 
@@ -39,6 +42,9 @@ erDiagram
     centers ||--o{ bookings : "receives"
     services ||--o{ bookings : "for"
     tariffs ||--o{ bookings : "priced_by"
+    centers ||--o{ center_contacts : "has"
+    centers ||--o{ center_hours : "has"
+    centers ||--o{ center_progress_updates : "has"
     centers ||--o{ center_service : ""
     services ||--o{ center_service : ""
     blog_categories ||--o{ blog_posts : "groups"
@@ -66,14 +72,55 @@ erDiagram
     }
     centers {
         bigint id PK
-        string name
+        string name_en
+        string name_fr
         string slug UK
-        string city
-        string region
+        string city_en
+        string city_fr
+        string region_en
+        string region_fr
         string status
+        boolean is_headquarters
+        boolean booking_enabled
         decimal latitude
         decimal longitude
+        string google_maps_url
+        date target_opening_date
+        string expansion_phase
+        datetime expansion_updated_at
+        int display_order
         boolean is_active
+    }
+    center_contacts {
+        bigint id PK
+        bigint center_id FK
+        string type
+        string label_en
+        string label_fr
+        string value
+        boolean is_primary
+        boolean is_public
+        int display_order
+    }
+    center_hours {
+        bigint id PK
+        bigint center_id FK
+        string day_of_week
+        time opens_at
+        time closes_at
+        boolean is_closed
+        string special_note_en
+        string special_note_fr
+    }
+    center_progress_updates {
+        bigint id PK
+        bigint center_id FK
+        string phase
+        text update_en
+        text update_fr
+        datetime published_at
+        string image_path
+        boolean is_published
     }
     services {
         bigint id PK
@@ -87,6 +134,9 @@ erDiagram
         bigint id PK
         bigint center_id FK
         bigint service_id FK
+        boolean is_available
+        boolean booking_enabled
+        date effective_date
     }
     tariffs {
         bigint id PK
@@ -186,30 +236,65 @@ Default roles seeded: Super Admin, Admin, Center Manager, Receptionist, Inspecto
 Relationships: a role has many users; a user belongs to one role.
 
 ### 3.3 centers
-- `name` (string)
-- `slug` (string, unique)
-- `city` (string)
-- `region` (string, nullable)
-- `address` (text, nullable)
-- `phone` (string, nullable)
-- `email` (string, nullable)
-- `opening_hours` (json or text, nullable) — structured schedules; see [CENTERS_DATA.md](CENTERS_DATA.md) for examples. **Simple:** one Mon–Sat block (Bamenda centers). **Split:** separate weekday vs Saturday/holiday blocks (Yaounde). Shape: `{ "timezone": "Africa/Douala", "schedules": [{ "label_fr", "label_en", "days": [], "open", "close", optional "note_fr"/"note_en" }] }`
-- `status` (string: `operational`, `under_construction`; default `operational`)
-- `description_fr` (text, nullable)
-- `description_en` (text, nullable)
-- `latitude` (decimal 10,7, nullable)
-- `longitude` (decimal 10,7, nullable)
-- `map_url` (string, nullable)
-- `nearby_landmark` (string, nullable) - e.g. "Mendong market", "NTEFINKI Quarter mile 6 Nkwen"
-- `vehicle_categories_fr` (text, nullable) - accepted vehicle types (French)
-- `vehicle_categories_en` (text, nullable) - accepted vehicle types (English)
-- `featured_image` (string, nullable)
+
+Each row is one inspection center in the Dynamic Center Finder ([FRONTEND.md](FRONTEND.md)). Verified data: [CENTERS_DATA.md](CENTERS_DATA.md). See ADR 008 for normalized contacts/hours.
+
+- `name_en`, `name_fr` (string) - display name (proper nouns may match across locales, e.g. "NACHO Yaounde")
+- `slug` (string, unique) - URL-safe identifier; used for booking preselect `?center={slug}`
+- `city_en`, `city_fr` (string)
+- `region_en`, `region_fr` (string, nullable) - e.g. Centre, Northwest, Littoral, Southwest
+- `address_en`, `address_fr` (text, nullable) - public street address
+- `postal_address` (string, nullable) - e.g. P.O. Box 100 Bamenda (HQ center)
+- `status` (string, default `active`) - `planned`, `construction`, `active`, `inactive`. **Migration note:** map legacy `operational` → `active`, `under_construction` → `construction`
+- `is_headquarters` (boolean, default false) - true for NACHO Nacho-Bamenda / administrative HQ
+- `booking_enabled` (boolean, default false) - controls "Book at This Center" in finder; false for expansion centers
+- `description_fr`, `description_en` (text, nullable) - narrative / HQ supporting note
+- `latitude`, `longitude` (decimal 10,7, nullable) - internal map coordinates; **not** shown as raw GPS on public pages
+- `google_maps_url` (string, nullable) - public directions link (replaces legacy `map_url`)
+- `nearby_landmark` (string, nullable) - searchable keyword, e.g. "Mendong market", "NTEFINKI Quarter mile 6 Nkwen"
+- `search_keywords` (text, nullable) - comma-separated extra search terms (Mendong, Atuakum, Nkwen, etc.)
+- `vehicle_categories_fr`, `vehicle_categories_en` (text, nullable) - accepted vehicle types
+- `featured_image` (string, nullable) - main center photograph path
+- `target_opening_date` (date, nullable) - structured expected opening for expansion centers
+- `target_date_text_en`, `target_date_text_fr` (string, nullable) - public display text, e.g. "Before November 2026"
+- `expansion_phase` (string, nullable) - verified project phase for construction centers (see CENTERS_DATA.md)
+- `expansion_updated_at` (datetime, nullable) - when phase was last confirmed
+- `display_order` (int, default 0) - card ordering in finder / expansion sections
+- `is_featured` (boolean, default false) - optional visual emphasis
 - `is_active` (boolean, default true)
 - soft deletes
 
-Note: center name is treated as language-neutral (proper noun, e.g. "NACHO Yaounde"); bilingual narrative lives in `description_fr/_en`. Verified center list: [CENTERS_DATA.md](CENTERS_DATA.md).
+**Deprecated on `centers`:** single `phone`, `email`, `opening_hours` JSON — migrate to `center_contacts` and `center_hours` (ADR 008). Contacts and hours are child rows, not Blade-hard-coded.
 
-### 3.4 services
+**Public grouping:** `status = active` + `booking_enabled` → Block 2 (current centers finder). `status = construction` (or `planned`) → Block 3 (expansion network). Admin activating an expansion center updates status and moves it automatically.
+
+### 3.4 center_contacts
+
+Multiple phones, WhatsApp lines, and emails per center. Replaces inflexible `phone_1` / `phone_2` fields.
+
+- `center_id` (FK -> centers, cascade on delete)
+- `type` (string) - `phone`, `whatsapp`, `email`
+- `label_en`, `label_fr` (string, nullable) - e.g. "Primary", "Alternative"
+- `value` (string) - phone number or email address
+- `is_primary` (boolean, default false) - one primary per type recommended
+- `is_public` (boolean, default true) - hide internal-only contacts
+- `display_order` (int, default 0)
+
+Public `tel:` links strip formatting to digits (e.g. `+237675117327`). HQ progressive disclosure on Nacho-Bamenda reveals non-primary phones when expanded.
+
+### 3.5 center_hours
+
+Structured weekly schedule. Replaces `centers.opening_hours` JSON.
+
+- `center_id` (FK -> centers, cascade on delete)
+- `day_of_week` (string) - `monday` … `sunday`
+- `opens_at`, `closes_at` (time, nullable) - null when closed
+- `is_closed` (boolean, default false)
+- `special_note_en`, `special_note_fr` (string, nullable) - e.g. "Includes public holidays" for Yaounde Saturday block
+
+**Future (out of scope v1):** `center_special_hours` for one-off holiday closures and temporary schedule changes.
+
+### 3.6 services
 - `slug` (string, unique)
 - `title_fr`, `title_en` (string)
 - `short_description_fr`, `short_description_en` (text, nullable)
@@ -224,14 +309,32 @@ Note: center name is treated as language-neutral (proper noun, e.g. "NACHO Yaoun
 
 Default services seeded - see [SEEDING.md](SEEDING.md).
 
-### 3.5 center_service (pivot)
+### 3.7 center_service (pivot)
+
+Many-to-many: one center offers many services; one service is available at many centers. Drives **service filter** on the Centers finder — only assigned services appear on a center card.
+
 - `center_id` (FK -> centers, cascade on delete)
 - `service_id` (FK -> services, cascade on delete)
+- `is_available` (boolean, default true) - show service on center card/profile
+- `booking_enabled` (boolean, default true) - allow online booking for this service at this center
+- `note_en`, `note_fr` (text, nullable) - optional availability note
+- `effective_date` (date, nullable) - when service becomes available at center
 - unique(`center_id`, `service_id`)
 
-Many-to-many: one center offers many services; one service is available at many centers.
+### 3.8 center_progress_updates
 
-### 3.6 tariffs
+Optional expansion history for Douala/Kumba — preserves verified project timeline instead of overwriting a single phase field.
+
+- `center_id` (FK -> centers, cascade on delete)
+- `phase` (string) - same enum values as `centers.expansion_phase`
+- `update_en`, `update_fr` (text, nullable) - progress note
+- `published_at` (datetime, nullable)
+- `image_path` (string, nullable) - optional progress photo
+- `is_published` (boolean, default false)
+
+Current public phase displays `centers.expansion_phase` + `expansion_updated_at`; history table powers "View Expansion Details" modal when populated.
+
+### 3.9 tariffs
 
 Each row is one **bookable vehicle category line** in the Master Pricing Console. `category_code` alone is **not** unique (Category D has two rows); `category_slug` is the unique public identifier.
 
@@ -259,7 +362,7 @@ Each row is one **bookable vehicle category line** in the Master Pricing Console
 
 Default tariffs seeded — see [SEEDING.md](SEEDING.md).
 
-### 3.7 tariff_revisions
+### 3.10 tariff_revisions
 
 Scheduled or regulatory price updates without overwriting history. See ADR 007.
 
@@ -273,7 +376,7 @@ Scheduled or regulatory price updates without overwriting history. See ADR 007.
 
 The application activates the revision whose `effective_date` is current — admins do not manually swap prices at midnight.
 
-### 3.8 tariff_audit_logs (enhancement)
+### 3.11 tariff_audit_logs (enhancement)
 - `tariff_id` (FK -> tariffs, cascade)
 - `user_id` (FK -> users, nullable) - who changed it
 - `changes` (json) - before/after of changed fields
@@ -281,7 +384,7 @@ The application activates the revision whose `effective_date` is current — adm
 
 Written automatically by the admin tariff update flow. No `updated_at` (append-only). Complements `tariff_revisions` (scheduled publishing) — see ADR 006 vs ADR 007.
 
-### 3.9 bookings
+### 3.12 bookings
 - `booking_reference` (string, unique) - format `NACHO-YYYYMMDD-XXXX`
 - `full_name` (string)
 - `phone` (string)
@@ -302,7 +405,7 @@ Status values: `pending`, `confirmed`, `arrived`, `in_inspection`, `completed`, 
 
 Must NOT include: expiry date, reminder date, reminder status, SMS status, WhatsApp status, reminder consent.
 
-### 3.10 contact_messages
+### 3.13 contact_messages
 - `full_name` (string)
 - `email` (string)
 - `phone` (string, nullable)
@@ -313,12 +416,12 @@ Must NOT include: expiry date, reminder date, reminder status, SMS status, Whats
 
 Status values: `new`, `read`, `replied`, `archived`.
 
-### 3.11 blog_categories
+### 3.14 blog_categories
 - `name_fr`, `name_en` (string)
 - `slug` (string, unique)
 - `description_fr`, `description_en` (text, nullable)
 
-### 3.12 blog_posts
+### 3.15 blog_posts
 - `blog_category_id` (FK -> blog_categories, nullable on delete set null)
 - `author_id` (FK -> users, nullable on delete set null)
 - `title_fr`, `title_en` (string)
@@ -334,7 +437,7 @@ Status values: `new`, `read`, `replied`, `archived`.
 
 Status values: `draft`, `published`, `archived`.
 
-### 3.13 career_posts
+### 3.16 career_posts
 - `title_fr`, `title_en` (string)
 - `slug` (string, unique)
 - `location` (string, nullable)
@@ -348,7 +451,7 @@ Status values: `draft`, `published`, `archived`.
 
 Status values: `draft`, `open`, `closed`.
 
-### 3.14 job_applications
+### 3.17 job_applications
 - `career_post_id` (FK -> career_posts, nullable on delete set null)
 - `full_name` (string)
 - `email` (string)
@@ -360,7 +463,7 @@ Status values: `draft`, `open`, `closed`.
 
 Status values: `new`, `reviewed`, `shortlisted`, `rejected`, `accepted`.
 
-### 3.15 pages
+### 3.18 pages
 - `title_fr`, `title_en` (string)
 - `slug` (string, unique)
 - `content_fr`, `content_en` (longtext, nullable)
@@ -371,7 +474,7 @@ Status values: `new`, `reviewed`, `shortlisted`, `rejected`, `accepted`.
 
 Used for: Privacy Policy, Terms and Conditions, Cookie Policy, Legal Notice (and optionally About / Compliance). Status values: `draft`, `published`, `archived`.
 
-### 3.16 media
+### 3.19 media
 - `uploaded_by` (FK -> users, nullable on delete set null)
 - `file_name` (string)
 - `file_path` (string)
@@ -382,7 +485,7 @@ Used for: Privacy Policy, Terms and Conditions, Cookie Policy, Legal Notice (and
 
 Stores center/service/blog/page images, career CVs, optional booking documents.
 
-### 3.17 site_settings
+### 3.20 site_settings
 - `key` (string, unique)
 - `value` (text, nullable)
 - `type` (string, default `text`) - e.g. `text`, `boolean`, `image`, `color`
@@ -392,8 +495,9 @@ Example keys: `site_name`, `default_language`, `contact_email`, `contact_phone`,
 ## 4. Relationships summary
 
 - one role has many users; one user belongs to one role
-- one center has many bookings; one service has many bookings; one tariff has many bookings
-- centers and services are many-to-many via `center_service`
+- one center has many bookings, many contacts, many hours rows, and many progress updates
+- one service has many bookings; one tariff has many bookings
+- centers and services are many-to-many via `center_service` (with availability flags)
 - one blog category has many blog posts; one blog post belongs to one category
 - one user authors many blog posts
 - one career post has many job applications; one application belongs to one career post

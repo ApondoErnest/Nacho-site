@@ -12,11 +12,15 @@ NACHO has **3 operational centers** and **2 centers under construction**, openin
   - EN: "Opening before November 2026."
   - FR: "Ouverture avant novembre 2026."
 - Center counts shown anywhere (home, about, centers) must reflect 3 operational + 2 under construction.
-- Booking is offered only for operational centers; under-construction centers show the opening notice instead of a booking CTA.
+- Booking is offered only for active centers (`booking_enabled`); construction centers show expansion details only — no booking CTA.
+- **Centers finder (Block 2):** do **not** use large "Open Now" or "Operational" badges on current-center cards — section layout communicates availability.
+- **Geolocation:** request browser location only after the user taps **Find Nearest Center** — never on page load.
+- **Expansion phases:** display only verified `expansion_phase` values from admin; no fabricated completion percentages.
+- **Expansion cards:** no Notify Me, SMS, or WhatsApp subscription CTAs until center is active.
 
 **Geography (verified network):** Operational centers are **NACHO Yaounde** (Centre), **NACHO Nkwen-Bamenda**, and **NACHO Nacho-Bamenda** (Northwest). Under construction: **NACHO Douala** and **NACHO Kumba** (Littoral / Southwest) — may show “Coming soon” plus the November 2026 line. Do not reference Bafoussam, Garoua, or multiple operational Douala sites. Full contacts: [CENTERS_DATA.md](CENTERS_DATA.md) (labels A–E).
 
-**Headquarters:** Main HQ (Atuakum Mankon, P.O. Box 100 Bamenda) is corporate contact for footer/contact — not a sixth operational center in the 5-center grid.
+**Headquarters:** Nacho-Bamenda center row (`is_headquarters`) — progressive disclosure on finder card. Corporate contact for footer/contact may mirror same data in `site_settings`.
 
 ## 2. Bilingual parity
 

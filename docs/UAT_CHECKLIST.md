@@ -7,7 +7,8 @@ The local version is considered stable (ready for Dockerization) only when all i
 - [ ] Home page renders all 14 sections per [DESIGN.md](DESIGN.md) (hero split, center strip, 6-step timeline, technical checks, result cards, footer CTA, floating book button)
 - [ ] Center status shows 3 operational + 2 under construction (opening before Nov 2026)
 - [ ] About page complete (mission, vision, values, road safety, expansion, CTA)
-- [ ] Centers index + each center detail page work (map, hours, services, gallery)
+- [ ] Centers page — Dynamic Center Finder: 4 blocks; region/service filters; desktop 42/58 split; category select → expandable card → Book preselect (`?center=slug`); List/Map toggle; lazy map + failure fallback; HQ progressive disclosure on Nacho-Bamenda
+- [ ] Expansion section separate from active finder; no booking/notify on Douala/Kumba; verified phase copy only
 - [ ] Services index + all 5 service detail pages render full content
 - [ ] Tariffs page — Master Pricing Console: category select → result card → Book preselect; Show All Tariffs matrix toggle; mobile sticky bar + accordion/modal
 - [ ] Tariffs page shows safe regulatory notice (no unverified homologation claims); FAQ wording per [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md) §3.3
@@ -34,6 +35,7 @@ The local version is considered stable (ready for Dockerization) only when all i
 - [ ] Dashboard summary cards show correct counts
 - [ ] Each role sees only its permitted modules
 - [ ] Center / service CRUD works
+- [ ] Admin center: contacts, hours, service pivot flags, expansion phase, activate construction center workflow
 - [ ] Admin tariff: create future revision, preview, auto-activation by effective date; revision + audit history visible; no hard delete of historical tariffs
 - [ ] Booking status workflow works; admin notes save
 - [ ] Contact message statuses work

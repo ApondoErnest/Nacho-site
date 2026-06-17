@@ -24,7 +24,7 @@ todos:
     content: "Phase 7 (Step 7): Static About page"
     status: pending
   - id: phase-08
-    content: "Phase 8 (Step 8): Static Centers index + detail"
+    content: "Phase 8 (Step 8): Centers page — Dynamic Center Finder (4 blocks)"
     status: pending
   - id: phase-09
     content: "Phase 9 (Step 9): Static Services index"
@@ -209,7 +209,7 @@ Built as **static Blade** first; wired to DB at Step 22. Content rules: 3 operat
 | Phase / Step | Task | Spec | Route |
 |:--:|------|------|-------|
 | **7** | About page | §5.1 | `/about` |
-| **8** | Centers index + detail (landmark, vehicle categories, map, status wording) | §5.2, §11 | `/centers`, `/centers/{slug}` |
+| **8** | Centers — Dynamic Center Finder (4 blocks, index-only, lazy map) | [DESIGN.md](docs/DESIGN.md) §11, [FRONTEND.md](docs/FRONTEND.md) | `/centers` |
 | **9** | Services index | §5.3 | `/services` |
 | **10** | Service detail pages (×5) with full inspection-point copy per §10.1–10.5 | §5.4–5.8 | `/services/{slug}` (English slugs) |
 | **11** | Tariffs — Master Pricing Console (4 blocks, mobile UX) | [DESIGN.md](docs/DESIGN.md), [FRONTEND.md](docs/FRONTEND.md) | `/tariffs` |
@@ -229,8 +229,8 @@ Built as **static Blade** first; wired to DB at Step 22. Content rules: 3 operat
 
 | Phase / Step | Task | Spec | Exit |
 |:--:|------|------|------|
-| **19** | Migrations: 15 tables + audit log + `tariff_revisions`; expanded `tariffs` (`category_slug`, effective dating); center fields (`nearby_landmark`, `vehicle_categories_*`) | §6, [DATABASE.md](docs/DATABASE.md) | Migrations ready |
-| **20** | Seed data: roles, admin, services, **7 tariffs with slugs**, centers (landmarks), blog topics, legal, settings (incl. logistics keys) | §13, [SEEDING.md](docs/SEEDING.md) | `migrate:fresh --seed` OK |
+| **19** | Migrations: core tables + `tariff_revisions` + `center_contacts` + `center_hours` + `center_progress_updates`; expanded `tariffs` and `centers` + `center_service` pivot | [DATABASE.md](docs/DATABASE.md), ADR 007–008 | Migrations ready |
+| **20** | Seed data: roles, admin, services, 7 tariffs, centers (contacts, hours, pivot), blog topics, legal, settings | [SEEDING.md](docs/SEEDING.md) | `migrate:fresh --seed` OK |
 | **21** | Models, relationships, enums, factories | §7.4 | `migrate:fresh --seed` OK |
 
 Bookings table: **no** reminder/expiry columns.
@@ -241,7 +241,7 @@ Bookings table: **no** reminder/expiry columns.
 
 | Phase / Step | Task | Spec | Exit |
 |:--:|------|------|------|
-| **22** | Public controllers: replace static placeholders with DB content | §7.2 | Dynamic centers, services, blog, careers, legal |
+| **22** | Public controllers: replace static placeholders with DB content; `CenterFinderService`, `TariffService` | §7.2 | Dynamic centers finder, services, blog, careers, legal |
 | **23** | Booking backend: validation, `BookingReferenceService`, persistence, confirmation | §5.11 | Reference shown; no reminder fields |
 | **24** | Contact backend: validation, storage, staff email | §5.15 | Messages in admin |
 | **25** | Career application backend: validation, CV upload, staff email | §5.14 | Applications linked to posts |
@@ -317,7 +317,7 @@ See [DEPLOYMENT.md](docs/DEPLOYMENT.md). Deploy steps run one at a time when you
 | 5 | 5 | Components library |
 | 6 | 6 | Homepage (static) |
 | 7 | 7 | About (static) |
-| 8 | 8 | Centers (static) |
+| 8 | 8 | Centers — Dynamic Center Finder |
 | 9 | 9 | Services index (static) |
 | 10 | 10 | Service details (static) |
 | 11 | 11 | Tariffs — Pricing Console |
@@ -399,7 +399,7 @@ Spec §4 and §19: design frontend structure before backend logic.
 | Stack | Laravel, Blade, **Tailwind** (not Bootstrap), Vite, Breeze | ADR 001 |
 | Database | MySQL `nacho_vehicle_inspection` | ADR 004 |
 | i18n | Session locale, FR default, single URLs | ADR 002 |
-| **URL paths** | **English paths** — `/centers/{slug}`, English service slugs (`periodic-inspection`, etc.) | User confirmed; French keyword slugs from proposal §18 deferred |
+| **URL paths** | **English paths** — `/centers` (index-only finder), English service slugs (`periodic-inspection`, etc.) | User confirmed; French keyword slugs from proposal §18 deferred |
 | Roles | 6 roles (Super Admin → Content Manager) | [ROLES.md](docs/ROLES.md) |
 | Booking statuses | 8 values: pending → confirmed → arrived → in_inspection → completed; plus cancelled, no_show, rescheduled | Proposal §12.3 |
 | Reminders / fleet | Excluded; separate SMS/WhatsApp system stays independent | Proposal §1, §23 |
@@ -430,7 +430,7 @@ Cross-check against the updated unified proposal. **Already aligned** — no pla
 | **Slogan in UI** | §3 | Show slogan in hero tagline and JSON-LD: *Drive Safe. Stay Compliant. Trust NACHO.* / FR equivalent | 6, 40 |
 | **Homepage content audit** | §8 | Step 6 exit criteria: homepage must answer who / what / where / why / next (five questions) | 6 |
 | **Nav order** | §7 | Main nav order: Home → About → Centers → Services → **Book** → Tariffs → Process → Blog → Compliance → Careers → Contact; Book stays highlighted CTA | 4 |
-| **Center cards** | §9.2, §11 | **Verified data:** [CENTERS_DATA.md](docs/CENTERS_DATA.md) from `CCTs of NACHO.docx`. Schema fields + seed/static pages use real Yaounde/Bamenda/Douala/Kumba network | 8, 19, 20, 28 |
+| **Center finder** | Centers spec | **Dynamic Center Finder** — 4 blocks, normalized contacts/hours, service filter, lazy map, index-only | 8, 19, 20, 22, 28 |
 | **Tariff console** | Pricing spec | **Master Pricing Console** — split-screen, safe regulatory copy, `category_slug`, `tariff_revisions`, logistics via settings | 11, 19, 20, 30, 23 |
 | **Inspection process** | §14, DESIGN | Use **6 steps** on homepage and process page (book → register → machine → visual → validation → report/PV) | 6, 12 |
 | **Service page depth** | §10.1–10.5 | Step 10 static copy must include full inspection-point lists (periodic, heavy vehicle, pre-purchase, road safety topics) per proposal | 10 |

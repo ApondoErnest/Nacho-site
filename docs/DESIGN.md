@@ -218,17 +218,46 @@ Premium **digital pricing tool**, not a conventional brochure tariff table.
 
 **Homepage (§5 #7):** preview subset + category filter + “View All Tariffs” — no duplicate full schedule.
 
-**Data:** [SEEDING.md](SEEDING.md) (7 rows), [DATABASE.md](DATABASE.md) §3.6–3.7, `TariffService` ([ARCHITECTURE.md](ARCHITECTURE.md)).
+**Data:** [SEEDING.md](SEEDING.md) (7 rows), [DATABASE.md](DATABASE.md) §3.9–3.11, `TariffService` ([ARCHITECTURE.md](ARCHITECTURE.md)).
 
 ---
 
-## 11. Build step mapping
+## 11. Centers UX — Dynamic Center Finder
+
+Professional **center locator and visit-planning** interface — not a static address directory.
+
+**Full page (`/centers`) — four blocks:**
+
+1. **Network introduction and search controls** — compact off-white intro (no hero); network indicators; search + region + service filters; List \| Map toggle; optional Find Nearest Center (opt-in geolocation)  
+2. **Dynamic Center Finder** — desktop **42% / 58%** split (list \| map + profile); expandable cards; selected-center profile; lazy map; HQ progressive disclosure on Nacho-Bamenda  
+3. **Expansion Network** — Douala + Kumba only; muted construction cards; verified phase + target date; View Expansion Details — no booking/notify  
+4. **Visit planning CTA** — dark charcoal band with Book + secondary links  
+
+**Visual language:**
+
+- **Active centers:** full-colour photos; solid burnt-orange map markers; selected card — orange border + tint (reuse §9 tokens)
+- **Expansion centers:** grey/cream background, desaturated image, outlined marker, construction icon, "Under Construction" label
+- **No** large Operational/Open Now badges on active finder cards — Block 2 vs Block 3 separation is sufficient
+- **HQ card:** collapsed height matches peers; disclosure reveals extra phones, postal address, HQ note
+
+**Desktop:** split-screen finder with map lazy-loaded on Map View. **Mobile:** list-first; details before map; no content-covering sticky bar.
+
+**Homepage (§5 #8):** compact preview + link to full finder — do not duplicate 4-block console on home.
+
+**Data:** [CENTERS_DATA.md](CENTERS_DATA.md), [DATABASE.md](DATABASE.md) §3.3–3.8, `CenterFinderService` ([ARCHITECTURE.md](ARCHITECTURE.md)), ADR 008.
+
+**Performance:** map JS not in initial page load; responsive compressed images; lazy-load below-fold photos.
+
+---
+
+## 12. Build step mapping
 
 | Step | Design deliverable |
 |------|-------------------|
 | 4 | Top bar + main nav + sticky/shrink + mobile panel shell |
 | 5 | Cards, timeline, result blocks, tariff preview, floating book button |
 | 6 | Full homepage §5 (14 sections + layout chrome §3–§6) |
+| 8 | Centers page — 4-block Dynamic Center Finder (index-only) + mobile UX |
 | 11 | Tariffs page — 4-block Master Pricing Console + mobile UX |
 | 12 | Full 6-step process page |
 

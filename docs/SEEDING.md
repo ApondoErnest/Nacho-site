@@ -68,21 +68,44 @@ Optional: one initial `tariff_revisions` row per tariff mirroring seed price wit
 
 ## 6. Initial centers
 
-**Authoritative data:** [CENTERS_DATA.md](CENTERS_DATA.md) (from `CCTs of NACHO.docx`). Seed 5 centers: **3 operational + 2 under construction**.
+**Authoritative data:** [CENTERS_DATA.md](CENTERS_DATA.md) (from `CCTs of NACHO.docx`). Seed 5 centers: **3 active + 2 construction**. Schema: [DATABASE.md](DATABASE.md) §3.3–3.8, ADR 008.
 
-| Slug | Name | City | Region | Status |
-|------|------|------|--------|--------|
-| `nacho-yaounde` | NACHO Yaounde | Yaounde | Centre | operational |
-| `nacho-nkwen-bamenda` | NACHO Nkwen-Bamenda | Bamenda | Northwest | operational |
-| `nacho-mankon-bamenda` | NACHO Nacho-Bamenda | Bamenda | Northwest | operational |
-| `nacho-douala` | NACHO Douala | Douala | Littoral | under_construction |
-| `nacho-kumba` | NACHO Kumba | Kumba | Southwest | under_construction |
+### 6.1 Center rows
 
-Per center, seed from [CENTERS_DATA.md](CENTERS_DATA.md): `name`, `address`, `nearby_landmark`, phones, email, `latitude`, `longitude`, `opening_hours` (JSON), bilingual descriptions (short placeholder OK).
+| Slug | name_en | City | Region | status | booking_enabled | is_headquarters |
+|------|---------|------|--------|--------|:---------------:|:-----------------:|
+| `nacho-yaounde` | NACHO Yaounde | Yaounde | Centre | `active` | true | false |
+| `nacho-nkwen-bamenda` | NACHO Nkwen-Bamenda | Bamenda | Northwest | `active` | true | false |
+| `nacho-mankon-bamenda` | NACHO Nacho-Bamenda / Headquarters | Bamenda | Northwest | `active` | true | **true** |
+| `nacho-douala` | NACHO Douala | Douala | Littoral | `construction` | false | false |
+| `nacho-kumba` | NACHO Kumba | Kumba | Southwest | `construction` | false | false |
 
-- **Operational:** link all bookable services via `center_service`; enable booking CTA.
-- **Under construction:** no booking CTA; EN/FR opening notice per [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md).
-- **`vehicle_categories_fr/en`:** generic placeholder until NACHO supplies per-center lists (see CENTERS_DATA.md).
+Per center, seed bilingual `address_*`, `city_*`, `region_*`, `nearby_landmark`, `search_keywords`, `latitude`, `longitude`, `google_maps_url` (when known), `featured_image` (placeholder OK), `display_order` (1–5), `target_date_text_*` for expansion centers, `expansion_phase` and `expansion_updated_at` **nullable** until NACHO confirms.
+
+**HQ center:** seed `postal_address`, HQ description in `description_*` per CENTERS_DATA §C.
+
+### 6.2 Seed order (per center)
+
+1. `centers` row  
+2. `center_contacts` rows (phones, email — see CENTERS_DATA contact tables)  
+3. `center_hours` rows (day-of-week schedule)  
+4. `center_service` pivot rows (operational centers only)
+
+### 6.3 center_service pivot
+
+**Active centers:** link all bookable services from §4 with `is_available = true`, `booking_enabled = true` unless admin overrides later.
+
+**Construction centers:** no `center_service` rows until operational.
+
+Pivot fields: `is_available`, `booking_enabled`, `effective_date` (nullable), optional `note_*`.
+
+### 6.4 center_progress_updates
+
+Optional seed when NACHO confirms expansion phases for Douala/Kumba. Until then, leave `expansion_phase` null on center row and show target date text only.
+
+### 6.5 site_settings overlap
+
+Corporate HQ contact in §9 (`contact_email`, `contact_phone`, `address`) mirrors Nacho-Bamenda HQ data for footer/contact page. Inspection HQ UX lives on the `nacho-mankon-bamenda` center row (`is_headquarters`).
 
 **Do not seed** deprecated placeholders: `douala-1`, `douala-2`, `bafoussam`, `garoua`.
 

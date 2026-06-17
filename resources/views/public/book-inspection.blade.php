@@ -43,6 +43,7 @@
             ->map(fn (array $center) => [
                 'value' => $center['slug'],
                 'label' => $center['name'] . ' - ' . $center['city'],
+                'booking_key' => $center['booking_key'] ?? null,
             ])
             ->all();
         $categoryOptions = collect(config('home.tariff_preview', []))
@@ -69,6 +70,12 @@
         $initialCategory = collect($categoryOptions)->firstWhere('filterId', $requestedCategory)['value']
             ?? collect($categoryOptions)->firstWhere('value', $requestedCategory)['value']
             ?? '';
+        $requestedCenter = \Illuminate\Support\Str::lower((string) request()->query('center', ''));
+        $initialCenter = collect($centerOptions)->first(function (array $center) use ($requestedCenter) {
+            return $requestedCenter !== ''
+                && ($requestedCenter === \Illuminate\Support\Str::lower($center['value'])
+                    || $requestedCenter === \Illuminate\Support\Str::lower($center['booking_key'] ?? ''));
+        })['value'] ?? '';
         $featuredCategory = collect($categoryOptions)->firstWhere('filterId', 'private') ?? ($categoryOptions[0] ?? null);
     @endphp
 
@@ -77,7 +84,7 @@
         aria-labelledby="book-inspection-title"
         x-data="{
             service: '',
-            center: '',
+            center: @js($initialCenter),
             vehicleCategory: @js($initialCategory),
             registration: '',
             preferredDate: '',

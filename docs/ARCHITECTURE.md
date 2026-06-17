@@ -39,7 +39,7 @@ One controller per public area:
 
 - `HomeController`
 - `AboutController` (or `PageController@about`)
-- `CenterController` (index + show)
+- `CenterController` (index only — Dynamic Center Finder; no public `show`)
 - `ServiceController` (index + show)
 - `BookingController` (create + store)
 - `TariffController` (index — Master Pricing Console)
@@ -72,7 +72,7 @@ Each supports the CRUD operations relevant to its module (see [ADMIN_MODULES.md]
 
 ## 4. Models (spec 7.4)
 
-One model per core table: `User`, `Role`, `Center`, `Service`, `Tariff`, `TariffRevision`, `Booking`, `ContactMessage`, `BlogCategory`, `BlogPost`, `CareerPost`, `JobApplication`, `Page`, `Media`, `SiteSetting` (+ `TariffAuditLog`). Each defines casts, fillables, relationships (per [DATABASE.md](DATABASE.md)), scopes (e.g. `active()`, `published()`, `operational()`), and bilingual accessors with FR fallback.
+One model per core table: `User`, `Role`, `Center`, `CenterContact`, `CenterHour`, `CenterProgressUpdate`, `Service`, `Tariff`, `TariffRevision`, `Booking`, `ContactMessage`, `BlogCategory`, `BlogPost`, `CareerPost`, `JobApplication`, `Page`, `Media`, `SiteSetting` (+ `TariffAuditLog`). Each defines casts, fillables, relationships (per [DATABASE.md](DATABASE.md)), scopes (e.g. `active()`, `published()`, `bookable()`), and bilingual accessors with FR fallback.
 
 ## 5. Form request validation (spec 7.5)
 
@@ -91,6 +91,12 @@ Rules enforce required fields, valid email/phone, allowed file types and max siz
   - `resolveTariffForBooking($id|$slug)` — single tariff for booking form deep link
   - `resolveRevisionForTariff(Tariff $tariff)` — current revision as of today
 - Used by `TariffController`, booking form, and admin preview.
+- `CenterFinderService` - powers the Dynamic Center Finder:
+  - `resolveForFinder($filters)` — active vs expansion groups, search/region/service filters, eager-loads contacts, hours, services
+  - `mapPayload()` — marker data for lazy-loaded map (active vs expansion marker styles)
+  - `resolveBySlug($slug)` — single center for booking preselect from `?center={slug}`
+  - Optional `sortByDistance($lat, $lng)` — after opt-in geolocation
+- Used by `CenterController@index`, booking form, and static Step 8 config bridge.
 - `AdminAccess` (Support) - centralizes the permission matrix ([ROLES.md](ROLES.md)).
 - `LocaleService` (optional) - locale helpers for views.
 - Status enums for booking/center/etc. keep status strings consistent.

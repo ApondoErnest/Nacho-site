@@ -17,9 +17,14 @@ Priority coverage:
 - `TariffService::resolveActiveTariffs()` returns correct price for current date given scheduled revisions (ADR 007).
 - tariff revision: future revision not public before `effective_date`; becomes active on/after effective date.
 
+- `CenterFinderService::resolveForFinder()` filters by region, service, search; groups active vs construction centers.
+- `CenterFinderService::resolveBySlug()` for booking `?center=` preselect.
+- expansion centers excluded when `booking_enabled` is false.
+- center_service pivot: service filter respects `is_available`.
+
 ## 2. Frontend testing (manual)
 
-homepage layout, mobile responsiveness, navigation, language switcher, center cards, service cards, **Master Pricing Console** (desktop split-screen, mobile sticky bar), booking page, contact page, blog listing, careers page, legal pages.
+homepage layout, mobile responsiveness, navigation, language switcher, **Dynamic Center Finder** (4 blocks, 42/58 desktop, filters, expandable cards, HQ disclosure, lazy map, map failure fallback, expansion separation), service cards, **Master Pricing Console** (desktop split-screen, mobile sticky bar), booking page (`?center=` preselect), contact page, blog listing, careers page, legal pages.
 
 ## 3. Backend testing (manual)
 

@@ -47,7 +47,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 5 | Reusable Blade components |
 | 6 | Homepage — 14 sections per [docs/DESIGN.md](docs/DESIGN.md) |
 | 7 | About page |
-| 8 | Centers index + detail |
+| 8 | Centers page — Dynamic Center Finder (4 blocks) |
 | 9 | Services index |
 | 10 | Five service detail pages |
 | 11 | Tariffs page — Master Pricing Console (4 blocks) |
@@ -101,7 +101,7 @@ The unified proposal specifies designing the frontend structure before backend l
 | Stack | Laravel, Blade, Tailwind, Vite, Breeze |
 | Database | MySQL `nacho_vehicle_inspection` |
 | i18n | Session locale, French default, single URLs |
-| URL paths | English (`/centers/{slug}`, English service slugs) |
+| URL paths | English (`/centers` index-only, English service slugs) |
 | Roles | 6 roles — Super Admin through Content Manager |
 | Booking statuses | pending → confirmed → arrived → in_inspection → completed; plus cancelled, no_show, rescheduled |
 | Excluded | SMS/WhatsApp reminders, expiry tracking, customer portal, fleet/corporate |
@@ -110,7 +110,7 @@ ADRs: [docs/adr/](docs/adr/)
 
 ## Critical content rules
 
-- **3 operational + 2 under construction** centers (opening before October 2026). Never present 5 as operational.
+- **3 operational + 2 under construction** centers (opening before November 2026). Never present 5 as operational.
 - Slogans: *Drive Safe. Stay Compliant. Trust NACHO.* / *Roulez en sécurité. Restez conforme. Faites confiance à NACHO.*
 - Booking forms: **no** reminder or expiry fields.
 - Compliance: safe wording unless certifications are verified.

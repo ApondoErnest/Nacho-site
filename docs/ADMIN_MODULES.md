@@ -26,7 +26,19 @@ The admin dashboard lives under `/admin`, requires authentication, and is gated 
 
 ## 3. Center management
 
-Create, edit, view, delete (soft), activate/deactivate, upload image, set operational status, add location info, **nearby landmark**, **vehicle categories accepted** (FR/EN), add Google Map link, assign services to center.
+Create, edit, view, delete (soft), activate/deactivate, upload image, set status (`planned`, `construction`, `active`, `inactive`), bilingual location fields, **nearby landmark**, **search keywords**, **vehicle categories** (FR/EN), **google_maps_url**, coordinates, **is_headquarters**, **booking_enabled**, **display_order**.
+
+**Contacts (`center_contacts`):** add/edit/remove multiple phones, WhatsApp lines, emails; set primary and public visibility; order for display.
+
+**Hours (`center_hours`):** structured weekly schedule editor (replaces raw JSON).
+
+**Services (`center_service` pivot):** assign services with `is_available`, `booking_enabled`, `effective_date`, optional bilingual notes — drives public service filter.
+
+**Expansion centers:** set `target_opening_date`, `target_date_text_*`, `expansion_phase`, `expansion_updated_at`; publish optional `center_progress_updates` history.
+
+**Activate expansion workflow:** when Douala/Kumba opens — change status to `active`, add contacts/hours, assign services, enable `booking_enabled`, publish map URL; frontend moves center from expansion section to finder automatically.
+
+**No** Notify Me, SMS, or WhatsApp subscription features on expansion cards.
 
 ## 4. Service management
 
