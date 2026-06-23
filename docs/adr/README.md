@@ -10,5 +10,6 @@ Short records of significant technical decisions for the NACHO Vehicle Inspectio
 - [006 - Tariff audit log](006-tariff-audit-log.md)
 - [007 - Tariff revisions and effective-date publishing](007-tariff-revisions-effective-date.md)
 - [008 - Normalized center contacts, hours, and service pivot](008-center-normalized-schema.md)
+- [009 - Email-only careers recruitment](009-email-only-careers-recruitment.md)
 
 Format: Context, Decision, Consequences. Status is Accepted unless noted.

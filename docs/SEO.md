@@ -30,8 +30,7 @@ Clean, single (locale-less) URLs:
 - `/inspection-process` - Inspection process
 - `/blog` - Blog index
 - `/blog/{slug}` - Blog detail
-- `/careers` - Careers index
-- `/careers/{slug}` - Career detail
+- `/careers` - Careers page (index-only; `?vacancy={slug}` deep link)
 - `/contact` - Contact
 - `/privacy-policy`, `/terms-and-conditions`, `/cookie-policy`, `/legal-notice` - Legal
 - `/compliance-quality` - Compliance & quality
@@ -54,6 +53,7 @@ SEO fields are editable for: services, blog posts, pages, centers (and careers i
 
 - **Organization** (or **LocalBusiness** / `AutomotiveBusiness`) on the homepage: name, URL, logo, contact, **slogan** (*Drive Safe. Stay Compliant. Trust NACHO.* / FR equivalent).
 - **`ItemList` or multiple `LocalBusiness`** entries on `/centers` index JSON-LD for active centers (address, geo internal to schema — not raw coordinates on page).
+- **`JobPosting`** structured data on `/careers` for published vacancies (embedded in page JSON-LD).
 - Optionally `Article` on blog detail pages.
 
 ## 6. i18n & SEO trade-off (documented decision)

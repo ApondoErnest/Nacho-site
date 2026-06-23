@@ -8,10 +8,11 @@ Default data inserted after migrations via idempotent seeders (`updateOrCreate`)
 2. First Super Admin user
 3. Default services
 4. Default tariffs
-5. Initial center records (3 operational + 2 under construction)
-6. Default blog categories
-7. Default legal pages
-8. Default site settings
+5. Initial center records (3 active + 2 construction)
+6. Career departments + sample vacancies
+7. Default blog categories
+8. Default legal pages
+9. Default site settings
 
 ## 2. Roles
 
@@ -109,7 +110,35 @@ Corporate HQ contact in §9 (`contact_email`, `contact_phone`, `address`) mirror
 
 **Do not seed** deprecated placeholders: `douala-1`, `douala-2`, `bafoussam`, `garoua`.
 
-## 7. Default blog categories
+## 7. Career departments and vacancies
+
+Schema: [DATABASE.md](DATABASE.md) §3.16–3.17, ADR 009.
+
+### 7.1 career_departments (4 rows)
+
+| slug | name_en |
+|------|---------|
+| `technical-inspection` | Technical Inspection |
+| `center-operations` | Center Operations |
+| `quality-safety-admin` | Quality, Safety and Administration |
+| `digital-support` | Digital and Technical Support |
+
+Seed bilingual `description_*`, `icon`, `display_order`, `is_active = true`.
+
+### 7.2 career_posts (optional samples)
+
+Seed 1–2 sample vacancies for UAT (status `draft` or `published`):
+
+- `reference` e.g. `NCH-CAR-2026-001`
+- `department_id`, `center_id` (active center only — Douala/Kumba only when recruitment opens there)
+- `employment_type`, bilingual content blocks, `closes_at`
+- `application_email` — **nullable** until NACHO approves official recruitment address
+- `application_subject` template: `Application — {title} — {reference}`
+- `allow_email_application = true` when published
+
+**Do not seed** `job_applications` — table removed (ADR 009).
+
+## 8. Default blog categories
 
 At least one category to start, e.g.:
 
@@ -118,7 +147,7 @@ At least one category to start, e.g.:
 | road-safety | Securite routiere | Road safety |
 | inspection | Controle technique | Technical inspection |
 
-## 8. Default legal pages
+## 9. Default legal pages
 
 Seed `pages` rows (status `published`) with placeholder bilingual content to be finalized by NACHO's legal team:
 
@@ -129,7 +158,7 @@ Seed `pages` rows (status `published`) with placeholder bilingual content to be 
 
 Optionally also `about` and `compliance-quality` if managed via the pages table.
 
-## 9. Default site settings
+## 10. Default site settings
 
 Seed `site_settings` keys:
 
@@ -146,12 +175,14 @@ Seed `site_settings` keys:
 - `maintenance_mode` = `false`
 - `tariff_logistics_payment_en`, `tariff_logistics_payment_fr` — generic payment copy ([CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md) §3.2)
 - `tariff_logistics_documents_en`, `tariff_logistics_documents_fr` — generic documents copy
+- `careers_general_application_email` — **empty/null** until NACHO approves HR recruitment address
+- `careers_recruitment_safety_notice_en`, `careers_recruitment_safety_notice_fr` — **empty** until management approves wording ([CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md) §4.3)
 
-## 10. Recommended blog placeholder posts
+## 11. Recommended blog placeholder posts
 
-For local UAT and the static blog phase, seed (or hardcode) **10 placeholder posts** using the titles from [FRONTEND.md](FRONTEND.md) § Blog. Mark content as draft/placeholder until NACHO supplies real articles. Also optionally seed one open career post so listing pages are not empty.
+For local UAT and the static blog phase, seed (or hardcode) **10 placeholder posts** using the titles from [FRONTEND.md](FRONTEND.md) § Blog. Mark content as draft/placeholder until NACHO supplies real articles.
 
-## 11. Notes
+## 12. Notes
 
-- No reminder, expiry, fleet, or portal data is ever seeded.
+- No reminder, expiry, fleet, portal, or **job application** data is ever seeded.
 - Seeders are idempotent; `php artisan migrate:fresh --seed` rebuilds the local database cleanly.

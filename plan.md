@@ -55,7 +55,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 13 | Booking form UI only |
 | 14 | Contact page |
 | 15 | Blog / road-safety education |
-| 16 | Careers + apply form UI |
+| 16 | Careers page — 4-block email apply |
 | 17 | Compliance & quality page |
 | 18 | Legal pages (×4) |
 | 19 | Migrations (15 tables + tariff audit log) |
@@ -64,7 +64,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 22 | Public controllers — dynamic content |
 | 23 | Booking backend + reference service |
 | 24 | Contact form backend |
-| 25 | Career application backend |
+| 25 | *(cancelled — email-only careers)* |
 | 26 | Admin auth + roles |
 | 27 | Admin dashboard |
 | 28 | Admin: centers |
@@ -73,7 +73,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 31 | Admin: bookings |
 | 32 | Admin: contact messages |
 | 33 | Admin: blog |
-| 34 | Admin: careers |
+| 34 | Admin: careers (vacancies) |
 | 35 | Admin: pages |
 | 36 | Admin: media |
 | 37 | Admin: users + roles |

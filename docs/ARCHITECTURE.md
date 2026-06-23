@@ -46,7 +46,7 @@ One controller per public area:
 - `InspectionProcessController`
 - `BlogController` (index + show)
 - `ComplianceController`
-- `CareerController` (index + show + apply)
+- `CareerController` (index only — email-based vacancies; no `show`, no `apply` store)
 - `ContactController` (index + store)
 - `PageController` (legal/static pages)
 - `LanguageController` (switch locale)
@@ -61,7 +61,7 @@ One controller per public area:
 - `BlogCategoryController`
 - `BlogPostController`
 - `CareerPostController`
-- `JobApplicationController`
+- `CareerDepartmentController` (optional)
 - `ContactMessageController`
 - `PageController`
 - `UserController`
@@ -72,14 +72,14 @@ Each supports the CRUD operations relevant to its module (see [ADMIN_MODULES.md]
 
 ## 4. Models (spec 7.4)
 
-One model per core table: `User`, `Role`, `Center`, `CenterContact`, `CenterHour`, `CenterProgressUpdate`, `Service`, `Tariff`, `TariffRevision`, `Booking`, `ContactMessage`, `BlogCategory`, `BlogPost`, `CareerPost`, `JobApplication`, `Page`, `Media`, `SiteSetting` (+ `TariffAuditLog`). Each defines casts, fillables, relationships (per [DATABASE.md](DATABASE.md)), scopes (e.g. `active()`, `published()`, `bookable()`), and bilingual accessors with FR fallback.
+One model per core table: `User`, `Role`, `Center`, `CenterContact`, `CenterHour`, `CenterProgressUpdate`, `Service`, `Tariff`, `TariffRevision`, `Booking`, `ContactMessage`, `BlogCategory`, `BlogPost`, `CareerDepartment`, `CareerPost`, `Page`, `Media`, `SiteSetting` (+ `TariffAuditLog`). Each defines casts, fillables, relationships (per [DATABASE.md](DATABASE.md)), scopes (e.g. `active()`, `published()`, `bookable()`), and bilingual accessors with FR fallback.
 
 ## 5. Form request validation (spec 7.5)
 
 Dedicated `FormRequest` classes for every public and admin form:
 
-- Public: booking, contact, career application.
-- Admin: center, service, tariff, blog post, blog category, career post, page, user, media upload, settings.
+- Public: booking, contact.
+- Admin: center, service, tariff, blog post, blog category, career post, career department, page, user, media upload, settings.
 
 Rules enforce required fields, valid email/phone, allowed file types and max sizes, valid dates, existence of selected center/service/tariff, and accepted consent where required. Details in [SECURITY.md](SECURITY.md).
 
@@ -97,6 +97,13 @@ Rules enforce required fields, valid email/phone, allowed file types and max siz
   - `resolveBySlug($slug)` — single center for booking preselect from `?center={slug}`
   - Optional `sortByDistance($lat, $lng)` — after opt-in geolocation
 - Used by `CenterController@index`, booking form, and static Step 8 config bridge.
+- `CareerVacancyService` - powers the email-based Careers page:
+  - `resolveForCareersPage($filters)` — published/closing_soon vacancies, department/center/employment filters
+  - `resolveBySlug($slug)` — single vacancy for `?vacancy=` deep link
+  - `buildMailtoUrl(CareerPost $post)` — encodes subject/body per `reference` and bilingual templates
+  - `buildGeneralApplicationMailto()` — from `site_settings.careers_general_application_email`
+  - `deriveClosingSoon(CareerPost $post)` — label when deadline approaches
+- Used by `CareerController@index` and admin mailto preview.
 - `AdminAccess` (Support) - centralizes the permission matrix ([ROLES.md](ROLES.md)).
 - `LocaleService` (optional) - locale helpers for views.
 - Status enums for booking/center/etc. keep status strings consistent.
@@ -113,9 +120,8 @@ Transactional **staff** notifications only (not customer reminders):
 
 - New booking -> email to `BOOKING_NOTIFICATION_EMAIL`.
 - New contact message -> email to `CONTACT_NOTIFICATION_EMAIL`.
-- New job application -> email to a careers address.
 
-Local dev uses the `log` mail driver. This is explicitly NOT the excluded SMS/WhatsApp reminder system.
+Local dev uses the `log` mail driver. Career applications are **not** submitted through the website (mailto only — ADR 009). This is explicitly NOT the excluded SMS/WhatsApp reminder system.
 
 ## 9. Routing
 

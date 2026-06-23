@@ -16,7 +16,7 @@ The local version is considered stable (ready for Dockerization) only when all i
 - [ ] Inspection process page shows steps + Accepted/Suspended/Refused
 - [ ] Blog index + detail pages work; categories shown
 - [ ] Compliance & quality page uses safe wording
-- [ ] Careers index + detail + application flow work
+- [ ] Careers page — 4-block email apply: filters, 40/60 desktop, Apply by Email opens mail client with vacancy reference; closed/filled disables apply; general application mailto; recruitment safety notice; no online form or CV upload
 - [ ] Contact page (map, center links, form) works
 - [ ] Legal pages render from the pages table
 
@@ -24,8 +24,7 @@ The local version is considered stable (ready for Dockerization) only when all i
 
 - [ ] Booking submits, shows confirmation + reference; no reminder/expiry fields
 - [ ] Contact form submits and shows confirmation
-- [ ] Career application submits with CV upload
-- [ ] Validation errors display correctly (required, email, phone, file type/size)
+- [ ] Validation errors display correctly (required, email, phone, file type/size) — booking and contact only
 - [ ] Honeypot/rate limiting block obvious abuse
 
 ## 3. Admin
@@ -40,7 +39,7 @@ The local version is considered stable (ready for Dockerization) only when all i
 - [ ] Booking status workflow works; admin notes save
 - [ ] Contact message statuses work
 - [ ] Blog category/post CRUD + publish/draft/archive work
-- [ ] Careers post CRUD + application status updates + CV download work
+- [ ] Careers vacancy CRUD + department management + mailto preview; no application inbox or CV download
 - [ ] Page (legal) editing works
 - [ ] Media upload/list/delete + alt text work
 - [ ] User & role management (Super Admin) works

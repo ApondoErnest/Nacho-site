@@ -11,7 +11,7 @@ Testing happens incrementally after each major module. Automated tests use PHPUn
 
 Priority coverage:
 - booking store: valid submission creates booking + reference; invalid/missing fields rejected; consent required; reminder fields absent; preselected `tariff_id` from console preserved.
-- contact store and career application store (incl. file upload validation).
+- contact store (incl. validation).
 - admin auth: guest redirected; inactive user blocked; each role sees only permitted modules.
 - tariff admin update writes an audit log (`tariff_audit_logs`).
 - `TariffService::resolveActiveTariffs()` returns correct price for current date given scheduled revisions (ADR 007).
@@ -22,9 +22,13 @@ Priority coverage:
 - expansion centers excluded when `booking_enabled` is false.
 - center_service pivot: service filter respects `is_available`.
 
+- `CareerVacancyService::resolveForCareersPage()` filters by department, center, employment type, search.
+- `CareerVacancyService::buildMailtoUrl()` encodes correct subject with `reference`.
+- closed/filled vacancies disable Apply by Email; no `job_applications` table exists.
+
 ## 2. Frontend testing (manual)
 
-homepage layout, mobile responsiveness, navigation, language switcher, **Dynamic Center Finder** (4 blocks, 42/58 desktop, filters, expandable cards, HQ disclosure, lazy map, map failure fallback, expansion separation), service cards, **Master Pricing Console** (desktop split-screen, mobile sticky bar), booking page (`?center=` preselect), contact page, blog listing, careers page, legal pages.
+homepage layout, mobile responsiveness, navigation, language switcher, **Dynamic Center Finder** (4 blocks, 42/58 desktop, filters, expandable cards, HQ disclosure, lazy map, map failure fallback, expansion separation), **Careers page** (4 blocks, 40/60 desktop, filters, Apply by Email mailto, closed disables apply, general application mailto, no form/CV upload), service cards, **Master Pricing Console** (desktop split-screen, mobile sticky bar), booking page (`?center=` preselect), contact page, blog listing, legal pages.
 
 ## 3. Backend testing (manual)
 
@@ -32,7 +36,7 @@ admin login, dashboard access, role permissions, and each management module (cen
 
 ## 4. Database testing
 
-table creation, default data insertion, foreign-key relationships, booking/contact/blog/application storage, update and delete operations, soft deletes.
+table creation, default data insertion, foreign-key relationships, booking/contact/blog/career vacancy storage, update and delete operations, soft deletes.
 
 ## 5. Form testing
 

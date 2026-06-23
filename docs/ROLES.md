@@ -26,8 +26,7 @@ Abilities are coarse-grained strings checked in routes/middleware and Blade (`@a
 | Bookings | All | All | Manage (center) | Manage | Update status | - |
 | Contact messages | All | All | - | Manage | - | - |
 | Blog categories/posts | All | All | - | - | - | All |
-| Careers (posts) | All | All | - | - | - | All |
-| Job applications | All | All | - | View | - | Manage |
+| Careers (vacancies + departments) | All | All | - | - | - | All |
 | Pages (legal/static) | All | All | - | - | - | All |
 | Media | All | All | Upload | - | - | All |
 | Users | All | - | - | - | - | - |

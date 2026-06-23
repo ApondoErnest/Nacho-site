@@ -250,6 +250,31 @@ Professional **center locator and visit-planning** interface — not a static ad
 
 ---
 
+## 13. Careers UX — Email-Based Recruitment
+
+Professional **vacancy-discovery and employer-brand** page — not an online recruitment platform (ADR 009).
+
+**Full page (`/careers`) — four blocks:**
+
+1. **Compact employer introduction** — off-white + workplace image; trust indicators; View Open Positions / General Application (`mailto:`)  
+2. **Why Build Your Career at NACHO** — 4 value cards; optional approved testimonial only  
+3. **Career areas and open vacancies** — 4 career-family cards (paths); finder with filters; desktop **40% / 60%** list + detail; Apply by Email (`mailto:`); general application + empty state  
+4. **Email application guidance + final CTA** — 3-step how-to; recruitment safety notice; dark charcoal close  
+
+**Visual language:**
+
+- Off-white background, charcoal headings, burnt-orange primary actions, white vacancy cards, soft-grey filters
+- Selected vacancy — orange accent border (reuse §9 tokens)
+- **Closing Soon** — restrained amber label ([BRAND.md](BRAND.md))
+- Closed/filled — muted panel; Apply disabled
+- Authentic workplace imagery — diverse technicians, not generic job-board template
+
+**Desktop:** split-panel finder on same page. **Mobile:** cards → expandable details; no sticky bar blocking content.
+
+**Data:** [DATABASE.md](DATABASE.md) §3.16–3.17, [SEEDING.md](SEEDING.md) §7, `CareerVacancyService` ([ARCHITECTURE.md](ARCHITECTURE.md)).
+
+---
+
 ## 12. Build step mapping
 
 | Step | Design deliverable |
@@ -260,5 +285,6 @@ Professional **center locator and visit-planning** interface — not a static ad
 | 8 | Centers page — 4-block Dynamic Center Finder (index-only) + mobile UX |
 | 11 | Tariffs page — 4-block Master Pricing Console + mobile UX |
 | 12 | Full 6-step process page |
+| 16 | Careers page — 4-block email apply (index-only, no form) |
 
 Step 4–5 may need **enhancement pass** after Step 6 spec was expanded — align existing layout/components to this document.

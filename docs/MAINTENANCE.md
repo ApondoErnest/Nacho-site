@@ -23,7 +23,8 @@ Ongoing tasks after launch to keep the website healthy, secure, and current.
 
 - review and process booking requests
 - review and respond to contact messages
-- manage career posts and applications
+- close or fill career vacancies via admin; update recruitment email settings when HR confirms ([MAINTENANCE.md](docs/MAINTENANCE.md))
+- manage career vacancies (email-based recruitment — no application inbox)
 
 ## 4. Periodic review
 

@@ -4,7 +4,7 @@ Security spans public forms, the admin area, file uploads, and production config
 
 ## 1. Public form protection
 
-Applies to booking, contact, and career application forms:
+Applies to booking and contact forms:
 
 - server-side validation via FormRequests ([ARCHITECTURE.md](ARCHITECTURE.md))
 - CSRF protection (Laravel default on all POST forms)
@@ -25,11 +25,11 @@ Applies to booking, contact, and career application forms:
 
 ## 3. File upload protection
 
-- allow only safe types: images (`jpg`, `jpeg`, `png`, `webp`) and documents (`pdf`, and `doc`/`docx` for CVs)
+- allow only safe types: images (`jpg`, `jpeg`, `png`, `webp`) and documents (`pdf`, `doc`/`docx` for optional booking attachments)
 - enforce max size (e.g. 10 MB) per upload
-- store in controlled folders under `storage/app/public` (booking docs, CVs, media)
+- store in controlled folders under `storage/app/public` (booking docs, media)
 - never allow executable/script uploads
-- validate images as real images; validate CV mime types
+- validate images as real images; validate document mime types for booking uploads
 - generated/stored file names avoid path traversal; original name kept only as metadata
 
 ## 4. Data protection
@@ -37,7 +37,8 @@ Applies to booking, contact, and career application forms:
 - collect only the fields defined in [FRONTEND.md](FRONTEND.md) / [DATABASE.md](DATABASE.md)
 - booking forms never collect reminder/expiry data
 - clear data-processing consent where required
-- uploaded CVs and booking documents are not publicly listed; access via admin only
+- **Career applications:** submitted via applicant's email client only (ADR 009) — no server-side CV storage
+- uploaded booking documents are not publicly listed; access via admin only
 
 ## 5. Production hardening (pre-deployment)
 

@@ -487,6 +487,148 @@ Alpine.data('centersLocator', (config = {}) => ({
     },
 }));
 
+Alpine.data('careersVacancies', (config = {}) => ({
+    vacancies: Array.isArray(config.vacancies) ? config.vacancies : [],
+    hasOpenVacancies: Boolean(config.hasOpenVacancies),
+    labels: config.labels ?? {},
+    query: '',
+    department: 'all',
+    center: 'all',
+    employmentType: 'all',
+    selectedSlug: config.initialSlug ?? null,
+    mobileOpenSlug: null,
+    statusMessage: '',
+
+    init() {
+        if (! this.selectedVacancy && this.vacancies.length > 0) {
+            this.selectedSlug = this.vacancies[0].slug;
+        }
+
+        this.mobileOpenSlug = this.selectedSlug;
+
+        this.$watch('query', () => this.syncSelectedVacancy());
+        this.$watch('department', () => this.syncSelectedVacancy());
+        this.$watch('center', () => this.syncSelectedVacancy());
+        this.$watch('employmentType', () => this.syncSelectedVacancy());
+    },
+
+    get filteredVacancies() {
+        const query = normalizeSearch(this.query).trim();
+
+        return this.vacancies.filter((vacancy) => {
+            const matchesQuery = query === '' || normalizeSearch(vacancy.search_index).includes(query);
+            const matchesDepartment = this.department === 'all' || vacancy.department_key === this.department;
+            const matchesCenter = this.center === 'all' || vacancy.center_key === this.center;
+            const matchesType = this.employmentType === 'all' || vacancy.employment_type_key === this.employmentType;
+
+            return matchesQuery && matchesDepartment && matchesCenter && matchesType;
+        });
+    },
+
+    get selectedVacancy() {
+        return this.vacancies.find((vacancy) => vacancy.slug === this.selectedSlug) ?? null;
+    },
+
+    get hasVacancies() {
+        return this.vacancies.length > 0;
+    },
+
+    get hasFilteredVacancies() {
+        return this.filteredVacancies.length > 0;
+    },
+
+    get showingCountLabel() {
+        const label = this.hasOpenVacancies
+            ? (this.labels.showing_count ?? 'Showing :visible of :total vacancies')
+            : (this.labels.showing_profile_count ?? 'Showing :visible of :total vacancy cards');
+
+        return String(label)
+            .replace(':visible', this.filteredVacancies.length)
+            .replace(':total', this.vacancies.length);
+    },
+
+    syncSelectedVacancy() {
+        const currentIsVisible = this.filteredVacancies.some((vacancy) => vacancy.slug === this.selectedSlug);
+
+        if (! currentIsVisible) {
+            this.selectedSlug = this.filteredVacancies[0]?.slug ?? null;
+            this.mobileOpenSlug = this.selectedSlug;
+        }
+    },
+
+    selectVacancy(slug) {
+        this.selectedSlug = slug;
+        this.mobileOpenSlug = slug;
+        this.statusMessage = '';
+
+        const url = new URL(window.location.href);
+        url.searchParams.set('vacancy', slug);
+        window.history.replaceState({}, '', url.toString());
+    },
+
+    toggleMobileDetails(slug) {
+        const shouldClose = this.mobileOpenSlug === slug;
+
+        this.selectVacancy(slug);
+        this.mobileOpenSlug = shouldClose ? null : slug;
+    },
+
+    resetFilters() {
+        this.query = '';
+        this.department = 'all';
+        this.center = 'all';
+        this.employmentType = 'all';
+        this.selectedSlug = this.vacancies[0]?.slug ?? null;
+        this.mobileOpenSlug = this.selectedSlug;
+        this.statusMessage = '';
+    },
+
+    canApply(vacancy) {
+        return Boolean(vacancy?.mailto) && ['published', 'closing_soon'].includes(vacancy.status);
+    },
+
+    statusMessageFor(vacancy) {
+        if (! vacancy) {
+            return '';
+        }
+
+        return this.labels.status_messages?.[vacancy.status] ?? '';
+    },
+
+    async shareVacancy(vacancy) {
+        if (! vacancy) {
+            return;
+        }
+
+        const url = new URL(window.location.href);
+        url.searchParams.set('vacancy', vacancy.slug);
+        const sharePayload = {
+            title: vacancy.title,
+            text: `${vacancy.title} - ${vacancy.reference}`,
+            url: url.toString(),
+        };
+
+        if (navigator.share) {
+            try {
+                await navigator.share(sharePayload);
+
+                return;
+            } catch {
+                // Fall back to copying below when sharing is cancelled or unavailable.
+            }
+        }
+
+        if (navigator.clipboard) {
+            await navigator.clipboard.writeText(sharePayload.url);
+            this.statusMessage = this.labels.share_copied ?? 'Vacancy link copied.';
+        }
+    },
+
+    printVacancy() {
+        window.print();
+    },
+}));
+
 Alpine.start();
 
 if (document.readyState === 'loading') {

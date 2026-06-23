@@ -4,7 +4,7 @@ Status: Accepted
 
 ## Context
 
-The site stores center/service/blog/page images, career CVs, and optional booking documents. The spec defines an explicit `media` table with bilingual alt text and uploader tracking. Spatie Media Library is feature-rich but introduces conversions, collections, and a schema/model footprint beyond the spec's needs.
+The site stores center/service/blog/page images and optional booking documents. Career CVs are **not** stored on the website (email-only recruitment — ADR 009). The spec defines an explicit `media` table with bilingual alt text and uploader tracking. Spatie Media Library is feature-rich but introduces conversions, collections, and a schema/model footprint beyond the spec's needs.
 
 ## Decision
 

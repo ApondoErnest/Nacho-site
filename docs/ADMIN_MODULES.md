@@ -7,7 +7,7 @@ The admin dashboard lives under `/admin`, requires authentication, and is gated 
 - sidebar navigation (links shown per ability via `@adminCan`)
 - top bar with logged-in user + logout
 - main content area
-- notification cues (pending bookings, unread messages, new applications)
+- notification cues (pending bookings, unread messages)
 - responsive admin design
 
 ## 2. Dashboard summary cards
@@ -78,7 +78,17 @@ Create blog categories; create/edit posts; save drafts; publish; archive; upload
 
 ## 9. Careers management
 
-Create/edit/close job posts; view applications; download CVs; update application status; add admin notes. Application statuses: new, reviewed, shortlisted, rejected, accepted.
+Vacancy CRUD (ADR 009) — **no** online application inbox:
+
+- Create/edit vacancies with all bilingual fields (`title_*`, `summary_*`, `description_*`, `responsibilities_*`, `requirements_*`, `preferred_requirements_*`, `skills_*`, `application_documents_*`)
+- Assign `department_id`, `center_id`; set `reference`, `employment_type`, `vacancies_count`, `closes_at`
+- Configure `application_email`, `application_subject`, `application_instructions_*`; **preview mailto link** before publish
+- Status workflow: `draft` → `published` → `closing_soon` → `closed` / `filled` → `archived`
+- `allow_email_application` toggle; verify recruitment email before publishing
+- Manage `career_departments` (names, icons, order)
+- General application + recruitment safety notice via `site_settings` ([SEEDING.md](SEEDING.md) §10)
+
+**Removed:** view applications, CV download, application status workflow.
 
 ## 10. Page management
 

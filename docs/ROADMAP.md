@@ -49,7 +49,7 @@ flowchart LR
 | 13 | Static Booking form UI | pending |
 | 14 | Static Contact page | pending |
 | 15 | Static Blog index + detail | pending |
-| 16 | Static Careers + apply UI | pending |
+| 16 | Careers page — 4-block email apply (index-only) | pending |
 | 17 | Static Compliance page | pending |
 | 18 | Static Legal pages (×4) | pending |
 | 19 | Database migrations | pending |
@@ -58,7 +58,7 @@ flowchart LR
 | 22 | Wire public controllers to DB | pending |
 | 23 | Booking form backend | pending |
 | 24 | Contact form backend | pending |
-| 25 | Career application backend | pending |
+| 25 | *(cancelled — email-only careers; no application backend)* | n/a |
 | 26 | Admin auth + custom roles | pending |
 | 27 | Admin layout + dashboard cards | pending |
 | 28 | Admin: center management | pending |
@@ -67,7 +67,7 @@ flowchart LR
 | 31 | Admin: booking management | pending |
 | 32 | Admin: contact messages | pending |
 | 33 | Admin: blog categories + posts | pending |
-| 34 | Admin: careers + applications | pending |
+| 34 | Admin: careers (vacancies + departments) | pending |
 | 35 | Admin: page management | pending |
 | 36 | Admin: media library | pending |
 | 37 | Admin: users + roles | pending |

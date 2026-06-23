@@ -40,11 +40,11 @@ Blade components (`resources/views/components/public/`):
 
 **Marketing blocks:** hero-split (with status overlay card), center-availability-strip, trust-strip, about-preview-cards, cta-section (final + footer band)  
 
-**Content cards:** service-card, center-card (homepage preview), center-network-intro, center-filters, center-finder, center-list-item, center-profile-panel, center-expansion-card, center-expansion-detail, centers-visit-cta, center-map (lazy), tariff-card, tariff-table, tariff-category-selector, pricing-console, tariff-matrix, tariff-result-card, tariff-regulatory-section, tariff-logistics-strip, tariff-faq, tariff-mobile-action-bar, blog-card, career-card  
+**Content cards:** service-card, center-card (homepage preview), center-network-intro, center-filters, center-finder, center-list-item, center-profile-panel, center-expansion-card, center-expansion-detail, centers-visit-cta, center-map (lazy), tariff-card, tariff-table, tariff-category-selector, pricing-console, tariff-matrix, tariff-result-card, tariff-regulatory-section, tariff-logistics-strip, tariff-faq, tariff-mobile-action-bar, blog-card, career-card, careers-intro, careers-value-cards, career-area-card, careers-filters, careers-finder, vacancy-list-item, vacancy-detail-panel, careers-email-guidance, careers-visit-cta, careers-empty-state  
 
 **Process & trust:** process-steps (6-step timeline), technical-checks-grid (6 checks), inspection-result (Accepted/Suspended/Refused)  
 
-**Forms:** form-field, booking-form, contact-form, career-application-form  
+**Forms:** form-field, booking-form, contact-form  
 
 **Utility:** page-title, breadcrumb, alert, pagination  
 
@@ -193,9 +193,37 @@ Road-safety education. Cards: image, category, title, excerpt, read more. Ten to
 
 Linked from footer; safe certification wording — [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md).
 
-### Careers (index + detail + apply)
+### Careers page (`/careers`) — Email-based recruitment (4 blocks)
 
-Standard job listing + application form with CV upload.
+**Index-only** — no `/careers/{slug}` route. Optional `?vacancy={slug}` for share/deep link. See [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md) §4, ADR 009.
+
+**Block 1 — Compact employer introduction**
+
+Off-white intro + workplace image (right): eyebrow **CAREERS AT NACHO**, headline, supporting text. Actions: **View Open Positions** (scroll to vacancies), **Submit a General Application** (`mailto:` from `site_settings`). Trust indicators (4 items). Imagery: diverse technicians, uniforms, brand colours — not executives only.
+
+**Block 2 — Why Build Your Career at NACHO**
+
+Four value cards: Meaningful Impact, Practical Development, Professional Standards, Growing Opportunities. Optional employee testimonial only if approved. No unapproved benefit promises.
+
+**Block 3 — Career areas and open vacancies**
+
+- **Career-area cards** (4 families from [SEEDING.md](SEEDING.md) §7.1) — paths, not vacancies
+- **Finder:** search (title/keyword), department, center, employment-type filters, reset
+- Desktop **40%** vacancy list \| **60%** selected job detail panel
+- Mobile: vacancy cards → expandable details → Apply by Email / Share / Print
+- **Vacancy card:** title, department, center, employment type, deadline, summary, **View Position**
+- **Job detail:** metadata, role purpose, responsibilities (4–6), essential/preferred requirements, skills, required documents, deadline, **Apply by Email** (`mailto:` with prefilled subject/body per `reference`), Share, Print — disabled when closed/filled
+- **General application** block when no matching vacancy ("Do Not See the Right Position?")
+- **Empty state** when no published vacancies
+- Status labels: Published, Closing Soon (amber), Closed, Filled; archived hidden
+
+**Block 4 — Email application guidance + final CTA**
+
+Three-step how-to-apply; recruitment safety notice (`site_settings`); dark charcoal closing CTA (View Open Positions, general application, About, Contact HR).
+
+**Routes:** `/careers` only; `?vacancy={slug}` preselects detail panel.
+
+**No** online form, CV upload, applicant account, or application-success page.
 
 ### Contact
 
@@ -210,7 +238,8 @@ Privacy, Terms, Cookies, Legal Notice — from `pages` table when wired.
 - Mobile-first; tariff tables → cards on small screens  
 - WCAG AA contrast; focus states; semantic landmarks; bilingual alt text  
 - Lazy-loaded images; prefer real NACHO photos — [DESIGN.md](DESIGN.md) §9  
-- **Centers finder:** keyboard navigation; visible focus on List/Map toggle and expandable cards (`aria-expanded`); screen-reader labels on phone/actions; map-independent access to all center info; marker distinction by colour **and** shape; geolocation consent copy before request  
+- **Centers finder:** keyboard navigation; visible focus on List/Map toggle and expandable cards (`aria-expanded`); screen-reader labels on phone/actions; map-independent access to all center info; marker distinction by colour **and** shape; geolocation consent copy before request
+- **Careers page:** accessible vacancy filters; meaningful `mailto` link labels; keyboard nav on list/detail panel; printable job descriptions  
 
 ## 7. Language switcher
 

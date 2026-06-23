@@ -77,14 +77,57 @@ Per-row applicability notes may appear on the pricing console result card (`desc
 - Dense spreadsheet-style default panel (use compact matrix; detail on select)
 - Unverified payment or document requirements stated as facts
 
-## 4. Compliance & certification claims
+## 4. Careers page copy
+
+The Careers page is a **vacancy-discovery and employer-brand** page — not an online recruitment platform ([FRONTEND.md](FRONTEND.md), ADR 009).
+
+### 4.1 Applications via email only
+
+- **Apply by Email** opens the user's mail client (`mailto:`) — do **not** claim the application was submitted when the link opens.
+- Do **not** promise automatic confirmation, online status tracking, guaranteed interview, guaranteed response date, or automatic shortlisting.
+- Applicants attach CV and documents in their email client — the website does not receive or store them.
+
+### 4.2 Do not promise unapproved benefits
+
+Unless NACHO management has officially approved the wording, do not publish:
+
+- Guaranteed promotion, specific salary levels, international certification, performance bonuses, medical coverage, or automatic inter-center transfers
+
+### 4.3 Recruitment contact details
+
+- Use `application_email` from admin per vacancy — **do not invent** HR or recruitment addresses in templates or lang files.
+- `careers_general_application_email` in `site_settings` — nullable until NACHO approves.
+- **Recruitment safety notice** — only publish fee/non-verified-channel wording after management approval.
+
+### 4.4 Career areas vs vacancies
+
+- Four career-family cards show **possible paths** — not active vacancies unless recruitment has officially opened.
+- Do not display salary on vacancy cards unless NACHO decides to publish it.
+
+### 4.5 Testimonials and general applications
+
+- Employee testimonials only from real staff who approved name, photo, position, center, and statement — do not invent quotes.
+- General application disclaimer (EN): *A general application is not an employment offer and does not guarantee consideration for a future vacancy.*
+- Do not claim every general application will receive a response.
+
+### 4.6 Vacancy status copy
+
+| Status | Public behaviour |
+|--------|------------------|
+| Published | Visible; Apply by Email enabled |
+| Closing Soon | Amber label; still accepting email |
+| Closed | "Applications for this position are now closed." — disable Apply |
+| Filled | "Recruitment for this position has been completed." |
+| Archived | Hidden from public active list |
+
+## 5. Compliance & certification claims
 
 - Only claim certifications, approvals, or agrement details if real proof exists.
 - When precise credentials are not confirmed, use safe wording:
   - "Our procedures are inspired by international best practices in quality management, safety, information security, and inspection traceability."
 - Do not invent Ministry approval numbers, ISO certifications, or accreditation references.
 
-## 5. Inspection results vocabulary
+## 6. Inspection results vocabulary
 
 Use consistent result terms across the site (process page, counter-visit page, blog):
 
@@ -92,7 +135,7 @@ Use consistent result terms across the site (process page, counter-visit page, b
 - **Suspended / Suspendu** - defects to correct; counter-visit required.
 - **Refused / Refuse** - serious defects; vehicle not compliant.
 
-## 6. Services naming (canonical)
+## 7. Services naming (canonical)
 
 1. Periodic Vehicle Technical Inspection / Controle technique periodique
 2. Counter-Visit / Re-inspection - Contre-visite / Re-inspection
@@ -100,11 +143,11 @@ Use consistent result terms across the site (process page, counter-visit page, b
 4. Pre-Purchase Vehicle Inspection / Inspection avant achat
 5. Road Safety Advisory / Conseils en securite routiere
 
-## 7. Tone
+## 8. Tone
 
 Professional, reassuring, plain-language. Prioritize clarity over jargon. Frame inspection as a commitment to road safety, compliance, and customer confidence - not merely a legal obligation.
 
-## 8. Calls to action
+## 9. Calls to action
 
 - Primary CTA everywhere: "Book an Inspection" / "Reserver une inspection".
 - Homepage final CTA headline: "Ready for Your Vehicle Inspection?" / French equivalent (see [DESIGN.md](DESIGN.md)).
@@ -121,7 +164,7 @@ Professional, reassuring, plain-language. Prioritize clarity over jargon. Frame 
 | Get Directions | Obtenir l'itineraire |
 | Learn About NACHO | Decouvrir NACHO |
 
-## 8b. Design & content to avoid
+## 9b. Design & content to avoid
 
 Do not use on the public site:
 
@@ -135,8 +178,8 @@ Do not use on the public site:
 
 See [DESIGN.md](DESIGN.md) for full UX rules.
 
-## 9. Privacy & data
+## 10. Privacy & data
 
-- Booking, contact, and career forms collect only the fields defined in [FRONTEND.md](FRONTEND.md) and [DATABASE.md](DATABASE.md).
+- Booking and contact forms collect only the fields defined in [FRONTEND.md](FRONTEND.md) and [DATABASE.md](DATABASE.md). **No** online career application form or CV upload.
 - Booking forms must never request reminder/expiry-related data (no expiry date, reminder preference, SMS/WhatsApp consent, reminder channel, or reminder due date).
 - Forms include a clear data-processing consent statement where required.

@@ -2,7 +2,7 @@
 
 Database name: **`nacho_vehicle_inspection`** (MySQL, utf8mb4).
 
-The schema is designed only for the confirmed scope. There are **no** reminder, expiry, fleet, customer-portal, or corporate tables.
+The schema is designed only for the confirmed scope. There are **no** reminder, expiry, fleet, customer-portal, online job-application, or corporate tables.
 
 ## 1. Tables overview
 
@@ -21,8 +21,8 @@ Core spec tables (18):
 11. `contact_messages`
 12. `blog_categories`
 13. `blog_posts`
-14. `career_posts`
-15. `job_applications`
+14. `career_departments`
+15. `career_posts`
 16. `pages`
 17. `media`
 18. `site_settings`
@@ -48,7 +48,9 @@ erDiagram
     centers ||--o{ center_service : ""
     services ||--o{ center_service : ""
     blog_categories ||--o{ blog_posts : "groups"
-    career_posts ||--o{ job_applications : "receives"
+    career_departments ||--o{ career_posts : "has"
+    centers ||--o{ career_posts : "hosts"
+    users ||--o{ career_posts : "creates"
     tariffs ||--o{ tariff_revisions : "has"
     tariffs ||--o{ tariff_audit_logs : "tracked_by"
     users ||--o{ tariff_revisions : "creates"
@@ -182,16 +184,29 @@ erDiagram
         string status
         datetime published_at
     }
+    career_departments {
+        bigint id PK
+        string name_en
+        string name_fr
+        string slug UK
+        string icon
+        int display_order
+        boolean is_active
+    }
     career_posts {
         bigint id PK
+        string reference UK
+        string title_en
+        string title_fr
         string slug UK
+        bigint department_id FK
+        bigint center_id FK
+        string employment_type
         string status
-        date application_deadline
-    }
-    job_applications {
-        bigint id PK
-        bigint career_post_id FK
-        string status
+        date closes_at
+        string application_email
+        boolean allow_email_application
+        int display_order
     }
     pages {
         bigint id PK
@@ -437,31 +452,53 @@ Status values: `new`, `read`, `replied`, `archived`.
 
 Status values: `draft`, `published`, `archived`.
 
-### 3.16 career_posts
-- `title_fr`, `title_en` (string)
+### 3.16 career_departments
+
+Career-family groupings for the Careers page (Technical Inspection, Center Operations, etc.). Cards represent **possible paths**, not active vacancies — see [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md).
+
+- `name_en`, `name_fr` (string)
+- `slug` (string, unique) - e.g. `technical-inspection`, `center-operations`, `quality-safety-admin`, `digital-support`
+- `description_en`, `description_fr` (text, nullable)
+- `icon` (string, nullable)
+- `display_order` (int, default 0)
+- `is_active` (boolean, default true)
+
+Default departments seeded — see [SEEDING.md](SEEDING.md).
+
+### 3.17 career_posts
+
+Published vacancies for the email-based Careers page (ADR 009). Public page is **index-only** at `/careers`; `slug` supports `?vacancy={slug}` deep links, not a separate detail route.
+
+- `reference` (string, unique) - e.g. `NCH-CAR-2026-004` (used in mailto subject)
+- `title_en`, `title_fr` (string)
 - `slug` (string, unique)
-- `location` (string, nullable)
-- `department` (string, nullable)
-- `employment_type` (string, nullable)
-- `description_fr`, `description_en` (longtext, nullable)
-- `requirements_fr`, `requirements_en` (longtext, nullable)
-- `application_deadline` (date, nullable)
-- `status` (string, default `draft`)
+- `department_id` (FK -> career_departments, restrict on delete)
+- `center_id` (FK -> centers, nullable on delete set null)
+- `employment_type` (string, nullable) - e.g. `full-time`, `part-time`, `contract`, `internship`, `graduate-trainee`
+- `summary_en`, `summary_fr` (text, nullable) - short card summary
+- `description_en`, `description_fr` (longtext, nullable) - role purpose
+- `responsibilities_en`, `responsibilities_fr` (longtext, nullable)
+- `requirements_en`, `requirements_fr` (longtext, nullable) - essential requirements
+- `preferred_requirements_en`, `preferred_requirements_fr` (longtext, nullable)
+- `skills_en`, `skills_fr` (longtext, nullable)
+- `application_documents_en`, `application_documents_fr` (text, nullable) - required documents list for display
+- `application_email` (string, nullable) - official recipient; configured in admin, not hard-coded in templates
+- `application_subject` (string, nullable) - mailto subject template, e.g. `Application — {title} — {reference}`
+- `application_instructions_en`, `application_instructions_fr` (text, nullable) - prefilled body guidance
+- `vacancies_count` (unsigned int, nullable) - number of positions
+- `published_at` (datetime, nullable)
+- `closes_at` (date, nullable) - application deadline
+- `status` (string, default `draft`) - `draft`, `published`, `closing_soon`, `closed`, `filled`, `archived`
+- `allow_email_application` (boolean, default true) - disable Apply by Email when false or status is closed/filled
+- `display_order` (int, default 0)
+- `created_by` (FK -> users, nullable on delete set null)
+- `seo_title_fr`, `seo_title_en` (string, nullable)
+- `meta_description_fr`, `meta_description_en` (text, nullable)
 - soft deletes
 
-Status values: `draft`, `open`, `closed`.
+**Public list:** `status` in (`published`, `closing_soon`) and `closes_at` not passed (or manual `closing_soon`). `archived` and `filled` hidden from active list. Applications via `mailto:` only — **no** `job_applications` table.
 
-### 3.17 job_applications
-- `career_post_id` (FK -> career_posts, nullable on delete set null)
-- `full_name` (string)
-- `email` (string)
-- `phone` (string)
-- `cv_path` (string, nullable)
-- `cover_letter` (text, nullable)
-- `status` (string, default `new`)
-- `admin_notes` (text, nullable)
-
-Status values: `new`, `reviewed`, `shortlisted`, `rejected`, `accepted`.
+**Deprecated fields:** free-text `location`, `department`, `application_deadline` — replaced by `center_id`, `department_id`, `closes_at`.
 
 ### 3.18 pages
 - `title_fr`, `title_en` (string)
@@ -483,14 +520,14 @@ Used for: Privacy Policy, Terms and Conditions, Cookie Policy, Legal Notice (and
 - `file_size` (unsigned big int, nullable)
 - `alt_text_fr`, `alt_text_en` (string, nullable)
 
-Stores center/service/blog/page images, career CVs, optional booking documents.
+Stores center/service/blog/page images and optional booking documents. **No** career CV storage (applications via email — ADR 009).
 
 ### 3.20 site_settings
 - `key` (string, unique)
 - `value` (text, nullable)
 - `type` (string, default `text`) - e.g. `text`, `boolean`, `image`, `color`
 
-Example keys: `site_name`, `default_language`, `contact_email`, `contact_phone`, `address`, `logo`, `footer_text_fr`, `footer_text_en`, `facebook_url`, `whatsapp_contact`, `primary_color`, `maintenance_mode`, `tariff_logistics_payment_fr`, `tariff_logistics_payment_en`, `tariff_logistics_documents_fr`, `tariff_logistics_documents_en`. Defaults seeded - see [SEEDING.md](SEEDING.md).
+Example keys: `site_name`, `default_language`, `contact_email`, `contact_phone`, `address`, `logo`, `footer_text_fr`, `footer_text_en`, `facebook_url`, `whatsapp_contact`, `primary_color`, `maintenance_mode`, `tariff_logistics_payment_fr`, `tariff_logistics_payment_en`, `tariff_logistics_documents_fr`, `tariff_logistics_documents_en`, `careers_general_application_email`, `careers_recruitment_safety_notice_en`, `careers_recruitment_safety_notice_fr`. Defaults seeded - see [SEEDING.md](SEEDING.md).
 
 ## 4. Relationships summary
 
@@ -499,8 +536,8 @@ Example keys: `site_name`, `default_language`, `contact_email`, `contact_phone`,
 - one service has many bookings; one tariff has many bookings
 - centers and services are many-to-many via `center_service` (with availability flags)
 - one blog category has many blog posts; one blog post belongs to one category
-- one user authors many blog posts
-- one career post has many job applications; one application belongs to one career post
+- one user authors many blog posts; one user may create many career posts
+- one career department has many career posts; one career post belongs to one department and optionally one center
 - one user uploads many media files
 - one tariff has many tariff revisions and many tariff audit logs
 

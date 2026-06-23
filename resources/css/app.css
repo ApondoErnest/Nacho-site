@@ -4691,6 +4691,970 @@
         @apply bg-[#f8fafc] pb-12 pt-5 text-[#071016] sm:pb-14 lg:pt-6;
     }
 
+    .careers-hero {
+        @apply relative isolate grid overflow-hidden bg-[#fbf8f3] text-[#071016] lg:min-h-[31rem] lg:grid-cols-[minmax(0,1fr)_minmax(34rem,0.96fr)];
+    }
+
+    .careers-hero-copy {
+        @apply relative z-10 flex min-w-0 flex-col justify-center px-4 py-8 sm:px-6 sm:py-10 lg:isolate lg:py-12 lg:pl-8 lg:pr-10;
+        padding-left: max(1rem, calc((100vw - 120rem) / 2 + 2rem));
+    }
+
+    .careers-hero-eyebrow {
+        @apply text-sm font-extrabold uppercase leading-none tracking-normal text-[#e14a0a] sm:text-base;
+        letter-spacing: 0;
+    }
+
+    .careers-hero-title {
+        @apply mt-4 max-w-[51rem] text-[2.25rem] font-extrabold leading-[1.12] tracking-normal text-[#071016] sm:text-[3rem] lg:text-[3.35rem];
+        letter-spacing: 0;
+    }
+
+    .careers-hero-text {
+        @apply mt-5 max-w-[47rem] text-base font-semibold leading-7 tracking-normal text-[#071016]/75 sm:text-xl sm:leading-8;
+        letter-spacing: 0;
+    }
+
+    .careers-hero-actions {
+        @apply mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-5;
+    }
+
+    .careers-hero-action {
+        @apply inline-flex min-h-[3.75rem] w-full min-w-0 items-center justify-center gap-3 rounded-lg px-6 text-center text-base font-extrabold leading-tight tracking-normal transition-all sm:w-auto sm:min-w-[18rem] sm:text-lg;
+        letter-spacing: 0;
+    }
+
+    .careers-hero-action svg {
+        @apply h-6 w-6 shrink-0 stroke-[2.2];
+    }
+
+    .careers-hero-action--primary {
+        @apply bg-[#e14a0a] text-white shadow-lg shadow-[#e14a0a]/25 hover:-translate-y-0.5 hover:bg-nacho-primary-dark hover:shadow-xl;
+    }
+
+    .careers-hero-action--secondary {
+        @apply border-2 border-[#efb28d] bg-white text-[#e14a0a] shadow-sm hover:-translate-y-0.5 hover:border-[#e14a0a] hover:bg-[#fff7f2] hover:shadow-lg;
+    }
+
+    .careers-trust-grid {
+        @apply mt-8 grid gap-0 divide-y divide-[#071016]/10 border-y border-[#071016]/10 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:max-w-[52rem] lg:grid-cols-4;
+    }
+
+    .careers-trust-item {
+        @apply flex min-h-[6.75rem] min-w-0 flex-row items-center gap-4 px-3 py-4 text-left sm:flex-col sm:justify-center sm:gap-2 sm:px-5 sm:text-center;
+    }
+
+    .careers-trust-icon {
+        @apply flex h-10 w-10 shrink-0 items-center justify-center text-[#2f353b];
+    }
+
+    .careers-trust-icon svg {
+        @apply h-9 w-9 stroke-[1.75];
+    }
+
+    .careers-trust-text {
+        @apply block min-w-0 text-sm font-extrabold leading-5 tracking-normal text-[#071016]/80 sm:text-base sm:leading-6;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .careers-hero-media {
+        @apply relative order-first h-[18rem] overflow-hidden bg-[#d8d3ca] lg:order-none lg:h-full lg:min-h-[31rem];
+    }
+
+    .careers-hero-media img {
+        @apply h-full w-full object-cover;
+        object-position: 62% center;
+    }
+
+    .careers-purpose-section {
+        @apply bg-white py-10 text-[#071016] sm:py-12 lg:py-14;
+    }
+
+    .careers-purpose-inner {
+        @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .careers-purpose-heading,
+    .careers-opportunities-heading {
+        @apply mx-auto w-full max-w-[52rem] text-center;
+    }
+
+    .careers-purpose-heading p {
+        @apply text-base font-extrabold leading-none tracking-normal text-[#071016]/80 sm:text-lg;
+        letter-spacing: 0;
+    }
+
+    .careers-purpose-heading h2,
+    .careers-opportunities-heading h2 {
+        @apply mt-3 text-[2rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[2.6rem];
+        letter-spacing: 0;
+    }
+
+    .careers-purpose-grid {
+        @apply mt-8 grid gap-5 sm:grid-cols-2 xl:grid-cols-4;
+    }
+
+    .careers-purpose-card,
+    .careers-opportunity-card {
+        @apply min-w-0 rounded-lg border border-[#e8edf2] bg-white shadow-[0_16px_40px_-32px_rgba(7,16,22,0.62)];
+    }
+
+    .careers-purpose-card {
+        @apply grid min-h-[10.5rem] grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-5 px-6 py-6;
+    }
+
+    .careers-purpose-card-icon,
+    .careers-opportunity-card-icon {
+        @apply flex shrink-0 items-center justify-center text-[#e14a0a];
+    }
+
+    .careers-purpose-card-icon {
+        @apply h-16 w-16;
+    }
+
+    .careers-purpose-card-icon svg {
+        @apply h-14 w-14 stroke-[1.85];
+    }
+
+    .careers-purpose-card-copy {
+        @apply block min-w-0;
+    }
+
+    .careers-purpose-card-title {
+        @apply block text-xl font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .careers-purpose-card-text {
+        @apply mt-3 block text-base font-semibold leading-7 tracking-normal text-[#071016]/70;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .careers-opportunities-heading h2 {
+        @apply mt-0 text-[1.8rem] sm:text-[2.25rem];
+    }
+
+    .careers-opportunities-heading p {
+        @apply mx-auto mt-2 max-w-[45rem] text-base font-semibold leading-6 tracking-normal text-[#071016]/70 sm:text-lg sm:leading-7;
+        letter-spacing: 0;
+    }
+
+    .careers-opportunities-grid {
+        @apply mt-6 grid gap-5 sm:grid-cols-2 xl:grid-cols-4;
+    }
+
+    .careers-opportunity-card {
+        @apply min-h-[16rem] px-6 py-6;
+    }
+
+    .careers-opportunity-card-heading {
+        @apply grid min-w-0 grid-cols-[4rem_minmax(0,1fr)] items-center gap-4;
+    }
+
+    .careers-opportunity-card-icon {
+        @apply h-14 w-14;
+    }
+
+    .careers-opportunity-card-icon svg {
+        @apply h-12 w-12 stroke-[2.1];
+    }
+
+    .careers-opportunity-card h3 {
+        @apply min-w-0 text-xl font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .careers-opportunity-role-list {
+        @apply mt-5 list-disc space-y-2 pl-[6.2rem] text-base font-semibold leading-6 tracking-normal text-[#071016]/75;
+        letter-spacing: 0;
+    }
+
+    .careers-opportunity-role-list li {
+        @apply pl-1;
+    }
+
+    .careers-opportunities-note {
+        @apply mx-auto mt-5 max-w-[58rem] text-center text-sm font-semibold leading-6 tracking-normal text-[#071016]/60;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancies-section {
+        @apply bg-[#f8fafc] py-12 text-[#071016] sm:py-14;
+        scroll-margin-top: 8rem;
+    }
+
+    .careers-vacancy-filters {
+        @apply mt-8 grid gap-4 rounded-lg border border-[#e8edf2] bg-white p-4 shadow-[0_18px_42px_-34px_rgba(7,16,22,0.65)] lg:grid-cols-[minmax(17rem,1fr)_minmax(12rem,0.78fr)_minmax(13rem,0.82fr)_minmax(12rem,0.74fr)_auto];
+    }
+
+    .careers-vacancy-search,
+    .careers-vacancy-select {
+        @apply relative flex min-h-[3.85rem] min-w-0 items-center rounded-lg border border-[#dfe5eb] bg-white text-[#071016] shadow-sm transition-colors focus-within:border-[#e14a0a] focus-within:ring-2 focus-within:ring-[#e14a0a]/20;
+    }
+
+    .careers-vacancy-search svg {
+        @apply ml-4 h-6 w-6 shrink-0 text-[#071016]/50;
+    }
+
+    .careers-vacancy-search input {
+        @apply h-full min-w-0 flex-1 border-0 bg-transparent px-4 text-base font-semibold tracking-normal text-[#071016] placeholder:text-[#071016]/30 focus:ring-0;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-select {
+        @apply grid grid-cols-[minmax(0,1fr)_2rem] px-4 py-2;
+    }
+
+    .careers-vacancy-select span {
+        @apply col-span-2 mb-1 block text-sm font-extrabold leading-none tracking-normal text-[#071016]/80;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-select select {
+        @apply col-start-1 row-start-2 w-full min-w-0 appearance-none border-0 bg-transparent p-0 pr-2 text-base font-extrabold leading-tight tracking-normal text-[#071016] focus:ring-0;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-select option {
+        color: #071016;
+        background-color: #ffffff;
+    }
+
+    .careers-vacancy-select svg {
+        @apply row-start-2 h-6 w-6 self-center justify-self-end text-[#071016]/70;
+    }
+
+    .careers-vacancy-reset {
+        @apply inline-flex min-h-[3.85rem] min-w-[11rem] items-center justify-center gap-3 rounded-lg px-4 text-base font-extrabold tracking-normal text-[#071016] transition-colors hover:bg-[#fff4ee] hover:text-[#e14a0a];
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-reset svg {
+        @apply h-6 w-6 shrink-0 stroke-[2.25];
+    }
+
+    .careers-vacancy-layout {
+        @apply mt-5 grid gap-5 lg:grid-cols-[minmax(0,0.72fr)_minmax(0,1.04fr)] lg:items-start;
+    }
+
+    .careers-vacancy-list-panel,
+    .careers-vacancy-detail-panel,
+    .careers-general-application {
+        @apply min-w-0 rounded-lg border border-[#e8edf2] bg-white shadow-[0_18px_42px_-34px_rgba(7,16,22,0.68)];
+    }
+
+    .careers-vacancy-list-panel {
+        @apply p-4 sm:p-5;
+    }
+
+    .careers-vacancy-list-panel h3 {
+        @apply text-xl font-extrabold leading-tight tracking-normal text-[#071016] sm:text-2xl;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-list {
+        @apply mt-5 grid gap-4;
+    }
+
+    .careers-vacancy-card {
+        @apply min-w-0 cursor-pointer rounded-lg border border-[#e8edf2] bg-white p-4 transition-colors hover:border-[#f0a17b] hover:bg-[#fffdfb] focus:outline-none focus-visible:border-[#e14a0a] focus-visible:ring-2 focus-visible:ring-[#e14a0a]/25 sm:p-5;
+    }
+
+    .careers-vacancy-card.is-selected {
+        @apply border-[#f0a17b] bg-[#fffdfb] ring-1 ring-[#f0a17b];
+    }
+
+    .careers-vacancy-card-main {
+        @apply grid min-w-0 gap-4 sm:grid-cols-[4.75rem_minmax(0,1fr)] sm:items-start;
+    }
+
+    .careers-vacancy-card-icon {
+        @apply flex h-16 w-16 items-center justify-center rounded-lg bg-[#fff1e9] text-[#e14a0a];
+    }
+
+    .careers-vacancy-card-icon svg {
+        @apply h-10 w-10 stroke-[2.1];
+    }
+
+    .careers-vacancy-card-copy {
+        @apply min-w-0;
+    }
+
+    .careers-vacancy-card-copy h4 {
+        @apply text-lg font-extrabold leading-tight tracking-normal text-[#071016] sm:text-xl;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .careers-vacancy-card-meta {
+        @apply mt-3 grid gap-x-4 gap-y-2 text-sm font-semibold leading-5 tracking-normal text-[#071016]/70 sm:grid-cols-2;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-card-meta dd {
+        @apply flex min-w-0 items-start gap-2;
+    }
+
+    .careers-vacancy-card-meta svg {
+        @apply mt-0.5 h-4 w-4 shrink-0 text-[#071016]/50;
+    }
+
+    .careers-vacancy-card-meta span {
+        @apply min-w-0;
+        overflow-wrap: anywhere;
+    }
+
+    .careers-vacancy-card-summary {
+        @apply mt-3 text-sm font-semibold leading-6 tracking-normal text-[#071016]/60;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-view {
+        @apply mt-4 inline-flex min-h-[3rem] w-full items-center justify-center gap-2 rounded-lg border-2 border-[#f0a17b] bg-white px-4 text-sm font-extrabold tracking-normal text-[#e14a0a] transition-colors hover:border-[#e14a0a] hover:bg-[#fff4ee] sm:ml-auto sm:w-auto;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-view svg {
+        @apply h-4 w-4 shrink-0 stroke-[2.4];
+    }
+
+    .careers-mobile-details {
+        @apply mt-5 border-t border-[#e8edf2] pt-4 lg:hidden;
+    }
+
+    .careers-mobile-detail-block {
+        @apply border-b border-[#e8edf2] py-3;
+    }
+
+    .careers-mobile-detail-block:first-child {
+        @apply pt-0;
+    }
+
+    .careers-mobile-detail-block h5 {
+        @apply text-base font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .careers-mobile-detail-block p,
+    .careers-mobile-detail-block li {
+        @apply text-sm font-semibold leading-6 tracking-normal text-[#071016]/75;
+        letter-spacing: 0;
+    }
+
+    .careers-mobile-detail-block p {
+        @apply mt-2;
+    }
+
+    .careers-mobile-detail-block ul {
+        @apply mt-2 list-disc space-y-1 pl-5;
+    }
+
+    .careers-mobile-actions {
+        @apply mt-4 grid gap-3 sm:grid-cols-2;
+    }
+
+    .careers-vacancy-count {
+        @apply mt-5 text-sm font-semibold leading-6 tracking-normal text-[#071016]/60;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-detail-panel {
+        @apply hidden p-5 lg:block xl:p-6;
+    }
+
+    .careers-vacancy-detail-header {
+        @apply flex min-w-0 items-start justify-between gap-4 border-b border-[#e8edf2] pb-4;
+    }
+
+    .careers-vacancy-detail-header h3 {
+        @apply inline text-[2rem] font-extrabold leading-tight tracking-normal text-[#071016] xl:text-[2.25rem];
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .careers-vacancy-status {
+        @apply ml-3 inline-flex translate-y-[-0.28rem] items-center rounded-full px-4 py-1 text-sm font-extrabold leading-none tracking-normal;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-status--published {
+        @apply bg-green-100 text-green-700;
+    }
+
+    .careers-vacancy-status--closing_soon {
+        @apply bg-amber-100 text-amber-700;
+    }
+
+    .careers-vacancy-status--closed,
+    .careers-vacancy-status--filled {
+        @apply bg-[#eceff3] text-[#59616a];
+    }
+
+    .careers-vacancy-detail-meta {
+        @apply grid border-b border-[#e8edf2] py-4 text-sm font-semibold leading-5 tracking-normal text-[#071016]/70 sm:grid-cols-2 xl:grid-cols-3;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-detail-meta div {
+        @apply min-w-0 border-[#e8edf2] py-2 sm:px-4 sm:first:pl-0 xl:border-r;
+    }
+
+    .careers-vacancy-detail-meta div:nth-child(3n) {
+        @apply xl:border-r-0;
+    }
+
+    .careers-vacancy-detail-meta dt {
+        @apply text-xs font-extrabold uppercase leading-none tracking-normal text-[#071016]/50;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-detail-meta dd {
+        @apply mt-2 flex min-w-0 items-start gap-2 text-[#071016];
+    }
+
+    .careers-vacancy-detail-meta svg {
+        @apply mt-0.5 h-5 w-5 shrink-0 text-[#071016]/50;
+    }
+
+    .careers-vacancy-detail-block {
+        @apply border-b border-[#e8edf2] py-4;
+    }
+
+    .careers-vacancy-detail-block h4 {
+        @apply text-lg font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-detail-block p,
+    .careers-vacancy-detail-block li {
+        @apply text-base font-semibold leading-7 tracking-normal text-[#071016]/75;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-detail-block p {
+        @apply mt-2;
+    }
+
+    .careers-vacancy-detail-block ul {
+        @apply mt-3 list-disc space-y-1.5 pl-5;
+    }
+
+    .careers-vacancy-detail-columns {
+        @apply grid border-b border-[#e8edf2] lg:grid-cols-3;
+    }
+
+    .careers-vacancy-detail-columns .careers-vacancy-detail-block {
+        @apply border-b border-[#e8edf2] lg:border-b-0 lg:border-r lg:last:border-r-0 lg:px-5 lg:first:pl-0 lg:last:pr-0;
+    }
+
+    .careers-vacancy-skill-list {
+        @apply mt-3 flex flex-wrap gap-3;
+    }
+
+    .careers-vacancy-skill-list span {
+        @apply inline-flex min-h-[2.1rem] items-center rounded-md border border-[#f0a17b] bg-[#fff8f4] px-3 text-sm font-extrabold leading-none tracking-normal text-[#e14a0a];
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-document-list {
+        @apply mt-3 grid gap-3 sm:grid-cols-2 xl:grid-cols-4;
+    }
+
+    .careers-vacancy-document-list li {
+        @apply flex min-w-0 items-center gap-2 text-base font-semibold leading-6 tracking-normal text-[#071016]/75;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-document-list svg {
+        @apply h-5 w-5 shrink-0 text-[#e14a0a];
+    }
+
+    .careers-vacancy-deadline {
+        @apply mt-4 rounded-lg bg-[#fff4ee] px-4 py-3 text-base font-extrabold leading-6 tracking-normal text-[#9a3f1e];
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-status-message {
+        @apply mt-3 rounded-lg bg-[#eceff3] px-4 py-3 text-base font-extrabold leading-6 tracking-normal text-[#59616a];
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-detail-actions {
+        @apply mt-5 flex flex-wrap gap-4;
+    }
+
+    .careers-vacancy-action {
+        @apply inline-flex min-h-[3.75rem] min-w-0 items-center justify-center gap-3 rounded-lg px-6 text-base font-extrabold leading-tight tracking-normal transition-colors;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-action svg {
+        @apply h-6 w-6 shrink-0 stroke-[2.2];
+    }
+
+    .careers-vacancy-action--primary {
+        @apply bg-[#e14a0a] text-white shadow-lg shadow-[#e14a0a]/20 hover:bg-nacho-primary-dark;
+    }
+
+    .careers-vacancy-action--secondary {
+        @apply border border-[#dfe5eb] bg-white text-[#071016] shadow-sm hover:border-[#f0a17b] hover:bg-[#fff8f4] hover:text-[#e14a0a];
+    }
+
+    .careers-vacancy-action--disabled {
+        @apply cursor-not-allowed bg-[#eceff3] text-[#59616a];
+    }
+
+    .careers-vacancy-application-note {
+        @apply mt-5 flex items-start gap-3 rounded-lg bg-[#eef2f6] px-4 py-3 text-sm font-extrabold leading-6 tracking-normal text-[#3f4852];
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-application-note svg {
+        @apply mt-0.5 h-5 w-5 shrink-0;
+    }
+
+    .careers-vacancy-attachment-note,
+    .careers-vacancy-share-status {
+        @apply mt-2 text-sm font-semibold leading-6 tracking-normal text-[#071016]/60;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-side-empty {
+        @apply flex min-h-[31rem] flex-col items-center justify-center rounded-lg bg-[#f8fafc] px-6 py-10 text-center;
+    }
+
+    .careers-vacancy-side-empty-icon {
+        @apply mb-5 flex h-16 w-16 items-center justify-center rounded-lg bg-[#fff1e9] text-[#e14a0a];
+    }
+
+    .careers-vacancy-side-empty-icon svg {
+        @apply h-9 w-9 stroke-[2.2];
+    }
+
+    .careers-vacancy-side-empty h3 {
+        @apply max-w-[34rem] text-[2rem] font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-side-empty p,
+    .careers-mobile-empty p {
+        @apply mt-3 max-w-[44rem] text-base font-semibold leading-7 tracking-normal text-[#071016]/70;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancy-side-empty .careers-empty-actions {
+        @apply justify-center;
+    }
+
+    .careers-mobile-empty {
+        @apply rounded-lg bg-[#f8fafc] px-4 py-5;
+    }
+
+    .careers-empty-actions {
+        @apply mt-5 flex flex-wrap gap-3;
+    }
+
+    .careers-empty-action {
+        @apply inline-flex min-h-[3.2rem] items-center justify-center rounded-lg bg-[#e14a0a] px-5 text-base font-extrabold leading-tight tracking-normal text-white transition-colors hover:bg-nacho-primary-dark;
+        letter-spacing: 0;
+    }
+
+    .careers-empty-action--secondary {
+        @apply border border-[#dfe5eb] bg-white text-[#071016] hover:border-[#f0a17b] hover:bg-[#fff8f4] hover:text-[#e14a0a];
+    }
+
+    .careers-general-note {
+        @apply mt-3 text-xs font-semibold leading-5 tracking-normal text-[#071016]/50;
+        letter-spacing: 0;
+    }
+
+    .careers-final-cta {
+        @apply mt-5 grid gap-3 lg:grid-cols-[minmax(0,0.52fr)_minmax(0,0.95fr)] lg:items-stretch;
+    }
+
+    .careers-final-cta-general,
+    .careers-final-cta-process {
+        @apply min-w-0 rounded-lg border border-[#e8edf2] bg-white shadow-[0_18px_42px_-34px_rgba(7,16,22,0.7)];
+    }
+
+    .careers-final-cta-general {
+        @apply grid gap-5 p-5 sm:grid-cols-[8.75rem_minmax(0,1fr)] sm:items-center sm:p-6;
+        background: linear-gradient(135deg, #fffdfb 0%, #ffffff 58%, #fff7f1 100%);
+    }
+
+    .careers-final-cta-general-icon {
+        @apply mx-auto flex h-28 w-28 items-center justify-center rounded-full border-2 border-[#fee3ce] bg-white text-[#e14a0a] sm:mx-0;
+    }
+
+    .careers-final-cta-general-icon svg {
+        @apply h-14 w-14 stroke-[1.9];
+    }
+
+    .careers-final-cta-general-copy {
+        @apply min-w-0 text-center sm:text-left;
+    }
+
+    .careers-final-cta-general h2,
+    .careers-final-cta-process h2 {
+        @apply text-[1.65rem] font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .careers-final-cta-general p {
+        @apply mt-4 max-w-[32rem] text-base font-semibold leading-7 tracking-normal text-[#071016]/75 sm:text-lg sm:leading-8;
+        letter-spacing: 0;
+    }
+
+    .careers-final-cta-actions {
+        @apply mt-6 grid gap-3;
+    }
+
+    .careers-final-cta-action {
+        @apply inline-flex min-h-[3.35rem] w-full min-w-0 items-center justify-center gap-3 rounded-lg px-5 text-center text-base font-extrabold leading-tight tracking-normal transition-colors;
+        letter-spacing: 0;
+    }
+
+    .careers-final-cta-action svg {
+        @apply h-5 w-5 shrink-0 stroke-[2.4];
+    }
+
+    .careers-final-cta-action--primary {
+        @apply bg-[#e14a0a] text-white shadow-lg shadow-[#e14a0a]/20 hover:bg-nacho-primary-dark;
+    }
+
+    .careers-final-cta-action--secondary {
+        @apply border border-[#dfe5eb] bg-white text-[#071016] shadow-sm hover:border-[#f0a17b] hover:bg-[#fff8f4] hover:text-[#e14a0a];
+    }
+
+    .careers-final-cta-process {
+        @apply p-4 sm:p-5;
+    }
+
+    .careers-final-cta-process h2 {
+        @apply text-center;
+    }
+
+    .careers-final-cta-step-grid {
+        @apply mt-6 grid gap-4 lg:grid-cols-3;
+    }
+
+    .careers-final-cta-step {
+        @apply relative grid min-w-0 grid-cols-[4.5rem_minmax(0,1fr)] items-center gap-4 rounded-lg border border-[#e8edf2] bg-white px-4 py-5 shadow-[0_14px_32px_-28px_rgba(7,16,22,0.75)];
+    }
+
+    .careers-final-cta-step-number {
+        @apply absolute -top-3 left-1/2 flex h-8 w-8 -translate-x-1/2 items-center justify-center rounded-full bg-[#f05a12] text-base font-extrabold leading-none tracking-normal text-white shadow-lg shadow-[#e14a0a]/20;
+        letter-spacing: 0;
+    }
+
+    .careers-final-cta-step-icon {
+        @apply flex h-16 w-16 items-center justify-center rounded-full bg-[#fff6f0] text-[#071016];
+    }
+
+    .careers-final-cta-step-icon svg {
+        @apply h-10 w-10 stroke-[1.85];
+    }
+
+    .careers-final-cta-step-copy {
+        @apply block min-w-0;
+    }
+
+    .careers-final-cta-step-title {
+        @apply block text-base font-extrabold leading-tight tracking-normal text-[#071016];
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .careers-final-cta-step-text {
+        @apply mt-3 block text-sm font-semibold leading-6 tracking-normal text-[#071016]/70;
+        letter-spacing: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .careers-final-cta-safety {
+        @apply mt-3 flex items-start gap-4 rounded-lg border border-[#fed7b7] bg-[#fff7ed] px-5 py-4 text-base font-extrabold leading-6 tracking-normal text-[#071016];
+        letter-spacing: 0;
+    }
+
+    .careers-final-cta-safety svg {
+        @apply mt-0.5 h-8 w-8 shrink-0 text-[#e14a0a] stroke-[2.05];
+    }
+
+    .careers-vacancies-inner {
+        @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
+        max-width: min(calc(100vw - 2rem), 120rem);
+    }
+
+    .careers-vacancies-inner h2 {
+        @apply text-[2rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[2.45rem];
+        letter-spacing: 0;
+    }
+
+    .careers-vacancies-empty {
+        @apply mt-6 rounded-lg border border-dashed border-[#d9dee5] bg-[#f8fafc] px-5 py-6 text-base font-semibold leading-7 tracking-normal text-[#071016]/70 sm:px-7 sm:py-7 sm:text-lg;
+        letter-spacing: 0;
+    }
+
+    .careers-vacancies-empty-title {
+        @apply mb-2 text-xl font-extrabold leading-tight text-[#071016] sm:text-2xl;
+    }
+
+    @media (min-width: 1024px) {
+        .careers-purpose-heading,
+        .careers-opportunities-heading {
+            @apply max-w-none;
+        }
+
+        .careers-purpose-heading h2 {
+            @apply text-[2.25rem];
+            white-space: nowrap;
+        }
+
+        .careers-opportunities-heading p {
+            @apply max-w-none text-base;
+            white-space: nowrap;
+        }
+
+        .careers-hero-copy::before {
+            content: '';
+            @apply absolute inset-y-0 left-0 -z-10 bg-[#fbf8f3];
+            width: calc(100% + 14rem);
+            clip-path: ellipse(89% 132% at 0% 50%);
+        }
+
+        .careers-hero-media {
+            @apply absolute inset-0 z-0 min-h-full;
+        }
+
+        .careers-hero-media img {
+            object-position: center;
+        }
+    }
+
+    @media (max-width: 1023px) {
+        .careers-hero {
+            @apply bg-[#fbf8f3];
+        }
+
+        .careers-hero-copy {
+            padding-left: 1.5rem;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .careers-hero-media {
+            @apply h-[15.5rem];
+        }
+
+        .careers-hero-media img {
+            object-position: 58% center;
+        }
+
+        .careers-hero-copy {
+            @apply px-4 py-7;
+            padding-left: 1rem;
+        }
+
+        .careers-hero-title {
+            @apply text-[2.05rem] leading-[1.1];
+        }
+
+        .careers-hero-text {
+            @apply mt-4 text-base leading-7;
+        }
+
+        .careers-hero-actions {
+            @apply mt-6 gap-3;
+        }
+
+        .careers-hero-action {
+            @apply min-h-[3.5rem] px-5 text-base;
+        }
+
+        .careers-trust-grid {
+            @apply mt-7;
+        }
+
+        .careers-trust-item {
+            @apply min-h-[5.75rem];
+        }
+
+        .careers-purpose-section {
+            @apply py-8;
+        }
+
+        .careers-purpose-heading h2,
+        .careers-opportunities-heading h2 {
+            @apply text-[1.75rem];
+        }
+
+        .careers-purpose-grid {
+            @apply mt-6 gap-4;
+        }
+
+        .careers-purpose-card {
+            @apply min-h-[9rem] grid-cols-[3.75rem_minmax(0,1fr)] gap-4 px-5 py-5;
+        }
+
+        .careers-purpose-card-icon {
+            @apply h-14 w-14;
+        }
+
+        .careers-purpose-card-icon svg {
+            @apply h-11 w-11;
+        }
+
+        .careers-purpose-card-title {
+            @apply text-lg;
+        }
+
+        .careers-purpose-card-text {
+            @apply mt-2 text-sm leading-6;
+        }
+
+        .careers-opportunities-heading {
+            @apply mt-0;
+        }
+
+        .careers-opportunities-grid {
+            @apply gap-4;
+        }
+
+        .careers-opportunity-card {
+            @apply min-h-0 px-5 py-5;
+        }
+
+        .careers-opportunity-card-heading {
+            @apply grid-cols-[3.5rem_minmax(0,1fr)] gap-3;
+        }
+
+        .careers-opportunity-card-icon {
+            @apply h-12 w-12;
+        }
+
+        .careers-opportunity-card-icon svg {
+            @apply h-10 w-10;
+        }
+
+        .careers-opportunity-card h3 {
+            @apply text-lg;
+        }
+
+        .careers-opportunity-role-list {
+            @apply mt-4 pl-[4.75rem] text-sm leading-6;
+        }
+
+        .careers-vacancy-filters {
+            @apply mt-6 grid-cols-1 gap-3 p-3;
+        }
+
+        .careers-vacancy-reset {
+            @apply w-full;
+        }
+
+        .careers-vacancy-layout {
+            @apply mt-4 grid-cols-1;
+        }
+
+        .careers-vacancy-card-main {
+            @apply grid-cols-[3.75rem_minmax(0,1fr)];
+        }
+
+        .careers-vacancy-card-icon {
+            @apply h-14 w-14;
+        }
+
+        .careers-vacancy-card-icon svg {
+            @apply h-9 w-9;
+        }
+
+        .careers-vacancy-card-meta {
+            @apply grid-cols-1;
+        }
+
+        .careers-vacancy-action {
+            @apply w-full px-4 text-sm;
+        }
+
+        .careers-final-cta {
+            @apply gap-4;
+        }
+
+        .careers-final-cta-general,
+        .careers-final-cta-process {
+            @apply p-5;
+        }
+
+        .careers-final-cta-general h2,
+        .careers-final-cta-process h2 {
+            @apply text-[1.5rem];
+        }
+
+        .careers-final-cta-general-icon {
+            @apply h-24 w-24;
+        }
+
+        .careers-final-cta-general-icon svg {
+            @apply h-12 w-12;
+        }
+
+        .careers-final-cta-step {
+            @apply grid-cols-[4rem_minmax(0,1fr)] px-4 py-5;
+        }
+
+        .careers-final-cta-step-icon {
+            @apply h-14 w-14;
+        }
+
+        .careers-final-cta-step-icon svg {
+            @apply h-9 w-9;
+        }
+
+        .careers-final-cta-safety {
+            @apply text-sm leading-6;
+        }
+
+        .careers-empty-actions {
+            @apply flex-col;
+        }
+
+        .careers-empty-action {
+            @apply w-full;
+        }
+    }
+
+    @media print {
+        body:has(.careers-vacancy-detail-panel) .nav-header,
+        body:has(.careers-vacancy-detail-panel) .site-footer,
+        body:has(.careers-vacancy-detail-panel) .careers-hero,
+        body:has(.careers-vacancy-detail-panel) .careers-purpose-section,
+        body:has(.careers-vacancy-detail-panel) .careers-opportunities-grid,
+        body:has(.careers-vacancy-detail-panel) .careers-opportunities-note,
+        body:has(.careers-vacancy-detail-panel) .careers-vacancy-filters,
+        body:has(.careers-vacancy-detail-panel) .careers-vacancy-list-panel,
+        body:has(.careers-vacancy-detail-panel) .careers-general-application,
+        body:has(.careers-vacancy-detail-panel) .careers-vacancy-detail-actions,
+        body:has(.careers-vacancy-detail-panel) .careers-vacancy-application-note,
+        body:has(.careers-vacancy-detail-panel) .careers-vacancy-attachment-note {
+            display: none !important;
+        }
+
+        body:has(.careers-vacancy-detail-panel) .careers-vacancy-layout,
+        body:has(.careers-vacancy-detail-panel) .careers-vacancy-detail-panel {
+            display: block !important;
+        }
+
+        body:has(.careers-vacancy-detail-panel) .careers-vacancies-section {
+            background: #ffffff !important;
+            padding: 0 !important;
+        }
+    }
+
     .centers-locator-inner {
         @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
         max-width: min(calc(100vw - 2rem), 120rem);

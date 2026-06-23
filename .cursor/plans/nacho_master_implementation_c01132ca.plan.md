@@ -48,7 +48,7 @@ todos:
     content: "Phase 15 (Step 15): Static Blog index + detail"
     status: pending
   - id: phase-16
-    content: "Phase 16 (Step 16): Static Careers index + detail + apply UI"
+    content: "Phase 16 (Step 16): Careers page — 4-block email apply (index-only)"
     status: pending
   - id: phase-17
     content: "Phase 17 (Step 17): Static Compliance page"
@@ -75,7 +75,7 @@ todos:
     content: "Phase 24 (Step 24): Contact form backend"
     status: pending
   - id: phase-25
-    content: "Phase 25 (Step 25): Career application backend"
+    content: "Phase 25 (Step 25): Cancelled — email-only careers (no application backend)"
     status: pending
   - id: phase-26
     content: "Phase 26 (Step 26): Admin auth + custom roles"
@@ -102,7 +102,7 @@ todos:
     content: "Phase 33 (Step 33): Admin — blog categories + posts"
     status: pending
   - id: phase-34
-    content: "Phase 34 (Step 34): Admin — careers + applications"
+    content: "Phase 34 (Step 34): Admin — careers (vacancies + departments)"
     status: pending
   - id: phase-35
     content: "Phase 35 (Step 35): Admin — page management"
@@ -217,7 +217,7 @@ Built as **static Blade** first; wired to DB at Step 22. Content rules: 3 operat
 | **13** | Booking form **UI only** | §5.11 | `/book-inspection` |
 | **14** | Contact page (form UI + map + optional WhatsApp click-to-chat placeholder) | §5.15, §19 | `/contact` |
 | **15** | Blog / road-safety education — index + detail; 10 topic titles as placeholders | §5.12, §16 | `/blog`, `/blog/{slug}` |
-| **16** | Careers index + detail + apply form UI | §5.14 | `/careers`, `/careers/{slug}` |
+| **16** | Careers — 4-block email apply (index-only, mailto) | [DESIGN.md](docs/DESIGN.md) §13, [FRONTEND.md](docs/FRONTEND.md) | `/careers` |
 | **17** | Compliance & quality page | §5.13 | `/compliance-quality` |
 | **18** | Legal pages (privacy, terms, cookies, legal notice) | §5.16 | `/privacy-policy`, etc. |
 
@@ -229,8 +229,8 @@ Built as **static Blade** first; wired to DB at Step 22. Content rules: 3 operat
 
 | Phase / Step | Task | Spec | Exit |
 |:--:|------|------|------|
-| **19** | Migrations: core tables + `tariff_revisions` + `center_contacts` + `center_hours` + `center_progress_updates`; expanded `tariffs` and `centers` + `center_service` pivot | [DATABASE.md](docs/DATABASE.md), ADR 007–008 | Migrations ready |
-| **20** | Seed data: roles, admin, services, 7 tariffs, centers (contacts, hours, pivot), blog topics, legal, settings | [SEEDING.md](docs/SEEDING.md) | `migrate:fresh --seed` OK |
+| **19** | Migrations: core tables + tariff/center enhancements + `career_departments`, expanded `career_posts`; **no** `job_applications` | [DATABASE.md](docs/DATABASE.md), ADR 007–009 | Migrations ready |
+| **20** | Seed data: roles, admin, services, tariffs, centers, **career departments + sample vacancies**, blog, legal, settings | [SEEDING.md](docs/SEEDING.md) | `migrate:fresh --seed` OK |
 | **21** | Models, relationships, enums, factories | §7.4 | `migrate:fresh --seed` OK |
 
 Bookings table: **no** reminder/expiry columns.
@@ -241,12 +241,12 @@ Bookings table: **no** reminder/expiry columns.
 
 | Phase / Step | Task | Spec | Exit |
 |:--:|------|------|------|
-| **22** | Public controllers: replace static placeholders with DB content; `CenterFinderService`, `TariffService` | §7.2 | Dynamic centers finder, services, blog, careers, legal |
+| **22** | Public controllers: `CenterFinderService`, `TariffService`, `CareerVacancyService` | §7.2 | Dynamic centers, careers, services, blog, legal |
 | **23** | Booking backend: validation, `BookingReferenceService`, persistence, confirmation | §5.11 | Reference shown; no reminder fields |
 | **24** | Contact backend: validation, storage, staff email | §5.15 | Messages in admin |
-| **25** | Career application backend: validation, CV upload, staff email | §5.14 | Applications linked to posts |
+| **25** | *(Cancelled — ADR 009 email-only careers)* | — | — |
 
-Baseline security on all forms: CSRF, honeypot, throttle, upload rules ([SECURITY.md](docs/SECURITY.md)).
+Baseline security on booking/contact forms: CSRF, honeypot, throttle, upload rules ([SECURITY.md](docs/SECURITY.md)).
 
 ---
 
@@ -269,7 +269,7 @@ Baseline security on all forms: CSRF, honeypot, throttle, upload rules ([SECURIT
 | **31** | Booking management | §8.6 |
 | **32** | Contact message management | §8.7 |
 | **33** | Blog categories + posts | §8.8 |
-| **34** | Careers + applications | §8.9 |
+| **34** | Careers vacancies + departments | §8.9, ADR 009 |
 | **35** | Page management (legal/static) | §8.10 |
 | **36** | Media library | §8.11 |
 | **37** | User + role management (Super Admin) | §8.12 |
@@ -325,7 +325,7 @@ See [DEPLOYMENT.md](docs/DEPLOYMENT.md). Deploy steps run one at a time when you
 | 13 | 13 | Booking UI (static) |
 | 14 | 14 | Contact (static) |
 | 15 | 15 | Blog (static) |
-| 16 | 16 | Careers (static) |
+| 16 | 16 | Careers — email apply |
 | 17 | 17 | Compliance (static) |
 | 18 | 18 | Legal pages (static) |
 | 19 | 19 | Migrations |
@@ -334,7 +334,7 @@ See [DEPLOYMENT.md](docs/DEPLOYMENT.md). Deploy steps run one at a time when you
 | 22 | 22 | Wire public controllers |
 | 23 | 23 | Booking backend |
 | 24 | 24 | Contact backend |
-| 25 | 25 | Career backend |
+| 25 | 25 | *(cancelled — email careers)* |
 | 26 | 26 | Admin auth + roles |
 | 27 | 27 | Admin dashboard |
 | 28 | 28 | Admin: centers |
@@ -343,7 +343,7 @@ See [DEPLOYMENT.md](docs/DEPLOYMENT.md). Deploy steps run one at a time when you
 | 31 | 31 | Admin: bookings |
 | 32 | 32 | Admin: contact |
 | 33 | 33 | Admin: blog |
-| 34 | 34 | Admin: careers |
+| 34 | 34 | Admin: careers vacancies |
 | 35 | 35 | Admin: pages |
 | 36 | 36 | Admin: media |
 | 37 | 37 | Admin: users |

@@ -7,13 +7,13 @@ Build a modern, professional, bilingual, mobile-responsive website for **NACHO V
 The website helps visitors:
 
 - understand NACHO's services
-- locate NACHO inspection centers via the **Dynamic Center Finder** (`/centers`) — search, filters, list/map, and booking preselect
+- locate NACHO inspection centers via the **Dynamic Center Finder** (`/centers`)
 - view official vehicle inspection tariffs via the **Master Pricing Console** (`/tariffs`)
 - understand the inspection process
 - request an inspection booking
 - contact NACHO
 - read road safety information
-- apply for available job opportunities
+- explore career vacancies and apply by email (`/careers`) — not an online recruitment platform
 
 It also provides an admin dashboard for authorized staff to manage content, centers, services, tariffs, bookings, contact messages, blog posts, careers, media, users, and settings.
 

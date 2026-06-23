@@ -58,7 +58,7 @@ Professional, trustworthy, clear, and reassuring. Emphasizes road safety, compli
 
 - Mobile-first; sticky nav; floating/fixed Book Inspection on scroll (see [DESIGN.md](DESIGN.md)).
 - Burnt orange CTAs on charcoal/white — avoid generic blue/green inspection-site clichés.
-- Status badges: green (Operational/Accepted), amber (Under construction/Suspended), red (Refused). **Centers finder (Block 2):** active-center cards omit large Operational/Open Now badges — use section separation instead. Expansion section (Block 3) keeps Under Construction styling.
+- Status badges: green (Operational/Accepted), amber (Under construction/Suspended), red (Refused). **Centers finder (Block 2):** active-center cards omit large Operational/Open Now badges — use section separation instead. Expansion section (Block 3) keeps Under Construction styling. **Careers:** Closing Soon amber label for vacancies approaching deadline ([DESIGN.md](DESIGN.md) §13).
 - Prefer real center photos over stock; specific microcopy CTAs (not vague “Learn More”).
 - Accessible: WCAG AA, focus states, semantic HTML, keyboard navigability.
 - Components: [FRONTEND.md](FRONTEND.md).

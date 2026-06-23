@@ -20,7 +20,7 @@ Route::view('/tariffs', 'public.tariffs')->name('tariffs');
 Route::view('/inspection-process', 'public.inspection-process')->name('inspection-process');
 Route::view('/blog', 'public.placeholder', ['pageTitle' => 'navigation.blog'])->name('blog.index');
 Route::view('/compliance-quality', 'public.placeholder', ['pageTitle' => 'navigation.compliance'])->name('compliance');
-Route::view('/careers', 'public.placeholder', ['pageTitle' => 'navigation.careers'])->name('careers.index');
+Route::view('/careers', 'public.careers')->name('careers.index');
 Route::view('/contact', 'public.contact')->name('contact');
 
 Route::view('/privacy-policy', 'public.placeholder', ['pageTitle' => 'footer.privacy'])->name('legal.privacy');
