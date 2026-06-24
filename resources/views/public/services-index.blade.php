@@ -4,7 +4,7 @@
 
 @section('content')
     @php
-        $serviceItems = collect(config('home.services', []));
+        $serviceItems = collect($serviceItems ?? config('home.services', []));
         $secondaryServices = $serviceItems->reject(fn (array $service) => $service['key'] === 'periodic')->values();
         $heroProofItems = [
             ['icon' => 'scan-search', 'title' => __('home.services.hero.proof.advanced_testing')],
@@ -122,8 +122,8 @@
                             <x-dynamic-component :component="'lucide-' . $service['icon']" />
                         </span>
                         <span class="services-list-copy">
-                            <span class="services-list-title">{{ __('home.services.' . $service['key'] . '.title') }}</span>
-                            <span class="services-list-text">{{ __('home.services.' . $service['key'] . '.description') }}</span>
+                            <span class="services-list-title">{{ $service['title'] ?? __('home.services.' . $service['key'] . '.title') }}</span>
+                            <span class="services-list-text">{{ $service['description'] ?? __('home.services.' . $service['key'] . '.description') }}</span>
                         </span>
                         <span class="services-list-arrow" aria-hidden="true">
                             <x-lucide-arrow-right />

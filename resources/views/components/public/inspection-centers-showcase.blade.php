@@ -7,7 +7,7 @@
         'nacho-douala' => 'images/center-nacho-douala-coming-soon.png',
         'nacho-kumba' => 'images/center-nacho-kumba-coming-soon.png',
     ];
-    $centers = collect(config('centers.centers', []));
+    $centers = app(\App\Support\PublicSiteData::class)->centers();
 @endphp
 
 <section {{ $attributes->class(['inspection-centers-showcase']) }}>

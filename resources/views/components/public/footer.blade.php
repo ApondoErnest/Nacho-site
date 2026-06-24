@@ -1,5 +1,7 @@
 @php
-    $operationalCenters = collect(config('centers.centers', []))
+    $publicData = app(\App\Support\PublicSiteData::class);
+    $headquarters = $publicData->headquarters();
+    $operationalCenters = $publicData->centers()
         ->filter(fn (array $center) => ($center['status'] ?? null) === 'operational')
         ->values();
     $operationalCount = $operationalCenters->count();
@@ -28,10 +30,10 @@
         ['label' => __('footer.news_updates'), 'href' => route('blog.index')],
     ];
 
-    $primaryPhone = config('centers.headquarters.phone_primary');
-    $primaryPhoneTel = config('centers.headquarters.phone_primary_tel');
-    $hqEmail = config('centers.headquarters.email');
-    $hqAddress = config('centers.headquarters.address');
+    $primaryPhone = $headquarters['phone_primary'];
+    $primaryPhoneTel = $headquarters['phone_primary_tel'];
+    $hqEmail = $headquarters['email'];
+    $hqAddress = $headquarters['address'];
     $socialIcons = ['facebook', 'instagram', 'twitter', 'message-circle'];
 @endphp
 

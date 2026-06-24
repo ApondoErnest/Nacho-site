@@ -176,6 +176,33 @@ const initContactCentersMap = async () => {
     }
 };
 
+const initFormFeedback = () => {
+    const formSections = document.querySelectorAll('[data-form-feedback-state]');
+
+    if (formSections.length === 0) {
+        return;
+    }
+
+    window.requestAnimationFrame(() => {
+        formSections.forEach((formSection) => {
+            if (! formSection.dataset.formFeedbackState) {
+                return;
+            }
+
+            formSection.scrollIntoView({
+                block: 'start',
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+            });
+
+            const invalidField = formSection.querySelector('[aria-invalid="true"]');
+
+            if (invalidField instanceof HTMLElement) {
+                invalidField.focus({ preventScroll: true });
+            }
+        });
+    });
+};
+
 window.Alpine = Alpine;
 
 Alpine.data('centersLocator', (config = {}) => ({
@@ -632,7 +659,11 @@ Alpine.data('careersVacancies', (config = {}) => ({
 Alpine.start();
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initContactCentersMap);
+    document.addEventListener('DOMContentLoaded', () => {
+        initContactCentersMap();
+        initFormFeedback();
+    });
 } else {
     initContactCentersMap();
+    initFormFeedback();
 }

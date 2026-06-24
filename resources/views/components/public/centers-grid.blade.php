@@ -4,7 +4,7 @@
 
 @php
     $locale = app()->getLocale();
-    $centers = collect(config('centers.centers', []));
+    $centers = app(\App\Support\PublicSiteData::class)->centers();
     if ($operationalOnly) {
         $centers = $centers->where('status', 'operational');
     }

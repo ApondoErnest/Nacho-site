@@ -27,6 +27,12 @@ return [
         ],
     ],
 
+    'feedback' => [
+        'success_title' => 'Message sent',
+        'success_body' => 'Thank you. Your message has been received and will be reviewed by the NACHO team.',
+        'error_title' => 'Please review the contact form',
+    ],
+
     'centers' => [
         'title' => 'Find and Contact Your Nearest NACHO Center',
         'headquarters' => 'Headquarters',
@@ -57,6 +63,7 @@ return [
             'center' => 'Preferred Center',
             'reason' => 'Reason for Contact',
             'message' => 'Message',
+            'website' => 'Website',
         ],
         'placeholders' => [
             'full_name' => 'Enter your full name',
@@ -76,6 +83,19 @@ return [
         ],
         'consent' => 'I agree that NACHO may use the information provided to respond to my request.',
         'submit' => 'Send Message',
+    ],
+
+    'validation' => [
+        'center_unavailable' => 'Please choose an operational NACHO center.',
+        'reason_unavailable' => 'Please choose a valid reason for contacting NACHO.',
+        'consent_accepted' => 'Please accept the contact consent statement before submitting.',
+        'phone' => 'Please enter a valid phone number.',
+    ],
+
+    'storage' => [
+        'subject' => ':reason - :center',
+        'preferred_center' => 'Preferred center: :center',
+        'reason' => 'Reason: :reason',
     ],
 
     'next' => [

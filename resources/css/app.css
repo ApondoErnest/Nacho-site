@@ -686,6 +686,12 @@
         letter-spacing: 0;
     }
 
+    .contact-message-field input.is-invalid,
+    .contact-message-field select.is-invalid,
+    .contact-message-field textarea.is-invalid {
+        @apply border-red-500 bg-red-50/40 focus:border-red-600 focus:ring-red-600;
+    }
+
     .contact-message-field input,
     .contact-message-field select {
         @apply h-12;
@@ -706,6 +712,15 @@
 
     .contact-message-consent input {
         @apply mt-1 h-6 w-6 shrink-0 rounded border-[#cfd6dc] text-[#e14a0a] focus:ring-[#e14a0a];
+    }
+
+    .contact-message-error {
+        @apply mt-2 text-sm font-bold leading-5 tracking-normal text-red-700;
+        letter-spacing: 0;
+    }
+
+    .contact-message-error--consent {
+        @apply mt-2 max-w-[37rem];
     }
 
     .contact-message-submit {
@@ -6683,6 +6698,15 @@
         letter-spacing: 0;
     }
 
+    .book-inspection-field input.is-invalid:not([type='hidden']),
+    .book-inspection-field select.is-invalid,
+    .book-inspection-field textarea.is-invalid,
+    .book-inspection-phone-row select.is-invalid,
+    .book-inspection-phone-row input.is-invalid,
+    .book-inspection-date-trigger.is-invalid {
+        @apply border-red-500 bg-red-50/40 focus:border-red-600 focus:ring-red-600;
+    }
+
     .book-inspection-field input:not([type='hidden']),
     .book-inspection-field select,
     .book-inspection-phone-row select,
@@ -6703,6 +6727,15 @@
     .book-inspection-field p {
         @apply mt-2 text-sm font-semibold leading-5 tracking-normal text-[#071016]/60;
         letter-spacing: 0;
+    }
+
+    .book-inspection-error {
+        @apply mt-2 text-sm font-bold leading-5 tracking-normal text-red-700;
+        letter-spacing: 0;
+    }
+
+    .book-inspection-error--consent {
+        @apply max-w-[42rem];
     }
 
     .book-inspection-registration-row {

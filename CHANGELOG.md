@@ -8,6 +8,18 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 24 — Contact form backend.** Added public contact message validation, a POST-backed `/contact` flow, a hidden honeypot field, and persistence into `contact_messages` with `new` status. The contact page now preserves failed submissions and shows bilingual success/error feedback. Added feature tests for successful storage, invalid centers/reasons, honeypot no-store behavior, and form route wiring.
+
+- **Step 23 — Booking form backend.** Added `BookingReferenceService` for unique `NACHO-YYYYMMDD-XXXX` references, a public booking request validator that enforces bookable centers/services/tariffs and consent, and a POST-backed booking flow that stores pending bookings from the public form. The booking page now submits stable tariff slugs, preserves failed submissions, and displays the generated reference on success. Added feature tests for successful booking creation, invalid center/service combinations, non-bookable centers, and stable form payloads.
+
+- **Step 22 — Public controllers backed by database data.** Replaced static public route views with controller actions, added a `PublicSiteData` mapper for DB-backed centers, services, tariffs, headquarters settings, careers, and legal pages, and updated public views/components to prefer controller/Eloquent data with config fallbacks. Added tests proving centers, booking/tariff options, careers, and legal pages render from database rows.
+
+- **Step 21 — Models, enums, factories.** Added backed enums for user, center, booking, content, contact, career, tariff revision, and setting statuses; Eloquent models for all NACHO domain tables with relationships, casts, scopes, and bilingual fallback helpers; factories for domain models; and focused model tests covering relationships, scopes, casts, localized fields, JSON payloads, and typed settings.
+
+- **Step 20 — Seed data.** Added idempotent seeders for roles, first super admin, services, tariffs, verified centers with contacts/hours/service assignments, career departments, blog categories, editable legal pages, and site settings. Seeded local MySQL successfully with 5 centers, 7 tariffs, 6 roles, and starter content/settings.
+
+- **Step 19 — Database migrations.** Added the NACHO domain schema as additive Laravel migrations: custom roles, staff user fields, normalized centers/contacts/hours/service pivot/progress updates, services, tariffs, tariff revisions and audit logs, bookings, contact messages, blog categories/posts, career departments/posts, pages, media, and site settings. Applied successfully to local MySQL `nacho_vehicle_inspection`; test suite remains green.
+
 - **Step 6 — Static homepage (10 sections).** `/` answers who/what/where/why/next: hero (4 CTAs), trust strip, about preview, centers grid (`config/centers.php`), 5 services, why-choose list, 5-step process, tariff preview, 3 blog placeholders, final CTA. Copy in `lang/{fr,en}/home.php`; tariffs/services structure in `config/home.php`. `<x-public.section-heading>` component.
 
 - **Verified center data in the UI.** `config/centers.php` drives header/footer HQ contact, `/centers` index, `/contact` page (HQ + centers grid + form), home page center preview, booking form center select (operational only), and design-system center cards. `<x-public.centers-grid>` component; center cards show phones and hours.

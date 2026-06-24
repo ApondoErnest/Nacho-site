@@ -12,6 +12,12 @@ return [
         'notice' => 'Your selected date and time are preferences and remain subject to center confirmation.',
     ],
 
+    'feedback' => [
+        'success_title' => 'Booking request received',
+        'success_body' => 'Your request reference is :reference. Keep it for follow-up with the selected center.',
+        'error_title' => 'Please review the booking form',
+    ],
+
     'services' => [
         'periodic' => 'Periodic Technical Inspection',
         'light' => 'Light Vehicle Inspection',
@@ -81,6 +87,21 @@ return [
         'consent' => 'I agree that NACHO may use the information provided to process and respond to my booking request.',
         'submit' => 'Submit Inspection Request',
         'payment_note' => 'No online payment is required at this stage.',
+    ],
+
+    'validation' => [
+        'center_unavailable' => 'Please choose a center currently accepting online booking requests.',
+        'service_unavailable' => 'Please choose an active inspection service.',
+        'service_center_unavailable' => 'The selected service is not currently bookable at the selected center.',
+        'tariff_unavailable' => 'Please choose a published vehicle category.',
+        'consent_accepted' => 'Please accept the booking consent statement before submitting.',
+        'preferred_time' => 'Please choose an available arrival time.',
+        'phone' => 'Please enter a valid phone number.',
+    ],
+
+    'storage' => [
+        'previous_reference' => 'Previous inspection reference: :reference',
+        'previous_reference_unavailable' => 'Previous inspection reference unavailable.',
     ],
 
     'summary' => [

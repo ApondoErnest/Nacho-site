@@ -10,7 +10,7 @@
             ['icon' => 'lock-keyhole', 'title' => __('tariffs.hero.proof.no_hidden')],
         ];
         $locale = app()->getLocale();
-        $tariffRows = collect(config('home.tariff_preview', []))->values()->map(function (array $row, int $index) use ($locale) {
+        $tariffRows = collect($tariffPreviewRows ?? config('home.tariff_preview', []))->values()->map(function (array $row, int $index) use ($locale) {
             $row['key'] = 'tariff-' . ($row['number'] ?? $index + 1);
             $row['translation_key'] = 'row_' . ($row['number'] ?? $index + 1);
             $row['vehicle_type'] = $row["vehicle_type_{$locale}"] ?? $row['vehicle_type_en'];

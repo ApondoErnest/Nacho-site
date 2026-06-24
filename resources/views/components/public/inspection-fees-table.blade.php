@@ -1,6 +1,6 @@
 @php
     $locale = app()->getLocale();
-    $rows = collect(config('home.tariff_preview', []))->map(function (array $row, int $index) use ($locale) {
+    $rows = app(\App\Support\PublicSiteData::class)->tariffPreview()->map(function (array $row, int $index) use ($locale) {
         return [
             'number' => $row['number'] ?? $index + 1,
             'category' => $locale === 'fr' ? $row['category_fr'] : $row['category_en'],

@@ -1,9 +1,11 @@
 @php
     $locale = app()->getLocale();
+    $publicData = app(\App\Support\PublicSiteData::class);
+    $headquarters = $publicData->headquarters();
     $navItems = collect(config('navigation.main'));
     $navLinks = $navItems->reject(fn ($item) => $item['cta'] ?? false);
     $navCta = $navItems->first(fn ($item) => $item['cta'] ?? false);
-    $centerMenuItems = collect(config('centers.centers', []))->map(function (array $center) use ($locale) {
+    $centerMenuItems = $publicData->centers()->map(function (array $center) use ($locale) {
         $suffix = $locale === 'fr' ? ($center['name_suffix_fr'] ?? '') : ($center['name_suffix_en'] ?? '');
 
         return [
@@ -15,9 +17,9 @@
             'status' => $center['status'],
         ];
     })->values();
-    $serviceMenuItems = collect(config('home.services', []))->map(fn (array $service) => [
-        'label' => __('home.services.' . $service['key'] . '.title'),
-        'text' => __('home.services.' . $service['key'] . '.description'),
+    $serviceMenuItems = $publicData->services()->map(fn (array $service) => [
+        'label' => $service['title'] ?? __('home.services.' . $service['key'] . '.title'),
+        'text' => $service['description'] ?? __('home.services.' . $service['key'] . '.description'),
         'href' => route('services.index') . '#' . $service['slug'],
         'icon' => $service['icon'],
     ])->values();
@@ -38,28 +40,28 @@
             </p>
 
             <div class="nav-utility-cluster nav-utility-cluster--right">
-                <a href="tel:{{ config('centers.headquarters.phone_primary_tel') }}" class="nav-utility-item">
+                <a href="tel:{{ $headquarters['phone_primary_tel'] }}" class="nav-utility-item">
                     <x-lucide-phone class="nav-utility-icon" aria-hidden="true" />
-                    <span>{{ config('centers.headquarters.phone_primary') }}</span>
+                    <span>{{ $headquarters['phone_primary'] }}</span>
                 </a>
 
                 <a
-                    href="mailto:{{ config('centers.headquarters.email') }}"
+                    href="mailto:{{ $headquarters['email'] }}"
                     class="nav-utility-item nav-utility-item--email"
-                    aria-label="{{ __('navigation.utility_email_label') }}: {{ config('centers.headquarters.email') }}"
-                    title="{{ config('centers.headquarters.email') }}"
+                    aria-label="{{ __('navigation.utility_email_label') }}: {{ $headquarters['email'] }}"
+                    title="{{ $headquarters['email'] }}"
                 >
                     <x-lucide-mail class="nav-utility-icon" aria-hidden="true" />
-                    <span>{{ config('centers.headquarters.email') }}</span>
+                    <span>{{ $headquarters['email'] }}</span>
                 </a>
 
                 <span
                     class="nav-utility-item nav-utility-location"
-                    aria-label="{{ __('navigation.utility_headquarters_label') }}: {{ config('centers.headquarters.address') }}"
-                    title="{{ config('centers.headquarters.address') }}"
+                    aria-label="{{ __('navigation.utility_headquarters_label') }}: {{ $headquarters['address'] }}"
+                    title="{{ $headquarters['address'] }}"
                 >
                     <x-lucide-map-pin class="nav-utility-icon" aria-hidden="true" />
-                    <span>{{ config('centers.headquarters.address') }}</span>
+                    <span>{{ $headquarters['address'] }}</span>
                 </span>
 
                 <span class="nav-utility-item">
@@ -210,8 +212,8 @@
                         {{ __($navCta['label']) }}
                     </a>
                 @endif
-                <a href="tel:{{ config('centers.headquarters.phone_primary_tel') }}" class="block text-center text-sm font-semibold text-nacho-dark">
-                    {{ config('centers.headquarters.phone_primary') }}
+                <a href="tel:{{ $headquarters['phone_primary_tel'] }}" class="block text-center text-sm font-semibold text-nacho-dark">
+                    {{ $headquarters['phone_primary'] }}
                 </a>
                 <div class="flex justify-center">
                     <x-public.language-switcher variant="light" />

@@ -19,7 +19,13 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step 3 — Visual identity | **Done** |
 | Step 5 — Reusable Blade components | **Done** |
 | Step 6 — Static homepage (14 sections, DESIGN.md) | **Done** |
-| Next step | **Step 7** — static About page |
+| Step 19 — Database migrations | **Done** |
+| Step 20 — Seed data | **Done** |
+| Step 21 — Models, enums, factories | **Done** |
+| Step 22 — Public controllers backed by database data | **Done** |
+| Step 23 — Booking form backend | **Done** |
+| Step 24 — Contact form backend | **Done** |
+| Next step | **Step 26** — admin auth + custom roles |
 
 ## Timeline overview
 

@@ -5,7 +5,7 @@
 @section('content')
     @php
         $locale = app()->getLocale();
-        $centers = collect(config('centers.centers', []));
+        $centers = collect($centerRecords ?? config('centers.centers', []));
         $operationalCenterCount = $centers->where('status', 'operational')->count();
         $expansionCenterCount = $centers->where('status', 'under_construction')->count();
         $totalLocations = $centers->count();
@@ -31,13 +31,23 @@
                 'label' => __('components.centers_hero.stats.experience_label'),
             ],
         ];
-        $serviceOptions = [
-            ['slug' => 'periodic-technical-inspection', 'label' => __('components.centers_locator.services.periodic'), 'short_label' => __('components.centers_locator.services_short.periodic')],
-            ['slug' => 'light-vehicle-inspection', 'label' => __('components.centers_locator.services.light'), 'short_label' => __('components.centers_locator.services_short.light')],
-            ['slug' => 'heavy-vehicle-inspection', 'label' => __('components.centers_locator.services.heavy'), 'short_label' => __('components.centers_locator.services_short.heavy')],
-            ['slug' => 'counter-visit-re-inspection', 'label' => __('components.centers_locator.services.counter_visit'), 'short_label' => __('components.centers_locator.services_short.counter_visit')],
-            ['slug' => 'pre-purchase-inspection', 'label' => __('components.centers_locator.services.pre_purchase'), 'short_label' => __('components.centers_locator.services_short.pre_purchase')],
-        ];
+        $serviceOptions = collect($serviceItems ?? [])->isNotEmpty()
+            ? collect($serviceItems)
+                ->filter(fn (array $service) => $service['bookable'] ?? true)
+                ->map(fn (array $service) => [
+                    'slug' => $service['slug'],
+                    'label' => $service['title'] ?? __('components.centers_locator.services.' . $service['key']),
+                    'short_label' => $service['title'] ?? __('components.centers_locator.services_short.' . $service['key']),
+                ])
+                ->values()
+                ->all()
+            : [
+                ['slug' => 'periodic-technical-inspection', 'label' => __('components.centers_locator.services.periodic'), 'short_label' => __('components.centers_locator.services_short.periodic')],
+                ['slug' => 'light-vehicle-inspection', 'label' => __('components.centers_locator.services.light'), 'short_label' => __('components.centers_locator.services_short.light')],
+                ['slug' => 'heavy-vehicle-inspection', 'label' => __('components.centers_locator.services.heavy'), 'short_label' => __('components.centers_locator.services_short.heavy')],
+                ['slug' => 'counter-visit-re-inspection', 'label' => __('components.centers_locator.services.counter_visit'), 'short_label' => __('components.centers_locator.services_short.counter_visit')],
+                ['slug' => 'pre-purchase-inspection', 'label' => __('components.centers_locator.services.pre_purchase'), 'short_label' => __('components.centers_locator.services_short.pre_purchase')],
+            ];
         $serviceCatalog = collect($serviceOptions)->keyBy('slug');
         $regionOptions = ['Centre', 'Northwest', 'Littoral', 'Southwest'];
         $centerImageMap = [
@@ -63,7 +73,7 @@
                 $displayName = trim($center['name'] . ' ' . $suffix);
                 $hours = $locale === 'fr' ? ($center['hours_fr'] ?? null) : ($center['hours_en'] ?? null);
                 $hoursLines = $locale === 'fr' ? ($center['hours_lines_fr'] ?? []) : ($center['hours_lines_en'] ?? []);
-                $imagePath = $centerImageMap[$center['slug']] ?? null;
+                $imagePath = $center['featured_image'] ?? ($centerImageMap[$center['slug']] ?? null);
                 $latitude = $center['latitude'] ?? ($approximateCityCoordinates[$center['slug']]['latitude'] ?? null);
                 $longitude = $center['longitude'] ?? ($approximateCityCoordinates[$center['slug']]['longitude'] ?? null);
                 $isOperational = $center['status'] === 'operational';

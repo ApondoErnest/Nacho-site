@@ -12,6 +12,12 @@ return [
         'notice' => 'La date et l’heure sélectionnées sont des préférences et restent soumises à la confirmation du centre.',
     ],
 
+    'feedback' => [
+        'success_title' => 'Demande de réservation reçue',
+        'success_body' => 'Votre référence de demande est :reference. Conservez-la pour le suivi avec le centre sélectionné.',
+        'error_title' => 'Veuillez vérifier le formulaire de réservation',
+    ],
+
     'services' => [
         'periodic' => 'Inspection technique périodique',
         'light' => 'Inspection véhicule léger',
@@ -81,6 +87,21 @@ return [
         'consent' => 'J’accepte que NACHO utilise les informations fournies pour traiter et répondre à ma demande de réservation.',
         'submit' => 'Envoyer la demande d’inspection',
         'payment_note' => 'Aucun paiement en ligne n’est requis à cette étape.',
+    ],
+
+    'validation' => [
+        'center_unavailable' => 'Veuillez choisir un centre qui accepte actuellement les demandes de réservation en ligne.',
+        'service_unavailable' => 'Veuillez choisir un service d’inspection actif.',
+        'service_center_unavailable' => 'Le service sélectionné n’est pas actuellement réservable dans le centre sélectionné.',
+        'tariff_unavailable' => 'Veuillez choisir une catégorie de véhicule publiée.',
+        'consent_accepted' => 'Veuillez accepter le consentement de réservation avant l’envoi.',
+        'preferred_time' => 'Veuillez choisir une heure d’arrivée disponible.',
+        'phone' => 'Veuillez saisir un numéro de téléphone valide.',
+    ],
+
+    'storage' => [
+        'previous_reference' => 'Référence de l’inspection précédente : :reference',
+        'previous_reference_unavailable' => 'Référence de l’inspection précédente indisponible.',
     ],
 
     'summary' => [

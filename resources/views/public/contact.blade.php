@@ -36,7 +36,8 @@
             'nacho-nkwen-bamenda' => 'images/center-nacho-nkwen-bamenda.png',
             'nacho-mankon-bamenda' => 'images/center-nacho-nacho-bamenda.png',
         ];
-        $centers = collect(config('centers.centers', []));
+        $centers = collect($centerRecords ?? config('centers.centers', []));
+        $headquarters = $headquarters ?? app(\App\Support\PublicSiteData::class)->headquarters();
         $operationalCenters = $centers->where('status', 'operational')->values();
         $comingCenters = $centers->where('status', 'under_construction')->values();
         $approximateCityCoordinates = [
@@ -171,7 +172,7 @@
                                     @if ($isHeadquarters)
                                         <li>
                                             <x-lucide-map aria-hidden="true" />
-                                            <span>{{ config('centers.headquarters.postal_box') }}</span>
+                                            <span>{{ $headquarters['postal_box'] }}</span>
                                         </li>
                                     @endif
 
@@ -247,9 +248,22 @@
 
     <script type="application/json" id="contact-centers-map-data">{!! json_encode($mapCenters, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES) !!}</script>
 
-    <section id="contact-form" class="contact-message-section" aria-labelledby="contact-form-title">
+    <section
+        id="contact-form"
+        class="contact-message-section"
+        aria-labelledby="contact-form-title"
+        data-form-feedback-state="{{ $errors->any() ? 'error' : (session('contact_message_sent') ? 'success' : '') }}"
+    >
+        @if (session('contact_message_sent'))
+            <div class="mx-auto mb-6 w-full max-w-5xl px-4 sm:px-6 lg:px-8">
+                <x-public.alert type="success" title="{{ __('contact.feedback.success_title') }}">
+                    {{ __('contact.feedback.success_body') }}
+                </x-public.alert>
+            </div>
+        @endif
+
         <div class="contact-message-inner">
-            <form action="#" method="POST" class="contact-message-form" novalidate>
+            <form action="{{ route('contact.store') }}" method="POST" class="contact-message-form" novalidate>
                 @csrf
 
                 <div class="contact-message-heading">
@@ -257,52 +271,133 @@
                     <p>{{ __('contact.form.subtitle') }}</p>
                 </div>
 
+                <div class="hidden" aria-hidden="true">
+                    <label for="contact-website">{{ __('contact.form.fields.website') }}</label>
+                    <input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off" value="{{ old('website') }}" />
+                </div>
+
                 <div class="contact-message-grid">
                     <div class="contact-message-field">
                         <label for="contact-full-name">{{ __('contact.form.fields.full_name') }} <span aria-hidden="true">*</span></label>
-                        <input id="contact-full-name" name="full_name" type="text" placeholder="{{ __('contact.form.placeholders.full_name') }}" required />
+                        <input
+                            id="contact-full-name"
+                            name="full_name"
+                            type="text"
+                            placeholder="{{ __('contact.form.placeholders.full_name') }}"
+                            value="{{ old('full_name') }}"
+                            @class(['is-invalid' => $errors->has('full_name')])
+                            @if ($errors->has('full_name')) aria-invalid="true" aria-describedby="contact-full-name-error" @endif
+                            required
+                        />
+                        @error('full_name')
+                            <p id="contact-full-name-error" class="contact-message-error">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="contact-message-field">
                         <label for="contact-phone">{{ __('contact.form.fields.phone') }} <span aria-hidden="true">*</span></label>
-                        <input id="contact-phone" name="phone" type="tel" placeholder="{{ __('contact.form.placeholders.phone') }}" required />
+                        <input
+                            id="contact-phone"
+                            name="phone"
+                            type="tel"
+                            placeholder="{{ __('contact.form.placeholders.phone') }}"
+                            value="{{ old('phone') }}"
+                            @class(['is-invalid' => $errors->has('phone')])
+                            @if ($errors->has('phone')) aria-invalid="true" aria-describedby="contact-phone-error" @endif
+                            required
+                        />
+                        @error('phone')
+                            <p id="contact-phone-error" class="contact-message-error">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="contact-message-field">
                         <label for="contact-email">{{ __('contact.form.fields.email') }} <span aria-hidden="true">*</span></label>
-                        <input id="contact-email" name="email" type="email" placeholder="{{ __('contact.form.placeholders.email') }}" required />
+                        <input
+                            id="contact-email"
+                            name="email"
+                            type="email"
+                            placeholder="{{ __('contact.form.placeholders.email') }}"
+                            value="{{ old('email') }}"
+                            @class(['is-invalid' => $errors->has('email')])
+                            @if ($errors->has('email')) aria-invalid="true" aria-describedby="contact-email-error" @endif
+                            required
+                        />
+                        @error('email')
+                            <p id="contact-email-error" class="contact-message-error">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="contact-message-field">
                         <label for="contact-preferred-center">{{ __('contact.form.fields.center') }} <span aria-hidden="true">*</span></label>
-                        <select id="contact-preferred-center" name="preferred_center" required>
+                        <select
+                            id="contact-preferred-center"
+                            name="preferred_center"
+                            @class(['is-invalid' => $errors->has('preferred_center')])
+                            @if ($errors->has('preferred_center')) aria-invalid="true" aria-describedby="contact-preferred-center-error" @endif
+                            required
+                        >
                             <option value="">{{ __('contact.form.placeholders.center') }}</option>
                             @foreach ($operationalCenters as $center)
-                                <option value="{{ $center['slug'] }}">{{ $center['name'] }}</option>
+                                <option value="{{ $center['slug'] }}" @selected(old('preferred_center') === $center['slug'])>{{ $center['name'] }}</option>
                             @endforeach
                         </select>
+                        @error('preferred_center')
+                            <p id="contact-preferred-center-error" class="contact-message-error">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="contact-message-field contact-message-field--full">
                         <label for="contact-reason">{{ __('contact.form.fields.reason') }} <span aria-hidden="true">*</span></label>
-                        <select id="contact-reason" name="reason" required>
+                        <select
+                            id="contact-reason"
+                            name="reason"
+                            @class(['is-invalid' => $errors->has('reason')])
+                            @if ($errors->has('reason')) aria-invalid="true" aria-describedby="contact-reason-error" @endif
+                            required
+                        >
                             <option value="">{{ __('contact.form.placeholders.reason') }}</option>
                             @foreach (__('contact.form.reasons') as $reason)
-                                <option value="{{ \Illuminate\Support\Str::slug($reason) }}">{{ $reason }}</option>
+                                <option value="{{ \Illuminate\Support\Str::slug($reason) }}" @selected(old('reason') === \Illuminate\Support\Str::slug($reason))>{{ $reason }}</option>
                             @endforeach
                         </select>
+                        @error('reason')
+                            <p id="contact-reason-error" class="contact-message-error">{{ $message }}</p>
+                        @enderror
                     </div>
 
                     <div class="contact-message-field contact-message-field--full">
                         <label for="contact-message-body">{{ __('contact.form.fields.message') }} <span aria-hidden="true">*</span></label>
-                        <textarea id="contact-message-body" name="message" rows="4" placeholder="{{ __('contact.form.placeholders.message') }}" required></textarea>
+                        <textarea
+                            id="contact-message-body"
+                            name="message"
+                            rows="4"
+                            placeholder="{{ __('contact.form.placeholders.message') }}"
+                            @class(['is-invalid' => $errors->has('message')])
+                            @if ($errors->has('message')) aria-invalid="true" aria-describedby="contact-message-body-error" @endif
+                            required
+                        >{{ old('message') }}</textarea>
+                        @error('message')
+                            <p id="contact-message-body-error" class="contact-message-error">{{ $message }}</p>
+                        @enderror
                     </div>
                 </div>
 
                 <label class="contact-message-consent" for="contact-consent">
-                    <input id="contact-consent" name="consent" type="checkbox" required />
+                    <input
+                        id="contact-consent"
+                        name="consent"
+                        type="checkbox"
+                        value="1"
+                        @checked(old('consent'))
+                        @if ($errors->has('consent')) aria-invalid="true" aria-describedby="contact-consent-error" @endif
+                        required
+                    />
                     <span>{{ __('contact.form.consent') }}</span>
                 </label>
+                @error('consent')
+                    <p id="contact-consent-error" class="contact-message-error contact-message-error--consent">{{ $message }}</p>
+                @enderror
 
                 <button type="submit" class="contact-message-submit">
                     <x-lucide-send aria-hidden="true" />

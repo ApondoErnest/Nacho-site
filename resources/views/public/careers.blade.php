@@ -4,101 +4,14 @@
 
 @section('content')
     @php
-        $locale = app()->getLocale();
-        $generalApplicationEmail = config('centers.headquarters.email');
-        $generalApplicationMailto = 'mailto:' . $generalApplicationEmail . '?' . http_build_query([
-            'subject' => __('careers.mailto.subject'),
-            'body' => __('careers.mailto.body'),
-        ], '', '&', PHP_QUERY_RFC3986);
-        $finderLabels = __('careers.finder');
-        $statusLabels = $finderLabels['status'];
-        $hiddenStatuses = ['archived'];
-        $openStatuses = ['published', 'closing_soon'];
-        $visibleVacancies = collect(__('careers.vacancies.items'))
-            ->reject(fn (array $vacancy) => in_array($vacancy['status'], $hiddenStatuses, true))
-            ->map(function (array $vacancy) use ($generalApplicationEmail, $openStatuses, $statusLabels) {
-                $recipient = $vacancy['application_email'] ?: $generalApplicationEmail;
-                $subject = __('careers.vacancies.mailto_subject', [
-                    'title' => $vacancy['title'],
-                    'reference' => $vacancy['reference'],
-                ]);
-                $body = __('careers.vacancies.mailto_body', [
-                    'title' => $vacancy['title'],
-                    'reference' => $vacancy['reference'],
-                ]);
-                $searchParts = array_merge([
-                    $vacancy['title'],
-                    $vacancy['department'],
-                    $vacancy['center'],
-                    $vacancy['employment_type'],
-                    $vacancy['reference'],
-                    $vacancy['summary'],
-                    $vacancy['role_purpose'],
-                ], $vacancy['responsibilities'], $vacancy['essential'], $vacancy['preferred'], $vacancy['skills'], $vacancy['documents']);
-
-                $vacancy['application_email'] = $recipient;
-                $vacancy['status_label'] = $statusLabels[$vacancy['status']] ?? $vacancy['status'];
-                $vacancy['deadline_sentence'] = __('careers.finder.deadline_sentence', ['date' => $vacancy['deadline']]);
-                $vacancy['card_status_label'] = in_array($vacancy['status'], $openStatuses, true)
-                    ? __('careers.finder.card_deadline', ['date' => $vacancy['deadline']])
-                    : __('careers.finder.not_currently_open');
-                $vacancy['detail_url'] = route('careers.index') . '?vacancy=' . urlencode($vacancy['slug']);
-                $vacancy['mailto'] = in_array($vacancy['status'], $openStatuses, true)
-                    ? 'mailto:' . $recipient . '?' . http_build_query([
-                        'subject' => $subject,
-                        'body' => $body,
-                    ], '', '&', PHP_QUERY_RFC3986)
-                    : null;
-                $vacancy['search_index'] = implode(' ', array_filter($searchParts));
-
-                return $vacancy;
-            })
-            ->values();
-        $hasOpenVacancies = $visibleVacancies->contains(fn (array $vacancy) => in_array($vacancy['status'], $openStatuses, true));
-        $filterDepartments = $visibleVacancies
-            ->map(fn (array $vacancy) => ['key' => $vacancy['department_key'], 'label' => $vacancy['department']])
-            ->unique('key')
-            ->values();
-
-        $centerFilterLabels = [
-            'nacho-yaounde' => 'NACHO Yaounde',
-            'nacho-nkwen-bamenda' => 'NACHO Nkwen-Bamenda',
-            'nacho-mankon-bamenda' => $locale === 'fr'
-                ? 'NACHO Nacho-Bamenda / Siège'
-                : 'NACHO Nacho-Bamenda / Headquarters',
-            'nacho-douala' => 'NACHO Douala',
-            'nacho-kumba' => 'NACHO Kumba',
-        ];
-        $alwaysShownCenterKeys = ['nacho-yaounde', 'nacho-nkwen-bamenda', 'nacho-mankon-bamenda'];
-        $visibleVacancyCenterKeys = $visibleVacancies->pluck('center_key')->unique();
-        $filterCenters = collect($centerFilterLabels)
-            ->filter(fn (string $label, string $key) => in_array($key, $alwaysShownCenterKeys, true) || $visibleVacancyCenterKeys->contains($key))
-            ->map(fn (string $label, string $key) => ['key' => $key, 'label' => $label])
-            ->values();
-
-        $employmentTypeLabels = [
-            'full-time' => $locale === 'fr' ? 'Temps plein' : 'Full-time',
-            'part-time' => $locale === 'fr' ? 'Temps partiel' : 'Part-time',
-            'contract' => $locale === 'fr' ? 'Contrat' : 'Contract',
-            'internship' => $locale === 'fr' ? 'Stage' : 'Internship',
-            'graduate-trainee-placement' => $locale === 'fr'
-                ? 'Placement diplômé ou stagiaire'
-                : 'Graduate or Trainee Placement',
-        ];
-        $usedEmploymentTypeKeys = $visibleVacancies->pluck('employment_type_key')->unique();
-        $knownEmploymentTypes = collect($employmentTypeLabels)
-            ->filter(fn (string $label, string $key) => $usedEmploymentTypeKeys->contains($key))
-            ->map(fn (string $label, string $key) => ['key' => $key, 'label' => $label]);
-        $extraEmploymentTypes = $visibleVacancies
-            ->reject(fn (array $vacancy) => array_key_exists($vacancy['employment_type_key'], $employmentTypeLabels))
-            ->map(fn (array $vacancy) => ['key' => $vacancy['employment_type_key'], 'label' => $vacancy['employment_type']])
-            ->unique('key')
-            ->values();
-        $filterEmploymentTypes = $knownEmploymentTypes->merge($extraEmploymentTypes)->values();
-        $requestedVacancy = request('vacancy');
-        $initialVacancySlug = $visibleVacancies->contains('slug', $requestedVacancy)
-            ? $requestedVacancy
-            : ($visibleVacancies->first()['slug'] ?? null);
+        $finderLabels = $finderLabels ?? __('careers.finder');
+        $visibleVacancies = collect($visibleVacancies ?? []);
+        $hasOpenVacancies = $hasOpenVacancies ?? false;
+        $filterDepartments = collect($filterDepartments ?? []);
+        $filterCenters = collect($filterCenters ?? []);
+        $filterEmploymentTypes = collect($filterEmploymentTypes ?? []);
+        $generalApplicationMailto = $generalApplicationMailto ?? '#';
+        $initialVacancySlug = $initialVacancySlug ?? null;
     @endphp
 
     <section class="careers-hero" aria-labelledby="careers-hero-title">
