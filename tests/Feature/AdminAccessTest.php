@@ -30,7 +30,7 @@ class AdminAccessTest extends TestCase
         $this->actingAs($user)
             ->get('/admin')
             ->assertOk()
-            ->assertSee('Admin access is active');
+            ->assertSee('Dashboard');
     }
 
     #[Test]

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicSite\AboutController;
@@ -46,9 +47,9 @@ Route::prefix('admin')
     ->name('admin.')
     ->middleware(['auth', 'admin.active'])
     ->group(function (): void {
-        Route::get('/', function () {
-            return view('admin.index');
-        })->middleware('admin.ability:dashboard.view')->name('home');
+        Route::get('/', DashboardController::class)
+            ->middleware('admin.ability:dashboard.view')
+            ->name('home');
     });
 
 Route::middleware('auth')->group(function () {

@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 27 — Admin layout + dashboard cards.** Added a dedicated admin dashboard controller, responsive admin layout with ability-filtered sidebar navigation, top-bar notification cues, protected `/admin` dashboard cards for centers, services, tariffs, bookings, messages, blog posts, and vacancies, plus dashboard tests for counts and role-filtered navigation.
+
 - **Step 26 — Admin auth + custom roles.** Added the custom `AdminAccess` ability matrix, `admin.active`, `admin.ability`, and `role` middleware, `@adminCan` Blade checks, inactive-user login blocking, staff login redirects to `/admin`, and a protected `/admin` access foundation page. Added feature tests for guest redirects, inactive users, ability/role gates, Blade authorization, and admin login behavior.
 
 - **Step 24 — Contact form backend.** Added public contact message validation, a POST-backed `/contact` flow, a hidden honeypot field, and persistence into `contact_messages` with `new` status. The contact page now preserves failed submissions and shows bilingual success/error feedback. Added feature tests for successful storage, invalid centers/reasons, honeypot no-store behavior, and form route wiring.
