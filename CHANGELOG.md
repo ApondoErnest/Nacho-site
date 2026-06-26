@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 29 — Admin service management.** Added protected admin service CRUD with search/status filtering, create/edit/show/archive flows, bilingual content and SEO fields, safe Lucide icon selection, booking/center counts, assigned-center summaries, and ability-gated routes/actions. Added feature tests for service index/detail, create/update/archive, validation, and role permissions.
+
 - **Step 28 — Admin center management.** Added protected admin center CRUD with list/search/status filtering, create/edit/show/archive flows, validation for center identity/location/operation/expansion fields, service assignment syncing, contact/service summaries, and ability-gated routes/actions. Added feature tests for center index/detail, create/update/archive, validation, and role permissions.
 
 - **Step 27 — Admin layout + dashboard cards.** Added a dedicated admin dashboard controller, responsive admin layout with ability-filtered sidebar navigation, top-bar notification cues, protected `/admin` dashboard cards for centers, services, tariffs, bookings, messages, blog posts, and vacancies, plus dashboard tests for counts and role-filtered navigation.

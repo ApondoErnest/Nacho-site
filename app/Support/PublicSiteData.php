@@ -109,7 +109,7 @@ class PublicSiteData
             return [
                 'key' => $key,
                 'slug' => $service->slug,
-                'icon' => $service->icon ?: 'clipboard-check',
+                'icon' => $service->lucideIcon(),
                 'bookable' => $service->slug !== 'road-safety',
                 'title' => $service->localized('title'),
                 'description' => $service->localized('short_description'),

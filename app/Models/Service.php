@@ -16,6 +16,23 @@ class Service extends Model
     /** @use HasFactory<ServiceFactory> */
     use HasFactory, HasLocalizedAttributes, SoftDeletes;
 
+    public const DEFAULT_ICON = 'clipboard-check';
+
+    public const LUCIDE_ICONS = [
+        self::DEFAULT_ICON,
+        'car-front',
+        'truck',
+        'refresh-cw',
+        'scan-search',
+        'shield-check',
+        'clipboard-list',
+        'file-check-2',
+        'wrench',
+        'gauge',
+        'settings',
+        'badge-check',
+    ];
+
     protected $fillable = [
         'slug',
         'title_en',
@@ -57,5 +74,26 @@ class Service extends Model
     public function scopeActive(Builder $query): Builder
     {
         return $query->where('is_active', true);
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public static function iconOptions(): array
+    {
+        return collect(self::LUCIDE_ICONS)
+            ->mapWithKeys(fn (string $icon): array => [
+                $icon => str($icon)->replace('-', ' ')->title()->toString(),
+            ])
+            ->all();
+    }
+
+    public function lucideIcon(): string
+    {
+        $icon = $this->icon ?: self::DEFAULT_ICON;
+
+        return in_array($icon, self::LUCIDE_ICONS, true)
+            ? $icon
+            : self::DEFAULT_ICON;
     }
 }

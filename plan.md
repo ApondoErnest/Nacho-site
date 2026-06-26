@@ -28,7 +28,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step 26 — Admin auth + custom roles | **Done** |
 | Step 27 — Admin layout + dashboard cards | **Done** |
 | Step 28 — Admin: centers | **Done** |
-| Next step | **Step 29** — admin: services |
+| Step 29 — Admin: services | **Done** |
+| Next step | **Step 30** — admin: tariffs |
 
 ## Timeline overview
 
@@ -77,7 +78,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 26 | Admin auth + roles |
 | 27 | Admin dashboard |
 | 28 | Admin: centers |
-| 29 | Admin: services |
+| 29 | Admin: services (**done**) |
 | 30 | Admin: tariffs |
 | 31 | Admin: bookings |
 | 32 | Admin: contact messages |

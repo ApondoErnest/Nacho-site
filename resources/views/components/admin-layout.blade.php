@@ -31,7 +31,7 @@
 @endphp
 
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" class="overflow-x-clip">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,10 +44,10 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="overflow-x-hidden font-sans antialiased">
+    <body class="overflow-x-clip font-sans antialiased">
         <div
             x-data="{ sidebarOpen: false }"
-            class="min-h-screen overflow-x-hidden bg-[#f5f7fa] text-gray-900"
+            class="min-h-screen overflow-x-clip bg-[#f5f7fa] text-gray-900"
         >
             <aside
                 x-cloak
@@ -59,8 +59,9 @@
             ></aside>
 
             <aside
-                class="fixed inset-y-0 left-0 z-50 flex w-72 -translate-x-full flex-col border-r border-gray-200 bg-white transition-transform duration-200 lg:translate-x-0"
-                :class="{ 'translate-x-0': sidebarOpen }"
+                x-cloak
+                :class="sidebarOpen ? 'visible opacity-100 pointer-events-auto' : 'invisible opacity-0 pointer-events-none'"
+                class="fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r border-gray-200 bg-white transition-opacity duration-200 lg:visible lg:pointer-events-auto lg:opacity-100"
                 aria-label="Admin navigation"
             >
                 <div class="flex h-20 items-center justify-between border-b border-gray-200 px-5">

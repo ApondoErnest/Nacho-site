@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\CenterController as AdminCenterController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicSite\AboutController;
@@ -73,6 +74,28 @@ Route::prefix('admin')
         Route::delete('/centers/{center}', [AdminCenterController::class, 'destroy'])
             ->middleware('admin.ability:centers.delete')
             ->name('centers.destroy');
+
+        Route::middleware('admin.ability:services.view')->group(function (): void {
+            Route::get('/services', [AdminServiceController::class, 'index'])->name('services.index');
+        });
+
+        Route::middleware('admin.ability:services.create')->group(function (): void {
+            Route::get('/services/create', [AdminServiceController::class, 'create'])->name('services.create');
+            Route::post('/services', [AdminServiceController::class, 'store'])->name('services.store');
+        });
+
+        Route::get('/services/{service}', [AdminServiceController::class, 'show'])
+            ->middleware('admin.ability:services.view')
+            ->name('services.show');
+
+        Route::middleware('admin.ability:services.update')->group(function (): void {
+            Route::get('/services/{service}/edit', [AdminServiceController::class, 'edit'])->name('services.edit');
+            Route::put('/services/{service}', [AdminServiceController::class, 'update'])->name('services.update');
+        });
+
+        Route::delete('/services/{service}', [AdminServiceController::class, 'destroy'])
+            ->middleware('admin.ability:services.delete')
+            ->name('services.destroy');
     });
 
 Route::middleware('auth')->group(function () {

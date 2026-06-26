@@ -62,7 +62,7 @@ flowchart LR
 | 26 | Admin auth + custom roles | done |
 | 27 | Admin layout + dashboard cards | done |
 | 28 | Admin: center management | done |
-| 29 | Admin: service management | pending |
+| 29 | Admin: service management | done |
 | 30 | Admin: tariff management + audit log | pending |
 | 31 | Admin: booking management | pending |
 | 32 | Admin: contact messages | pending |
