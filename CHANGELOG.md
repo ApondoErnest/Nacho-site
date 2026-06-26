@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 30 — Admin tariff management + audit log.** Added protected admin tariff management with search/status/bookable filters, create/edit/show/deactivate flows, safe vehicle icon selection, regulatory metadata fields, scheduled tariff revision snapshots, immutable audit-log recording for creates/updates/deactivations/revisions, and public tariff preview support for currently effective revision snapshots. Added feature tests for tariff permissions, validation, audit logging, deactivation, and revision-driven public pricing.
+
 - **Step 29 — Admin service management.** Added protected admin service CRUD with search/status filtering, create/edit/show/archive flows, bilingual content and SEO fields, safe Lucide icon selection, booking/center counts, assigned-center summaries, and ability-gated routes/actions. Added feature tests for service index/detail, create/update/archive, validation, and role permissions.
 
 - **Step 28 — Admin center management.** Added protected admin center CRUD with list/search/status filtering, create/edit/show/archive flows, validation for center identity/location/operation/expansion fields, service assignment syncing, contact/service summaries, and ability-gated routes/actions. Added feature tests for center index/detail, create/update/archive, validation, and role permissions.

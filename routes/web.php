@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CenterController as AdminCenterController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Admin\TariffController as AdminTariffController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicSite\AboutController;
@@ -96,6 +97,29 @@ Route::prefix('admin')
         Route::delete('/services/{service}', [AdminServiceController::class, 'destroy'])
             ->middleware('admin.ability:services.delete')
             ->name('services.destroy');
+
+        Route::middleware('admin.ability:tariffs.view')->group(function (): void {
+            Route::get('/tariffs', [AdminTariffController::class, 'index'])->name('tariffs.index');
+        });
+
+        Route::middleware('admin.ability:tariffs.create')->group(function (): void {
+            Route::get('/tariffs/create', [AdminTariffController::class, 'create'])->name('tariffs.create');
+            Route::post('/tariffs', [AdminTariffController::class, 'store'])->name('tariffs.store');
+        });
+
+        Route::get('/tariffs/{tariff}', [AdminTariffController::class, 'show'])
+            ->middleware('admin.ability:tariffs.view')
+            ->name('tariffs.show');
+
+        Route::middleware('admin.ability:tariffs.update')->group(function (): void {
+            Route::get('/tariffs/{tariff}/edit', [AdminTariffController::class, 'edit'])->name('tariffs.edit');
+            Route::put('/tariffs/{tariff}', [AdminTariffController::class, 'update'])->name('tariffs.update');
+            Route::post('/tariffs/{tariff}/revisions', [AdminTariffController::class, 'storeRevision'])->name('tariffs.revisions.store');
+        });
+
+        Route::delete('/tariffs/{tariff}', [AdminTariffController::class, 'destroy'])
+            ->middleware('admin.ability:tariffs.delete')
+            ->name('tariffs.destroy');
     });
 
 Route::middleware('auth')->group(function () {

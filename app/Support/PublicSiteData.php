@@ -142,30 +142,46 @@ class PublicSiteData
             return $this->tariffs = collect(config('home.tariff_preview', []));
         }
 
-        return $this->tariffs = $tariffs->values()->map(function (Tariff $tariff, int $index): array {
-            $number = $index + 1;
-            $category = "Category {$tariff->category_code}";
-            $categoryFr = "Categorie {$tariff->category_code}";
-            $validity = str_pad((string) $tariff->validity_value, 2, '0', STR_PAD_LEFT);
-            $price = number_format($tariff->price_fcfa, 0, ',', ' ').' FCFA';
+        return $this->tariffs = $tariffs
+            ->map(fn (Tariff $tariff): array => [
+                'tariff' => $tariff,
+                'snapshot' => $tariff->effectiveSnapshot(),
+            ])
+            ->filter(fn (array $row): bool => ($row['snapshot']['is_active'] ?? true) && ($row['snapshot']['is_bookable'] ?? true))
+            ->values()
+            ->map(function (array $row, int $index): array {
+                /** @var Tariff $tariff */
+                $tariff = $row['tariff'];
+                $snapshot = $row['snapshot'];
+                $number = $index + 1;
+                $category = "Category {$tariff->category_code}";
+                $categoryFr = "Categorie {$tariff->category_code}";
+                $validity = str_pad((string) ($snapshot['validity_value'] ?? $tariff->validity_value), 2, '0', STR_PAD_LEFT);
+                $validityUnit = (string) ($snapshot['validity_unit'] ?? $tariff->validity_unit);
+                $validityUnitFr = match ($validityUnit) {
+                    'days' => 'jours',
+                    'years' => 'ans',
+                    default => 'mois',
+                };
+                $price = number_format((int) ($snapshot['price_fcfa'] ?? $tariff->price_fcfa), 0, ',', ' ').' FCFA';
 
-            return [
-                'number' => $number,
-                'filter_id' => $this->tariffFilterId($tariff->category_slug),
-                'category_en' => $category,
-                'category_fr' => $categoryFr,
-                'vehicle_type_en' => $tariff->name_en,
-                'vehicle_type_fr' => $tariff->name_fr,
-                'price' => $price,
-                'validity_en' => "{$validity} months",
-                'validity_fr' => "{$validity} mois",
-                'test_type_en' => $this->tariffTestType($tariff),
-                'test_type_fr' => $this->tariffTestType($tariff, 'fr'),
-                'documents_en' => 'Registration, insurance (see full tariffs page)',
-                'documents_fr' => 'Carte grise, assurance (voir page Tarifs)',
-                'category_slug' => $tariff->category_slug,
-            ];
-        });
+                return [
+                    'number' => $number,
+                    'filter_id' => $this->tariffFilterId($tariff->category_slug),
+                    'category_en' => $category,
+                    'category_fr' => $categoryFr,
+                    'vehicle_type_en' => $tariff->name_en,
+                    'vehicle_type_fr' => $tariff->name_fr,
+                    'price' => $price,
+                    'validity_en' => "{$validity} {$validityUnit}",
+                    'validity_fr' => "{$validity} {$validityUnitFr}",
+                    'test_type_en' => $this->tariffTestType($tariff),
+                    'test_type_fr' => $this->tariffTestType($tariff, 'fr'),
+                    'documents_en' => 'Registration, insurance (see full tariffs page)',
+                    'documents_fr' => 'Carte grise, assurance (voir page Tarifs)',
+                    'category_slug' => $tariff->category_slug,
+                ];
+            });
     }
 
     /**
