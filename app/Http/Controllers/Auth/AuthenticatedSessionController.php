@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
+use App\Support\AdminAccess;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,14 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('dashboard', absolute: false));
+        $user = Auth::user();
+        $user?->forceFill(['last_login_at' => now()])->save();
+
+        $fallbackRoute = AdminAccess::hasActiveAdminRole($user)
+            ? route('admin.home', absolute: false)
+            : route('dashboard', absolute: false);
+
+        return redirect()->intended($fallbackRoute);
     }
 
     /**

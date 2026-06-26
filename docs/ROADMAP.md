@@ -59,7 +59,7 @@ flowchart LR
 | 23 | Booking form backend | done |
 | 24 | Contact form backend | done |
 | 25 | *(cancelled — email-only careers; no application backend)* | n/a |
-| 26 | Admin auth + custom roles | pending |
+| 26 | Admin auth + custom roles | done |
 | 27 | Admin layout + dashboard cards | pending |
 | 28 | Admin: center management | pending |
 | 29 | Admin: service management | pending |

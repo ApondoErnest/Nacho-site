@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Enums\UserStatus;
+use App\Support\AdminAccess;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
@@ -69,5 +70,20 @@ class User extends Authenticatable
     public function scopeActive(Builder $query): Builder
     {
         return $query->where('status', UserStatus::ACTIVE->value);
+    }
+
+    public function isActive(): bool
+    {
+        return $this->status === UserStatus::ACTIVE;
+    }
+
+    public function hasAdminRole(): bool
+    {
+        return AdminAccess::hasActiveAdminRole($this);
+    }
+
+    public function canAdmin(string $ability): bool
+    {
+        return AdminAccess::can($this, $ability);
     }
 }

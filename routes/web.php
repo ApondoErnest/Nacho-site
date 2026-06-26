@@ -42,6 +42,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::prefix('admin')
+    ->name('admin.')
+    ->middleware(['auth', 'admin.active'])
+    ->group(function (): void {
+        Route::get('/', function () {
+            return view('admin.index');
+        })->middleware('admin.ability:dashboard.view')->name('home');
+    });
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');

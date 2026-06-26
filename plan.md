@@ -25,7 +25,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step 22 — Public controllers backed by database data | **Done** |
 | Step 23 — Booking form backend | **Done** |
 | Step 24 — Contact form backend | **Done** |
-| Next step | **Step 26** — admin auth + custom roles |
+| Step 26 — Admin auth + custom roles | **Done** |
+| Next step | **Step 27** — admin layout + dashboard cards |
 
 ## Timeline overview
 

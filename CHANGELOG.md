@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 26 — Admin auth + custom roles.** Added the custom `AdminAccess` ability matrix, `admin.active`, `admin.ability`, and `role` middleware, `@adminCan` Blade checks, inactive-user login blocking, staff login redirects to `/admin`, and a protected `/admin` access foundation page. Added feature tests for guest redirects, inactive users, ability/role gates, Blade authorization, and admin login behavior.
+
 - **Step 24 — Contact form backend.** Added public contact message validation, a POST-backed `/contact` flow, a hidden honeypot field, and persistence into `contact_messages` with `new` status. The contact page now preserves failed submissions and shows bilingual success/error feedback. Added feature tests for successful storage, invalid centers/reasons, honeypot no-store behavior, and form route wiring.
 
 - **Step 23 — Booking form backend.** Added `BookingReferenceService` for unique `NACHO-YYYYMMDD-XXXX` references, a public booking request validator that enforces bookable centers/services/tariffs and consent, and a POST-backed booking flow that stores pending bookings from the public form. The booking page now submits stable tariff slugs, preserves failed submissions, and displays the generated reference on success. Added feature tests for successful booking creation, invalid center/service combinations, non-bookable centers, and stable form payloads.
