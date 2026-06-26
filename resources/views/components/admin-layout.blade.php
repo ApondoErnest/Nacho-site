@@ -1,11 +1,14 @@
 @props([
     'title' => 'Admin',
     'eyebrow' => 'NACHO Admin',
-    'pendingBookings' => 0,
-    'unreadMessages' => 0,
+    'pendingBookings' => null,
+    'unreadMessages' => null,
 ])
 
 @php
+    $pendingBookings ??= \App\Models\Booking::query()->pending()->count();
+    $unreadMessages ??= \App\Models\ContactMessage::query()->status(\App\Enums\ContactMessageStatus::NEW)->count();
+
     $navigation = [
         ['label' => 'Dashboard', 'route' => 'admin.home', 'ability' => 'dashboard.view', 'icon' => 'layout-dashboard'],
         ['label' => 'Centers', 'route' => 'admin.centers.index', 'ability' => 'centers.view', 'icon' => 'building-2'],
@@ -41,10 +44,10 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="overflow-x-hidden font-sans antialiased">
         <div
             x-data="{ sidebarOpen: false }"
-            class="min-h-screen bg-[#f5f7fa] text-gray-900"
+            class="min-h-screen overflow-x-hidden bg-[#f5f7fa] text-gray-900"
         >
             <aside
                 x-cloak
@@ -79,7 +82,8 @@
                     @foreach ($visibleNavigation as $item)
                         @php
                             $routeExists = Route::has($item['route']);
-                            $isActive = $routeExists && request()->routeIs($item['route']);
+                            $activePattern = str($item['route'])->beforeLast('.')->append('.*')->toString();
+                            $isActive = $routeExists && request()->routeIs($activePattern);
                             $itemClasses = $isActive
                                 ? 'bg-nacho-primary text-white shadow-sm shadow-nacho-primary/20'
                                 : 'text-gray-700 hover:bg-gray-100 hover:text-gray-950';

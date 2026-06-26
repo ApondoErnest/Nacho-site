@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CenterController as AdminCenterController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
@@ -50,6 +51,28 @@ Route::prefix('admin')
         Route::get('/', DashboardController::class)
             ->middleware('admin.ability:dashboard.view')
             ->name('home');
+
+        Route::middleware('admin.ability:centers.view')->group(function (): void {
+            Route::get('/centers', [AdminCenterController::class, 'index'])->name('centers.index');
+        });
+
+        Route::middleware('admin.ability:centers.create')->group(function (): void {
+            Route::get('/centers/create', [AdminCenterController::class, 'create'])->name('centers.create');
+            Route::post('/centers', [AdminCenterController::class, 'store'])->name('centers.store');
+        });
+
+        Route::get('/centers/{center}', [AdminCenterController::class, 'show'])
+            ->middleware('admin.ability:centers.view')
+            ->name('centers.show');
+
+        Route::middleware('admin.ability:centers.update')->group(function (): void {
+            Route::get('/centers/{center}/edit', [AdminCenterController::class, 'edit'])->name('centers.edit');
+            Route::put('/centers/{center}', [AdminCenterController::class, 'update'])->name('centers.update');
+        });
+
+        Route::delete('/centers/{center}', [AdminCenterController::class, 'destroy'])
+            ->middleware('admin.ability:centers.delete')
+            ->name('centers.destroy');
     });
 
 Route::middleware('auth')->group(function () {

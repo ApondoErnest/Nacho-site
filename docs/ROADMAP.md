@@ -61,7 +61,7 @@ flowchart LR
 | 25 | *(cancelled — email-only careers; no application backend)* | n/a |
 | 26 | Admin auth + custom roles | done |
 | 27 | Admin layout + dashboard cards | done |
-| 28 | Admin: center management | pending |
+| 28 | Admin: center management | done |
 | 29 | Admin: service management | pending |
 | 30 | Admin: tariff management + audit log | pending |
 | 31 | Admin: booking management | pending |
