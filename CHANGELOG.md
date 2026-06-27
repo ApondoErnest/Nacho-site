@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 43 — Backend testing pass.** Added `BackendStabilityTest` coverage for the core v1 database schema, absence of server-side career application storage, representative admin route authentication and Super Admin rendering across every backend module, non-staff admin blocking, booking query preselection from center/tariff URLs, and email-only public career vacancy payloads. Updated testing documentation with the focused backend stability command.
+
 - **Step 42 — Frontend testing pass.** Added a repeatable `npm run test:frontend` command that builds Vite assets and runs the new `FrontendSmokeTest` suite. The suite verifies compiled CSS/JS asset availability, guards against stale `public/hot` files causing unstyled pages, checks shared public chrome across core public routes, validates local image/build asset references, and covers frontend markup contracts for the centers finder, tariff console, careers vacancy UI, booking/contact forms, and excluded reminder/expiry/CV-upload fields.
 
 - **Step 41 — Security hardening + cookie banner.** Added a global security headers middleware for CSP, frame/content-type/referrer/permissions/COOP headers, HTTPS-only HSTS, and no-store caching on auth/admin surfaces. Added named public-form throttling for booking and contact submissions, production-oriented secure/encrypted session cookie defaults, a localized cookie-banner accessible label, and feature tests covering security headers, HSTS behavior, auth cache prevention, translated cookie consent labels, and rate limiting on both public POST forms.

@@ -6,6 +6,7 @@ Testing happens incrementally after each major module. Automated tests use PHPUn
 
 - **Feature tests** for HTTP behavior: public pages load (200), forms validate and persist, auth and role gates enforce access, language switching works.
 - **Frontend smoke tests** for public chrome, compiled Vite assets, local image/build references, interactive Blade/Alpine markup hooks, booking/contact form accessibility, and excluded v1 fields. Run with `npm run test:frontend` or `php artisan test --filter=FrontendSmokeTest` after assets are built.
+- **Backend stability tests** for schema guardrails, admin route protection/rendering, non-staff access denial, booking query preselects, and email-only careers backend payloads. Run with `php artisan test --filter=BackendStabilityTest`.
 - **Unit tests** for focused logic: booking reference generation, ability matrix (`AdminAccess`), bilingual accessors/fallback.
 - **Factories** for all core models to arrange test data.
 - Run with `php artisan test`; tests use a separate test database (or SQLite in-memory) so local MySQL data is untouched.
@@ -40,6 +41,13 @@ Automated Step 42 frontend pass:
 ## 3. Backend testing (manual)
 
 admin login, dashboard access, role permissions, and each management module (centers, services, tariffs, bookings, contact, blog, careers, pages, media, users).
+
+Automated Step 43 backend pass:
+
+- `php artisan test --filter=BackendStabilityTest` verifies the core v1 schema, including `roles`, staff fields on `users`, center/service/tariff/booking/contact/blog/career/page/media/settings tables, and the continued absence of `job_applications`.
+- Representative admin routes are checked twice: guests must redirect to login, and Super Admin must render dashboard, CRUD indexes, create screens, and show screens across backend modules without errors.
+- Non-staff users are forbidden from admin routes.
+- Public backend state checks verify `?center=` and tariff category preselection on booking, and email-only careers vacancy payloads with no file-upload or application-storage path.
 
 ## 4. Database testing
 

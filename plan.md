@@ -42,7 +42,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step 40 — SEO | **Done** |
 | Step 41 — Security hardening | **Done** |
 | Step 42 — Frontend tests | **Done** |
-| Next step | **Step 43** — backend tests |
+| Step 43 — Backend tests | **Done** |
+| Next step | **Step 44** — UAT sign-off |
 
 ## Timeline overview
 
@@ -105,7 +106,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 40 | SEO (**done**) |
 | 41 | Security hardening (**done**) |
 | 42 | Frontend tests (**done**) |
-| 43 | Backend tests |
+| 43 | Backend tests (**done**) |
 | 44 | UAT sign-off |
 | 45–50 | Deploy (**deferred**) |
 
@@ -155,4 +156,4 @@ ADRs: [docs/adr/](docs/adr/)
 
 ## Next action
 
-Say **"do Step 43"** to run the backend testing pass.
+Say **"do Step 44"** to run the UAT sign-off pass.
