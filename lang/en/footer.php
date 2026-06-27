@@ -15,6 +15,7 @@ return [
     'legal_notice' => 'Legal Notice',
     'copyright' => '© :year NACHO Vehicle Inspection. All rights reserved.',
     'cookie_message' => 'This site uses essential cookies for its operation. By continuing, you accept our use of cookies.',
+    'cookie_label' => 'Cookie consent',
     'cookie_accept' => 'Accept',
     'cookie_learn_more' => 'Learn more',
     'cta_eyebrow' => 'Need help choosing the right inspection service?',

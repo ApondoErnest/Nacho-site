@@ -40,7 +40,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step 38 — Admin: site settings | **Done** |
 | Step 39 — Multilingual completion | **Done** |
 | Step 40 — SEO | **Done** |
-| Next step | **Step 41** — security hardening |
+| Step 41 — Security hardening | **Done** |
+| Next step | **Step 42** — frontend tests |
 
 ## Timeline overview
 
@@ -101,7 +102,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 38 | Admin: site settings (**done**) |
 | 39 | Multilingual completion (**done**) |
 | 40 | SEO (**done**) |
-| 41 | Security hardening |
+| 41 | Security hardening (**done**) |
 | 42 | Frontend tests |
 | 43 | Backend tests |
 | 44 | UAT sign-off |
@@ -153,4 +154,4 @@ ADRs: [docs/adr/](docs/adr/)
 
 ## Next action
 
-Say **"do Step 35"** to build admin page management.
+Say **"do Step 42"** to run the frontend testing pass.

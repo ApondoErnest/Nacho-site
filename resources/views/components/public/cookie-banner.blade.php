@@ -4,7 +4,7 @@
     x-cloak
     class="fixed inset-x-0 bottom-0 z-50 border-t border-nacho-dark/10 bg-white p-4 shadow-lg sm:p-5"
     role="dialog"
-    aria-label="Cookie consent"
+    aria-label="{{ __('footer.cookie_label') }}"
 >
     <div class="nacho-container flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
         <p class="text-sm text-nacho-dark/80">

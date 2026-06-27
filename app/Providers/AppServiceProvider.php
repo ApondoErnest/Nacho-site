@@ -3,7 +3,10 @@
 namespace App\Providers;
 
 use App\Support\AdminAccess;
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -22,5 +25,11 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Blade::if('adminCan', fn (string $ability): bool => AdminAccess::can(auth()->user(), $ability));
+
+        RateLimiter::for('public-form', function (Request $request): Limit {
+            $route = $request->route()?->getName() ?? $request->path();
+
+            return Limit::perMinute(6)->by($route.'|'.$request->ip());
+        });
     }
 }
