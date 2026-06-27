@@ -2,6 +2,17 @@
 
 The local version is considered stable (ready for Dockerization) only when all items below pass.
 
+## Step 44 result - 2026-06-27
+
+Technical UAT passed locally:
+
+- `npm run test:frontend` passed (18 tests, 380 assertions).
+- `php artisan test` passed (164 tests, 1511 assertions).
+- Live HTTP smoke passed for the core public pages, legal routes, `/sitemap.xml`, `/robots.txt`, and `/login`.
+- No 2026-06-27 application error markers were found in `storage/logs/laravel.log`.
+
+Full stakeholder/content sign-off is still pending. Do not start deployment steps 45-50 until the open items in [UAT_REPORT.md](UAT_REPORT.md) are resolved or formally accepted as v1 exclusions.
+
 ## 1. Public site
 
 - [ ] Home page renders all 14 sections per [DESIGN.md](DESIGN.md) (hero split, center strip, 6-step timeline, technical checks, result cards, footer CTA, floating book button)

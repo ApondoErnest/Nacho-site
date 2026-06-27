@@ -43,7 +43,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step 41 — Security hardening | **Done** |
 | Step 42 — Frontend tests | **Done** |
 | Step 43 — Backend tests | **Done** |
-| Next step | **Step 44** — UAT sign-off |
+| Step 44 — UAT sign-off | **Technical pass; content/stakeholder sign-off pending** |
+| Next step | **Resolve UAT open items before Step 45** |
 
 ## Timeline overview
 
@@ -107,7 +108,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 41 | Security hardening (**done**) |
 | 42 | Frontend tests (**done**) |
 | 43 | Backend tests (**done**) |
-| 44 | UAT sign-off |
+| 44 | UAT sign-off (**technical pass; content pending**) |
 | 45–50 | Deploy (**deferred**) |
 
 ## Why frontend before database?
@@ -156,4 +157,4 @@ ADRs: [docs/adr/](docs/adr/)
 
 ## Next action
 
-Say **"do Step 44"** to run the UAT sign-off pass.
+Resolve the open Step 44 UAT items in [docs/UAT_REPORT.md](docs/UAT_REPORT.md) before starting Step 45.

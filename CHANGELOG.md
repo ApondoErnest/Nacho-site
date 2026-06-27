@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 44 — Local technical UAT pass.** Added a Step 44 UAT report with the local evidence trail for frontend smoke tests, the full PHPUnit suite, live HTTP page checks, compiled CSS/asset verification, and log review. Updated the UAT checklist, roadmap, and plan to show that technical UAT is passing while stakeholder/content sign-off remains open before deployment steps 45-50.
+
 - **Step 43 — Backend testing pass.** Added `BackendStabilityTest` coverage for the core v1 database schema, absence of server-side career application storage, representative admin route authentication and Super Admin rendering across every backend module, non-staff admin blocking, booking query preselection from center/tariff URLs, and email-only public career vacancy payloads. Updated testing documentation with the focused backend stability command.
 
 - **Step 42 — Frontend testing pass.** Added a repeatable `npm run test:frontend` command that builds Vite assets and runs the new `FrontendSmokeTest` suite. The suite verifies compiled CSS/JS asset availability, guards against stale `public/hot` files causing unstyled pages, checks shared public chrome across core public routes, validates local image/build asset references, and covers frontend markup contracts for the centers finder, tariff console, careers vacancy UI, booking/contact forms, and excluded reminder/expiry/CV-upload fields.
