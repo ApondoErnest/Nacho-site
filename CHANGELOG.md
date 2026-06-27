@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 38 — Admin site settings.** Added protected site settings management for general identity, contact details, branding paths/colors, footer copy, social links, tariff logistics copy, careers email/safety notices, and maintenance toggle. Added a typed settings registry, grouped admin editor, validation for email/URL/color/language/boolean fields, and feature tests proving settings update the shared `site_settings` source used by public data.
+
 - **Step 37 — Admin users and roles.** Added Super Admin-only staff user management with search/status/role filters, user count cards, create/edit/detail/deactivate flows, role assignment, password reset support, and self-lockout protection. Added role management screens for the fixed code-backed role matrix, including role labels/descriptions and ability visibility with immutable slugs. Added feature tests for filtering, create/update/reset/deactivate flows, role updates, authorization, validation, and self-demotion/deactivation guards.
 
 - **Step 36 — Admin media library.** Added protected media upload and library management with image/document validation, 10 MB upload limits, server-generated storage paths, search/type filters, media count cards, preview/detail pages, reusable storage/public URL metadata, bilingual alt text editing, role-gated upload/update/delete actions, and storage-backed deletion. Added feature tests for filtering, image/document uploads, metadata updates, file deletion, role permissions, and unsafe/oversized upload rejection.

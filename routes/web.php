@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\MediaController as AdminMediaController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\RoleController as AdminRoleController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
+use App\Http\Controllers\Admin\SiteSettingController as AdminSiteSettingController;
 use App\Http\Controllers\Admin\TariffController as AdminTariffController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\LanguageController;
@@ -299,6 +300,14 @@ Route::prefix('admin')
             Route::get('/roles/{role}/edit', [AdminRoleController::class, 'edit'])->name('roles.edit');
             Route::put('/roles/{role}', [AdminRoleController::class, 'update'])->name('roles.update');
         });
+
+        Route::get('/site-settings', [AdminSiteSettingController::class, 'index'])
+            ->middleware('admin.ability:site-settings.view')
+            ->name('site-settings.index');
+
+        Route::put('/site-settings', [AdminSiteSettingController::class, 'update'])
+            ->middleware('admin.ability:site-settings.update')
+            ->name('site-settings.update');
     });
 
 Route::middleware('auth')->group(function () {
