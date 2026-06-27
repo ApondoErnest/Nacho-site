@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 42 — Frontend testing pass.** Added a repeatable `npm run test:frontend` command that builds Vite assets and runs the new `FrontendSmokeTest` suite. The suite verifies compiled CSS/JS asset availability, guards against stale `public/hot` files causing unstyled pages, checks shared public chrome across core public routes, validates local image/build asset references, and covers frontend markup contracts for the centers finder, tariff console, careers vacancy UI, booking/contact forms, and excluded reminder/expiry/CV-upload fields.
+
 - **Step 41 — Security hardening + cookie banner.** Added a global security headers middleware for CSP, frame/content-type/referrer/permissions/COOP headers, HTTPS-only HSTS, and no-store caching on auth/admin surfaces. Added named public-form throttling for booking and contact submissions, production-oriented secure/encrypted session cookie defaults, a localized cookie-banner accessible label, and feature tests covering security headers, HSTS behavior, auth cache prevention, translated cookie consent labels, and rate limiting on both public POST forms.
 
 - **Step 40 — SEO.** Added a centralized public SEO payload service with localized route-level titles/descriptions, canonical URLs, robots directives, Open Graph/Twitter metadata, and JSON-LD rendering in the public layout. Added homepage `AutomotiveBusiness`, centers `ItemList`/`AutomotiveBusiness`, and careers `JobPosting` structured data. Added dynamic `/sitemap.xml` and `/robots.txt` routes, removed the stale static robots file, and added SEO feature tests covering meta tags, CMS legal SEO fields, structured data, sitemap hygiene, and robots directives.

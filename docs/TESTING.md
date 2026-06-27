@@ -5,6 +5,7 @@ Testing happens incrementally after each major module. Automated tests use PHPUn
 ## 1. Automated tests
 
 - **Feature tests** for HTTP behavior: public pages load (200), forms validate and persist, auth and role gates enforce access, language switching works.
+- **Frontend smoke tests** for public chrome, compiled Vite assets, local image/build references, interactive Blade/Alpine markup hooks, booking/contact form accessibility, and excluded v1 fields. Run with `npm run test:frontend` or `php artisan test --filter=FrontendSmokeTest` after assets are built.
 - **Unit tests** for focused logic: booking reference generation, ability matrix (`AdminAccess`), bilingual accessors/fallback.
 - **Factories** for all core models to arrange test data.
 - Run with `php artisan test`; tests use a separate test database (or SQLite in-memory) so local MySQL data is untouched.
@@ -29,6 +30,12 @@ Priority coverage:
 ## 2. Frontend testing (manual)
 
 homepage layout, mobile responsiveness, navigation, language switcher, **Dynamic Center Finder** (4 blocks, 42/58 desktop, filters, expandable cards, HQ disclosure, lazy map, map failure fallback, expansion separation), **Careers page** (4 blocks, 40/60 desktop, filters, Apply by Email mailto, closed disables apply, general application mailto, no form/CV upload), service cards, **Master Pricing Console** (desktop split-screen, mobile sticky bar), booking page (`?center=` preselect), contact page, blog listing, legal pages.
+
+Automated Step 42 frontend pass:
+
+- `npm run test:frontend` runs `npm run build` followed by `php artisan test --filter=FrontendSmokeTest`.
+- The smoke suite intentionally fails when a stale `public/hot` file points Laravel at a stopped Vite dev server, because that renders pages without compiled CSS.
+- The suite verifies built CSS/JS references, shared public header/footer/cookie/language/booking chrome, local asset existence, centers/tariffs/careers Alpine hooks, and public form accessibility fields.
 
 ## 3. Backend testing (manual)
 

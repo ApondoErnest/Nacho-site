@@ -75,7 +75,7 @@ flowchart LR
 | 39 | Multilingual completion | done |
 | 40 | SEO (meta, OG, JSON-LD, sitemap, robots) | done |
 | 41 | Security hardening + cookie banner | done |
-| 42 | Frontend testing pass | pending |
+| 42 | Frontend testing pass | done |
 | 43 | Backend + security testing pass | pending |
 | 44 | Bug fixes + UAT sign-off | pending |
 | 45 | Final local stabilization gate | deferred |
