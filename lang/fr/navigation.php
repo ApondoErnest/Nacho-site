@@ -23,6 +23,7 @@ return [
     'menu_open' => 'Ouvrir le menu',
     'menu_close' => 'Fermer le menu',
     'main_navigation' => 'Navigation principale',
+    'language_navigation' => 'Langue',
 
     'menu_descriptions' => [
         'services' => 'Contrôles techniques et professionnels',

@@ -1,5 +1,5 @@
 @if ($paginator->hasPages())
-    <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+    <nav role="navigation" aria-label="{{ __('components.pagination.navigation') }}" class="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
         @if ($paginator->total())
             <p class="text-sm text-nacho-dark/70">
                 {{ __('components.pagination.showing', [

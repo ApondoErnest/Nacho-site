@@ -76,6 +76,7 @@ return [
     'center' => [
         'operational' => 'Operational',
         'under_construction' => 'Under Construction',
+        'institutional_headquarters' => 'NACHO Administrative Headquarters',
         'opening_badge' => 'Opening before November 2026',
         'opening_notice' => 'Opening before November 2026.',
         'landmark' => 'Nearby landmark',
@@ -244,6 +245,17 @@ return [
         'cv' => 'CV (PDF)',
         'cover_letter' => 'Cover letter',
         'select_placeholder' => 'Choose…',
+        'pdf_only' => 'PDF only',
+        'placeholder_content' => 'Content coming soon — this page will be built in an upcoming development step.',
+        'vehicle_categories' => [
+            'light' => 'Light vehicle',
+            'taxi' => 'Taxi',
+            'heavy' => 'Heavy vehicle',
+        ],
+        'service_types' => [
+            'periodic' => 'Periodic inspection',
+            'counter' => 'Counter-visit',
+        ],
     ],
 
     'alert' => [
@@ -254,9 +266,22 @@ return [
     ],
 
     'pagination' => [
+        'navigation' => 'Pagination Navigation',
         'previous' => 'Previous',
         'next' => 'Next',
         'showing' => 'Showing :from–:to of :total',
+    ],
+
+    'calendar' => [
+        'weekdays' => [
+            'monday' => 'Monday',
+            'tuesday' => 'Tuesday',
+            'wednesday' => 'Wednesday',
+            'thursday' => 'Thursday',
+            'friday' => 'Friday',
+            'saturday' => 'Saturday',
+            'sunday' => 'Sunday',
+        ],
     ],
 
     'design_system' => 'Component library — Step 5',

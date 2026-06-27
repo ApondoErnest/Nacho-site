@@ -72,7 +72,7 @@ flowchart LR
 | 36 | Admin: media library | done |
 | 37 | Admin: users + roles | done |
 | 38 | Admin: site settings | done |
-| 39 | Multilingual completion | pending |
+| 39 | Multilingual completion | done |
 | 40 | SEO (meta, OG, JSON-LD, sitemap, robots) | pending |
 | 41 | Security hardening + cookie banner | pending |
 | 42 | Frontend testing pass | pending |

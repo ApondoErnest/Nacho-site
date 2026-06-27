@@ -13,9 +13,7 @@
             @else
                 <h1 class="text-nacho-dark">{{ __($pageTitle) }}</h1>
                 <p class="mt-4 text-nacho-dark/70">
-                    {{ app()->getLocale() === 'fr'
-                        ? 'Contenu à venir — cette page sera construite dans une prochaine étape du plan de développement.'
-                        : 'Content coming soon — this page will be built in an upcoming development step.' }}
+                    {{ __('components.forms.placeholder_content') }}
                 </p>
             @endif
             <a href="{{ route('home') }}" class="btn-nacho-secondary mt-8 inline-flex">

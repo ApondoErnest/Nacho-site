@@ -11,7 +11,7 @@
 
     <x-public.form-field :label="__('components.forms.position')" name="position" :value="$position ?? ''" required />
 
-    <x-public.form-field :label="__('components.forms.cv')" name="cv" type="file" required :hint="app()->getLocale() === 'fr' ? 'PDF uniquement' : 'PDF only'" />
+    <x-public.form-field :label="__('components.forms.cv')" name="cv" type="file" required :hint="__('components.forms.pdf_only')" />
     <x-public.form-field :label="__('components.forms.cover_letter')" name="cover_letter" type="file" optional />
 
     <div class="pt-2">

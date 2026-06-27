@@ -154,15 +154,12 @@ class PublicSiteData
                 $tariff = $row['tariff'];
                 $snapshot = $row['snapshot'];
                 $number = $index + 1;
-                $category = "Category {$tariff->category_code}";
-                $categoryFr = "Categorie {$tariff->category_code}";
+                $category = trans('tariffs.dynamic.category', ['code' => $tariff->category_code], 'en');
+                $categoryFr = trans('tariffs.dynamic.category', ['code' => $tariff->category_code], 'fr');
                 $validity = str_pad((string) ($snapshot['validity_value'] ?? $tariff->validity_value), 2, '0', STR_PAD_LEFT);
                 $validityUnit = (string) ($snapshot['validity_unit'] ?? $tariff->validity_unit);
-                $validityUnitFr = match ($validityUnit) {
-                    'days' => 'jours',
-                    'years' => 'ans',
-                    default => 'mois',
-                };
+                $validityUnitEn = trans("tariffs.dynamic.validity_units.{$validityUnit}", [], 'en');
+                $validityUnitFr = trans("tariffs.dynamic.validity_units.{$validityUnit}", [], 'fr');
                 $price = number_format((int) ($snapshot['price_fcfa'] ?? $tariff->price_fcfa), 0, ',', ' ').' FCFA';
 
                 return [
@@ -173,12 +170,12 @@ class PublicSiteData
                     'vehicle_type_en' => $tariff->name_en,
                     'vehicle_type_fr' => $tariff->name_fr,
                     'price' => $price,
-                    'validity_en' => "{$validity} {$validityUnit}",
+                    'validity_en' => "{$validity} {$validityUnitEn}",
                     'validity_fr' => "{$validity} {$validityUnitFr}",
                     'test_type_en' => $this->tariffTestType($tariff),
                     'test_type_fr' => $this->tariffTestType($tariff, 'fr'),
-                    'documents_en' => 'Registration, insurance (see full tariffs page)',
-                    'documents_fr' => 'Carte grise, assurance (voir page Tarifs)',
+                    'documents_en' => trans('tariffs.dynamic.documents', [], 'en'),
+                    'documents_fr' => trans('tariffs.dynamic.documents', [], 'fr'),
                     'category_slug' => $tariff->category_slug,
                 ];
             });
@@ -223,14 +220,14 @@ class PublicSiteData
                     $center = $post->center;
                     $deadline = $post->closes_at
                         ? $post->closes_at->translatedFormat('M j, Y')
-                        : (app()->getLocale() === 'fr' ? 'Non precisee' : 'Not specified');
+                        : __('careers.fallbacks.deadline_not_specified');
 
                     $vacancy = [
                         'slug' => $post->slug,
                         'reference' => $reference,
                         'title' => $title,
                         'department_key' => $department?->slug ?? 'general',
-                        'department' => $department?->localized('name') ?? (app()->getLocale() === 'fr' ? 'General' : 'General'),
+                        'department' => $department?->localized('name') ?? __('careers.fallbacks.general_department'),
                         'center_key' => $center?->slug ?? 'all-centers',
                         'center' => $center?->localized('name') ?? __('careers.finder.all_centers'),
                         'employment_type_key' => $post->employment_type ?: 'full-time',
@@ -366,8 +363,8 @@ class PublicSiteData
             'hours_fr' => $hours['fr'],
             'hours_lines_en' => $hours['lines_en'],
             'hours_lines_fr' => $hours['lines_fr'],
-            'institutional_label_en' => $center->is_headquarters ? 'NACHO Administrative Headquarters' : null,
-            'institutional_label_fr' => $center->is_headquarters ? 'Siege administratif NACHO' : null,
+            'institutional_label_en' => $center->is_headquarters ? trans('components.center.institutional_headquarters', [], 'en') : null,
+            'institutional_label_fr' => $center->is_headquarters ? trans('components.center.institutional_headquarters', [], 'fr') : null,
             'support_note_en' => $center->description_en,
             'support_note_fr' => $center->description_fr,
             'services' => $center->services->pluck('slug')->all(),
@@ -397,8 +394,8 @@ class PublicSiteData
                 continue;
             }
 
-            $dayEn = Str::title(str_replace('_', ' ', $hour->day_of_week));
-            $dayFr = $this->dayLabelFr($hour->day_of_week);
+            $dayEn = $this->weekdayLabel($hour->day_of_week, 'en');
+            $dayFr = $this->weekdayLabel($hour->day_of_week, 'fr');
             $openEn = $this->timeLabel($hour->opens_at, 'en');
             $closeEn = $this->timeLabel($hour->closes_at, 'en');
             $openFr = $this->timeLabel($hour->opens_at, 'fr');
@@ -467,25 +464,20 @@ class PublicSiteData
 
     private function tariffTestType(Tariff $tariff, string $locale = 'en'): string
     {
-        $all = $locale === 'fr' ? 'Tous' : 'All';
-        $allExceptSuspension = $locale === 'fr' ? 'Tous sauf suspension' : 'All except Suspension';
+        $all = trans('tariffs.dynamic.test_types.all', [], $locale);
+        $allExceptSuspension = trans('tariffs.dynamic.test_types.all_except_suspension', [], $locale);
 
         return in_array($tariff->category_slug, ['category-c-coaster', 'category-d-heavy-utility', 'category-d-other-engins'], true)
             ? $allExceptSuspension
             : $all;
     }
 
-    private function dayLabelFr(string $day): string
+    private function weekdayLabel(string $day, string $locale): string
     {
-        return [
-            'monday' => 'Lundi',
-            'tuesday' => 'Mardi',
-            'wednesday' => 'Mercredi',
-            'thursday' => 'Jeudi',
-            'friday' => 'Vendredi',
-            'saturday' => 'Samedi',
-            'sunday' => 'Dimanche',
-        ][$day] ?? Str::title($day);
+        $key = "components.calendar.weekdays.{$day}";
+        $label = trans($key, [], $locale);
+
+        return $label === $key ? Str::title(str_replace('_', ' ', $day)) : $label;
     }
 
     private function weekdayOrderSql(): string
@@ -495,15 +487,15 @@ class PublicSiteData
 
     private function employmentTypeLabel(?string $type): string
     {
-        $locale = app()->getLocale();
-
-        return match ($type) {
-            'part-time' => $locale === 'fr' ? 'Temps partiel' : 'Part-time',
-            'contract' => $locale === 'fr' ? 'Contrat' : 'Contract',
-            'internship' => $locale === 'fr' ? 'Stage' : 'Internship',
-            'graduate-trainee-placement', 'graduate-trainee' => $locale === 'fr' ? 'Placement diplome ou stagiaire' : 'Graduate or Trainee Placement',
-            default => $locale === 'fr' ? 'Temps plein' : 'Full-time',
+        $key = match ($type) {
+            'part-time' => 'part_time',
+            'contract' => 'contract',
+            'internship' => 'internship',
+            'graduate-trainee-placement', 'graduate-trainee' => 'graduate_trainee',
+            default => 'full_time',
         };
+
+        return __("careers.employment_types.{$key}");
     }
 
     /**

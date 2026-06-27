@@ -175,4 +175,18 @@ return [
             ],
         ],
     ],
+
+    'dynamic' => [
+        'category' => 'Category :code',
+        'documents' => 'Registration, insurance (see full tariffs page)',
+        'validity_units' => [
+            'days' => 'days',
+            'months' => 'months',
+            'years' => 'years',
+        ],
+        'test_types' => [
+            'all' => 'All',
+            'all_except_suspension' => 'All except Suspension',
+        ],
+    ],
 ];

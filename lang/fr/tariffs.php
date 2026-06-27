@@ -175,4 +175,18 @@ return [
             ],
         ],
     ],
+
+    'dynamic' => [
+        'category' => 'Catégorie :code',
+        'documents' => 'Carte grise, assurance (voir page Tarifs)',
+        'validity_units' => [
+            'days' => 'jours',
+            'months' => 'mois',
+            'years' => 'ans',
+        ],
+        'test_types' => [
+            'all' => 'Tous',
+            'all_except_suspension' => 'Tous sauf suspension',
+        ],
+    ],
 ];

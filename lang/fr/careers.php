@@ -350,6 +350,25 @@ return [
         'mailto_body' => "Bonjour l’équipe recrutement NACHO,\n\nJe souhaite postuler au poste de :title, référence :reference.\n\nVeuillez trouver mes documents de candidature en pièces jointes à cet e-mail.\n\nNom complet :\nNuméro de téléphone :\nVille actuelle :\n\nCordialement,",
     ],
 
+    'fallbacks' => [
+        'deadline_not_specified' => 'Non précisée',
+        'general_department' => 'Général',
+    ],
+
+    'employment_types' => [
+        'full_time' => 'Temps plein',
+        'part_time' => 'Temps partiel',
+        'contract' => 'Contrat',
+        'internship' => 'Stage',
+        'graduate_trainee' => 'Placement diplômé ou stagiaire',
+    ],
+
+    'legacy_vacancies' => [
+        'title' => 'Postes ouverts',
+        'empty_title' => 'Les postes seront publiés ici.',
+        'empty_text' => 'Lorsque le recrutement sera ouvert, NACHO publiera les postes actifs et les consignes de candidature par e-mail dans cette section.',
+    ],
+
     'mailto' => [
         'subject' => 'Candidature spontanée — Domaine de carrière — Nom du candidat',
         'body' => "Bonjour l’équipe recrutement NACHO,\n\nJe soumets une candidature spontanée pour de futures opportunités chez NACHO Vehicle Inspection.\n\nDomaine de carrière souhaité :\nCentre NACHO préféré :\nVille actuelle :\nNuméro de téléphone :\n\nVeuillez trouver mon CV et les pièces justificatives pertinentes en pièces jointes.\n\nCordialement,",

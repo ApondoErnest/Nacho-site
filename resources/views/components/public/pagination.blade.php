@@ -5,7 +5,7 @@
 @if ($paginator)
     {{ $paginator->links('vendor.pagination.nacho') }}
 @else
-    <nav role="navigation" aria-label="{{ __('Pagination Navigation') }}" class="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
+    <nav role="navigation" aria-label="{{ __('components.pagination.navigation') }}" class="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
         <p class="text-sm text-nacho-dark/70">
             {{ __('components.pagination.showing', ['from' => 1, 'to' => 10, 'total' => 42]) }}
         </p>

@@ -23,6 +23,7 @@ return [
     'menu_open' => 'Open menu',
     'menu_close' => 'Close menu',
     'main_navigation' => 'Main navigation',
+    'language_navigation' => 'Language',
 
     'menu_descriptions' => [
         'services' => 'Technical and professional checks',

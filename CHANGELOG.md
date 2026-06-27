@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 39 — Multilingual completion.** Completed the French-default multilingual pass with FR/EN translation-key parity tests, French app/fallback config defaults, localized framework auth/password/validation/pagination messages, a French JSON catalog for Breeze auth/profile text, translated public fallback strings, and DB-backed public helper labels for generated tariff, center, weekday, and career employment-type copy. Added feature tests for default French rendering, session language switching, auth text translation, localized database content with French fallback, and generated tariff label localization.
+
 - **Step 38 — Admin site settings.** Added protected site settings management for general identity, contact details, branding paths/colors, footer copy, social links, tariff logistics copy, careers email/safety notices, and maintenance toggle. Added a typed settings registry, grouped admin editor, validation for email/URL/color/language/boolean fields, and feature tests proving settings update the shared `site_settings` source used by public data.
 
 - **Step 37 — Admin users and roles.** Added Super Admin-only staff user management with search/status/role filters, user count cards, create/edit/detail/deactivate flows, role assignment, password reset support, and self-lockout protection. Added role management screens for the fixed code-backed role matrix, including role labels/descriptions and ability visibility with immutable slugs. Added feature tests for filtering, create/update/reset/deactivate flows, role updates, authorization, validation, and self-demotion/deactivation guards.

@@ -76,6 +76,7 @@ return [
     'center' => [
         'operational' => 'Opérationnel',
         'under_construction' => 'En construction',
+        'institutional_headquarters' => 'Siège administratif NACHO',
         'opening_badge' => 'Ouverture avant novembre 2026',
         'opening_notice' => 'Ouverture avant novembre 2026.',
         'landmark' => 'Repère',
@@ -244,6 +245,17 @@ return [
         'cv' => 'CV (PDF)',
         'cover_letter' => 'Lettre de motivation',
         'select_placeholder' => 'Choisir…',
+        'pdf_only' => 'PDF uniquement',
+        'placeholder_content' => 'Contenu à venir — cette page sera construite dans une prochaine étape du plan de développement.',
+        'vehicle_categories' => [
+            'light' => 'Véhicule léger',
+            'taxi' => 'Taxi',
+            'heavy' => 'Poids lourd',
+        ],
+        'service_types' => [
+            'periodic' => 'Visite périodique',
+            'counter' => 'Contre-visite',
+        ],
     ],
 
     'alert' => [
@@ -254,9 +266,22 @@ return [
     ],
 
     'pagination' => [
+        'navigation' => 'Navigation de pagination',
         'previous' => 'Précédent',
         'next' => 'Suivant',
         'showing' => 'Affichage :from–:to sur :total',
+    ],
+
+    'calendar' => [
+        'weekdays' => [
+            'monday' => 'Lundi',
+            'tuesday' => 'Mardi',
+            'wednesday' => 'Mercredi',
+            'thursday' => 'Jeudi',
+            'friday' => 'Vendredi',
+            'saturday' => 'Samedi',
+            'sunday' => 'Dimanche',
+        ],
     ],
 
     'design_system' => 'Bibliothèque de composants — Étape 5',

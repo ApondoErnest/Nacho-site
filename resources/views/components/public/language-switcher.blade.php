@@ -7,7 +7,7 @@
     $separatorClass = $isDark ? 'text-white/40' : 'text-nacho-dark/30';
 @endphp
 
-<div {{ $attributes->merge(['class' => 'flex items-center gap-1.5 text-sm']) }} role="navigation" aria-label="Language">
+<div {{ $attributes->merge(['class' => 'flex items-center gap-1.5 text-sm']) }} role="navigation" aria-label="{{ __('navigation.language_navigation') }}">
     <a
         href="{{ route('language.switch', 'fr') }}"
         lang="fr"

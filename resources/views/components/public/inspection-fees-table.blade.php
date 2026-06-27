@@ -5,7 +5,9 @@
             'number' => $row['number'] ?? $index + 1,
             'category' => $locale === 'fr' ? $row['category_fr'] : $row['category_en'],
             'details' => $locale === 'fr' ? $row['vehicle_type_fr'] : $row['vehicle_type_en'],
-            'test_type' => $locale === 'fr' ? ($row['test_type_fr'] ?? 'All') : ($row['test_type_en'] ?? 'All'),
+            'test_type' => $locale === 'fr'
+                ? ($row['test_type_fr'] ?? __('tariffs.dynamic.test_types.all'))
+                : ($row['test_type_en'] ?? __('tariffs.dynamic.test_types.all')),
             'validity' => $locale === 'fr' ? $row['validity_fr'] : $row['validity_en'],
             'price' => $row['price'],
         ];

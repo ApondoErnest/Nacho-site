@@ -15,15 +15,15 @@
     <x-public.form-field :label="__('components.forms.registration')" name="vehicle_registration" required />
     <x-public.form-field :label="__('components.forms.vehicle_category')" name="vehicle_category" type="select" required>
         <option value="">{{ __('components.forms.select_placeholder') }}</option>
-        <option value="light">{{ app()->getLocale() === 'fr' ? 'Véhicule léger' : 'Light vehicle' }}</option>
-        <option value="taxi">{{ app()->getLocale() === 'fr' ? 'Taxi' : 'Taxi' }}</option>
-        <option value="heavy">{{ app()->getLocale() === 'fr' ? 'Poids lourd' : 'Heavy vehicle' }}</option>
+        <option value="light">{{ __('components.forms.vehicle_categories.light') }}</option>
+        <option value="taxi">{{ __('components.forms.vehicle_categories.taxi') }}</option>
+        <option value="heavy">{{ __('components.forms.vehicle_categories.heavy') }}</option>
     </x-public.form-field>
 
     <x-public.form-field :label="__('components.forms.service_type')" name="service_type" type="select" required>
         <option value="">{{ __('components.forms.select_placeholder') }}</option>
-        <option value="periodic">{{ app()->getLocale() === 'fr' ? 'Visite périodique' : 'Periodic inspection' }}</option>
-        <option value="counter">{{ app()->getLocale() === 'fr' ? 'Contre-visite' : 'Counter-visit' }}</option>
+        <option value="periodic">{{ __('components.forms.service_types.periodic') }}</option>
+        <option value="counter">{{ __('components.forms.service_types.counter') }}</option>
     </x-public.form-field>
 
     <div class="grid gap-5 sm:grid-cols-2">

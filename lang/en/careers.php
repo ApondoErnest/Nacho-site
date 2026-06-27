@@ -5,7 +5,7 @@ return [
 
     'hero' => [
         'eyebrow' => 'Careers at NACHO',
-        'title' => "Build Your Career While Helping Make Cameroon’s Roads Safer",
+        'title' => 'Build Your Career While Helping Make Cameroon’s Roads Safer',
         'subtitle' => 'Join a growing vehicle inspection network where technical expertise, integrity, customer service, and road safety come together.',
         'actions_label' => 'Career actions',
         'view_positions' => 'View Open Positions',
@@ -348,6 +348,19 @@ return [
         ],
         'mailto_subject' => 'Application — :title — :reference',
         'mailto_body' => "Dear NACHO Recruitment Team,\n\nI wish to apply for the position of :title, reference :reference.\n\nPlease find my application documents attached to this email.\n\nFull name:\nTelephone number:\nCurrent city:\n\nKind regards,",
+    ],
+
+    'fallbacks' => [
+        'deadline_not_specified' => 'Not specified',
+        'general_department' => 'General',
+    ],
+
+    'employment_types' => [
+        'full_time' => 'Full-time',
+        'part_time' => 'Part-time',
+        'contract' => 'Contract',
+        'internship' => 'Internship',
+        'graduate_trainee' => 'Graduate or Trainee Placement',
     ],
 
     'legacy_vacancies' => [
