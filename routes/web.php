@@ -25,10 +25,15 @@ use App\Http\Controllers\PublicSite\ContactController;
 use App\Http\Controllers\PublicSite\HomeController;
 use App\Http\Controllers\PublicSite\InspectionProcessController;
 use App\Http\Controllers\PublicSite\PlaceholderController;
+use App\Http\Controllers\PublicSite\RobotsController;
 use App\Http\Controllers\PublicSite\ServiceController;
+use App\Http\Controllers\PublicSite\SitemapController;
 use App\Http\Controllers\PublicSite\StaticPageController;
 use App\Http\Controllers\PublicSite\TariffController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/robots.txt', RobotsController::class)->name('robots');
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 
 Route::get('/language/{locale}', [LanguageController::class, 'switch'])
     ->whereIn('locale', ['fr', 'en'])

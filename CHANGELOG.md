@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 40 — SEO.** Added a centralized public SEO payload service with localized route-level titles/descriptions, canonical URLs, robots directives, Open Graph/Twitter metadata, and JSON-LD rendering in the public layout. Added homepage `AutomotiveBusiness`, centers `ItemList`/`AutomotiveBusiness`, and careers `JobPosting` structured data. Added dynamic `/sitemap.xml` and `/robots.txt` routes, removed the stale static robots file, and added SEO feature tests covering meta tags, CMS legal SEO fields, structured data, sitemap hygiene, and robots directives.
+
 - **Step 39 — Multilingual completion.** Completed the French-default multilingual pass with FR/EN translation-key parity tests, French app/fallback config defaults, localized framework auth/password/validation/pagination messages, a French JSON catalog for Breeze auth/profile text, translated public fallback strings, and DB-backed public helper labels for generated tariff, center, weekday, and career employment-type copy. Added feature tests for default French rendering, session language switching, auth text translation, localized database content with French fallback, and generated tariff label localization.
 
 - **Step 38 — Admin site settings.** Added protected site settings management for general identity, contact details, branding paths/colors, footer copy, social links, tariff logistics copy, careers email/safety notices, and maintenance toggle. Added a typed settings registry, grouped admin editor, validation for email/URL/color/language/boolean fields, and feature tests proving settings update the shared `site_settings` source used by public data.

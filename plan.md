@@ -39,7 +39,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step 37 — Admin: users + roles | **Done** |
 | Step 38 — Admin: site settings | **Done** |
 | Step 39 — Multilingual completion | **Done** |
-| Next step | **Step 40** — SEO |
+| Step 40 — SEO | **Done** |
+| Next step | **Step 41** — security hardening |
 
 ## Timeline overview
 
@@ -99,7 +100,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 37 | Admin: users + roles (**done**) |
 | 38 | Admin: site settings (**done**) |
 | 39 | Multilingual completion (**done**) |
-| 40 | SEO |
+| 40 | SEO (**done**) |
 | 41 | Security hardening |
 | 42 | Frontend tests |
 | 43 | Backend tests |

@@ -233,6 +233,8 @@ class PublicSiteData
                         'employment_type_key' => $post->employment_type ?: 'full-time',
                         'employment_type' => $this->employmentTypeLabel($post->employment_type),
                         'deadline' => $deadline,
+                        'published_at_iso' => $post->published_at?->toDateString(),
+                        'closes_at_iso' => $post->closes_at?->toDateString(),
                         'positions' => $post->vacancies_count,
                         'summary' => $post->localized('summary'),
                         'role_purpose' => $post->localized('description'),
