@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CareerPostController as AdminCareerPostController
 use App\Http\Controllers\Admin\CenterController as AdminCenterController;
 use App\Http\Controllers\Admin\ContactMessageController as AdminContactMessageController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\MediaController as AdminMediaController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\TariffController as AdminTariffController;
@@ -245,6 +246,28 @@ Route::prefix('admin')
         Route::delete('/pages/{page}', [AdminPageController::class, 'destroy'])
             ->middleware('admin.ability:pages.delete')
             ->name('pages.destroy');
+
+        Route::get('/media', [AdminMediaController::class, 'index'])
+            ->middleware('admin.ability:media.view')
+            ->name('media.index');
+
+        Route::middleware('admin.ability:media.create')->group(function (): void {
+            Route::get('/media/create', [AdminMediaController::class, 'create'])->name('media.create');
+            Route::post('/media', [AdminMediaController::class, 'store'])->name('media.store');
+        });
+
+        Route::get('/media/{medium}', [AdminMediaController::class, 'show'])
+            ->middleware('admin.ability:media.view')
+            ->name('media.show');
+
+        Route::middleware('admin.ability:media.update')->group(function (): void {
+            Route::get('/media/{medium}/edit', [AdminMediaController::class, 'edit'])->name('media.edit');
+            Route::put('/media/{medium}', [AdminMediaController::class, 'update'])->name('media.update');
+        });
+
+        Route::delete('/media/{medium}', [AdminMediaController::class, 'destroy'])
+            ->middleware('admin.ability:media.delete')
+            ->name('media.destroy');
     });
 
 Route::middleware('auth')->group(function () {

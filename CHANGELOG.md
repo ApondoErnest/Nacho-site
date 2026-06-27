@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 36 — Admin media library.** Added protected media upload and library management with image/document validation, 10 MB upload limits, server-generated storage paths, search/type filters, media count cards, preview/detail pages, reusable storage/public URL metadata, bilingual alt text editing, role-gated upload/update/delete actions, and storage-backed deletion. Added feature tests for filtering, image/document uploads, metadata updates, file deletion, role permissions, and unsafe/oversized upload rejection.
+
 - **Step 35 — Admin page management.** Added protected admin page management with search/status filters, page count cards, bilingual legal/static page content editing, draft/published/archived workflow, SEO metadata fields, public legal route visibility cues, and safe archive behavior. Added feature tests for filtering, detail views, create/update/archive flows, public visibility, validation, and unauthorized access.
 
 - **Step 34 — Admin career vacancy management.** Added protected career vacancy and department management with search/status/department/center filters, vacancy count cards, bilingual vacancy content, email-only application configuration, mailto preview links, draft/published/closing/closed/filled/archived workflow, department icon/order/status management, and ability-gated actions. Added feature tests for filtering, detail views, create/update/archive flows, department management, validation, and unauthorized access.

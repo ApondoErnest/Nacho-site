@@ -69,7 +69,7 @@ flowchart LR
 | 33 | Admin: blog categories + posts | done |
 | 34 | Admin: careers (vacancies + departments) | done |
 | 35 | Admin: page management | done |
-| 36 | Admin: media library | pending |
+| 36 | Admin: media library | done |
 | 37 | Admin: users + roles | pending |
 | 38 | Admin: site settings | pending |
 | 39 | Multilingual completion | pending |
