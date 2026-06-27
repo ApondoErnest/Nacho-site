@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\CareerPostController as AdminCareerPostController
 use App\Http\Controllers\Admin\CenterController as AdminCenterController;
 use App\Http\Controllers\Admin\ContactMessageController as AdminContactMessageController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PageController as AdminPageController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\TariffController as AdminTariffController;
 use App\Http\Controllers\LanguageController;
@@ -222,6 +223,28 @@ Route::prefix('admin')
         Route::delete('/career-departments/{careerDepartment}', [AdminCareerDepartmentController::class, 'destroy'])
             ->middleware('admin.ability:careers.delete')
             ->name('career-departments.destroy');
+
+        Route::get('/pages', [AdminPageController::class, 'index'])
+            ->middleware('admin.ability:pages.view')
+            ->name('pages.index');
+
+        Route::middleware('admin.ability:pages.create')->group(function (): void {
+            Route::get('/pages/create', [AdminPageController::class, 'create'])->name('pages.create');
+            Route::post('/pages', [AdminPageController::class, 'store'])->name('pages.store');
+        });
+
+        Route::get('/pages/{page}', [AdminPageController::class, 'show'])
+            ->middleware('admin.ability:pages.view')
+            ->name('pages.show');
+
+        Route::middleware('admin.ability:pages.update')->group(function (): void {
+            Route::get('/pages/{page}/edit', [AdminPageController::class, 'edit'])->name('pages.edit');
+            Route::put('/pages/{page}', [AdminPageController::class, 'update'])->name('pages.update');
+        });
+
+        Route::delete('/pages/{page}', [AdminPageController::class, 'destroy'])
+            ->middleware('admin.ability:pages.delete')
+            ->name('pages.destroy');
     });
 
 Route::middleware('auth')->group(function () {

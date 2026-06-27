@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 35 — Admin page management.** Added protected admin page management with search/status filters, page count cards, bilingual legal/static page content editing, draft/published/archived workflow, SEO metadata fields, public legal route visibility cues, and safe archive behavior. Added feature tests for filtering, detail views, create/update/archive flows, public visibility, validation, and unauthorized access.
+
 - **Step 34 — Admin career vacancy management.** Added protected career vacancy and department management with search/status/department/center filters, vacancy count cards, bilingual vacancy content, email-only application configuration, mailto preview links, draft/published/closing/closed/filled/archived workflow, department icon/order/status management, and ability-gated actions. Added feature tests for filtering, detail views, create/update/archive flows, department management, validation, and unauthorized access.
 
 - **Step 33 — Admin blog management.** Added protected blog post and category management with search/status/category filters, post count cards, bilingual article fields, draft/published/archived workflow, auto publication timestamps, SEO metadata, category CRUD, and ability-gated actions for content/admin staff. Added feature tests for filtering, detail views, create/update/archive flows, category management, validation, and unauthorized access.

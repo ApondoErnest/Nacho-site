@@ -68,7 +68,7 @@ flowchart LR
 | 32 | Admin: contact messages | done |
 | 33 | Admin: blog categories + posts | done |
 | 34 | Admin: careers (vacancies + departments) | done |
-| 35 | Admin: page management | pending |
+| 35 | Admin: page management | done |
 | 36 | Admin: media library | pending |
 | 37 | Admin: users + roles | pending |
 | 38 | Admin: site settings | pending |

@@ -34,7 +34,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step 32 — Admin: contact messages | **Done** |
 | Step 33 — Admin: blog | **Done** |
 | Step 34 — Admin: careers | **Done** |
-| Next step | **Step 35** — admin: pages |
+| Step 35 — Admin: pages | **Done** |
+| Next step | **Step 36** — admin: media |
 
 ## Timeline overview
 
@@ -89,7 +90,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 32 | Admin: contact messages (**done**) |
 | 33 | Admin: blog (**done**) |
 | 34 | Admin: careers (vacancies) (**done**) |
-| 35 | Admin: pages |
+| 35 | Admin: pages (**done**) |
 | 36 | Admin: media |
 | 37 | Admin: users + roles |
 | 38 | Admin: site settings |
