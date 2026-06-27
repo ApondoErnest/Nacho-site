@@ -16,6 +16,14 @@ class CareerPost extends Model
     /** @use HasFactory<CareerPostFactory> */
     use HasFactory, HasLocalizedAttributes, SoftDeletes;
 
+    public const EMPLOYMENT_TYPES = [
+        'full-time',
+        'part-time',
+        'contract',
+        'temporary',
+        'internship',
+    ];
+
     protected $fillable = [
         'reference',
         'title_en',
@@ -98,5 +106,15 @@ class CareerPost extends Model
             ->where(fn (Builder $query) => $query
                 ->whereNull('closes_at')
                 ->orWhereDate('closes_at', '>=', today()));
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public static function employmentTypeOptions(): array
+    {
+        return collect(self::EMPLOYMENT_TYPES)
+            ->mapWithKeys(fn (string $type): array => [$type => str($type)->replace('-', ' ')->title()->toString()])
+            ->all();
     }
 }

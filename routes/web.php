@@ -3,6 +3,8 @@
 use App\Http\Controllers\Admin\BlogCategoryController as AdminBlogCategoryController;
 use App\Http\Controllers\Admin\BlogPostController as AdminBlogPostController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
+use App\Http\Controllers\Admin\CareerDepartmentController as AdminCareerDepartmentController;
+use App\Http\Controllers\Admin\CareerPostController as AdminCareerPostController;
 use App\Http\Controllers\Admin\CenterController as AdminCenterController;
 use App\Http\Controllers\Admin\ContactMessageController as AdminContactMessageController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -185,6 +187,41 @@ Route::prefix('admin')
         Route::delete('/blog-categories/{blogCategory}', [AdminBlogCategoryController::class, 'destroy'])
             ->middleware('admin.ability:blog.delete')
             ->name('blog-categories.destroy');
+
+        Route::middleware('admin.ability:careers.view')->group(function (): void {
+            Route::get('/career-posts', [AdminCareerPostController::class, 'index'])->name('career-posts.index');
+            Route::get('/career-departments', [AdminCareerDepartmentController::class, 'index'])->name('career-departments.index');
+        });
+
+        Route::middleware('admin.ability:careers.create')->group(function (): void {
+            Route::get('/career-posts/create', [AdminCareerPostController::class, 'create'])->name('career-posts.create');
+            Route::post('/career-posts', [AdminCareerPostController::class, 'store'])->name('career-posts.store');
+            Route::get('/career-departments/create', [AdminCareerDepartmentController::class, 'create'])->name('career-departments.create');
+            Route::post('/career-departments', [AdminCareerDepartmentController::class, 'store'])->name('career-departments.store');
+        });
+
+        Route::get('/career-posts/{careerPost}', [AdminCareerPostController::class, 'show'])
+            ->middleware('admin.ability:careers.view')
+            ->name('career-posts.show');
+
+        Route::get('/career-departments/{careerDepartment}', [AdminCareerDepartmentController::class, 'show'])
+            ->middleware('admin.ability:careers.view')
+            ->name('career-departments.show');
+
+        Route::middleware('admin.ability:careers.update')->group(function (): void {
+            Route::get('/career-posts/{careerPost}/edit', [AdminCareerPostController::class, 'edit'])->name('career-posts.edit');
+            Route::put('/career-posts/{careerPost}', [AdminCareerPostController::class, 'update'])->name('career-posts.update');
+            Route::get('/career-departments/{careerDepartment}/edit', [AdminCareerDepartmentController::class, 'edit'])->name('career-departments.edit');
+            Route::put('/career-departments/{careerDepartment}', [AdminCareerDepartmentController::class, 'update'])->name('career-departments.update');
+        });
+
+        Route::delete('/career-posts/{careerPost}', [AdminCareerPostController::class, 'destroy'])
+            ->middleware('admin.ability:careers.delete')
+            ->name('career-posts.destroy');
+
+        Route::delete('/career-departments/{careerDepartment}', [AdminCareerDepartmentController::class, 'destroy'])
+            ->middleware('admin.ability:careers.delete')
+            ->name('career-departments.destroy');
     });
 
 Route::middleware('auth')->group(function () {

@@ -67,7 +67,7 @@ flowchart LR
 | 31 | Admin: booking management | done |
 | 32 | Admin: contact messages | done |
 | 33 | Admin: blog categories + posts | done |
-| 34 | Admin: careers (vacancies + departments) | pending |
+| 34 | Admin: careers (vacancies + departments) | done |
 | 35 | Admin: page management | pending |
 | 36 | Admin: media library | pending |
 | 37 | Admin: users + roles | pending |
