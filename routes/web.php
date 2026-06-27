@@ -10,8 +10,10 @@ use App\Http\Controllers\Admin\ContactMessageController as AdminContactMessageCo
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\MediaController as AdminMediaController;
 use App\Http\Controllers\Admin\PageController as AdminPageController;
+use App\Http\Controllers\Admin\RoleController as AdminRoleController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\TariffController as AdminTariffController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PublicSite\AboutController;
@@ -268,6 +270,35 @@ Route::prefix('admin')
         Route::delete('/media/{medium}', [AdminMediaController::class, 'destroy'])
             ->middleware('admin.ability:media.delete')
             ->name('media.destroy');
+
+        Route::middleware('admin.ability:users.create')->group(function (): void {
+            Route::get('/users/create', [AdminUserController::class, 'create'])->name('users.create');
+            Route::post('/users', [AdminUserController::class, 'store'])->name('users.store');
+        });
+
+        Route::middleware('admin.ability:users.view')->group(function (): void {
+            Route::get('/users', [AdminUserController::class, 'index'])->name('users.index');
+            Route::get('/users/{user}', [AdminUserController::class, 'show'])->name('users.show');
+        });
+
+        Route::middleware('admin.ability:users.update')->group(function (): void {
+            Route::get('/users/{user}/edit', [AdminUserController::class, 'edit'])->name('users.edit');
+            Route::put('/users/{user}', [AdminUserController::class, 'update'])->name('users.update');
+        });
+
+        Route::delete('/users/{user}', [AdminUserController::class, 'destroy'])
+            ->middleware('admin.ability:users.delete')
+            ->name('users.destroy');
+
+        Route::middleware('admin.ability:roles.view')->group(function (): void {
+            Route::get('/roles', [AdminRoleController::class, 'index'])->name('roles.index');
+            Route::get('/roles/{role}', [AdminRoleController::class, 'show'])->name('roles.show');
+        });
+
+        Route::middleware('admin.ability:roles.update')->group(function (): void {
+            Route::get('/roles/{role}/edit', [AdminRoleController::class, 'edit'])->name('roles.edit');
+            Route::put('/roles/{role}', [AdminRoleController::class, 'update'])->name('roles.update');
+        });
     });
 
 Route::middleware('auth')->group(function () {

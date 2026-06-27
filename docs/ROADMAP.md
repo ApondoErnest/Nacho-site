@@ -70,7 +70,7 @@ flowchart LR
 | 34 | Admin: careers (vacancies + departments) | done |
 | 35 | Admin: page management | done |
 | 36 | Admin: media library | done |
-| 37 | Admin: users + roles | pending |
+| 37 | Admin: users + roles | done |
 | 38 | Admin: site settings | pending |
 | 39 | Multilingual completion | pending |
 | 40 | SEO (meta, OG, JSON-LD, sitemap, robots) | pending |
