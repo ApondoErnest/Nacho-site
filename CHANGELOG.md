@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 32 — Admin contact message management.** Added protected admin contact-message inbox screens with search/status/date filters, status count cards, detail pages, quick read/replied/archive actions, admin notes, and ability-gated routes for receptionist/admin staff. Added feature tests for filtering, detail access, updates, quick status actions, validation, and unauthorized access.
+
 - **Step 31 — Admin booking management.** Added protected admin booking management with search/status/center/service/date filters, booking detail pages, receptionist/admin schedule/status/admin-note updates, inspector status-only workflow, and ability-gated booking routes. Added feature tests for filtering, detail access, update validation, role permissions, and inspector-only status updates.
 
 - **Step 30 — Admin tariff management + audit log.** Added protected admin tariff management with search/status/bookable filters, create/edit/show/deactivate flows, safe vehicle icon selection, regulatory metadata fields, scheduled tariff revision snapshots, immutable audit-log recording for creates/updates/deactivations/revisions, and public tariff preview support for currently effective revision snapshots. Added feature tests for tariff permissions, validation, audit logging, deactivation, and revision-driven public pricing.

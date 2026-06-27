@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\CenterController as AdminCenterController;
+use App\Http\Controllers\Admin\ContactMessageController as AdminContactMessageController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
 use App\Http\Controllers\Admin\TariffController as AdminTariffController;
@@ -134,6 +135,19 @@ Route::prefix('admin')
         Route::patch('/bookings/{booking}/status', [AdminBookingController::class, 'updateStatus'])
             ->middleware('admin.ability:bookings.status.update')
             ->name('bookings.status.update');
+
+        Route::middleware('admin.ability:contact-messages.view')->group(function (): void {
+            Route::get('/contact-messages', [AdminContactMessageController::class, 'index'])->name('contact-messages.index');
+            Route::get('/contact-messages/{contactMessage}', [AdminContactMessageController::class, 'show'])->name('contact-messages.show');
+        });
+
+        Route::put('/contact-messages/{contactMessage}', [AdminContactMessageController::class, 'update'])
+            ->middleware('admin.ability:contact-messages.update')
+            ->name('contact-messages.update');
+
+        Route::patch('/contact-messages/{contactMessage}/status', [AdminContactMessageController::class, 'updateStatus'])
+            ->middleware('admin.ability:contact-messages.update')
+            ->name('contact-messages.status.update');
     });
 
 Route::middleware('auth')->group(function () {
