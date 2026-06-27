@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\CenterController as AdminCenterController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ServiceController as AdminServiceController;
@@ -120,6 +121,19 @@ Route::prefix('admin')
         Route::delete('/tariffs/{tariff}', [AdminTariffController::class, 'destroy'])
             ->middleware('admin.ability:tariffs.delete')
             ->name('tariffs.destroy');
+
+        Route::middleware('admin.ability:bookings.view')->group(function (): void {
+            Route::get('/bookings', [AdminBookingController::class, 'index'])->name('bookings.index');
+            Route::get('/bookings/{booking}', [AdminBookingController::class, 'show'])->name('bookings.show');
+        });
+
+        Route::put('/bookings/{booking}', [AdminBookingController::class, 'update'])
+            ->middleware('admin.ability:bookings.update')
+            ->name('bookings.update');
+
+        Route::patch('/bookings/{booking}/status', [AdminBookingController::class, 'updateStatus'])
+            ->middleware('admin.ability:bookings.status.update')
+            ->name('bookings.status.update');
     });
 
 Route::middleware('auth')->group(function () {

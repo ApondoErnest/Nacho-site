@@ -64,7 +64,7 @@ flowchart LR
 | 28 | Admin: center management | done |
 | 29 | Admin: service management | done |
 | 30 | Admin: tariff management + audit log | done |
-| 31 | Admin: booking management | pending |
+| 31 | Admin: booking management | done |
 | 32 | Admin: contact messages | pending |
 | 33 | Admin: blog categories + posts | pending |
 | 34 | Admin: careers (vacancies + departments) | pending |
