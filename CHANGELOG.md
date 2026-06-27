@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 33 — Admin blog management.** Added protected blog post and category management with search/status/category filters, post count cards, bilingual article fields, draft/published/archived workflow, auto publication timestamps, SEO metadata, category CRUD, and ability-gated actions for content/admin staff. Added feature tests for filtering, detail views, create/update/archive flows, category management, validation, and unauthorized access.
+
 - **Step 32 — Admin contact message management.** Added protected admin contact-message inbox screens with search/status/date filters, status count cards, detail pages, quick read/replied/archive actions, admin notes, and ability-gated routes for receptionist/admin staff. Added feature tests for filtering, detail access, updates, quick status actions, validation, and unauthorized access.
 
 - **Step 31 — Admin booking management.** Added protected admin booking management with search/status/center/service/date filters, booking detail pages, receptionist/admin schedule/status/admin-note updates, inspector status-only workflow, and ability-gated booking routes. Added feature tests for filtering, detail access, update validation, role permissions, and inspector-only status updates.

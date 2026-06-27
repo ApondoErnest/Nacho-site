@@ -32,7 +32,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step 30 — Admin: tariffs | **Done** |
 | Step 31 — Admin: bookings | **Done** |
 | Step 32 — Admin: contact messages | **Done** |
-| Next step | **Step 33** — admin: blog |
+| Step 33 — Admin: blog | **Done** |
+| Next step | **Step 34** — admin: careers |
 
 ## Timeline overview
 
@@ -85,7 +86,7 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 30 | Admin: tariffs (**done**) |
 | 31 | Admin: bookings (**done**) |
 | 32 | Admin: contact messages (**done**) |
-| 33 | Admin: blog |
+| 33 | Admin: blog (**done**) |
 | 34 | Admin: careers (vacancies) |
 | 35 | Admin: pages |
 | 36 | Admin: media |
@@ -145,4 +146,4 @@ ADRs: [docs/adr/](docs/adr/)
 
 ## Next action
 
-Say **"do Step 33"** to build admin blog management.
+Say **"do Step 34"** to build admin career vacancy management.

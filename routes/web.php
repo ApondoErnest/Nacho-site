@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\BlogCategoryController as AdminBlogCategoryController;
+use App\Http\Controllers\Admin\BlogPostController as AdminBlogPostController;
 use App\Http\Controllers\Admin\BookingController as AdminBookingController;
 use App\Http\Controllers\Admin\CenterController as AdminCenterController;
 use App\Http\Controllers\Admin\ContactMessageController as AdminContactMessageController;
@@ -148,6 +150,41 @@ Route::prefix('admin')
         Route::patch('/contact-messages/{contactMessage}/status', [AdminContactMessageController::class, 'updateStatus'])
             ->middleware('admin.ability:contact-messages.update')
             ->name('contact-messages.status.update');
+
+        Route::middleware('admin.ability:blog.view')->group(function (): void {
+            Route::get('/blog-posts', [AdminBlogPostController::class, 'index'])->name('blog-posts.index');
+            Route::get('/blog-categories', [AdminBlogCategoryController::class, 'index'])->name('blog-categories.index');
+        });
+
+        Route::middleware('admin.ability:blog.create')->group(function (): void {
+            Route::get('/blog-posts/create', [AdminBlogPostController::class, 'create'])->name('blog-posts.create');
+            Route::post('/blog-posts', [AdminBlogPostController::class, 'store'])->name('blog-posts.store');
+            Route::get('/blog-categories/create', [AdminBlogCategoryController::class, 'create'])->name('blog-categories.create');
+            Route::post('/blog-categories', [AdminBlogCategoryController::class, 'store'])->name('blog-categories.store');
+        });
+
+        Route::get('/blog-posts/{blogPost}', [AdminBlogPostController::class, 'show'])
+            ->middleware('admin.ability:blog.view')
+            ->name('blog-posts.show');
+
+        Route::get('/blog-categories/{blogCategory}', [AdminBlogCategoryController::class, 'show'])
+            ->middleware('admin.ability:blog.view')
+            ->name('blog-categories.show');
+
+        Route::middleware('admin.ability:blog.update')->group(function (): void {
+            Route::get('/blog-posts/{blogPost}/edit', [AdminBlogPostController::class, 'edit'])->name('blog-posts.edit');
+            Route::put('/blog-posts/{blogPost}', [AdminBlogPostController::class, 'update'])->name('blog-posts.update');
+            Route::get('/blog-categories/{blogCategory}/edit', [AdminBlogCategoryController::class, 'edit'])->name('blog-categories.edit');
+            Route::put('/blog-categories/{blogCategory}', [AdminBlogCategoryController::class, 'update'])->name('blog-categories.update');
+        });
+
+        Route::delete('/blog-posts/{blogPost}', [AdminBlogPostController::class, 'destroy'])
+            ->middleware('admin.ability:blog.delete')
+            ->name('blog-posts.destroy');
+
+        Route::delete('/blog-categories/{blogCategory}', [AdminBlogCategoryController::class, 'destroy'])
+            ->middleware('admin.ability:blog.delete')
+            ->name('blog-categories.destroy');
     });
 
 Route::middleware('auth')->group(function () {
