@@ -63,29 +63,18 @@ Redis is optional and not included in v1 Compose.
 
 No reminder system is added during Dockerization.
 
-## 3. VPS deployment
+## 3. VPS deployment (Step 47)
 
-1. Prepare the VPS (OS, firewall, users)
-2. Install required tools (Docker, Docker Compose, Git)
-3. Upload or clone the project
-4. Configure the production environment (`.env`, `APP_DEBUG=false`)
-5. Start Docker services
-6. Configure Nginx (domain, reverse proxy)
-7. Configure the domain (DNS)
-8. Configure SSL (Let's Encrypt)
-9. Run database migrations
-10. Insert seed data
-11. Configure storage access (`storage:link`, permissions)
-12. Test public website
-13. Test admin login
-14. Test forms
-15. Configure backups
-16. Configure uptime monitoring
-17. Configure error logging
-18. Disable debug mode
-19. Submit sitemap to search engines
-20. Register site in **Google Search Console**
-21. Configure **privacy-friendly analytics** (optional Google Analytics or alternative)
+**Authoritative runbook:** [deploy/vps/RUNBOOK.md](../deploy/vps/RUNBOOK.md) (Hostinger **89.117.37.202**, `noblevehicletestingcompany.com`, Docker on **127.0.0.1:8083**, host nginx + Certbot).
+
+| Artifact | Purpose |
+|----------|---------|
+| [docker-compose.production.yml](../docker-compose.production.yml) | Production override (bind `8083`, `APP_DEBUG=false`) |
+| [deploy/vps/env.production.example](../deploy/vps/env.production.example) | VPS `.env.production` template |
+| [deploy/vps/deploy.sh](../deploy/vps/deploy.sh) | Build, up, Laravel caches |
+| [deploy/vps/nginx-host/*.conf](../deploy/vps/nginx-host/) | Host reverse proxy + HTTPS (apex canonical) |
+
+Execute the runbook on the server, then continue with Step 48 (backups, monitoring) and Step 49–50 (production testing, Search Console).
 
 ## 4. Production checklist
 

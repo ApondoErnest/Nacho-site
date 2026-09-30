@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# Run from repo root on the VPS (e.g. /var/www/nacho-site).
+set -euo pipefail
+
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+cd "$ROOT"
+
+ENV_FILE="${ENV_FILE:-.env.production}"
+
+if [[ ! -f "$ENV_FILE" ]]; then
+    echo "Missing $ENV_FILE — copy deploy/vps/env.production.example first." >&2
+    exit 1
+fi
+
+COMPOSE=(docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file "$ENV_FILE")
+
+echo "Building images..."
+"${COMPOSE[@]}" build
+
+echo "Starting stack..."
+"${COMPOSE[@]}" up -d
+
+echo "Waiting for app container..."
+sleep 5
+
+echo "Optimizing Laravel..."
+"${COMPOSE[@]}" exec -T app php artisan config:cache
+"${COMPOSE[@]}" exec -T app php artisan route:cache
+"${COMPOSE[@]}" exec -T app php artisan view:cache
+
+echo "Health check..."
+curl -fsS -o /dev/null -w "Docker nginx: HTTP %{http_code}\n" http://127.0.0.1:8083/up || true
+
+echo "Done. Configure host nginx + Certbot (see deploy/vps/RUNBOOK.md)."

@@ -31,7 +31,7 @@ Public layout, component library, and the **14-section homepage** ([docs/DESIGN.
 
 Docker (optional): `docker compose --env-file .env.docker.example up --build` → http://127.0.0.1:8080. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
-To continue: say **"do Step 47"** for VPS deployment.
+**Production (Hostinger):** follow [deploy/vps/RUNBOOK.md](deploy/vps/RUNBOOK.md) (`noblevehicletestingcompany.com`, port **8083**).
 
 ---
 

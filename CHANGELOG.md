@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 47 — VPS deploy pack.** [deploy/vps/RUNBOOK.md](deploy/vps/RUNBOOK.md) for Hostinger (`89.117.37.202`, `noblevehicletestingcompany.com`, **8083**), [docker-compose.production.yml](docker-compose.production.yml), host nginx templates, [deploy/vps/deploy.sh](deploy/vps/deploy.sh), production TrustProxies + forwarded FastCGI headers, `Step47VpsDeployConfigTest`.
+
 - **Step 46 — Dockerize (manual pass 2026-09-30).** Multi-stage [Dockerfile](Dockerfile) (PHP **8.4**-FPM, Vite build, Nginx `web` target), [docker-compose.yml](docker-compose.yml), APP_KEY entrypoint + `storage/.app_key`, logo path fix (`nacho-logo.png` for Linux). `Step46DockerConfigTest`; runbook [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) §2.
 
 - **Step 45 — Local stabilization gate (2026-09-29).** Closed [docs/UAT_CHECKLIST.md](docs/UAT_CHECKLIST.md) §7 with verified center/HQ data (`Step45LocalStabilizationTest`), documented v1 content deferrals, ran `migrate:fresh --seed`, and re-verified **172** PHPUnit tests plus frontend build smoke. Production hints added to `.env.example`. Ready for Step 46 (Dockerize).

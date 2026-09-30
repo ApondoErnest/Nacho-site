@@ -46,7 +46,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step 44 — UAT sign-off | **Done** (2026-09-29) |
 | Step 45 — Local stabilization gate | **Done** (2026-09-29) |
 | Step 46 — Dockerize | **Done** (manual Docker pass 2026-09-30) |
-| Next step | **Step 47 — Deploy on VPS** ([docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)) |
+| Step 47 — Deploy on VPS | **Runbook + prod Compose in repo** — execute [deploy/vps/RUNBOOK.md](deploy/vps/RUNBOOK.md) on server |
+| Next step | **Run Step 47 on VPS**, then Step 48 (SSL/backups/monitoring hardening) |
 
 ## Timeline overview
 

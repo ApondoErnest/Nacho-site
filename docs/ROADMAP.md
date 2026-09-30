@@ -80,7 +80,7 @@ flowchart LR
 | 44 | Bug fixes + UAT sign-off | done |
 | 45 | Final local stabilization gate | done (2026-09-29) |
 | 46 | Dockerize | done (manual Docker pass 2026-09-30) |
-| 47 | Deploy on VPS | next |
+| 47 | Deploy on VPS | runbook ready — execute on Hostinger VPS |
 | 48 | SSL, backups, monitoring, error logging | deferred |
 | 49 | Final production testing | deferred |
 | 50 | Launch + Search Console + sitemap submission | deferred |
