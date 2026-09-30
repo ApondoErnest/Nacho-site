@@ -157,5 +157,6 @@ If migrations changed, entrypoint runs `migrate --force` on `app` restart.
 | Port conflict (`8083` in use) | Set **`DOCKER_HOST_PORT=8084`**, update host nginx `proxy_pass`, `docker compose ... up -d nginx` |
 | Missing logo | Asset must be `public/images/nacho-logo.png` (Linux case-sensitive) |
 | HTTP **500**, log `Uninitialized string offset 0` in `Request.php` (TrustProxies / CORS) | Pull latest `main` (nginx passes `$host` for `X-Forwarded-Host`, not empty client headers). Rebuild web image: `docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file .env.production up -d --build nginx`. Then `curl -fsS http://127.0.0.1:8083/up`. |
+| `curl: (56) Connection reset` right after `up --build` | App entrypoint (migrate/seed) runs **before** PHP-FPM listens. Wait until logs show `ready to handle connections`, or `docker compose ... ps` shows **app (healthy)**. Then retry `curl`. Prefer `./deploy/vps/deploy.sh` (waits for `/up`). Set **`RUN_DB_SEED=false`** after first seed so restarts are faster. |
 
 See also [docs/DEPLOYMENT.md](../../docs/DEPLOYMENT.md).

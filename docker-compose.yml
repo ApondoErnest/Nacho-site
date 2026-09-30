@@ -40,6 +40,12 @@ services:
     depends_on:
       mysql:
         condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "pidof php-fpm > /dev/null || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 120s
     networks:
       - nacho
 
@@ -52,7 +58,8 @@ services:
     ports:
       - "${DOCKER_HTTP_PORT:-8080}:80"
     depends_on:
-      - app
+      app:
+        condition: service_healthy
     networks:
       - nacho
 
