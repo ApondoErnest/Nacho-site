@@ -77,15 +77,15 @@ flowchart LR
 | 41 | Security hardening + cookie banner | done |
 | 42 | Frontend testing pass | done |
 | 43 | Backend + security testing pass | done |
-| 44 | Bug fixes + UAT sign-off | in_progress |
-| 45 | Final local stabilization gate | deferred |
-| 46 | Dockerize | deferred |
-| 47 | Deploy on VPS | deferred |
+| 44 | Bug fixes + UAT sign-off | done |
+| 45 | Final local stabilization gate | done (2026-09-29) |
+| 46 | Dockerize | done (manual Docker pass 2026-09-30) |
+| 47 | Deploy on VPS | next |
 | 48 | SSL, backups, monitoring, error logging | deferred |
 | 49 | Final production testing | deferred |
 | 50 | Launch + Search Console + sitemap submission | deferred |
 
-Step 44 technical UAT passed locally on 2026-06-27, but stakeholder/content sign-off remains open. See [UAT_REPORT.md](UAT_REPORT.md). Steps 45–50 start only after Step 44 UAT sign-off. See [DEPLOYMENT.md](DEPLOYMENT.md).
+Step **46** complete — Docker stack + **manual sign-off 2026-09-30**. **Next:** Step 47 VPS deploy. See [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## Working agreement
 

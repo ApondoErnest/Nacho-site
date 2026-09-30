@@ -1,6 +1,8 @@
-# Deployment - NACHO Vehicle Inspection (deferred)
+# Deployment - NACHO Vehicle Inspection
 
-Deployment happens only after the local version is stable ([UAT_CHECKLIST.md](UAT_CHECKLIST.md)). This document is a forward plan; nothing here is built during the local phase.
+**Step 46 (Dockerize):** **Done** — stack verified locally in Docker on **2026-09-30** (http://127.0.0.1:8080, migrate/seed, public site + logo). **Next:** Step 47 VPS deploy.
+
+Deployment follows this document step by step after the local stabilization gate ([UAT_CHECKLIST.md](UAT_CHECKLIST.md)).
 
 ## 1. Target architecture
 
@@ -17,24 +19,47 @@ Deployment happens only after the local version is stable ([UAT_CHECKLIST.md](UA
 | Backups | Automated DB + file backups |
 | Monitoring | Uptime + error monitoring |
 
-## 2. Dockerization (after local sign-off)
+## 2. Docker stack (Step 46)
 
-Containers:
-- Laravel application (PHP-FPM)
-- Nginx (web server)
-- MySQL (database)
-- Redis (optional, later)
+| Service | Image / target | Role |
+|---------|----------------|------|
+| `app` | [Dockerfile](../Dockerfile) `target: app` | PHP 8.4-FPM, Laravel, Vite build baked in |
+| `nginx` | [Dockerfile](../Dockerfile) `target: web` | Serves `public/`, FastCGI to `app:9000` |
+| `mysql` | `mysql:8.4` | Database volume `mysql_data` |
 
-Steps:
-1. Prepare app for containers (config caching, env strategy)
-2. Configure the application container (PHP-FPM, extensions)
-3. Configure the Nginx container (vhost, static assets, fastcgi)
-4. Configure the MySQL container (volume, credentials)
-5. Configure environment variables (production `.env`)
-6. Configure storage permissions and volumes
-7. Configure migrations on deploy
-8. Test the Dockerized app locally
-9. Prepare production configuration
+Config files: [docker/nginx/default.conf](../docker/nginx/default.conf), [docker/entrypoint.sh](../docker/entrypoint.sh), [docker/php/php.ini](../docker/php/php.ini), [.env.docker.example](../.env.docker.example).
+
+### Run locally (production-like)
+
+Requires Docker Desktop or Docker Engine + Compose v2.
+
+```bash
+cp .env.docker.example .env.docker   # optional: customize ports/passwords
+docker compose --env-file .env.docker.example up --build -d
+```
+
+Open **http://127.0.0.1:8080** (override with `DOCKER_HTTP_PORT`).
+
+On first start the `app` entrypoint waits for MySQL, runs `migrate --force`, and seeds when `RUN_DB_SEED=true` (default in `.env.docker.example`).
+
+Admin login: `/login` → `admin@nacho.local` / `SEED_ADMIN_PASSWORD` (default `NachoAdmin2026!`).
+
+Useful commands:
+
+```bash
+docker compose logs -f app nginx
+docker compose exec app php artisan about
+docker compose down          # keep volumes
+docker compose down -v       # destroy DB + storage volumes
+```
+
+Automated config checks: `Step46DockerConfigTest` (optional `docker compose config` when Docker CLI is installed).
+
+**`MissingAppKeyException`:** Do not set an empty `APP_KEY` in Compose (it overrides `.env`). Leave `APP_KEY` unset in `.env.docker` so the entrypoint generates one and persists it at `storage/.app_key`, then rebuild/restart `app`: `docker compose --env-file .env.docker up --build -d app`.
+
+Production on VPS: set `APP_ENV=production`, `APP_DEBUG=false`, strong `APP_KEY`, `DB_*` and `SEED_ADMIN_PASSWORD`, set `RUN_DB_SEED=false` after first seed, then enable `config:cache` / `route:cache` / `view:cache` in your deploy script (Step 47).
+
+Redis is optional and not included in v1 Compose.
 
 No reminder system is added during Dockerization.
 

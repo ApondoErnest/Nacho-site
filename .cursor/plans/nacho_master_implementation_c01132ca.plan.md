@@ -127,13 +127,13 @@ todos:
     status: pending
   - id: phase-42
     content: "Phase 42 (Step 42): Frontend testing pass"
-    status: pending
+    status: completed
   - id: phase-43
     content: "Phase 43 (Step 43): Backend + database + security testing pass"
-    status: pending
+    status: completed
   - id: phase-44
     content: "Phase 44 (Step 44): Bug fixes + UAT sign-off"
-    status: pending
+    status: completed
   - id: phase-45-50
     content: "Phases 45-50 (Steps 45-50, deferred): Docker, VPS, SSL, monitoring, prod test, launch"
     status: pending
@@ -464,4 +464,4 @@ Center names/addresses/phones/GPS partially supplied — [CENTERS_DATA.md](docs/
 
 ## Next action
 
-Say **"do Phase 1"** to start local environment setup. [docs/ROADMAP.md](docs/ROADMAP.md) and [plan.md](plan.md) are synced to this 50-step plan.
+Step **46** Dockerize complete. Say **"do Step 47"** for VPS deploy. [docs/ROADMAP.md](docs/ROADMAP.md) and [plan.md](plan.md) are synced to this 50-step plan.

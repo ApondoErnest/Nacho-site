@@ -21,12 +21,17 @@ Built with **Laravel** (full-stack, Blade + Tailwind CSS) on **MySQL**. Local-fi
 | Step 4 — Public layout shell | **Done** |
 | Step 5 — Reusable Blade components | **Done** |
 | Step 6 — Static homepage (14 sections per DESIGN.md) | **Done** |
-| Steps 7–44 — Application build | Pending (approval-gated, one step at a time) |
-| Steps 45–50 — Deployment | Deferred until local UAT passes |
+| Steps 7–43 — Application build | **Done** (see [docs/ROADMAP.md](docs/ROADMAP.md)) |
+| Step 44 — UAT | **Done** |
+| Step 45 — Local stabilization | **Done** |
+| Step 46 — Dockerize | **Done** (Compose: app + nginx + mysql) |
+| Steps 47–50 — Deployment | **Next:** VPS |
 
 Public layout, component library, and the **14-section homepage** ([docs/DESIGN.md](docs/DESIGN.md)) are live at `/` — verified centers, 6-step process, bilingual copy. Preview: `/design-system`. See [plan.md](plan.md) and [docs/ROADMAP.md](docs/ROADMAP.md).
 
-To continue building: say **"do Step 7"**.
+Docker (optional): `docker compose --env-file .env.docker.example up --build` → http://127.0.0.1:8080. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
+To continue: say **"do Step 47"** for VPS deployment.
 
 ---
 

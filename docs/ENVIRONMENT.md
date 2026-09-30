@@ -1,6 +1,6 @@
 # Local Environment - NACHO Vehicle Inspection
 
-Local-first development. Docker is not used at this stage (see [DEPLOYMENT.md](DEPLOYMENT.md) for later).
+Local-first development with `php artisan serve` and host MySQL. Optional **production-like** stack: [DEPLOYMENT.md](DEPLOYMENT.md) §2 (`docker compose up`).
 
 ## 1. Prerequisites
 

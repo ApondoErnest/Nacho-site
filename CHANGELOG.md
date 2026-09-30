@@ -8,6 +8,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 46 — Dockerize (manual pass 2026-09-30).** Multi-stage [Dockerfile](Dockerfile) (PHP **8.4**-FPM, Vite build, Nginx `web` target), [docker-compose.yml](docker-compose.yml), APP_KEY entrypoint + `storage/.app_key`, logo path fix (`nacho-logo.png` for Linux). `Step46DockerConfigTest`; runbook [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) §2.
+
+- **Step 45 — Local stabilization gate (2026-09-29).** Closed [docs/UAT_CHECKLIST.md](docs/UAT_CHECKLIST.md) §7 with verified center/HQ data (`Step45LocalStabilizationTest`), documented v1 content deferrals, ran `migrate:fresh --seed`, and re-verified **172** PHPUnit tests plus frontend build smoke. Production hints added to `.env.example`. Ready for Step 46 (Dockerize).
+
+- **Step 44 — UAT re-verification (2026-09-29).** Re-ran `npm run test:frontend` and full `php artisan test` (168 tests, 1525 assertions). Added `Step44LocalUatTest` for seeded center counts, homepage sections, inspection process, and sitemap/robots. Updated [docs/UAT_REPORT.md](docs/UAT_REPORT.md) and [docs/UAT_CHECKLIST.md](docs/UAT_CHECKLIST.md) with v1 scope decisions and §7 stakeholder gate before Step 45.
+
 - **Step 44 — Local technical UAT pass.** Added a Step 44 UAT report with the local evidence trail for frontend smoke tests, the full PHPUnit suite, live HTTP page checks, compiled CSS/asset verification, and log review. Updated the UAT checklist, roadmap, and plan to show that technical UAT is passing while stakeholder/content sign-off remains open before deployment steps 45-50.
 
 - **Step 43 — Backend testing pass.** Added `BackendStabilityTest` coverage for the core v1 database schema, absence of server-side career application storage, representative admin route authentication and Super Admin rendering across every backend module, non-staff admin blocking, booking query preselection from center/tariff URLs, and email-only public career vacancy payloads. Updated testing documentation with the focused backend stability command.
