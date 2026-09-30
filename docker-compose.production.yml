@@ -1,4 +1,4 @@
-# Production override for Hostinger VPS (host nginx → 127.0.0.1:8083).
+# Production override for Hostinger VPS (host nginx → 127.0.0.1:${DOCKER_HOST_PORT:-8083}).
 # Usage:
 #   docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file .env.production up -d --build
 
@@ -10,5 +10,6 @@ services:
       LOG_LEVEL: ${LOG_LEVEL:-warning}
 
   nginx:
-    ports:
-      - "127.0.0.1:8083:80"
+    # Replace base compose `ports` (do not merge — avoids double-bind on DOCKER_HTTP_PORT).
+    ports: !override
+      - "127.0.0.1:${DOCKER_HOST_PORT:-8083}:80"

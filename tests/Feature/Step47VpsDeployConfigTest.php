@@ -26,7 +26,7 @@ class Step47VpsDeployConfigTest extends TestCase
         $yaml = file_get_contents(base_path('docker-compose.production.yml'));
 
         $this->assertIsString($yaml);
-        $this->assertStringContainsString('127.0.0.1:8083:80', $yaml);
+        $this->assertStringContainsString('DOCKER_HOST_PORT:-8083', $yaml);
         $this->assertStringContainsString('APP_ENV: production', $yaml);
         $this->assertStringContainsString('APP_DEBUG: "false"', $yaml);
     }

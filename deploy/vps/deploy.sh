@@ -28,7 +28,10 @@ echo "Optimizing Laravel..."
 "${COMPOSE[@]}" exec -T app php artisan route:cache
 "${COMPOSE[@]}" exec -T app php artisan view:cache
 
-echo "Health check..."
-curl -fsS -o /dev/null -w "Docker nginx: HTTP %{http_code}\n" http://127.0.0.1:8083/up || true
+HOST_PORT="$(grep -E '^DOCKER_HOST_PORT=' "$ENV_FILE" 2>/dev/null | cut -d= -f2- | tr -d '\r' || true)"
+HOST_PORT="${HOST_PORT:-8083}"
+
+echo "Health check (127.0.0.1:${HOST_PORT})..."
+curl -fsS -o /dev/null -w "Docker nginx: HTTP %{http_code}\n" "http://127.0.0.1:${HOST_PORT}/up" || true
 
 echo "Done. Configure host nginx + Certbot (see deploy/vps/RUNBOOK.md)."
