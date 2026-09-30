@@ -43,6 +43,8 @@ class Step46DockerConfigTest extends TestCase
         $this->assertIsString($nginx);
         $this->assertStringContainsString('fastcgi_pass app:9000', $nginx);
         $this->assertStringContainsString('/var/www/html/public', $nginx);
+        $this->assertStringContainsString('HTTP_X_FORWARDED_HOST $host', $nginx);
+        $this->assertStringContainsString('$nacho_forwarded_proto', $nginx);
     }
 
     public function test_dockerfile_builds_frontend_app_and_web_targets(): void

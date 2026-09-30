@@ -156,5 +156,6 @@ If migrations changed, entrypoint runs `migrate --force` on `app` restart.
 | `8083` bind error but `ss` empty | Remove **`DOCKER_HTTP_PORT`** from `.env.production` (double mapping with production compose). Ensure `docker-compose.production.yml` uses `ports: !override`. Then `docker rm -f nacho-nginx-1` and `up -d nginx`. |
 | Port conflict (`8083` in use) | Set **`DOCKER_HOST_PORT=8084`**, update host nginx `proxy_pass`, `docker compose ... up -d nginx` |
 | Missing logo | Asset must be `public/images/nacho-logo.png` (Linux case-sensitive) |
+| HTTP **500**, log `Uninitialized string offset 0` in `Request.php` (TrustProxies / CORS) | Pull latest `main` (nginx passes `$host` for `X-Forwarded-Host`, not empty client headers). Rebuild web image: `docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file .env.production up -d --build nginx`. Then `curl -fsS http://127.0.0.1:8083/up`. |
 
 See also [docs/DEPLOYMENT.md](../../docs/DEPLOYMENT.md).
