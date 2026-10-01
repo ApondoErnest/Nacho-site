@@ -25,7 +25,7 @@ flowchart LR
   S6[26-27 Admin shell]
   S7[28-38 Admin CRUD]
   S8[39-44 Polish UAT]
-  S9[45-50 Deploy deferred]
+  S9[47 Live 48-50 ops]
   S0 --> S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7 --> S8 --> S9
 ```
 
@@ -80,12 +80,12 @@ flowchart LR
 | 44 | Bug fixes + UAT sign-off | done |
 | 45 | Final local stabilization gate | done (2026-09-29) |
 | 46 | Dockerize | done (manual Docker pass 2026-09-30) |
-| 47 | Deploy on VPS | runbook ready — execute on Hostinger VPS |
-| 48 | SSL, backups, monitoring, error logging | deferred |
-| 49 | Final production testing | deferred |
-| 50 | Launch + Search Console + sitemap submission | deferred |
+| 47 | Deploy on VPS | done (production **2026-09-30** — [noblevehicletestingcompany.com](https://noblevehicletestingcompany.com)) |
+| 48 | SSL, backups, monitoring, error logging | pending — **TLS live**; automate backups + uptime/logging |
+| 49 | Final production testing | pending (smoke tests passed; optional deeper UAT) |
+| 50 | Launch + Search Console + sitemap submission | pending |
 
-Step **46** complete — Docker stack + **manual sign-off 2026-09-30**. **Next:** Step 47 VPS deploy. See [DEPLOYMENT.md](DEPLOYMENT.md).
+Step **47** complete — Hostinger VPS, Docker on **127.0.0.1:8083**, host nginx + Let's Encrypt, HTTPS public site + admin verified **2026-09-30**. **Next:** Step 48 (backups, monitoring). See [DEPLOYMENT.md](DEPLOYMENT.md) and [deploy/vps/RUNBOOK.md](../deploy/vps/RUNBOOK.md).
 
 ## Working agreement
 

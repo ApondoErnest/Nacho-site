@@ -2,7 +2,7 @@
 
 Professional, bilingual (French default / English), mobile-responsive website and admin platform for **NACHO Vehicle Inspection**, a vehicle technical inspection center network in Cameroon.
 
-Built with **Laravel** (full-stack, Blade + Tailwind CSS) on **MySQL**. Local-first development; Docker and VPS deployment come later.
+Built with **Laravel** (full-stack, Blade + Tailwind CSS) on **MySQL**. Local development + Docker; **production on Hostinger VPS**.
 
 > NACHO currently operates **3 vehicle technical inspection centers**, with **2 additional centers under construction**, expected to open **before November 2026**. The site must never present NACHO as having 5 fully operational centers until all 5 are functioning.
 
@@ -25,13 +25,14 @@ Built with **Laravel** (full-stack, Blade + Tailwind CSS) on **MySQL**. Local-fi
 | Step 44 — UAT | **Done** |
 | Step 45 — Local stabilization | **Done** |
 | Step 46 — Dockerize | **Done** (Compose: app + nginx + mysql) |
-| Steps 47–50 — Deployment | **Next:** VPS |
+| Step 47 — VPS deploy | **Done** (2026-09-30) |
+| Steps 48–50 — Ops + launch | **Next:** backups, monitoring, Search Console |
 
 Public layout, component library, and the **14-section homepage** ([docs/DESIGN.md](docs/DESIGN.md)) are live at `/` — verified centers, 6-step process, bilingual copy. Preview: `/design-system`. See [plan.md](plan.md) and [docs/ROADMAP.md](docs/ROADMAP.md).
 
 Docker (optional): `docker compose --env-file .env.docker.example up --build` → http://127.0.0.1:8080. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
-**Production (Hostinger):** follow [deploy/vps/RUNBOOK.md](deploy/vps/RUNBOOK.md) (`noblevehicletestingcompany.com`, port **8083**).
+**Production:** [https://noblevehicletestingcompany.com](https://noblevehicletestingcompany.com) (Hostinger VPS, Docker **8083**). Deploy updates: [deploy/vps/RUNBOOK.md](deploy/vps/RUNBOOK.md).
 
 ---
 

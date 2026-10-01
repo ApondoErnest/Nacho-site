@@ -1,5 +1,7 @@
 # VPS runbook — NACHO on Hostinger (Step 47)
 
+**Status:** Step **47 done** (2026-09-30) — production at **https://noblevehicletestingcompany.com**. Use this runbook for updates, TLS renewal checks, and troubleshooting.
+
 Deploy **NACHO** on **srv1867313** alongside existing apps (`gs-autobilan` → `:8080`, `cashflow-summary` → `:8081`, `g3-control` → `:8082`).
 
 | Item | Value |

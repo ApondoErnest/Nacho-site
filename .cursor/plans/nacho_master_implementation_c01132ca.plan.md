@@ -464,4 +464,4 @@ Center names/addresses/phones/GPS partially supplied — [CENTERS_DATA.md](docs/
 
 ## Next action
 
-Step **46** Dockerize complete. Say **"do Step 47"** for VPS deploy. [docs/ROADMAP.md](docs/ROADMAP.md) and [plan.md](plan.md) are synced to this 50-step plan.
+Step **47** VPS deploy complete (2026-09-30 — https://noblevehicletestingcompany.com). **Next:** Step 48 (backups, monitoring). [docs/ROADMAP.md](docs/ROADMAP.md) and [plan.md](plan.md) are synced to this 50-step plan.

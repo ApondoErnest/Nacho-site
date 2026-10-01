@@ -46,8 +46,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step 44 — UAT sign-off | **Done** (2026-09-29) |
 | Step 45 — Local stabilization gate | **Done** (2026-09-29) |
 | Step 46 — Dockerize | **Done** (manual Docker pass 2026-09-30) |
-| Step 47 — Deploy on VPS | **Runbook + prod Compose in repo** — execute [deploy/vps/RUNBOOK.md](deploy/vps/RUNBOOK.md) on server |
-| Next step | **Run Step 47 on VPS**, then Step 48 (SSL/backups/monitoring hardening) |
+| Step 47 — Deploy on VPS | **Done** (2026-09-30 — https://noblevehicletestingcompany.com) |
+| Next step | **Step 48** — backups, monitoring, production log review (TLS already live on VPS) |
 
 ## Timeline overview
 
@@ -114,7 +114,8 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | 44 | UAT sign-off (**done**) |
 | 45 | Local stabilization gate (**done**) |
 | 46 | Dockerize (**done**) |
-| 47–50 | Deploy (**next: VPS**) |
+| 47 | VPS deploy (**done** 2026-09-30) |
+| 48–50 | Ops hardening + launch (**next: 48**) |
 
 ## Why frontend before database?
 
@@ -162,4 +163,4 @@ ADRs: [docs/adr/](docs/adr/)
 
 ## Next action
 
-Say **"do Step 47"** for VPS deployment per [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+Production: **https://noblevehicletestingcompany.com**. Updates: `git pull` + [deploy/vps/deploy.sh](deploy/vps/deploy.sh). **Next:** Step 48 per [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
