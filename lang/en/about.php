@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'meta_title' => 'About NACHO',
+    'meta_title' => 'About NOVETESCO',
 
     'hero' => [
-        'eyebrow' => 'ABOUT NACHO',
+        'eyebrow' => 'ABOUT NOVETESCO',
         'title' => 'Securing Cameroon’s Roads Through Professional Inspection',
         'subtitle' => 'Professional vehicle inspection services committed to safer vehicles, safer roads, and greater customer confidence across Cameroon.',
         'cta_book' => 'Book an Inspection',
@@ -14,7 +14,7 @@ return [
     'commitment' => [
         'title' => 'Committed to Safety, Transparency & Excellence',
         'paragraphs' => [
-            'NACHO Vehicle Inspection is a premier vehicle technical network dedicated to elevating safety standards across Cameroon. We protect lives, reduce road risks, and help drivers remain fully compliant with regional regulations.',
+            'NOVETESCO Vehicle Inspection is a premier vehicle technical network dedicated to elevating safety standards across Cameroon. We protect lives, reduce road risks, and help drivers remain fully compliant with regional regulations.',
             'By combining a decade of field experience with state-of-the-art diagnostic technology, we ensure every vehicle owner leaves our bays with absolute clarity and peace of mind.',
         ],
         'mission' => [
@@ -37,7 +37,7 @@ return [
     ],
 
     'why' => [
-        'title' => 'Why Drivers Choose NACHO',
+        'title' => 'Why Drivers Choose NOVETESCO',
         'cards' => [
             [
                 'icon' => 'clipboard-check',
@@ -72,54 +72,6 @@ return [
         ],
     ],
 
-    'centers' => [
-        'title' => 'Growing to serve more vehicles across Cameroon',
-        'operational' => 'Operational',
-        'coming_soon' => 'Coming Soon',
-        'target_phase' => 'Target Phase:',
-        'maps' => 'View on Google Maps',
-        'details' => 'View Details',
-        'cards' => [
-            [
-                'status' => 'operational',
-                'name' => 'NACHO Yaoundé',
-                'location' => 'Mendong Market, Yaoundé',
-                'image' => 'images/center-nacho-yaounde.png',
-                'href' => 'https://www.google.com/maps?q=3.837496,11.473015',
-            ],
-            [
-                'status' => 'operational',
-                'name' => 'NACHO Nkwen-Bamenda',
-                'location' => 'NTEFINKI Quarter Mile 6, Nkwen',
-                'image' => 'images/center-nacho-nkwen-bamenda.png',
-                'href' => 'https://www.google.com/maps?q=6.000978,10.206111',
-            ],
-            [
-                'status' => 'operational',
-                'name' => 'NACHO Nacho-Bamenda',
-                'location' => 'Atuakum Mankon, Bamenda',
-                'image' => 'images/center-nacho-nacho-bamenda.png',
-                'href' => 'https://www.google.com/maps?q=5.9418158,10.1493449',
-            ],
-            [
-                'status' => 'coming',
-                'name' => 'NACHO Douala',
-                'region' => 'Littoral Region',
-                'target' => 'November 2026',
-                'image' => 'images/center-nacho-douala-coming-soon.png',
-                'href' => '/centers#nacho-douala',
-            ],
-            [
-                'status' => 'coming',
-                'name' => 'NACHO Kumba',
-                'region' => 'Southwest Region',
-                'target' => 'November 2026',
-                'image' => 'images/center-nacho-kumba-coming-soon.png',
-                'href' => '/centers#nacho-kumba',
-            ],
-        ],
-    ],
-
     'team_strip' => [
         'label' => 'Certified local technicians',
         'prefix' => 'Our network is powered by over',
@@ -129,7 +81,7 @@ return [
 
     'advert' => [
         'title' => 'Ready to Certify Your Vehicle’s Safety?',
-        'text' => 'Choose your nearest NACHO center and request your inspection appointment today.',
+        'text' => 'Choose your nearest NOVETESCO center and request your inspection appointment today.',
         'cta_book' => 'Book an Inspection',
         'cta_contact' => 'Contact Our Team',
     ],

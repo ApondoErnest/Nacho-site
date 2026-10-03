@@ -22,12 +22,11 @@
             ],
         ];
         $whyCards = __('about.why.cards');
-        $centerCards = __('about.centers.cards');
     @endphp
 
     <section class="about-page-hero" aria-labelledby="about-page-hero-title">
         <img
-            src="{{ asset('images/hero-about-page.png') }}"
+            src="{{ asset('images/about/hero-about-page.png') }}"
             alt=""
             class="about-page-hero-image"
             loading="eager"
@@ -119,65 +118,6 @@
         </div>
     </section>
 
-    <section class="about-centers-section" aria-labelledby="about-centers-title">
-        <div class="about-centers-inner">
-            <h2 id="about-centers-title" class="about-centers-title">
-                {{ __('about.centers.title') }}
-            </h2>
-
-            <div class="about-centers-grid">
-                @foreach ($centerCards as $card)
-                    @php
-                        $imageUrl = file_exists(public_path($card['image'])) ? asset($card['image']) : null;
-                        $isOperational = $card['status'] === 'operational';
-                    @endphp
-
-                    <article @class(['about-center-card', 'about-center-card--coming' => ! $isOperational])>
-                        @if ($isOperational)
-                            <div class="about-center-photo">
-                                @if ($imageUrl)
-                                    <img src="{{ $imageUrl }}" alt="{{ $card['name'] }}" loading="lazy" />
-                                @endif
-                            </div>
-
-                            <div class="about-center-body">
-                                <h3>{{ $card['name'] }}</h3>
-                                <p class="about-center-location">{{ $card['location'] }}</p>
-                                <p class="about-center-status about-center-status--operational">
-                                    <span aria-hidden="true"></span>
-                                    {{ __('about.centers.operational') }}
-                                </p>
-                                <a href="{{ $card['href'] }}" class="about-center-map" target="_blank" rel="noopener">
-                                    <x-lucide-map-pin aria-hidden="true" />
-                                    {{ __('about.centers.maps') }}
-                                </a>
-                            </div>
-                        @else
-                            <div class="about-center-coming-visual">
-                                @if ($imageUrl)
-                                    <img src="{{ $imageUrl }}" alt="" loading="lazy" />
-                                @endif
-                            </div>
-
-                            <div class="about-center-coming-body">
-                                <h3>{{ $card['name'] }}</h3>
-                                <p class="about-center-region">{{ $card['region'] }}</p>
-                                <p class="about-center-coming-label">{{ __('about.centers.coming_soon') }}</p>
-                                <p class="about-center-target">
-                                    <strong>{{ __('about.centers.target_phase') }}</strong>
-                                    <span>{{ $card['target'] }}</span>
-                                </p>
-                                <a href="{{ $card['href'] }}" class="about-center-details">
-                                    {{ __('about.centers.details') }}
-                                </a>
-                            </div>
-                        @endif
-                    </article>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
     <section class="about-team-strip-section" aria-label="{{ __('about.team_strip.label') }}">
         <div class="about-team-strip">
             <span class="about-team-strip-icon" aria-hidden="true">
@@ -195,7 +135,7 @@
         <div class="about-advert">
             <div class="about-advert-image-wrap">
                 <img
-                    src="{{ asset('images/advert-about.png') }}"
+                    src="{{ asset('images/about/inspection-garage.png') }}"
                     alt=""
                     class="about-advert-image"
                     loading="lazy"

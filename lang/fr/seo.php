@@ -25,9 +25,9 @@ return [
             'image' => 'images/hero-inspection-bay-1.png',
         ],
         'about' => [
-            'title' => 'À propos de NACHO Vehicle Inspection',
-            'description' => 'Découvrez NACHO, un réseau de contrôle technique automobile en croissance, engagé pour des véhicules sûrs et des inspections conformes au Cameroun.',
-            'image' => 'images/hero-about-page.png',
+            'title' => 'À propos de NOVETESCO Vehicle Inspection',
+            'description' => 'Découvrez NOVETESCO, un réseau de contrôle technique automobile en croissance, engagé pour des véhicules sûrs et des inspections conformes au Cameroun.',
+            'image' => 'images/about/hero-about-page.png',
         ],
         'centers' => [
             'title' => 'Centres de contrôle technique NACHO au Cameroun',

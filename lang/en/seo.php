@@ -25,9 +25,9 @@ return [
             'image' => 'images/hero-inspection-bay-1.png',
         ],
         'about' => [
-            'title' => 'About NACHO Vehicle Inspection',
-            'description' => 'Learn about NACHO, a growing vehicle technical inspection network focused on safer vehicles, compliant inspections, and better roads in Cameroon.',
-            'image' => 'images/hero-about-page.png',
+            'title' => 'About NOVETESCO Vehicle Inspection',
+            'description' => 'Learn about NOVETESCO, a growing vehicle technical inspection network focused on safer vehicles, compliant inspections, and better roads in Cameroon.',
+            'image' => 'images/about/hero-about-page.png',
         ],
         'centers' => [
             'title' => 'NACHO Inspection Centers in Cameroon',
