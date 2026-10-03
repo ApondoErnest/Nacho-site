@@ -4,7 +4,7 @@ Status: Accepted
 
 ## Context
 
-NACHO needs public pages, database-driven content, an admin dashboard, authentication, forms, file uploads, bilingual content, and future deployment flexibility. A single, well-supported framework keeps the team productive and the stack simple.
+NOVETESCO needs public pages, database-driven content, an admin dashboard, authentication, forms, file uploads, bilingual content, and future deployment flexibility. A single, well-supported framework keeps the team productive and the stack simple.
 
 ## Decision
 

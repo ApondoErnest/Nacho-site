@@ -2,7 +2,7 @@
     $publicData = app(\App\Support\PublicSiteData::class);
     $headquarters = $publicData->headquarters();
     $operationalCenters = $publicData->centers()
-        ->filter(fn (array $center) => ($center['status'] ?? null) === 'operational')
+        ->filter(fn (array $center) => in_array($center['status'] ?? null, ['operational', 'under_construction'], true))
         ->values();
     $operationalCount = $operationalCenters->count();
 
@@ -30,8 +30,7 @@
         ['label' => __('footer.news_updates'), 'href' => route('blog.index')],
     ];
 
-    $primaryPhone = $headquarters['phone_primary'];
-    $primaryPhoneTel = $headquarters['phone_primary_tel'];
+    $phoneLinks = $headquarters['phone_links'] ?? [];
     $hqEmail = $headquarters['email'];
     $hqAddress = $headquarters['address'];
     $socialIcons = ['facebook', 'instagram', 'twitter', 'message-circle'];
@@ -122,10 +121,12 @@
             </ul>
 
             <address class="site-footer-contact">
-                <a href="tel:{{ $primaryPhoneTel }}">
-                    <x-lucide-phone aria-hidden="true" />
-                    {{ $primaryPhone }}
-                </a>
+                @foreach ($phoneLinks as $phone)
+                    <a href="tel:{{ $phone['tel'] }}">
+                        <x-lucide-phone aria-hidden="true" />
+                        {{ $phone['label'] }}
+                    </a>
+                @endforeach
                 <a href="mailto:{{ $hqEmail }}">
                     <x-lucide-mail aria-hidden="true" />
                     {{ $hqEmail }}

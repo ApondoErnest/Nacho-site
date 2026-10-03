@@ -44,7 +44,7 @@ class Step45LocalStabilizationTest extends TestCase
 
         $hq = Center::query()->where('slug', 'nacho-mankon-bamenda')->firstOrFail();
         $this->assertTrue($hq->is_headquarters);
-        $this->assertSame('P.O. Box 100 Bamenda', $hq->postal_address);
+        $this->assertSame('P.O. Box 100 Mankon-Bamenda', $hq->postal_address);
         $this->assertTrue($hq->booking_enabled);
 
         $yaounde = Center::query()->where('slug', 'nacho-yaounde')->firstOrFail();
@@ -62,15 +62,15 @@ class Step45LocalStabilizationTest extends TestCase
         $this->seed(DatabaseSeeder::class);
 
         $this->assertSame(
-            'nachovehicletestingstation@yahoo.com',
+            'noblevehicletestingcompany@gmail.com',
             SiteSetting::query()->where('key', 'contact_email')->value('value'),
         );
         $this->assertSame(
-            '(+237) 675615478',
+            '(+237) 33142037',
             SiteSetting::query()->where('key', 'contact_phone')->value('value'),
         );
         $this->assertSame(
-            'P.O. Box 100 Bamenda',
+            'P.O. Box 100 Mankon-Bamenda',
             SiteSetting::query()->where('key', 'postal_box')->value('value'),
         );
     }
@@ -81,7 +81,7 @@ class Step45LocalStabilizationTest extends TestCase
 
         $this->get(route('contact'))
             ->assertOk()
-            ->assertSee('nachovehicletestingstation@yahoo.com', false)
-            ->assertSee('675615478', false);
+            ->assertSee('noblevehicletestingcompany@gmail.com', false)
+            ->assertSee('33142037', false);
     }
 }

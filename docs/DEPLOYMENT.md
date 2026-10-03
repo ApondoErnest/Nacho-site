@@ -1,4 +1,4 @@
-# Deployment - NACHO Vehicle Inspection
+# Deployment - NOVETESCO Vehicle Inspection
 
 **Step 46 (Dockerize):** **Done** — stack verified locally in Docker on **2026-09-30** (http://127.0.0.1:8080, migrate/seed, public site + logo).
 
@@ -44,7 +44,7 @@ Open **http://127.0.0.1:8080** (override with `DOCKER_HTTP_PORT`).
 
 On first start the `app` entrypoint waits for MySQL, runs `migrate --force`, and seeds when `RUN_DB_SEED=true` (default in `.env.docker.example`).
 
-Admin login: `/login` → `admin@nacho.local` / `SEED_ADMIN_PASSWORD` (default `NachoAdmin2026!`).
+Admin login: `/login` → `admin@novetesco.local` / `SEED_ADMIN_PASSWORD` (default `NovetescoAdmin2026!`).
 
 Useful commands:
 

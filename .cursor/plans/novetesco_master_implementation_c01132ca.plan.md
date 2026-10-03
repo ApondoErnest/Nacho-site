@@ -1,5 +1,5 @@
 ---
-name: NACHO Master Implementation
+name: NOVETESCO Master Implementation
 overview: Chronological build with one approval phase per step (50 steps total). Documentation done (Step 0). Each phase is reviewed before the next. Deploy steps 45-50 deferred until local UAT passes.
 todos:
   - id: phase-01
@@ -9,7 +9,7 @@ todos:
     content: "Phase 2 (Step 2): Create Laravel project + git init"
     status: completed
   - id: phase-03
-    content: "Phase 3 (Step 3): Visual identity — Tailwind nacho-* tokens, Breeze"
+    content: "Phase 3 (Step 3): Visual identity — Tailwind novetesco-* tokens, Breeze"
     status: completed
   - id: phase-04
     content: "Phase 4 (Step 4): Public layout shell"
@@ -140,11 +140,11 @@ todos:
 isProject: false
 ---
 
-# NACHO Vehicle Inspection — Chronological Master Plan
+# NOVETESCO Vehicle Inspection — Chronological Master Plan
 
 ## Current state
 
-[`/Users/admin/NACHO-site`](/Users/admin/NACHO-site) contains **documentation only** (27 markdown files). **Step 0 is complete.** No Laravel code exists yet.
+this repository contains **documentation only** (27 markdown files). **Step 0 is complete.** No Laravel code exists yet.
 
 Reference docs: [`docs/ROADMAP.md`](docs/ROADMAP.md), [`docs/FRONTEND.md`](docs/FRONTEND.md), [`docs/DATABASE.md`](docs/DATABASE.md), [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md), [`docs/ADMIN_MODULES.md`](docs/ADMIN_MODULES.md).
 
@@ -186,9 +186,9 @@ flowchart TB
 
 | Phase / Step | Task | Spec | Exit |
 |:--:|------|------|------|
-| **1** | Prepare local dev environment (PHP, Composer, Node, MySQL `nacho_vehicle_inspection`) | §3.2 | DB exists; [ENVIRONMENT.md](docs/ENVIRONMENT.md) |
+| **1** | Prepare local dev environment (PHP, Composer, Node, MySQL `novetesco_vehicle_inspection`) | §3.2 | DB exists; [ENVIRONMENT.md](docs/ENVIRONMENT.md) |
 | **2** | Create Laravel project; preserve docs; init git | §3.2 | `php artisan serve` works |
-| **3** | Visual identity: Tailwind `nacho-*` tokens, Breeze, base CSS | §4.1 | [BRAND.md](docs/BRAND.md) in code |
+| **3** | Visual identity: Tailwind `novetesco-*` tokens, Breeze, base CSS | §4.1 | [BRAND.md](docs/BRAND.md) in code |
 
 ---
 
@@ -397,14 +397,14 @@ Spec §4 and §19: design frontend structure before backend logic.
 | Topic | Decision | Notes |
 |-------|----------|-------|
 | Stack | Laravel, Blade, **Tailwind** (not Bootstrap), Vite, Breeze | ADR 001 |
-| Database | MySQL `nacho_vehicle_inspection` | ADR 004 |
+| Database | MySQL `novetesco_vehicle_inspection` | ADR 004 |
 | i18n | Session locale, FR default, single URLs | ADR 002 |
 | **URL paths** | **English paths** — `/centers` (index-only finder), English service slugs (`periodic-inspection`, etc.) | User confirmed; French keyword slugs from proposal §18 deferred |
 | Roles | 6 roles (Super Admin → Content Manager) | [ROLES.md](docs/ROLES.md) |
 | Booking statuses | 8 values: pending → confirmed → arrived → in_inspection → completed; plus cancelled, no_show, rescheduled | Proposal §12.3 |
 | Reminders / fleet | Excluded; separate SMS/WhatsApp system stays independent | Proposal §1, §23 |
 
-Enhancements (documented): staff email on submissions, honeypot/throttle, booking ref `NACHO-YYYYMMDD-XXXX`, tariff audit log, soft deletes, WCAG AA, PHPUnit, SEO hreflang limitation note.
+Enhancements (documented): staff email on submissions, honeypot/throttle, booking ref `NOVETESCO-YYYYMMDD-XXXX`, tariff audit log, soft deletes, WCAG AA, PHPUnit, SEO hreflang limitation note.
 
 ---
 
@@ -427,7 +427,7 @@ Cross-check against the updated unified proposal. **Already aligned** — no pla
 | Area | Proposal source | Adjustment | Affected step(s) |
 |------|-----------------|------------|------------------|
 | **URLs** | §18 French slugs | **Keep English paths** (user choice). SEO targets French keywords via `seo_title_fr`, meta descriptions, and page content — not URL segments. | 4, 8–10, 40 |
-| **Slogan in UI** | §3 | Show slogan in hero tagline and JSON-LD: *Drive Safe. Stay Compliant. Trust NACHO.* / FR equivalent | 6, 40 |
+| **Slogan in UI** | §3 | Show slogan in hero tagline and JSON-LD: *Safety, Quality, Trust.* / FR equivalent | 6, 40 |
 | **Homepage content audit** | §8 | Step 6 exit criteria: homepage must answer who / what / where / why / next (five questions) | 6 |
 | **Nav order** | §7 | Main nav order: Home → About → Centers → Services → **Book** → Tariffs → Process → Blog → Compliance → Careers → Contact; Book stays highlighted CTA | 4 |
 | **Center finder** | Centers spec | **Dynamic Center Finder** — 4 blocks, normalized contacts/hours, service filter, lazy map, index-only | 8, 19, 20, 22, 28 |
@@ -456,7 +456,7 @@ Cross-check against the updated unified proposal. **Already aligned** — no pla
 
 ---
 
-## Inputs needed from NACHO
+## Inputs needed from NOVETESCO
 
 Center names/addresses/phones/GPS partially supplied — [CENTERS_DATA.md](docs/CENTERS_DATA.md). Still pending: photos, per-center vehicle categories, Douala/Kumba final addresses, legal text, certifications. See [ROADMAP.md](docs/ROADMAP.md).
 

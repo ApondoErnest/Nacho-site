@@ -1,4 +1,4 @@
-# Maintenance - NACHO Vehicle Inspection
+# Maintenance - NOVETESCO Vehicle Inspection
 
 Ongoing tasks after launch to keep the website healthy, secure, and current.
 
@@ -13,11 +13,11 @@ Ongoing tasks after launch to keep the website healthy, secure, and current.
 ## 2. Content
 
 - publish road-safety blog posts regularly
-- update center information per [CENTERS_DATA.md](CENTERS_DATA.md) via admin (`center_contacts`, `center_hours`, expansion phase); sync doc when NACHO supplies changes
+- update center information per [CENTERS_DATA.md](CENTERS_DATA.md) via admin (`center_contacts`, `center_hours`, expansion phase); sync doc when NOVETESCO supplies changes
 - **Activate expansion center:** status → `active`, add contacts/hours/services, enable `booking_enabled`, publish `google_maps_url` — checklist in [ADMIN_MODULES.md](ADMIN_MODULES.md) §3
-- update tariffs via **revision workflow** (ADR 007); set `last_verified_at` when NACHO confirms rates
+- update tariffs via **revision workflow** (ADR 007); set `last_verified_at` when NOVETESCO confirms rates
 - when regulatory reference is confirmed, update `regulatory_reference` in admin — do not hard-code in lang files
-- keep legal pages current with NACHO's legal team
+- keep legal pages current with NOVETESCO's legal team
 
 ## 3. Operations
 

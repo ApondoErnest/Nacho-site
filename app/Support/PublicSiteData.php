@@ -67,18 +67,31 @@ class PublicSiteData
 
         $fallback = config('centers.headquarters', []);
         $hqCenter = $this->centers()->firstWhere('is_headquarters', true);
-        $phones = collect($hqCenter['phones'] ?? $fallback['phones'] ?? [])->values();
+        $phones = collect($hqCenter['phones'] ?? $fallback['phones'] ?? [])->filter()->values();
+        if ($phones->isEmpty()) {
+            $phones = collect($fallback['phones'] ?? [])->filter()->values();
+        }
+
         $primaryPhone = $this->setting('contact_phone') ?? $phones->first() ?? ($fallback['phone_primary'] ?? null);
+        if ($primaryPhone && ! $phones->contains($primaryPhone)) {
+            $phones->prepend($primaryPhone);
+        }
+
         $email = $this->setting('contact_email') ?? ($hqCenter['email'] ?? $fallback['email'] ?? null);
         $address = $this->setting('address') ?? ($hqCenter['address'] ?? $fallback['address'] ?? null);
+        $phoneLinks = $phones->map(fn (string $phone): array => [
+            'label' => $phone,
+            'tel' => $this->phoneHref($phone),
+        ])->values();
 
         return $this->headquarters = [
             'label_en' => $fallback['label_en'] ?? 'Main Headquarter',
-            'label_fr' => $fallback['label_fr'] ?? 'Siege principal',
+            'label_fr' => $fallback['label_fr'] ?? 'Siège principal',
             'address' => $address,
             'postal_box' => $this->setting('postal_box') ?? ($hqCenter['postal_address'] ?? $fallback['postal_box'] ?? null),
             'email' => $email,
-            'phones' => $phones->isNotEmpty() ? $phones->all() : ($fallback['phones'] ?? []),
+            'phones' => $phones->all(),
+            'phone_links' => $phoneLinks->all(),
             'phone_primary' => $primaryPhone,
             'phone_primary_tel' => $primaryPhone ? $this->phoneHref($primaryPhone) : ($fallback['phone_primary_tel'] ?? null),
         ];

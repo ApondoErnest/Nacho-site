@@ -1,4 +1,4 @@
-# Roles & Permissions - NACHO Vehicle Inspection
+# Roles & Permissions - NOVETESCO Vehicle Inspection
 
 Authorization uses a **custom roles system** (no Spatie): a `roles` table and `users.role_id`, enforced by middleware and an ability helper. See ADR 003 in [adr/](adr/).
 

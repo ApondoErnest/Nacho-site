@@ -1,12 +1,12 @@
-# Roadmap - NACHO Vehicle Inspection
+# Roadmap - NOVETESCO Vehicle Inspection
 
 Chronological, approval-gated build. **One step = one phase.** Say **"do Phase N"** or **"do Step N"** (same number) to start work. Status: `pending` | `in_progress` | `done`.
 
-Full plan: [plan.md](../plan.md) (human-readable) and [.cursor/plans/nacho_master_implementation_c01132ca.plan.md](../.cursor/plans/nacho_master_implementation_c01132ca.plan.md) (Cursor plan).
+Full plan: [plan.md](../plan.md) (human-readable) and [.cursor/plans/novetesco_master_implementation_c01132ca.plan.md](../.cursor/plans/novetesco_master_implementation_c01132ca.plan.md) (Cursor plan).
 
 ## Locked decisions
 
-- Laravel full-stack, Blade + **Tailwind**, MySQL (`nacho_vehicle_inspection`), Vite, Breeze. See [adr/](adr/).
+- Laravel full-stack, Blade + **Tailwind**, MySQL (`novetesco_vehicle_inspection`), Vite, Breeze. See [adr/](adr/).
 - Session-based locale, French default, **English URL paths** (`/centers/`, English service slugs). French SEO via titles/meta/content.
 - Custom roles + `users.role_id` (no Spatie). Custom `media` table (no Spatie Media Library).
 - Frontend (static pages) **before** database, then wire backend, then admin, then polish/UAT, then deploy.
@@ -36,7 +36,7 @@ flowchart LR
 | 0 | Documentation | done |
 | 1 | Local dev environment + MySQL | done |
 | 2 | Create Laravel project + git init | done |
-| 3 | Visual identity (Tailwind `nacho-*`, Breeze) | done |
+| 3 | Visual identity (Tailwind `novetesco-*`, Breeze) | done |
 | 4 | Public layout shell | done |
 | 5 | Reusable Blade components | done |
 | 6 | Static homepage (14 sections per [DESIGN.md](DESIGN.md)) | done |
@@ -93,12 +93,12 @@ Step **47** complete — Hostinger VPS, Docker on **127.0.0.1:8083**, host nginx
 2. Each step ends with a smoke test, a [CHANGELOG.md](../CHANGELOG.md) entry, and an update to this file.
 3. No excluded features are introduced at any step.
 
-## Outstanding inputs from NACHO
+## Outstanding inputs from NOVETESCO
 
-**Partially supplied** (see [CENTERS_DATA.md](CENTERS_DATA.md), source: `CCTs of NACHO.docx`):
+**Partially supplied** (see [CENTERS_DATA.md](CENTERS_DATA.md), source: `CCTs of NOVETESCO.docx`):
 
 - Center names, addresses, phones, emails, hours, GPS for 3 operational centers
-- HQ contact (email, phones, P.O. Box 100 Bamenda)
+- HQ contact (email `noblevehicletestingcompany@gmail.com`, phones `(+237) 33142037` and `(+237) 675615478`, P.O. Box 100 Mankon-Bamenda)
 - Under-construction centers: Douala, Kumba (addresses TBA)
 
 **Still pending:**

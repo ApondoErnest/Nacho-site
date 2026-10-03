@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'tagline' => 'NACHO Vehicle Inspection provides professional vehicle technical inspection services focused on road safety, compliance, and customer confidence.',
-    'short_tagline' => 'Committed to safety, quality and your peace of mind.',
+    'tagline' => 'NOVETESCO provides professional vehicle technical inspection services focused on road safety, compliance, and customer confidence.',
+    'short_tagline' => 'Safety, Quality, Trust',
     'quick_links' => 'Quick links',
     'legal' => 'Legal',
     'contact' => 'Contact',
@@ -13,7 +13,7 @@ return [
     'terms' => 'Terms and Conditions',
     'cookies' => 'Cookie Policy',
     'legal_notice' => 'Legal Notice',
-    'copyright' => '© :year NACHO Vehicle Inspection. All rights reserved.',
+    'copyright' => '© :year NOVETESCO Vehicle Inspection. All rights reserved.',
     'cookie_message' => 'This site uses essential cookies for its operation. By continuing, you accept our use of cookies.',
     'cookie_label' => 'Cookie consent',
     'cookie_accept' => 'Accept',
@@ -28,7 +28,7 @@ return [
     'ready_text' => 'Book online or visit any of our :count operational center today.|Book online or visit any of our :count operational centers today.',
     'find_center' => 'Find a Center',
     'news_updates' => 'News & Updates',
-    'social_label' => 'NACHO social channels',
+    'social_label' => 'NOVETESCO social channels',
     'operational_centers_title' => ':count operational center|:count operational centers',
     'services' => [
         'technical_inspection' => 'Technical Inspection',

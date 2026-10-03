@@ -6,13 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- **Documentation — slogan, headquarters email, and name cleanup.** Slogan is **Safety, Quality, Trust** / **Sécurité, qualité, confiance**. Every documented address that used the old Yahoo mailbox now uses `noblevehicletestingcompany@gmail.com` until each center has its own email. Documentation identifiers (center names, slugs, database name, tokens, booking references, logo filename) use **NOVETESCO** only. Application code, seed data, and the public site are unchanged in this step.
+
 ### Added
 
 - **Step 47 — VPS production live (2026-09-30).** Deployed to Hostinger (`89.117.37.202`): Docker Compose on **127.0.0.1:8083**, host nginx + Let's Encrypt, **https://noblevehicletestingcompany.com** (apex canonical, `www` redirect). Verified `/up`, public site, booking form, admin login + dashboard. Production fixes: FastCGI forwarded headers, app healthcheck, nginx `robots.txt` routing, logo path on Linux.
 
 - **Step 47 — VPS deploy pack.** [deploy/vps/RUNBOOK.md](deploy/vps/RUNBOOK.md) for Hostinger (`89.117.37.202`, `noblevehicletestingcompany.com`, **8083**), [docker-compose.production.yml](docker-compose.production.yml), host nginx templates, [deploy/vps/deploy.sh](deploy/vps/deploy.sh), production TrustProxies + forwarded FastCGI headers, `Step47VpsDeployConfigTest`.
 
-- **Step 46 — Dockerize (manual pass 2026-09-30).** Multi-stage [Dockerfile](Dockerfile) (PHP **8.4**-FPM, Vite build, Nginx `web` target), [docker-compose.yml](docker-compose.yml), APP_KEY entrypoint + `storage/.app_key`, logo path fix (`nacho-logo.png` for Linux). `Step46DockerConfigTest`; runbook [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) §2.
+- **Step 46 — Dockerize (manual pass 2026-09-30).** Multi-stage [Dockerfile](Dockerfile) (PHP **8.4**-FPM, Vite build, Nginx `web` target), [docker-compose.yml](docker-compose.yml), APP_KEY entrypoint + `storage/.app_key`, logo path fix (`novetesco-logo.png` for Linux). `Step46DockerConfigTest`; runbook [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) §2.
 
 - **Step 45 — Local stabilization gate (2026-09-29).** Closed [docs/UAT_CHECKLIST.md](docs/UAT_CHECKLIST.md) §7 with verified center/HQ data (`Step45LocalStabilizationTest`), documented v1 content deferrals, ran `migrate:fresh --seed`, and re-verified **172** PHPUnit tests plus frontend build smoke. Production hints added to `.env.example`. Ready for Step 46 (Dockerize).
 
@@ -58,21 +62,21 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - **Step 24 — Contact form backend.** Added public contact message validation, a POST-backed `/contact` flow, a hidden honeypot field, and persistence into `contact_messages` with `new` status. The contact page now preserves failed submissions and shows bilingual success/error feedback. Added feature tests for successful storage, invalid centers/reasons, honeypot no-store behavior, and form route wiring.
 
-- **Step 23 — Booking form backend.** Added `BookingReferenceService` for unique `NACHO-YYYYMMDD-XXXX` references, a public booking request validator that enforces bookable centers/services/tariffs and consent, and a POST-backed booking flow that stores pending bookings from the public form. The booking page now submits stable tariff slugs, preserves failed submissions, and displays the generated reference on success. Added feature tests for successful booking creation, invalid center/service combinations, non-bookable centers, and stable form payloads.
+- **Step 23 — Booking form backend.** Added `BookingReferenceService` for unique `NOVETESCO-YYYYMMDD-XXXX` references, a public booking request validator that enforces bookable centers/services/tariffs and consent, and a POST-backed booking flow that stores pending bookings from the public form. The booking page now submits stable tariff slugs, preserves failed submissions, and displays the generated reference on success. Added feature tests for successful booking creation, invalid center/service combinations, non-bookable centers, and stable form payloads.
 
 - **Step 22 — Public controllers backed by database data.** Replaced static public route views with controller actions, added a `PublicSiteData` mapper for DB-backed centers, services, tariffs, headquarters settings, careers, and legal pages, and updated public views/components to prefer controller/Eloquent data with config fallbacks. Added tests proving centers, booking/tariff options, careers, and legal pages render from database rows.
 
-- **Step 21 — Models, enums, factories.** Added backed enums for user, center, booking, content, contact, career, tariff revision, and setting statuses; Eloquent models for all NACHO domain tables with relationships, casts, scopes, and bilingual fallback helpers; factories for domain models; and focused model tests covering relationships, scopes, casts, localized fields, JSON payloads, and typed settings.
+- **Step 21 — Models, enums, factories.** Added backed enums for user, center, booking, content, contact, career, tariff revision, and setting statuses; Eloquent models for all NOVETESCO domain tables with relationships, casts, scopes, and bilingual fallback helpers; factories for domain models; and focused model tests covering relationships, scopes, casts, localized fields, JSON payloads, and typed settings.
 
 - **Step 20 — Seed data.** Added idempotent seeders for roles, first super admin, services, tariffs, verified centers with contacts/hours/service assignments, career departments, blog categories, editable legal pages, and site settings. Seeded local MySQL successfully with 5 centers, 7 tariffs, 6 roles, and starter content/settings.
 
-- **Step 19 — Database migrations.** Added the NACHO domain schema as additive Laravel migrations: custom roles, staff user fields, normalized centers/contacts/hours/service pivot/progress updates, services, tariffs, tariff revisions and audit logs, bookings, contact messages, blog categories/posts, career departments/posts, pages, media, and site settings. Applied successfully to local MySQL `nacho_vehicle_inspection`; test suite remains green.
+- **Step 19 — Database migrations.** Added the NOVETESCO domain schema as additive Laravel migrations: custom roles, staff user fields, normalized centers/contacts/hours/service pivot/progress updates, services, tariffs, tariff revisions and audit logs, bookings, contact messages, blog categories/posts, career departments/posts, pages, media, and site settings. Applied successfully to local MySQL `novetesco_vehicle_inspection`; test suite remains green.
 
 - **Step 6 — Static homepage (10 sections).** `/` answers who/what/where/why/next: hero (4 CTAs), trust strip, about preview, centers grid (`config/centers.php`), 5 services, why-choose list, 5-step process, tariff preview, 3 blog placeholders, final CTA. Copy in `lang/{fr,en}/home.php`; tariffs/services structure in `config/home.php`. `<x-public.section-heading>` component.
 
 - **Verified center data in the UI.** `config/centers.php` drives header/footer HQ contact, `/centers` index, `/contact` page (HQ + centers grid + form), home page center preview, booking form center select (operational only), and design-system center cards. `<x-public.centers-grid>` component; center cards show phones and hours.
 
-- **Verified center documentation from CCTs of NACHO.** [docs/CENTERS_DATA.md](docs/CENTERS_DATA.md) (5 inspection centers + Main HQ); [docs/sources/README.md](docs/sources/README.md) tracks `CCTs of NACHO.docx` as source.
+- **Verified center documentation from CCTs of NOVETESCO.** [docs/CENTERS_DATA.md](docs/CENTERS_DATA.md) (5 inspection centers + Main HQ); [docs/sources/README.md](docs/sources/README.md) tracks `CCTs of NOVETESCO.docx` as source.
 
 ### Added
 
@@ -96,25 +100,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 - **Careers docs:** replaced online apply form + `job_applications` with email-only recruitment; 4-block index-only `/careers`; Step 25 cancelled.
 
-- **Center names and phones corrected per NACHO source.** Official name is **NACHO Yaounde** (not “Yaounde 1”); slug `nacho-yaounde`; phones stored as `(+237) 675117327` format; labels A–E; Douala/Kumba “Coming soon” + October 2026 notice.
+- **Center names and phones corrected per NOVETESCO source.** Official name is **NOVETESCO Yaounde** (not “Yaounde 1”); slug `novetesco-yaounde`; phones stored as `(+237) 675117327` format; labels A–E; Douala/Kumba “Coming soon” + October 2026 notice.
 
 - **Center data docs aligned with CCTs docx.** Replaced incorrect placeholder cities (Douala×2 operational, Bafoussam/Garoua) with Yaounde + Bamenda (operational) and Douala/Kumba (under construction). Updated [docs/SEEDING.md](docs/SEEDING.md), [CONTENT_GUIDELINES.md](docs/CONTENT_GUIDELINES.md), [FRONTEND.md](docs/FRONTEND.md), [DATABASE.md](docs/DATABASE.md), [SEO.md](docs/SEO.md), [ROADMAP.md](docs/ROADMAP.md), [PROJECT_BRIEF.md](docs/PROJECT_BRIEF.md), [UAT_CHECKLIST.md](docs/UAT_CHECKLIST.md), [MAINTENANCE.md](docs/MAINTENANCE.md), [README.md](README.md), [plan.md](plan.md).
 
 ### Added
 
-- **Step 5 — Reusable Blade components.** Public components: hero, page-title, trust-strip, alerts, CTA, process-steps, inspection-result, service/center/blog/career cards, tariff table + mobile card, form-field, booking/contact/career forms (UI only, no expiry/reminder fields), pagination (`vendor/pagination/nacho`). Shared styles: `.card-nacho`, badges, `.form-shell`. Bilingual `lang/*/components.php`. Design-system preview at `/design-system`.
+- **Step 5 — Reusable Blade components.** Public components: hero, page-title, trust-strip, alerts, CTA, process-steps, inspection-result, service/center/blog/career cards, tariff table + mobile card, form-field, booking/contact/career forms (UI only, no expiry/reminder fields), pagination (`vendor/pagination/novetesco`). Shared styles: `.card-novetesco`, badges, `.form-shell`. Bilingual `lang/*/components.php`. Design-system preview at `/design-system`.
 
 - **Navbar & footer polish.** Logo contained inside white nav bar (no bleed into utility bar); footer columns (logo, quick links, contact, legal) on one row from `md` breakpoint.
 
-- **Official NACHO logo integrated.** Asset at `public/images/nacho-logo.png`; `<x-nacho-logo>` component with responsive sizing; used in public header, footer, and Breeze login/register layouts; favicon; bilingual alt text.
+- **Official NOVETESCO logo integrated.** Asset at `public/images/novetesco-logo.png`; `<x-novetesco-logo>` component with responsive sizing; used in public header, footer, and Breeze login/register layouts; favicon; bilingual alt text.
 
 - **Step 4 — Public layout shell.** `layouts/public.blade.php` with contact bar, full nav (Book CTA highlighted), mobile menu (Alpine), `FR | EN` language switcher, footer, cookie banner. `SetLocaleFromSession` middleware + `/language/{locale}` route. Bilingual `lang/fr` + `lang/en` navigation/footer strings. Placeholder routes for all public pages.
 
-- **Step 3 — Visual identity.** Laravel Breeze (Blade) installed. Tailwind `nacho-*` color tokens in `tailwind.config.js`; base typography, focus states, and component classes in `resources/css/app.css`. NACHO wordmark component; brand preview on `/`; Breeze auth styled with NACHO palette.
+- **Step 3 — Visual identity.** Laravel Breeze (Blade) installed. Tailwind `novetesco-*` color tokens in `tailwind.config.js`; base typography, focus states, and component classes in `resources/css/app.css`. NOVETESCO wordmark component; brand preview on `/`; Breeze auth styled with NOVETESCO palette.
 
-- **Step 2 — Laravel project + git init.** Laravel 13.8 scaffold merged into repo root; existing `docs/`, `README.md`, `plan.md`, and `CHANGELOG.md` preserved. `.env.example` configured for NACHO (MySQL, FR locale, notification env keys). Default Laravel migrations run on `nacho_vehicle_inspection`. Git repository initialized. Smoke test: `php artisan serve` returns HTTP 200.
+- **Step 2 — Laravel project + git init.** Laravel 13.8 scaffold merged into repo root; existing `docs/`, `README.md`, `plan.md`, and `CHANGELOG.md` preserved. `.env.example` configured for NOVETESCO (MySQL, FR locale, notification env keys). Default Laravel migrations run on `novetesco_vehicle_inspection`. Git repository initialized. Smoke test: `php artisan serve` returns HTTP 200.
 
-- **Step 1 — Local environment.** Verified PHP 8.5.6, Composer 2.9.8, Node.js 26, npm 11, MySQL 9.6.0 (Homebrew). Created MySQL database `nacho_vehicle_inspection` (`utf8mb4` / `utf8mb4_unicode_ci`). Updated [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md) with verified toolchain table.
+- **Step 1 — Local environment.** Verified PHP 8.5.6, Composer 2.9.8, Node.js 26, npm 11, MySQL 9.6.0 (Homebrew). Created MySQL database `novetesco_vehicle_inspection` (`utf8mb4` / `utf8mb4_unicode_ci`). Updated [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md) with verified toolchain table.
 
 ### Changed
 

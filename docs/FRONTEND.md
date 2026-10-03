@@ -1,4 +1,4 @@
-# Frontend Design - NACHO Vehicle Inspection
+# Frontend Design - NOVETESCO Vehicle Inspection
 
 Blade + Tailwind CSS, mobile-first, premium inspection-platform UX. **Canonical UX spec:** [DESIGN.md](DESIGN.md). **Brand tokens:** [BRAND.md](BRAND.md).
 
@@ -66,7 +66,7 @@ Full spec: [DESIGN.md](DESIGN.md) §5. Summary:
 | 6 | Six technical checks |
 | 7 | Tariffs preview (+ category selector) |
 | 8 | Centers (verified data — [CENTERS_DATA.md](CENTERS_DATA.md)) |
-| 9 | Why choose NACHO (6 benefits) |
+| 9 | Why choose NOVETESCO (6 benefits) |
 | 10 | Inspection result explanation (3 cards) |
 | 11 | Blog preview (3 articles) |
 | 12 | Final CTA |
@@ -89,7 +89,7 @@ Company intro, mission, vision, values, road-safety commitment, professional ins
 Compact off-white intro (no photographic hero):
 
 - Eyebrow: **OUR INSPECTION CENTERS**
-- Headline: Find the NACHO Center Nearest to You
+- Headline: Find the NOVETESCO Center Nearest to You
 - Supporting text + network indicators: **3** current centers, **2** expansion, **5** locations, **10+ years** experience
 - Search bar — placeholder: "Search by city or center name" (matches keywords in CENTERS_DATA)
 - Region filter: All Regions, Centre, Northwest, Littoral, Southwest
@@ -123,13 +123,13 @@ Compact off-white intro (no photographic hero):
 
 Separate section below finder — Douala and Kumba only:
 
-- Heading: Expanding the NACHO Network
+- Heading: Expanding the NOVETESCO Network
 - Muted project cards: region, Under Construction, verified phase, target opening, last updated
 - **View Expansion Details** (disclosure/modal) — **no** booking, call, directions, Notify Me, or SMS subscription
 
 **Block 4 — Visit planning CTA**
 
-Dark charcoal band: "Found Your Nearest NACHO Center?" + **Book an Inspection** primary; secondary links to Tariffs, Inspection Process, Contact.
+Dark charcoal band: "Found Your Nearest NOVETESCO Center?" + **Book an Inspection** primary; secondary links to Tariffs, Inspection Process, Contact.
 
 **Mobile order:** intro → search/filters → toggle → current cards → selected details → expansion → CTA. No sticky bottom bar covering content.
 
@@ -161,7 +161,7 @@ Two columns: inclusions/exclusions + regulatory metadata. Display when available
 
 **Block 3 — Logistics strip (4 items, configurable)**
 
-Payment methods and required documents from `site_settings` (generic defaults until NACHO confirms specifics). See CONTENT_GUIDELINES §3.2.
+Payment methods and required documents from `site_settings` (generic defaults until NOVETESCO confirms specifics). See CONTENT_GUIDELINES §3.2.
 
 **Block 4 — FAQ**
 
@@ -199,9 +199,9 @@ Linked from footer; safe certification wording — [CONTENT_GUIDELINES.md](CONTE
 
 **Block 1 — Compact employer introduction**
 
-Off-white intro + workplace image (right): eyebrow **CAREERS AT NACHO**, headline, supporting text. Actions: **View Open Positions** (scroll to vacancies), **Submit a General Application** (`mailto:` from `site_settings`). Trust indicators (4 items). Imagery: diverse technicians, uniforms, brand colours — not executives only.
+Off-white intro + workplace image (right): eyebrow **CAREERS AT NOVETESCO**, headline, supporting text. Actions: **View Open Positions** (scroll to vacancies), **Submit a General Application** (`mailto:` from `site_settings`). Trust indicators (4 items). Imagery: diverse technicians, uniforms, brand colours — not executives only.
 
-**Block 2 — Why Build Your Career at NACHO**
+**Block 2 — Why Build Your Career at NOVETESCO**
 
 Four value cards: Meaningful Impact, Practical Development, Professional Standards, Growing Opportunities. Optional employee testimonial only if approved. No unapproved benefit promises.
 
@@ -237,7 +237,7 @@ Privacy, Terms, Cookies, Legal Notice — from `pages` table when wired.
 
 - Mobile-first; tariff tables → cards on small screens  
 - WCAG AA contrast; focus states; semantic landmarks; bilingual alt text  
-- Lazy-loaded images; prefer real NACHO photos — [DESIGN.md](DESIGN.md) §9  
+- Lazy-loaded images; prefer real NOVETESCO photos — [DESIGN.md](DESIGN.md) §9  
 - **Centers finder:** keyboard navigation; visible focus on List/Map toggle and expandable cards (`aria-expanded`); screen-reader labels on phone/actions; map-independent access to all center info; marker distinction by colour **and** shape; geolocation consent copy before request
 - **Careers page:** accessible vacancy filters; meaningful `mailto` link labels; keyboard nav on list/detail panel; printable job descriptions  
 

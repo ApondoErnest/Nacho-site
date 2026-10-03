@@ -40,20 +40,20 @@
             </p>
 
             <div class="nav-utility-cluster nav-utility-cluster--right">
-                <a href="tel:{{ $headquarters['phone_primary_tel'] }}" class="nav-utility-item">
-                    <x-lucide-phone class="nav-utility-icon" aria-hidden="true" />
-                    <span>{{ $headquarters['phone_primary'] }}</span>
-                </a>
+                @foreach ($headquarters['phone_links'] ?? [] as $phone)
+                    <span class="nav-utility-item">
+                        <x-lucide-phone class="nav-utility-icon" aria-hidden="true" />
+                        <span>{{ $phone['label'] }}</span>
+                    </span>
+                @endforeach
 
-                <a
-                    href="mailto:{{ $headquarters['email'] }}"
+                <span
                     class="nav-utility-item nav-utility-item--email"
-                    aria-label="{{ __('navigation.utility_email_label') }}: {{ $headquarters['email'] }}"
                     title="{{ $headquarters['email'] }}"
                 >
                     <x-lucide-mail class="nav-utility-icon" aria-hidden="true" />
                     <span>{{ $headquarters['email'] }}</span>
-                </a>
+                </span>
 
                 <span
                     class="nav-utility-item nav-utility-location"
@@ -212,9 +212,11 @@
                         {{ __($navCta['label']) }}
                     </a>
                 @endif
-                <a href="tel:{{ $headquarters['phone_primary_tel'] }}" class="block text-center text-sm font-semibold text-nacho-dark">
-                    {{ $headquarters['phone_primary'] }}
-                </a>
+                <div class="space-y-1 text-center text-sm font-semibold text-nacho-dark">
+                    @foreach ($headquarters['phone_links'] ?? [] as $phone)
+                        <a href="tel:{{ $phone['tel'] }}" class="block">{{ $phone['label'] }}</a>
+                    @endforeach
+                </div>
                 <div class="flex justify-center">
                     <x-public.language-switcher variant="light" />
                 </div>

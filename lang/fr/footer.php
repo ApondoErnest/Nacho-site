@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'tagline' => 'NACHO Vehicle Inspection offre des services professionnels de contrôle technique automobile axés sur la sécurité routière, la conformité et la confiance des clients.',
-    'short_tagline' => 'Engagés pour votre sécurité, la qualité et votre tranquillité.',
+    'tagline' => 'NOVETESCO offre des services professionnels de contrôle technique automobile axés sur la sécurité routière, la conformité et la confiance des clients.',
+    'short_tagline' => 'Sécurité, qualité, confiance',
     'quick_links' => 'Liens rapides',
     'legal' => 'Mentions légales',
     'contact' => 'Contact',
@@ -13,7 +13,7 @@ return [
     'terms' => 'Conditions générales',
     'cookies' => 'Politique des cookies',
     'legal_notice' => 'Mentions légales',
-    'copyright' => '© :year NACHO Vehicle Inspection. Tous droits réservés.',
+    'copyright' => '© :year NOVETESCO Vehicle Inspection. Tous droits réservés.',
     'cookie_message' => 'Ce site utilise des cookies essentiels pour son fonctionnement. En continuant, vous acceptez notre utilisation des cookies.',
     'cookie_label' => 'Consentement aux cookies',
     'cookie_accept' => 'Accepter',
@@ -28,7 +28,7 @@ return [
     'ready_text' => 'Réservez en ligne ou visitez l\'un de nos :count centre opérationnel.|Réservez en ligne ou visitez l\'un de nos :count centres opérationnels.',
     'find_center' => 'Trouver un centre',
     'news_updates' => 'Actualités',
-    'social_label' => 'Réseaux sociaux NACHO',
+    'social_label' => 'Réseaux sociaux NOVETESCO',
     'operational_centers_title' => ':count centre opérationnel|:count centres opérationnels',
     'services' => [
         'technical_inspection' => 'Contrôle technique',

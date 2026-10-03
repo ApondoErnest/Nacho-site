@@ -31,7 +31,7 @@ class AdminSiteSettingsManagementTest extends TestCase
             ->assertSee('Branding')
             ->assertSee('Careers')
             ->assertSee('site_name')
-            ->assertSee('NACHO Vehicle Inspection')
+            ->assertSee('NOVETESCO Vehicle Inspection')
             ->assertSee('maintenance_mode');
     }
 

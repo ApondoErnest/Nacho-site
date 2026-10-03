@@ -15,15 +15,15 @@ class SiteSettingSeeder extends Seeder
         $now = now();
 
         $settings = [
-            ['key' => 'site_name', 'value' => 'NACHO Vehicle Inspection', 'type' => 'text'],
+            ['key' => 'site_name', 'value' => 'NOVETESCO Vehicle Inspection', 'type' => 'text'],
             ['key' => 'default_language', 'value' => 'fr', 'type' => 'text'],
-            ['key' => 'contact_email', 'value' => 'nachovehicletestingstation@yahoo.com', 'type' => 'text'],
-            ['key' => 'contact_phone', 'value' => '(+237) 675615478', 'type' => 'text'],
-            ['key' => 'address', 'value' => 'Atuakum Mankon, P.O. Box 100 Bamenda, Cameroon', 'type' => 'text'],
-            ['key' => 'postal_box', 'value' => 'P.O. Box 100 Bamenda', 'type' => 'text'],
-            ['key' => 'logo', 'value' => 'images/nacho-logo.png', 'type' => 'image'],
-            ['key' => 'footer_text_en', 'value' => 'Drive Safe. Stay Compliant. Trust NACHO.', 'type' => 'text'],
-            ['key' => 'footer_text_fr', 'value' => 'Roulez en securite. Restez conforme. Faites confiance a NACHO.', 'type' => 'text'],
+            ['key' => 'contact_email', 'value' => 'noblevehicletestingcompany@gmail.com', 'type' => 'text'],
+            ['key' => 'contact_phone', 'value' => '(+237) 33142037', 'type' => 'text'],
+            ['key' => 'address', 'value' => 'Atuakum Mankon, P.O. Box 100 Mankon-Bamenda, Cameroon', 'type' => 'text'],
+            ['key' => 'postal_box', 'value' => 'P.O. Box 100 Mankon-Bamenda', 'type' => 'text'],
+            ['key' => 'logo', 'value' => 'images/reusable/logo.png', 'type' => 'image'],
+            ['key' => 'footer_text_en', 'value' => 'Safety, Quality, Trust', 'type' => 'text'],
+            ['key' => 'footer_text_fr', 'value' => 'Sécurité, qualité, confiance', 'type' => 'text'],
             ['key' => 'facebook_url', 'value' => null, 'type' => 'text'],
             ['key' => 'whatsapp_contact', 'value' => null, 'type' => 'text'],
             ['key' => 'primary_color', 'value' => '#b45309', 'type' => 'color'],

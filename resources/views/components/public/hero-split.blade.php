@@ -9,7 +9,7 @@
     $subtitle = $subtitle ?? __('components.hero.subtitle');
     $eyebrow = $eyebrow ?? __('components.hero.eyebrow');
     $heroImages = collect(range(1, 4))
-        ->map(fn ($index) => "images/hero-inspection-bay-{$index}.png")
+        ->map(fn ($index) => "images/homepage/hero-{$index}.png")
         ->filter(fn ($path) => file_exists(public_path($path)))
         ->map(fn ($path) => asset($path))
         ->values();
@@ -43,29 +43,29 @@
             />
         @endforeach
         <div class="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/68 to-[#071016]/12"></div>
-        <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#071016] to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#071016] to-transparent sm:h-28 xl:h-40"></div>
     </div>
 
-    <div class="nacho-container relative py-14 sm:py-16 lg:py-20">
-        <div class="grid min-h-[34rem] items-center gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(24rem,0.9fr)]">
+    <div class="nacho-container relative py-8 sm:py-10 xl:py-20">
+        <div class="grid items-center gap-6 sm:gap-8 xl:min-h-[34rem] xl:grid-cols-[minmax(0,0.95fr)_minmax(24rem,0.9fr)] xl:gap-10">
             <div class="max-w-2xl">
-                <p class="inline-flex items-center gap-2 text-sm font-extrabold uppercase tracking-wide text-nacho-primary sm:text-base">
-                    <x-lucide-map-pin class="h-5 w-5" aria-hidden="true" />
+                <p class="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wide text-nacho-primary sm:text-sm xl:text-base">
+                    <x-lucide-map-pin class="h-4 w-4 xl:h-5 xl:w-5" aria-hidden="true" />
                     {{ $eyebrow }}
                 </p>
 
-                <h1 class="mt-5 text-4xl font-extrabold leading-tight tracking-normal text-white sm:text-5xl lg:text-6xl">
+                <h1 class="mt-3 text-3xl font-extrabold leading-tight tracking-normal text-white sm:mt-4 sm:text-4xl xl:mt-5 xl:text-6xl">
                     {{ $title }}
                 </h1>
 
                 @if ($subtitle)
-                    <p class="mt-6 max-w-xl text-base font-medium leading-8 text-white/85 sm:text-lg">
+                    <p class="mt-3 max-w-xl text-sm font-medium leading-6 text-white/85 sm:mt-4 sm:text-base sm:leading-7 xl:mt-6 xl:text-lg xl:leading-8">
                         {{ $subtitle }}
                     </p>
                 @endif
 
                 @if (isset($actions))
-                    <div class="mt-9 flex flex-col gap-4 sm:flex-row sm:items-center">
+                    <div class="mt-5 flex flex-col gap-2.5 sm:mt-6 sm:flex-row sm:items-center sm:gap-3 xl:mt-9 xl:gap-4">
                         {{ $actions }}
                     </div>
                 @endif

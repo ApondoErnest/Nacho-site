@@ -1,4 +1,4 @@
-# Backend Architecture - NACHO Vehicle Inspection
+# Backend Architecture - NOVETESCO Vehicle Inspection
 
 Laravel full-stack, organized for clarity and separation of concerns.
 
@@ -85,7 +85,7 @@ Rules enforce required fields, valid email/phone, allowed file types and max siz
 
 ## 6. Services & support
 
-- `BookingReferenceService` - generates unique `NACHO-YYYYMMDD-XXXX` references.
+- `BookingReferenceService` - generates unique `NOVETESCO-YYYYMMDD-XXXX` references.
 - `TariffService` - resolves active tariffs for the Pricing Console and booking preselect:
   - `resolveActiveTariffs()` — effective-date logic (ADR 007), returns rows with current `price_fcfa`
   - `resolveTariffForBooking($id|$slug)` — single tariff for booking form deep link

@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'logo' => 'images/nacho-logo.png',
+    'logo' => 'images/reusable/logo.png',
 
     'logo_alt' => 'branding.logo_alt',
 
@@ -26,7 +26,7 @@ return [
         'auth' => 'Authentication pages',
     ],
 
-    'favicon' => 'images/nacho-logo.png',
+    'favicon' => 'images/reusable/favicon.png',
 
     /*
     | Homepage / marketing imagery (replace SVG placeholders with real photos).

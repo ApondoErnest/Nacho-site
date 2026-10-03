@@ -8,7 +8,7 @@ Accepted
 
 The Centers page (Dynamic Center Finder) requires multiple phone numbers per center, structured opening hours (including Yaounde's split weekday/Saturday schedule), service-aware filtering, and expansion-phase metadata. Early schema stored a single `phone`, `email`, and `opening_hours` JSON blob on `centers`, which does not support:
 
-- HQ progressive disclosure (three clickable phones on Nacho-Bamenda)
+- HQ progressive disclosure (clickable phones on Mankon-Bamenda)
 - Admin CRUD for contacts without schema changes
 - Per-center, per-service availability and booking flags
 - Verified expansion phase history

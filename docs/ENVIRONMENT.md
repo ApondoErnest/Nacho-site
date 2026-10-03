@@ -1,4 +1,4 @@
-# Local Environment - NACHO Vehicle Inspection
+# Local Environment - NOVETESCO Vehicle Inspection
 
 Local-first development with `php artisan serve` and host MySQL. Optional **production-like** stack: [DEPLOYMENT.md](DEPLOYMENT.md) §2 (`docker compose up`).
 
@@ -18,10 +18,10 @@ Local-first development with `php artisan serve` and host MySQL. Optional **prod
 | Node.js | 26.x | OK |
 | npm | 11.x | OK |
 | MySQL | 9.6.0 (Homebrew) | OK — server reachable |
-| Database `nacho_vehicle_inspection` | utf8mb4 / utf8mb4_unicode_ci | OK — created |
+| Database `novetesco_vehicle_inspection` | utf8mb4 / utf8mb4_unicode_ci | OK — created |
 | Laravel | 13.8 (laravel/laravel v13.8.0) | OK — Step 2 |
 | Laravel Breeze | 2.4 (Blade stack) | OK — Step 3 |
-| Tailwind `nacho-*` tokens | `tailwind.config.js` | OK — Step 3 |
+| Tailwind `novetesco-*` tokens | `tailwind.config.js` | OK — Step 3 |
 
 ## 2. Stack
 
@@ -30,7 +30,7 @@ Local-first development with `php artisan serve` and host MySQL. Optional **prod
 | Backend | Laravel |
 | Rendering | Blade |
 | Styling | Tailwind CSS |
-| Database | MySQL (`nacho_vehicle_inspection`) |
+| Database | MySQL (`novetesco_vehicle_inspection`) |
 | Local server | `php artisan serve` |
 | Assets | Vite |
 | Auth | Laravel Breeze (+ custom roles) |
@@ -40,7 +40,7 @@ Local-first development with `php artisan serve` and host MySQL. Optional **prod
 ## 3. Create the database
 
 ```sql
-CREATE DATABASE nacho_vehicle_inspection
+CREATE DATABASE novetesco_vehicle_inspection
   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 ```
 
@@ -51,7 +51,7 @@ CREATE DATABASE nacho_vehicle_inspection
 Copy `.env.example` to `.env` and set:
 
 ```
-APP_NAME="NACHO Vehicle Inspection"
+APP_NAME="NOVETESCO Vehicle Inspection"
 APP_ENV=local
 APP_DEBUG=true
 APP_URL=http://127.0.0.1:8000
@@ -62,15 +62,15 @@ APP_FALLBACK_LOCALE=fr
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=nacho_vehicle_inspection
+DB_DATABASE=novetesco_vehicle_inspection
 DB_USERNAME=root
 DB_PASSWORD=your_local_mysql_password
 
 MAIL_MAILER=log
 
-SEED_ADMIN_PASSWORD=NachoAdmin2026!
-BOOKING_NOTIFICATION_EMAIL=bookings@nacho.local
-CONTACT_NOTIFICATION_EMAIL=contact@nacho.local
+SEED_ADMIN_PASSWORD=NovetescoAdmin2026!
+BOOKING_NOTIFICATION_EMAIL=bookings@novetesco.local
+CONTACT_NOTIFICATION_EMAIL=contact@novetesco.local
 WHATSAPP_NUMBER=
 GOOGLE_MAPS_EMBED_KEY=
 ```

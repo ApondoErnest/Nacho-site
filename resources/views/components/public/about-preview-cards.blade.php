@@ -3,7 +3,7 @@
 ])
 
 @php
-    $image = $image ?? 'images/about-nacho-inspection-team.png';
+    $image = $image ?? 'images/homepage/about.png';
     $imageUrl = file_exists(public_path($image)) ? asset($image) : null;
 @endphp
 
@@ -18,7 +18,7 @@
                 @foreach (__('home.about.points') as $point)
                     <li class="about-nacho-point">
                         <span class="about-nacho-check" aria-hidden="true">
-                            <x-lucide-circle-check class="h-5 w-5 text-nacho-primary" />
+                            <x-lucide-circle-check class="text-nacho-primary" />
                         </span>
                         <span>{{ $point }}</span>
                     </li>
@@ -47,9 +47,6 @@
 
             <p class="about-nacho-status">
                 <span>{{ __('home.about.status_operational') }}</span>
-                <span class="about-nacho-status-dot" aria-hidden="true"></span>
-                <span>{{ __('home.about.status_construction') }}</span>
-                <strong>{{ __('home.about.status_opening') }}</strong>
             </p>
         </div>
     </div>

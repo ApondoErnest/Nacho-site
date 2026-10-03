@@ -1,4 +1,4 @@
-# UAT / Local Stability Checklist - NACHO Vehicle Inspection
+# UAT / Local Stability Checklist - NOVETESCO Vehicle Inspection
 
 The local version is considered stable (ready for Dockerization) only when all items below pass.
 
@@ -65,6 +65,6 @@ Latest results: **172** PHPUnit tests, **1551** assertions — all passing (incl
 - [x] Center data matches [CENTERS_DATA.md](CENTERS_DATA.md) — *automated: `Step45LocalStabilizationTest` (2026-09-29)*
 - [x] HQ contact on footer/contact matches headquarters in CENTERS_DATA.md — *automated + contact page smoke*
 - [x] Stakeholder review of placeholder content (legal, blog, compliance, photos) — *v1 deferrals documented in UAT_REPORT; safe placeholders accepted for soft launch*
-- [x] Logo and legal text supplied or explicitly flagged for post-launch update — *seeded logo `images/nacho-logo.png`; legal pages from CMS seed — final brand/legal review flagged post-launch*
+- [x] Logo and legal text supplied or explicitly flagged for post-launch update — *seeded logo `images/novetesco-logo.png`; legal pages from CMS seed — final brand/legal review flagged post-launch*
 
 **Step 45 complete (2026-09-29).** Proceed to Step 46 — see [DEPLOYMENT.md](DEPLOYMENT.md).

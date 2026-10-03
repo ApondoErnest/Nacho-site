@@ -10,6 +10,7 @@
                 : ($row['test_type_en'] ?? __('tariffs.dynamic.test_types.all')),
             'validity' => $locale === 'fr' ? $row['validity_fr'] : $row['validity_en'],
             'price' => $row['price'],
+            'code' => preg_replace('/^.*\s/u', '', $locale === 'fr' ? $row['category_fr'] : $row['category_en']),
         ];
     })->values();
 @endphp
@@ -38,7 +39,7 @@
                         <td>{{ $row['test_type'] }}</td>
                         <td>{{ $row['validity'] }}</td>
                         <td>
-                            <span class="inspection-fees-price">{{ str_replace(' FCFA', '', $row['price']) }}</span>
+                            <span class="inspection-fees-price">{{ $row['price'] }}</span>
                         </td>
                     </tr>
                 @endforeach
@@ -46,25 +47,18 @@
         </table>
     </div>
 
-    <div class="inspection-fees-mobile">
+    <div class="inspection-fees-list">
         @foreach ($rows as $row)
-            <article class="inspection-fees-mobile-card">
-                <div class="inspection-fees-mobile-top">
-                    <span class="inspection-fees-mobile-number">{{ $row['number'] }}</span>
-                    <span class="inspection-fees-price">{{ str_replace(' FCFA', '', $row['price']) }}</span>
-                </div>
-                <h3>{{ $row['category'] }}</h3>
-                <p>{{ $row['details'] }}</p>
-                <dl>
-                    <div>
-                        <dt>{{ __('home.tariffs.table.test_type') }}</dt>
-                        <dd>{{ $row['test_type'] }}</dd>
-                    </div>
-                    <div>
-                        <dt>{{ __('home.tariffs.table.validity') }}</dt>
-                        <dd>{{ $row['validity'] }}</dd>
-                    </div>
-                </dl>
+            <article class="inspection-fees-row">
+                <span class="inspection-fees-code">{{ $row['code'] }}</span>
+                <span class="inspection-fees-row-copy">
+                    <strong>{{ $row['details'] }}</strong>
+                    <span>{{ $row['validity'] }} · {{ $row['test_type'] }}</span>
+                </span>
+                <span class="inspection-fees-row-price">
+                    {{ str_replace(' FCFA', '', $row['price']) }}
+                    <small>FCFA</small>
+                </span>
             </article>
         @endforeach
     </div>

@@ -4,16 +4,16 @@
 ])
 
 @php
-    $logoPath = config('branding.logo', 'images/nacho-logo.png');
+    $logoPath = config('branding.logo', 'images/reusable/logo.png');
     $hasLogo = file_exists(public_path($logoPath));
 
-    // Wide logo (~3:2). Boxes sized so the mark stays readable without crowding the nav.
+    // Lockup is about 2:1 (mark plus wordmark).
     $boxClass = match ($context) {
-        'nav' => 'h-16 w-[10rem] sm:h-20 sm:w-[12rem] lg:h-[5.25rem] lg:w-[12.25rem] 2xl:w-[14rem]',
-        'footer' => 'h-16 w-[13.5rem] sm:h-20 sm:w-[17rem]',
-        'auth' => 'h-20 w-[15rem] sm:h-24 sm:w-[18.5rem]',
-        'sm' => 'h-10 w-[8.5rem]',
-        default => 'h-14 w-[12.75rem]',
+        'nav' => 'h-14 w-[7rem] sm:h-16 sm:w-[8rem] lg:h-[4.75rem] lg:w-[9.5rem]',
+        'footer' => 'h-11 w-[8rem] sm:h-12 sm:w-[9rem] xl:h-16 xl:w-[11rem]',
+        'auth' => 'h-24 w-[12rem] sm:h-28 sm:w-[14rem]',
+        'sm' => 'h-12 w-[6rem]',
+        default => 'h-16 w-[8rem]',
     };
 @endphp
 
@@ -27,8 +27,8 @@
             src="{{ asset($logoPath) }}"
             alt=""
             class="block max-h-full w-auto max-w-full object-contain object-left"
-            width="1024"
-            height="682"
+            width="1774"
+            height="887"
             decoding="async"
             @if ($context === 'nav') fetchpriority="high" @endif
         />

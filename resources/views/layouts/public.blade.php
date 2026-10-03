@@ -23,6 +23,7 @@
 
         <title>{{ $seoTitle }}</title>
         <link rel="canonical" href="{{ $seoCanonical }}">
+        <link rel="icon" href="{{ asset(config('branding.favicon')) }}" type="image/png">
 
         <meta property="og:site_name" content="{{ $seoSiteName }}">
         <meta property="og:locale" content="{{ $seoLocale }}">

@@ -1,4 +1,4 @@
-# SEO - NACHO Vehicle Inspection
+# SEO - NOVETESCO Vehicle Inspection
 
 SEO is prepared during development and finalized (sitemap submission, etc.) after deployment.
 
@@ -35,7 +35,7 @@ Clean, single (locale-less) URLs:
 - `/privacy-policy`, `/terms-and-conditions`, `/cookie-policy`, `/legal-notice` - Legal
 - `/compliance-quality` - Compliance & quality
 
-Service URLs use **English slugs** (locked decision): `periodic-inspection`, `counter-visit`, `heavy-vehicles`, `pre-purchase`, `road-safety`. Center booking preselect: `/book-inspection?center={slug}` — e.g. `nacho-yaounde` ([CENTERS_DATA.md](CENTERS_DATA.md)). No public `/centers/{slug}` detail route.
+Service URLs use **English slugs** (locked decision): `periodic-inspection`, `counter-visit`, `heavy-vehicles`, `pre-purchase`, `road-safety`. Center booking preselect: `/book-inspection?center={slug}` — e.g. `novetesco-yaounde` ([CENTERS_DATA.md](CENTERS_DATA.md)). No public `/centers/{slug}` detail route.
 
 French SEO keywords are targeted via `seo_title_fr`, meta descriptions, and page content — not via URL segments. See section 8 for target keyword list.
 
@@ -53,7 +53,7 @@ SEO fields are editable for: services, blog posts, pages, centers (and careers i
 
 ## 5. Structured data (JSON-LD)
 
-- **Organization** (or **LocalBusiness** / `AutomotiveBusiness`) on the homepage: name, URL, logo, contact, **slogan** (*Drive Safe. Stay Compliant. Trust NACHO.* / FR equivalent).
+- **Organization** (or **LocalBusiness** / `AutomotiveBusiness`) on the homepage: name, URL, logo, contact, **slogan** (*Safety, Quality, Trust.* / FR equivalent).
 - **`ItemList` or multiple `LocalBusiness`** entries on `/centers` index JSON-LD for active centers (address, geo internal to schema — not raw coordinates on page).
 - **`JobPosting`** structured data on `/careers` for published vacancies (embedded in page JSON-LD).
 - Optionally `Article` on blog detail pages.

@@ -1,4 +1,4 @@
-# Admin Dashboard Modules - NACHO Vehicle Inspection
+# Admin Dashboard Modules - NOVETESCO Vehicle Inspection
 
 The admin dashboard lives under `/admin`, requires authentication, and is gated by role/ability ([ROLES.md](ROLES.md)).
 

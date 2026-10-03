@@ -1,6 +1,6 @@
 # Architecture Decision Records
 
-Short records of significant technical decisions for the NACHO Vehicle Inspection website.
+Short records of significant technical decisions for the NOVETESCO Vehicle Inspection website.
 
 - [001 - Laravel full-stack](001-laravel-fullstack.md)
 - [002 - Session locale with single URLs](002-session-i18n-single-urls.md)

@@ -1,12 +1,15 @@
 @php
     $locale = app()->getLocale();
     $images = [
-        'nacho-yaounde' => 'images/center-nacho-yaounde.png',
-        'nacho-nkwen-bamenda' => 'images/center-nacho-nkwen-bamenda.png',
-        'nacho-mankon-bamenda' => 'images/center-nacho-nacho-bamenda.png',
-        'nacho-douala' => 'images/center-nacho-douala-coming-soon.png',
-        'nacho-kumba' => 'images/center-nacho-kumba-coming-soon.png',
+        'nacho-yaounde' => 'images/homepage/yaounde-1.png',
+        'nacho-nkwen-bamenda' => 'images/homepage/nkwen-bamenda-1.png',
+        'nacho-mankon-bamenda' => 'images/homepage/mankon-bamenda-1.png',
+        'nacho-douala' => 'images/homepage/douala-coming-soon.png',
+        'nacho-kumba' => 'images/homepage/kumba-coming-soon.png',
     ];
+    $hoursSummary = $locale === 'fr'
+        ? '8h00 – 18h00 (lun.–ven.) · 8h00 – 14h00 (sam.)'
+        : '8:00 AM – 6:00 PM (Mon–Fri) · 8:00 AM – 2:00 PM (Sat)';
     $centers = app(\App\Support\PublicSiteData::class)->centers();
 @endphp
 
@@ -19,7 +22,7 @@
                 $isOperational = $center['status'] === 'operational';
                 $imagePath = $images[$center['slug']] ?? null;
                 $imageUrl = $imagePath && file_exists(public_path($imagePath)) ? asset($imagePath) : null;
-                $hours = $locale === 'fr' ? ($center['hours_fr'] ?? null) : ($center['hours_en'] ?? null);
+                $hours = $hoursSummary;
                 $primaryPhone = $center['phones'][0] ?? null;
                 $mapsUrl = $center['maps_url'] ?? route('centers.index');
             @endphp

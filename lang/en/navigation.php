@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'utility_tagline' => 'Approved Vehicle Technical Inspection Centers in Cameroon',
+    'utility_tagline' => 'Safety, Quality, Trust',
     'opening_hours_summary' => 'Mon–Sat',
     'utility_email_label' => 'Email',
     'utility_headquarters_label' => 'Headquarters',
@@ -10,7 +10,7 @@ return [
     'dropdown_footer' => 'Working together for safer roads',
 
     'home' => 'Home',
-    'about' => 'About NACHO',
+    'about' => 'About NOVETESCO',
     'centers' => 'Centers',
     'services' => 'Services',
     'book' => 'Book an Inspection',

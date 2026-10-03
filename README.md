@@ -1,12 +1,12 @@
-# NACHO Vehicle Inspection Website
+# NOVETESCO Vehicle Inspection Website
 
-Professional, bilingual (French default / English), mobile-responsive website and admin platform for **NACHO Vehicle Inspection**, a vehicle technical inspection center network in Cameroon.
+Professional, bilingual (French default / English), mobile-responsive website and admin platform for **NOVETESCO Vehicle Inspection**, a vehicle technical inspection center network in Cameroon.
 
 Built with **Laravel** (full-stack, Blade + Tailwind CSS) on **MySQL**. Local development + Docker; **production on Hostinger VPS**.
 
-> NACHO currently operates **3 vehicle technical inspection centers**, with **2 additional centers under construction**, expected to open **before November 2026**. The site must never present NACHO as having 5 fully operational centers until all 5 are functioning.
+> NOVETESCO currently operates **3 vehicle technical inspection centers**, with **2 additional centers under construction**, expected to open **before November 2026**. The site must never present NOVETESCO as having 5 fully operational centers until all 5 are functioning.
 
-**Slogan:** *Drive Safe. Stay Compliant. Trust NACHO.* / *Roulez en sécurité. Restez conforme. Faites confiance à NACHO.*
+**Slogan:** *Safety, Quality, Trust.* / *Sécurité, qualité, confiance.*
 
 ---
 
@@ -56,7 +56,7 @@ SMS reminders, WhatsApp reminders, vehicle expiry-date tracking, customer remind
 |-------|--------|
 | Backend | Laravel |
 | Frontend | Blade + Tailwind CSS |
-| Database | MySQL (`nacho_vehicle_inspection`) |
+| Database | MySQL (`novetesco_vehicle_inspection`) |
 | Assets | Vite |
 | Auth | Laravel Breeze + custom roles |
 | URLs | English paths (`/centers/`, English service slugs) |
@@ -77,7 +77,7 @@ php artisan key:generate
 
 # Set in .env:
 # DB_CONNECTION=mysql
-# DB_DATABASE=nacho_vehicle_inspection
+# DB_DATABASE=novetesco_vehicle_inspection
 
 php artisan migrate --seed
 npm run dev          # asset bundling
@@ -104,7 +104,7 @@ Full setup: [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md).
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | Backend structure |
 | [docs/ADMIN_MODULES.md](docs/ADMIN_MODULES.md) | Admin dashboard modules |
 | [docs/SEEDING.md](docs/SEEDING.md) | Default seed data |
-| [docs/CENTERS_DATA.md](docs/CENTERS_DATA.md) | Verified inspection centers + HQ (`CCTs of NACHO.docx`) |
+| [docs/CENTERS_DATA.md](docs/CENTERS_DATA.md) | Verified inspection centers + HQ (`CCTs of NOVETESCO.docx`) |
 | [docs/I18N.md](docs/I18N.md) | Bilingual implementation |
 | [docs/SEO.md](docs/SEO.md) | SEO and URL map |
 | [docs/SECURITY.md](docs/SECURITY.md) | Security measures |
@@ -130,4 +130,4 @@ Full setup: [docs/ENVIRONMENT.md](docs/ENVIRONMENT.md).
 
 ## License
 
-Proprietary — NACHO Industries Cameroon. All rights reserved.
+Proprietary — NOVETESCO. All rights reserved.

@@ -3,7 +3,7 @@
 ])
 
 @php
-    $image = $image ?? 'images/technician-inside-vehicle.png';
+    $image = $image ?? 'images/homepage/how-it-works.png';
     $imageUrl = file_exists(public_path($image)) ? asset($image) : null;
     $steps = __('home.process.showcase_steps');
     $icons = [

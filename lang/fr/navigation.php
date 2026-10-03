@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'utility_tagline' => 'Centres de contrôle technique automobile agréés au Cameroun',
+    'utility_tagline' => 'Sécurité, qualité, confiance',
     'opening_hours_summary' => 'Lun–sam',
     'utility_email_label' => 'E-mail',
     'utility_headquarters_label' => 'Siège principal',
@@ -10,7 +10,7 @@ return [
     'dropdown_footer' => 'Travailler ensemble pour des routes plus sûres',
 
     'home' => 'Accueil',
-    'about' => 'À propos de NACHO',
+    'about' => 'À propos de NOVETESCO',
     'centers' => 'Centres',
     'services' => 'Services',
     'book' => 'Réserver une inspection',

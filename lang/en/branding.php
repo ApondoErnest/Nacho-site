@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'logo_alt' => 'NACHO Industries Cameroon — Vehicle Inspection',
+    'logo_alt' => 'NOVETESCO — Noble Vehicle Testing. Safety, Quality, Trust.',
 ];

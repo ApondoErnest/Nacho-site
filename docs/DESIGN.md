@@ -1,10 +1,10 @@
-# Design System & UX Direction - NACHO Vehicle Inspection
+# Design System & UX Direction - NOVETESCO Vehicle Inspection
 
 Premium vehicle inspection and road-safety platform — **not** a simple company brochure.
 
 **Implementation:** [FRONTEND.md](FRONTEND.md) (page specs), [BRAND.md](BRAND.md) (tokens), Blade components in `resources/views/components/public/`.
 
-**Positioning vs reference sites:** More modern than Satellite Ngono, more focused than Saptrans, more polished than Silicon, as structured as Autoservice — with a stronger NACHO identity (burnt orange + charcoal, clear center counts, conversion-focused CTAs).
+**Positioning vs reference sites:** More modern than Satellite Ngono, more focused than Saptrans, more polished than Silicon, as structured as Autoservice — with a stronger NOVETESCO identity (burnt orange + charcoal, clear center counts, conversion-focused CTAs).
 
 ---
 
@@ -31,7 +31,7 @@ Burnt orange + deep charcoal + white/cream + green safety accents (distinct from
 | Warning (amber) | Under construction, Suspended, counter-visit | Badges, result cards |
 | Danger (red) | Refused, serious defect | Badges, result cards |
 
-Hex tokens: [BRAND.md](BRAND.md) (`nacho-*` in Tailwind).
+Hex tokens: [BRAND.md](BRAND.md) (`novetesco-*` in Tailwind).
 
 ---
 
@@ -50,7 +50,7 @@ Values from [CENTERS_DATA.md](CENTERS_DATA.md) (HQ phone/email; hours summary e.
 
 ### 3.2 Main navbar
 
-**White or warm cream** background; NACHO logo left.
+**White or warm cream** background; NOVETESCO logo left.
 
 Menu order:
 
@@ -89,7 +89,7 @@ Menu order:
 **Links (order):**
 
 1. Home  
-2. About NACHO  
+2. About NOVETESCO  
 3. Our Centers  
 4. Services  
 5. Tariffs  
@@ -110,20 +110,20 @@ Must answer: who, what, where, why, what next. Center data: [CENTERS_DATA.md](CE
 |---|---------|---------|
 | 1 | **Hero** | Split layout: left — headline, subtitle (3+2 centers), CTAs (Book primary, Find Center, View Tariffs link), trust icon row; right — hero image + **floating status card** (“3 Centers Operational / 2 Opening Before November 2026”) |
 | 2 | **Center availability strip** | Horizontal: `3 Operational \| 2 Under Construction \| Opening Before November 2026` — green / amber |
-| 3 | **About preview** | Title: *Vehicle Inspection Built Around Safety, Trust, and Compliance*; 3 cards (Safety First, Professional Inspection, Clear Customer Guidance); CTA: Learn About NACHO |
+| 3 | **About preview** | Title: *Vehicle Inspection Built Around Safety, Trust, and Compliance*; 3 cards (Safety First, Professional Inspection, Clear Customer Guidance); CTA: Learn About NOVETESCO |
 | 4 | **Services preview** | 5 cards — icon, short copy, Learn more, optional Book now; white card, shadow, orange icon |
 | 5 | **Inspection process timeline** | Title: *How Your Inspection Works* — **6 steps** (horizontal desktop / vertical mobile); CTA: View Full Inspection Process |
 | 6 | **Six technical checks** | Inspired by Satellite — ripage, braking, suspension, pollution, headlight alignment, visual; icon blocks (charcoal bg + orange icons or white + orange line icons) |
 | 7 | **Tariffs preview** | Common categories + price + validity + Book this category; **category selector** (Private Car \| Taxi \| Pickup \| Bus \| Truck \| Other); View All Tariffs |
-| 8 | **Centers** | *Find a NACHO Center Near You* — cards with name, city, status badge, hours, phone, address, Get Directions, Book at this Center |
-| 9 | **Why choose NACHO** | 6 benefit blocks (concrete, not vague “best”) |
+| 8 | **Centers** | *Find a NOVETESCO Center Near You* — cards with name, city, status badge, hours, phone, address, Get Directions, Book at this Center |
+| 9 | **Why choose NOVETESCO** | 6 benefit blocks (concrete, not vague “best”) |
 | 10 | **Inspection results** | 3 cards: Accepted (green), Suspended (amber), Refused (red) |
 | 11 | **Blog preview** | 3 articles with image, category, title, excerpt, read more |
 | 12 | **Final CTA** | Dark charcoal or orange gradient + road/vehicle overlay; Book, View Tariffs, Contact |
 | 13 | **Footer CTA band** | “Need help choosing the right inspection service?” — Contact + Book |
 | 14 | **Main footer** | See §6 |
 
-**Slogan** in hero/tagline: *Drive Safe. Stay Compliant. Trust NACHO.* / FR equivalent ([PROJECT_BRIEF.md](PROJECT_BRIEF.md)).
+**Slogan** in hero/tagline: *Safety, Quality, Trust.* / FR equivalent ([PROJECT_BRIEF.md](PROJECT_BRIEF.md)).
 
 ### 5.1 Process timeline steps (homepage & full page)
 
@@ -150,14 +150,14 @@ Dedicated [Inspection Process page](FRONTEND.md) uses the same **6-step** timeli
 
 ### Footer CTA band (above main footer)
 
-Text: *Need help choosing the right inspection service? Contact NACHO today.*  
-Buttons: Contact NACHO, Book Inspection.
+Text: *Need help choosing the right inspection service? Contact NOVETESCO today.*  
+Buttons: Contact NOVETESCO, Book Inspection.
 
 ### Main footer columns
 
 | Column | Content |
 |--------|---------|
-| Brand | Logo + short NACHO description |
+| Brand | Logo + short NOVETESCO description |
 | Quick Links | Home, About, Centers, Services, Tariffs, Process, Blog, Careers, Contact, Compliance |
 | Services | 5 service names (links to detail slugs) |
 | Centers | 5 centers from CENTERS_DATA — operational names + “Opening before November 2026” for Douala/Kumba |
@@ -165,7 +165,7 @@ Buttons: Contact NACHO, Book Inspection.
 
 ### Footer bottom
 
-`© 2026 NACHO Vehicle Inspection. All rights reserved.`  
+`© 2026 NOVETESCO Vehicle Inspection. All rights reserved.`  
 Privacy \| Terms \| Cookies \| Legal Notice  
 Tagline: *Designed for road safety, compliance, and professional vehicle inspection.*
 
@@ -195,7 +195,7 @@ Full rules: [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md).
 
 ## 9. Imagery
 
-Prefer **real NACHO photos** over stock:
+Prefer **real NOVETESCO photos** over stock:
 
 - Center exterior, inspection lane, vehicle on equipment, technician, customer with report
 
@@ -229,7 +229,7 @@ Professional **center locator and visit-planning** interface — not a static ad
 **Full page (`/centers`) — four blocks:**
 
 1. **Network introduction and search controls** — compact off-white intro (no hero); network indicators; search + region + service filters; List \| Map toggle; optional Find Nearest Center (opt-in geolocation)  
-2. **Dynamic Center Finder** — desktop **42% / 58%** split (list \| map + profile); expandable cards; selected-center profile; lazy map; HQ progressive disclosure on Nacho-Bamenda  
+2. **Dynamic Center Finder** — desktop **42% / 58%** split (list \| map + profile); expandable cards; selected-center profile; lazy map; HQ progressive disclosure on Mankon-Bamenda  
 3. **Expansion Network** — Douala + Kumba only; muted construction cards; verified phase + target date; View Expansion Details — no booking/notify  
 4. **Visit planning CTA** — dark charcoal band with Book + secondary links  
 
@@ -257,7 +257,7 @@ Professional **vacancy-discovery and employer-brand** page — not an online rec
 **Full page (`/careers`) — four blocks:**
 
 1. **Compact employer introduction** — off-white + workplace image; trust indicators; View Open Positions / General Application (`mailto:`)  
-2. **Why Build Your Career at NACHO** — 4 value cards; optional approved testimonial only  
+2. **Why Build Your Career at NOVETESCO** — 4 value cards; optional approved testimonial only  
 3. **Career areas and open vacancies** — 4 career-family cards (paths); finder with filters; desktop **40% / 60%** list + detail; Apply by Email (`mailto:`); general application + empty state  
 4. **Email application guidance + final CTA** — 3-step how-to; recruitment safety notice; dark charcoal close  
 

@@ -1,6 +1,6 @@
-# Database Design - NACHO Vehicle Inspection
+# Database Design - NOVETESCO Vehicle Inspection
 
-Database name: **`nacho_vehicle_inspection`** (MySQL, utf8mb4).
+Database name: **`novetesco_vehicle_inspection`** (MySQL, utf8mb4).
 
 The schema is designed only for the confirmed scope. There are **no** reminder, expiry, fleet, customer-portal, online job-application, or corporate tables.
 
@@ -254,14 +254,14 @@ Relationships: a role has many users; a user belongs to one role.
 
 Each row is one inspection center in the Dynamic Center Finder ([FRONTEND.md](FRONTEND.md)). Verified data: [CENTERS_DATA.md](CENTERS_DATA.md). See ADR 008 for normalized contacts/hours.
 
-- `name_en`, `name_fr` (string) - display name (proper nouns may match across locales, e.g. "NACHO Yaounde")
+- `name_en`, `name_fr` (string) - display name (proper nouns may match across locales, e.g. "NOVETESCO Yaounde")
 - `slug` (string, unique) - URL-safe identifier; used for booking preselect `?center={slug}`
 - `city_en`, `city_fr` (string)
 - `region_en`, `region_fr` (string, nullable) - e.g. Centre, Northwest, Littoral, Southwest
 - `address_en`, `address_fr` (text, nullable) - public street address
-- `postal_address` (string, nullable) - e.g. P.O. Box 100 Bamenda (HQ center)
+- `postal_address` (string, nullable) - e.g. P.O. Box 100 Mankon-Bamenda (HQ center)
 - `status` (string, default `active`) - `planned`, `construction`, `active`, `inactive`. **Migration note:** map legacy `operational` → `active`, `under_construction` → `construction`
-- `is_headquarters` (boolean, default false) - true for NACHO Nacho-Bamenda / administrative HQ
+- `is_headquarters` (boolean, default false) - true for NOVETESCO Mankon-Bamenda / administrative HQ
 - `booking_enabled` (boolean, default false) - controls "Book at This Center" in finder; false for expansion centers
 - `description_fr`, `description_en` (text, nullable) - narrative / HQ supporting note
 - `latitude`, `longitude` (decimal 10,7, nullable) - internal map coordinates; **not** shown as raw GPS on public pages
@@ -295,7 +295,7 @@ Multiple phones, WhatsApp lines, and emails per center. Replaces inflexible `pho
 - `is_public` (boolean, default true) - hide internal-only contacts
 - `display_order` (int, default 0)
 
-Public `tel:` links strip formatting to digits (e.g. `+237675117327`). HQ progressive disclosure on Nacho-Bamenda reveals non-primary phones when expanded.
+Public `tel:` links strip formatting to digits (e.g. `+237675117327`). HQ progressive disclosure on Mankon-Bamenda reveals non-primary phones when expanded.
 
 ### 3.5 center_hours
 
@@ -365,7 +365,7 @@ Each row is one **bookable vehicle category line** in the Master Pricing Console
 - `effective_date` (date, nullable) - start of current published schedule for this row
 - `expiry_date` (date, nullable) - optional end date
 - `regulatory_reference` (string, nullable) - notice/decision reference (unverified until admin confirms)
-- `last_verified_at` (datetime, nullable) - last NACHO verification timestamp for display
+- `last_verified_at` (datetime, nullable) - last NOVETESCO verification timestamp for display
 - `is_active` (boolean, default true)
 - `is_bookable` (boolean, default true)
 - `display_order` (int, default 0)
@@ -400,7 +400,7 @@ The application activates the revision whose `effective_date` is current — adm
 Written automatically by the admin tariff update flow. No `updated_at` (append-only). Complements `tariff_revisions` (scheduled publishing) — see ADR 006 vs ADR 007.
 
 ### 3.12 bookings
-- `booking_reference` (string, unique) - format `NACHO-YYYYMMDD-XXXX`
+- `booking_reference` (string, unique) - format `NOVETESCO-YYYYMMDD-XXXX`
 - `full_name` (string)
 - `phone` (string)
 - `email` (string, nullable)

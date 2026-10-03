@@ -1,12 +1,12 @@
-# Content Guidelines - NACHO Vehicle Inspection
+# Content Guidelines - NOVETESCO Vehicle Inspection
 
 These rules govern all public-facing copy, in both French and English.
 
 ## 1. Center status messaging (critical, non-negotiable)
 
-NACHO has **3 operational centers** and **2 centers under construction**, opening **before November 2026**.
+NOVETESCO has **3 operational centers** and **2 centers under construction**, opening **before November 2026**.
 
-- Never state or imply NACHO has 5 operational centers.
+- Never state or imply NOVETESCO has 5 operational centers.
 - Operational centers use status **Operational** / **Operationnel**.
 - Future centers use status **Under Construction** / **En construction**, paired with the line:
   - EN: "Opening before November 2026."
@@ -18,9 +18,9 @@ NACHO has **3 operational centers** and **2 centers under construction**, openin
 - **Expansion phases:** display only verified `expansion_phase` values from admin; no fabricated completion percentages.
 - **Expansion cards:** no Notify Me, SMS, or WhatsApp subscription CTAs until center is active.
 
-**Geography (verified network):** Operational centers are **NACHO Yaounde** (Centre), **NACHO Nkwen-Bamenda**, and **NACHO Nacho-Bamenda** (Northwest). Under construction: **NACHO Douala** and **NACHO Kumba** (Littoral / Southwest) — may show “Coming soon” plus the November 2026 line. Do not reference Bafoussam, Garoua, or multiple operational Douala sites. Full contacts: [CENTERS_DATA.md](CENTERS_DATA.md) (labels A–E).
+**Geography (verified network):** Operational centers are **NOVETESCO Yaounde** (Centre), **NOVETESCO Nkwen-Bamenda**, and **NOVETESCO Mankon-Bamenda** (Northwest). Under construction: **NOVETESCO Douala** and **NOVETESCO Kumba** (Littoral / Southwest) — may show “Coming soon” plus the November 2026 line. Do not reference Bafoussam, Garoua, or multiple operational Douala sites. Full contacts: [CENTERS_DATA.md](CENTERS_DATA.md) (labels A–E).
 
-**Headquarters:** Nacho-Bamenda center row (`is_headquarters`) — progressive disclosure on finder card. Corporate contact for footer/contact may mirror same data in `site_settings`.
+**Headquarters:** Mankon-Bamenda center row (`is_headquarters`) — progressive disclosure on finder card. Corporate contact for footer/contact may mirror same data in `site_settings`.
 
 ## 2. Bilingual parity
 
@@ -37,9 +37,9 @@ The tariffs page uses the **Master Pricing Console** ([FRONTEND.md](FRONTEND.md)
 
 **Section heading:** Tariff and Regulatory Information / *Informations tarifaires et reglementaires*
 
-**Primary notice (EN):** The displayed tariffs follow the applicable vehicle inspection schedule and may be revised following official regulatory decisions. Customers should confirm any recently updated rate with their selected NACHO center.
+**Primary notice (EN):** The displayed tariffs follow the applicable vehicle inspection schedule and may be revised following official regulatory decisions. Customers should confirm any recently updated rate with their selected NOVETESCO center.
 
-**Primary notice (FR):** Les tarifs affiches suivent la grille de controle technique applicable et peuvent etre revises conformement aux decisions reglementaires en vigueur. Les clients sont invites a confirmer tout tarif recemment mis a jour aupres du centre NACHO choisi.
+**Primary notice (FR):** Les tarifs affiches suivent la grille de controle technique applicable et peuvent etre revises conformement aux decisions reglementaires en vigueur. Les clients sont invites a confirmer tout tarif recemment mis a jour aupres du centre NOVETESCO choisi.
 
 **Do not publish as confirmed facts until operationally verified:**
 
@@ -56,18 +56,18 @@ Default placeholders (site settings or admin-editable blocks):
 
 | Topic | EN (default) | Notes |
 |-------|--------------|-------|
-| Payment methods | Accepted payment methods vary by center. Confirm the available options when booking. | Do not hard-code Cash, Mobile Money, or Carte Grise until NACHO confirms |
+| Payment methods | Accepted payment methods vary by center. Confirm the available options when booking. | Do not hard-code Cash, Mobile Money, or Carte Grise until NOVETESCO confirms |
 | Required documents | Bring the vehicle registration documents and any additional documents required for your vehicle category. | Replace with exact list when confirmed |
 
 Per-row applicability notes may appear on the pricing console result card (`description_en/fr` on tariffs).
 
 ### 3.3 Tariffs FAQ (safe answers)
 
-**Rates consistency — do NOT use unless NACHO confirms:**
+**Rates consistency — do NOT use unless NOVETESCO confirms:**
 
 - ~~All rates are officially regulated and standard across our network.~~
 
-**Use instead (EN):** NACHO applies the published tariff schedule across its operational network. Customers should review the latest displayed rate or confirm with their selected center before visiting.
+**Use instead (EN):** NOVETESCO applies the published tariff schedule across its operational network. Customers should review the latest displayed rate or confirm with their selected center before visiting.
 
 **Failed inspection / counter-visit:** Do not imply every failed inspection automatically follows the same counter-visit process or fee unless that workflow is confirmed. Use general guidance and direct customers to their center or the counter-visit service page.
 
@@ -89,20 +89,20 @@ The Careers page is a **vacancy-discovery and employer-brand** page — not an o
 
 ### 4.2 Do not promise unapproved benefits
 
-Unless NACHO management has officially approved the wording, do not publish:
+Unless NOVETESCO management has officially approved the wording, do not publish:
 
 - Guaranteed promotion, specific salary levels, international certification, performance bonuses, medical coverage, or automatic inter-center transfers
 
 ### 4.3 Recruitment contact details
 
 - Use `application_email` from admin per vacancy — **do not invent** HR or recruitment addresses in templates or lang files.
-- `careers_general_application_email` in `site_settings` — nullable until NACHO approves.
+- `careers_general_application_email` in `site_settings` — nullable until NOVETESCO approves.
 - **Recruitment safety notice** — only publish fee/non-verified-channel wording after management approval.
 
 ### 4.4 Career areas vs vacancies
 
 - Four career-family cards show **possible paths** — not active vacancies unless recruitment has officially opened.
-- Do not display salary on vacancy cards unless NACHO decides to publish it.
+- Do not display salary on vacancy cards unless NOVETESCO decides to publish it.
 
 ### 4.5 Testimonials and general applications
 
@@ -151,7 +151,7 @@ Professional, reassuring, plain-language. Prioritize clarity over jargon. Frame 
 
 - Primary CTA everywhere: "Book an Inspection" / "Reserver une inspection".
 - Homepage final CTA headline: "Ready for Your Vehicle Inspection?" / French equivalent (see [DESIGN.md](DESIGN.md)).
-- Secondary CTAs: Find a Center, View Tariffs, Contact NACHO.
+- Secondary CTAs: Find a Center, View Tariffs, Contact NOVETESCO.
 
 **Preferred specific microcopy** (avoid generic "Learn More" on key actions):
 
@@ -162,7 +162,7 @@ Professional, reassuring, plain-language. Prioritize clarity over jargon. Frame 
 | Find Nearest Center | Trouver le centre le plus proche |
 | Book This Service | Reserver ce service |
 | Get Directions | Obtenir l'itineraire |
-| Learn About NACHO | Decouvrir NACHO |
+| Learn About NOVETESCO | Decouvrir NOVETESCO |
 
 ## 9b. Design & content to avoid
 

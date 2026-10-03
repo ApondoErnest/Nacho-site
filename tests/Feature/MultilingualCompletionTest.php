@@ -49,7 +49,7 @@ class MultilingualCompletionTest extends TestCase
             ->get(route('about'))
             ->assertOk()
             ->assertSee('<html lang="en"', false)
-            ->assertSee('About NACHO');
+            ->assertSee('About NOVETESCO');
     }
 
     public function test_auth_scaffold_uses_french_json_strings_by_default(): void

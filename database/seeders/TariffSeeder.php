@@ -103,7 +103,7 @@ class TariffSeeder extends Seeder
                 'description_en' => 'For special machinery and other equipment requiring technical inspection.',
                 'description_fr' => 'Pour engins speciaux et autres equipements soumis au controle technique.',
                 'price_fcfa' => 41750,
-                'validity_value' => 6,
+                'validity_value' => 12,
                 'validity_unit' => 'months',
                 'vehicle_icon' => 'construction',
                 'display_order' => 7,

@@ -6,7 +6,7 @@ return [
     'hero' => [
         'eyebrow' => 'Safe vehicles. Safer roads.',
         'title' => 'Professional Vehicle Technical Inspection for Safer Roads',
-        'subtitle' => 'At NACHO, we ensure every vehicle meets safety, environmental, and quality standards for a safer Cameroon.',
+        'subtitle' => 'At NOVETESCO, we ensure every vehicle meets safety, environmental, and quality standards for a safer Cameroon.',
     ],
 
     'hero_features' => [

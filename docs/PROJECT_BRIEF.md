@@ -1,17 +1,17 @@
-# Project Brief - NACHO Vehicle Inspection Website
+# Project Brief - NOVETESCO Vehicle Inspection Website
 
 ## 1. Purpose
 
-Build a modern, professional, bilingual, mobile-responsive website for **NACHO Vehicle Inspection** that positions NACHO as a reliable, approved, customer-centered, and professionally managed vehicle technical inspection network in Cameroon.
+Build a modern, professional, bilingual, mobile-responsive website for **NOVETESCO Vehicle Inspection** that positions NOVETESCO as a reliable, approved, customer-centered, and professionally managed vehicle technical inspection network in Cameroon.
 
 The website helps visitors:
 
-- understand NACHO's services
-- locate NACHO inspection centers via the **Dynamic Center Finder** (`/centers`)
+- understand NOVETESCO's services
+- locate NOVETESCO inspection centers via the **Dynamic Center Finder** (`/centers`)
 - view official vehicle inspection tariffs via the **Master Pricing Console** (`/tariffs`)
 - understand the inspection process
 - request an inspection booking
-- contact NACHO
+- contact NOVETESCO
 - read road safety information
 - explore career vacancies and apply by email (`/careers`) — not an online recruitment platform
 
@@ -19,16 +19,22 @@ It also provides an admin dashboard for authorized staff to manage content, cent
 
 ## 2. Project identity
 
-- **Website name:** NACHO Vehicle Inspection
+- **Company name:** NOVETESCO
+- **Website name:** NOVETESCO Vehicle Inspection
+- **Headquarters email:** noblevehicletestingcompany@gmail.com
+- **Headquarters postal address:** P.O. Box 100 Mankon-Bamenda
+- **Headquarters telephones:** (+237) 33142037, (+237) 675615478
 - **Business type:** Vehicle technical inspection center network
 - **Main audience:** Vehicle owners, drivers, transporters, companies needing inspection information, job applicants, and road safety readers
 - **Main purpose:** Inform, guide, build trust, and receive booking requests
 
+These identity and headquarters facts are the documentation source of truth. The application, seeders, and public site still show the previous name and the previous headquarters contact until those steps are done.
+
 ### Center status rule (critical)
 
-NACHO has **3 operational centers today**, with **2 additional centers under construction**, expected to open **before November 2026**. The website must **not** present NACHO as having 5 fully operational centers until all 5 are functioning. See [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md).
+NOVETESCO has **3 operational centers today**, with **2 additional centers under construction**, expected to open **before November 2026**. The website must **not** present NOVETESCO as having 5 fully operational centers until all 5 are functioning. See [CONTENT_GUIDELINES.md](CONTENT_GUIDELINES.md).
 
-**Geographic footprint (verified):** Operational — NACHO Yaounde (Centre), NACHO Nkwen-Bamenda and NACHO Nacho-Bamenda (Northwest). Under construction — NACHO Douala, NACHO Kumba. Corporate HQ — Atuakum Mankon, P.O. Box 100 Bamenda. Full contacts: [CENTERS_DATA.md](CENTERS_DATA.md).
+**Geographic footprint (verified):** Operational — NOVETESCO Yaounde (Centre), NOVETESCO Nkwen-Bamenda and NOVETESCO Mankon-Bamenda (Northwest). Under construction — NOVETESCO Douala, NOVETESCO Kumba. Corporate HQ — Atuakum Mankon, P.O. Box 100 Mankon-Bamenda. Full contacts: [CENTERS_DATA.md](CENTERS_DATA.md).
 
 ## 3. Brand positioning
 
@@ -38,17 +44,17 @@ The website communicates professionalism, trust, road safety, technical reliabil
 
 ## 4. Slogans
 
-- **English:** Drive Safe. Stay Compliant. Trust NACHO.
-- **French:** Roulez en securite. Restez conforme. Faites confiance a NACHO.
+- **English:** Safety, Quality, Trust.
+- **French:** Sécurité, qualité, confiance.
 
 ## 5. Target users
 
 - **Individual vehicle owners** - where to inspect, documents to bring, cost, how to book.
 - **Taxi and transport vehicle owners** - tariffs, validity periods, center location, process.
-- **Heavy vehicle owners** - whether NACHO handles trucks, buses, trailers, utility and special vehicles.
+- **Heavy vehicle owners** - whether NOVETESCO handles trucks, buses, trailers, utility and special vehicles.
 - **Used vehicle buyers** - pre-purchase inspection information.
 - **Job applicants** - available jobs and how to apply.
-- **NACHO staff** - manage centers, bookings, services, tariffs, blog, contact messages, careers, and content from the admin dashboard.
+- **NOVETESCO staff** - manage centers, bookings, services, tariffs, blog, contact messages, careers, and content from the admin dashboard.
 
 ## 6. Languages
 

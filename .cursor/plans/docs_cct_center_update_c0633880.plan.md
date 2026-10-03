@@ -1,6 +1,6 @@
 ---
 name: Docs CCT Center Update
-overview: Update project documentation to reflect verified NACHO center data from `CCTs of NACHO.docx`, replacing incorrect placeholder cities (Douala/Bafoussam/Garoua) while keeping the 3 operational + 2 under-construction rule and October 2026 opening wording.
+overview: Update project documentation to reflect verified NOVETESCO center data from `CCTs of NOVETESCO.docx`, replacing incorrect placeholder cities (Douala/Bafoussam/Garoua) while keeping the 3 operational + 2 under-construction rule and October 2026 opening wording.
 todos:
   - id: create-centers-data
     content: Create docs/CENTERS_DATA.md with verified 5 centers + HQ from CCTs docx
@@ -20,22 +20,22 @@ todos:
 isProject: false
 ---
 
-# Documentation update from CCTs of NACHO
+# Documentation update from CCTs of NOVETESCO
 
 ## Source material
 
-Primary input: [`CCTs of NACHO.docx`](/Users/admin/NACHO-site/CCTs%20of%20NACHO.docx) (center contact sheet). The attached image did not carry usable content; the **official logo is already integrated** in code per [CHANGELOG.md](CHANGELOG.md) — no logo doc change required unless you supply a new asset.
+Primary input: [`CCTs of NOVETESCO.docx`](/Users/admin/NOVETESCO-site/CCTs%20of%20NOVETESCO.docx) (center contact sheet). The attached image did not carry usable content; the **official logo is already integrated** in code per [CHANGELOG.md](CHANGELOG.md) — no logo doc change required unless you supply a new asset.
 
 ### Verified facts from the docx
 
 | Role | Name | Location | Status |
 |------|------|----------|--------|
-| Operational | NACHO Yaounde 1 | Mendong market, Yaounde | Open |
-| Operational | NACHO Nkwen-Bamenda | NTEFINKI Quarter mile 6 Nkwen | Open |
-| Operational | NACHO Nacho-Bamenda | Atuakum Mankon | Open |
-| Under construction | NACHO Douala | — | Coming soon |
-| Under construction | NACHO Kumba | — | Coming soon |
-| **HQ (not a 6th center)** | Main Headquarter | Atuakum Mankon; P.O. Box 100 Bamenda | Corporate contact |
+| Operational | NOVETESCO Yaounde 1 | Mendong market, Yaounde | Open |
+| Operational | NOVETESCO Nkwen-Bamenda | NTEFINKI Quarter mile 6 Nkwen | Open |
+| Operational | NOVETESCO Mankon-Bamenda | Atuakum Mankon | Open |
+| Under construction | NOVETESCO Douala | — | Coming soon |
+| Under construction | NOVETESCO Kumba | — | Coming soon |
+| **HQ (not a 6th center)** | Main Headquarter | Atuakum Mankon; P.O. Box 100 Mankon-Bamenda | Corporate contact |
 
 **Conflict with current docs:** [docs/SEEDING.md](docs/SEEDING.md) §6 still lists three **wrong** operational centers (Douala ×2, Yaounde ×1) and under-construction Bafoussam/Garoua. Only the **3+2 count** is correct; **cities and contact data must be replaced**.
 
@@ -76,13 +76,13 @@ Proposed slugs (English paths, locked decision):
 
 | Slug | Center |
 |------|--------|
-| `nacho-yaounde-1` | NACHO Yaounde 1 |
-| `nacho-nkwen-bamenda` | NACHO Nkwen-Bamenda |
-| `nacho-mankon-bamenda` | NACHO Nacho-Bamenda |
-| `nacho-douala` | NACHO Douala |
-| `nacho-kumba` | NACHO Kumba |
+| `novetesco-yaounde-1` | NOVETESCO Yaounde 1 |
+| `novetesco-nkwen-bamenda` | NOVETESCO Nkwen-Bamenda |
+| `novetesco-mankon-bamenda` | NOVETESCO Mankon-Bamenda |
+| `novetesco-douala` | NOVETESCO Douala |
+| `novetesco-kumba` | NOVETESCO Kumba |
 
-HQ block (separate): email `nachovehicletestingstation@yahoo.com`, phones `+237 675 615 478`, `656 901 833`, `677 789 391`, address Atuakum Mankon, P.O. Box 100 Bamenda — used for **site_settings** and contact/footer, not counted in the “5 centers” table.
+HQ block (separate): superseded 2026-10-01 by [docs/CENTERS_DATA.md](docs/CENTERS_DATA.md) — email `noblevehicletestingcompany@gmail.com`, phones `(+237) 33142037` and `(+237) 675615478`, address Atuakum Mankon, P.O. Box 100 Mankon-Bamenda. Used for **site_settings** and contact/footer, not counted in the “5 centers” table.
 
 Optional: add `docs/sources/README.md` noting the docx path and extraction date.
 
@@ -94,7 +94,7 @@ Replace §6 placeholder table with rows aligned to `CENTERS_DATA.md`:
 
 - Remove: `douala-1`, `douala-2`, `bafoussam`, `garoua`
 - Add: real slugs, GPS, emails, landmarks (e.g. Mendong market; NTEFINKI Quarter mile 6; Atuakum Mankon)
-- Note: `vehicle_categories_fr/en` remain **generic placeholders** until NACHO supplies per-center lists
+- Note: `vehicle_categories_fr/en` remain **generic placeholders** until NOVETESCO supplies per-center lists
 - Update §9 **site_settings** defaults: HQ phone/email/address from docx (replace generic placeholders)
 - Add cross-link: “Authoritative data: [CENTERS_DATA.md](CENTERS_DATA.md)”
 
@@ -118,13 +118,13 @@ Replace §6 placeholder table with rows aligned to `CENTERS_DATA.md`:
 ### 5. [docs/SEO.md](docs/SEO.md)
 
 - §8 keywords: add **Bamenda**, **Kumba**, **Northwest/Southwest** where relevant; keep Douala/Yaoundé as future/expansion terms
-- Center slug examples: use `nacho-nkwen-bamenda` style slugs
+- Center slug examples: use `novetesco-nkwen-bamenda` style slugs
 
 ---
 
 ### 6. [docs/DATABASE.md](docs/DATABASE.md)
 
-- Update center name example from “NACHO Douala 1” to “NACHO Yaounde 1”
+- Update center name example from “NOVETESCO Douala 1” to “NOVETESCO Yaounde 1”
 - Document `opening_hours` JSON shape for **split schedules** (Yaounde weekday vs Saturday/holiday) in §3.3
 
 ---
@@ -139,7 +139,7 @@ Replace §6 placeholder table with rows aligned to `CENTERS_DATA.md`:
 ### 8. [README.md](README.md)
 
 - One line under status or documentation index linking to `docs/CENTERS_DATA.md`
-- Optional: note verified data source file `CCTs of NACHO.docx` in repo root
+- Optional: note verified data source file `CCTs of NOVETESCO.docx` in repo root
 
 ---
 
@@ -153,8 +153,8 @@ Replace §6 placeholder table with rows aligned to `CENTERS_DATA.md`:
 
 ### 10. [CHANGELOG.md](CHANGELOG.md) + master plan
 
-- [CHANGELOG.md](CHANGELOG.md): Unreleased entry — “Docs: verified center data from CCTs of NACHO.docx”
-- [.cursor/plans/nacho_master_implementation_c01132ca.plan.md](.cursor/plans/nacho_master_implementation_c01132ca.plan.md): Under Proposal alignment, mark center data as **sourced**; link `CENTERS_DATA.md`
+- [CHANGELOG.md](CHANGELOG.md): Unreleased entry — “Docs: verified center data from CCTs of NOVETESCO.docx”
+- [.cursor/plans/novetesco_master_implementation_c01132ca.plan.md](.cursor/plans/novetesco_master_implementation_c01132ca.plan.md): Under Proposal alignment, mark center data as **sourced**; link `CENTERS_DATA.md`
 
 ---
 

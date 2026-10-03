@@ -6,7 +6,7 @@ return [
     'hero' => [
         'eyebrow' => 'Véhicules sûrs. Routes plus sûres.',
         'title' => 'Inspection technique automobile professionnelle pour des routes plus sûres',
-        'subtitle' => 'Chez NACHO, nous veillons à ce que chaque véhicule respecte les standards de sécurité, d\'environnement et de qualité pour un Cameroun plus sûr.',
+        'subtitle' => 'Chez NOVETESCO, nous veillons à ce que chaque véhicule respecte les standards de sécurité, d\'environnement et de qualité pour un Cameroun plus sûr.',
     ],
 
     'hero_features' => [

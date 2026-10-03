@@ -17,8 +17,8 @@ class CenterSeeder extends Seeder
         $centers = [
             [
                 'slug' => 'nacho-yaounde',
-                'name_en' => 'NACHO Yaounde',
-                'name_fr' => 'NACHO Yaounde',
+                'name_en' => 'NOVETESCO Yaounde',
+                'name_fr' => 'NOVETESCO Yaounde',
                 'city_en' => 'Yaounde',
                 'city_fr' => 'Yaounde',
                 'region_en' => 'Centre',
@@ -34,25 +34,18 @@ class CenterSeeder extends Seeder
                 'nearby_landmark' => 'Mendong market',
                 'search_keywords' => 'Yaounde, Mendong, Mendong Market, Centre',
                 'display_order' => 1,
-                'featured_image' => 'images/center-nacho-yaounde.png',
+                'featured_image' => 'images/homepage/yaounde.png',
                 'contacts' => [
-                    ['type' => 'email', 'value' => 'navetescoyaounde@gmail.com', 'is_primary' => true],
+                    ['type' => 'email', 'value' => 'noblevehicletestingcompany@gmail.com', 'is_primary' => true],
                     ['type' => 'phone', 'value' => '(+237) 675117327', 'is_primary' => true],
                     ['type' => 'phone', 'value' => '(+237) 656901833', 'is_primary' => false],
                 ],
-                'hours' => [
-                    ['day' => 'monday', 'opens_at' => '07:30', 'closes_at' => '18:00', 'note_en' => 'Weekdays', 'note_fr' => 'Jours ouvrables'],
-                    ['day' => 'tuesday', 'opens_at' => '07:30', 'closes_at' => '18:00', 'note_en' => 'Weekdays', 'note_fr' => 'Jours ouvrables'],
-                    ['day' => 'wednesday', 'opens_at' => '07:30', 'closes_at' => '18:00', 'note_en' => 'Weekdays', 'note_fr' => 'Jours ouvrables'],
-                    ['day' => 'thursday', 'opens_at' => '07:30', 'closes_at' => '18:00', 'note_en' => 'Weekdays', 'note_fr' => 'Jours ouvrables'],
-                    ['day' => 'friday', 'opens_at' => '07:30', 'closes_at' => '18:00', 'note_en' => 'Weekdays', 'note_fr' => 'Jours ouvrables'],
-                    ['day' => 'saturday', 'opens_at' => '07:30', 'closes_at' => '16:00', 'note_en' => 'Saturdays and public holidays', 'note_fr' => 'Samedis et jours feries'],
-                ],
+                'hours' => $this->standardHours(),
             ],
             [
                 'slug' => 'nacho-nkwen-bamenda',
-                'name_en' => 'NACHO Nkwen-Bamenda',
-                'name_fr' => 'NACHO Nkwen-Bamenda',
+                'name_en' => 'NOVETESCO Nkwen-Bamenda',
+                'name_fr' => 'NOVETESCO Nkwen-Bamenda',
                 'city_en' => 'Bamenda',
                 'city_fr' => 'Bamenda',
                 'region_en' => 'Northwest',
@@ -68,49 +61,48 @@ class CenterSeeder extends Seeder
                 'nearby_landmark' => 'NTEFINKI Quarter mile 6 Nkwen',
                 'search_keywords' => 'Bamenda, Nkwen, NTEFINKI, Northwest',
                 'display_order' => 2,
-                'featured_image' => 'images/center-nacho-nkwen-bamenda.png',
+                'featured_image' => 'images/homepage/nkwen-bamenda.png',
                 'contacts' => [
-                    ['type' => 'email', 'value' => 'nachovehicletestingstation@yahoo.com', 'is_primary' => true],
+                    ['type' => 'email', 'value' => 'noblevehicletestingcompany@gmail.com', 'is_primary' => true],
                     ['type' => 'phone', 'value' => '(+237) 674036182', 'is_primary' => true],
                     ['type' => 'phone', 'value' => '(+237) 696130530', 'is_primary' => false],
                 ],
-                'hours' => $this->bamendaHours(),
+                'hours' => $this->standardHours(),
             ],
             [
                 'slug' => 'nacho-mankon-bamenda',
-                'name_en' => 'NACHO Nacho-Bamenda / Headquarters',
-                'name_fr' => 'NACHO Nacho-Bamenda / Siege',
+                'name_en' => 'NOVETESCO Mankon-Bamenda / Headquarters',
+                'name_fr' => 'NOVETESCO Mankon-Bamenda / Siège',
                 'city_en' => 'Bamenda',
                 'city_fr' => 'Bamenda',
                 'region_en' => 'Northwest',
                 'region_fr' => 'Nord-Ouest',
                 'address_en' => 'Atuakum Mankon, Bamenda',
                 'address_fr' => 'Atuakum Mankon, Bamenda',
-                'postal_address' => 'P.O. Box 100 Bamenda',
+                'postal_address' => 'P.O. Box 100 Mankon-Bamenda',
                 'status' => 'active',
                 'is_headquarters' => true,
                 'booking_enabled' => true,
-                'description_en' => 'This location serves as both an operational vehicle inspection center and NACHO principal administrative headquarters.',
-                'description_fr' => 'Ce site sert a la fois de centre operationnel d inspection automobile et de siege administratif principal de NACHO.',
+                'description_en' => 'This location serves as both an operational vehicle inspection center and NOVETESCO\'s principal administrative headquarters.',
+                'description_fr' => 'Ce site sert a la fois de centre operationnel d inspection automobile et de siege administratif principal de NOVETESCO.',
                 'latitude' => 5.9418158,
                 'longitude' => 10.1493449,
                 'google_maps_url' => 'https://www.google.com/maps?q=5.9418158,10.1493449',
                 'nearby_landmark' => 'Atuakum Mankon',
                 'search_keywords' => 'Bamenda, Atuakum, Mankon, Northwest, Headquarters',
                 'display_order' => 3,
-                'featured_image' => 'images/center-nacho-nacho-bamenda.png',
+                'featured_image' => 'images/homepage/mankon-bamenda.png',
                 'contacts' => [
-                    ['type' => 'email', 'value' => 'nachovehicletestingstation@yahoo.com', 'is_primary' => true],
-                    ['type' => 'phone', 'value' => '(+237) 675615478', 'is_primary' => true],
-                    ['type' => 'phone', 'value' => '(+237) 656901833', 'is_primary' => false],
-                    ['type' => 'phone', 'value' => '(+237) 677789391', 'is_primary' => false],
+                    ['type' => 'email', 'value' => 'noblevehicletestingcompany@gmail.com', 'is_primary' => true],
+                    ['type' => 'phone', 'value' => '(+237) 33142037', 'is_primary' => true],
+                    ['type' => 'phone', 'value' => '(+237) 675615478', 'is_primary' => false],
                 ],
-                'hours' => $this->bamendaHours(),
+                'hours' => $this->standardHours(),
             ],
             [
                 'slug' => 'nacho-douala',
-                'name_en' => 'NACHO Douala',
-                'name_fr' => 'NACHO Douala',
+                'name_en' => 'NOVETESCO Douala',
+                'name_fr' => 'NOVETESCO Douala',
                 'city_en' => 'Douala',
                 'city_fr' => 'Douala',
                 'region_en' => 'Littoral',
@@ -122,12 +114,16 @@ class CenterSeeder extends Seeder
                 'target_date_text_en' => 'Before November 2026',
                 'target_date_text_fr' => 'Avant novembre 2026',
                 'display_order' => 4,
-                'featured_image' => 'images/center-nacho-douala-coming-soon.png',
+                'featured_image' => 'images/homepage/douala-coming-soon.png',
+                'contacts' => [
+                    ['type' => 'email', 'value' => 'noblevehicletestingcompany@gmail.com', 'is_primary' => true],
+                ],
+                'hours' => $this->standardHours(),
             ],
             [
                 'slug' => 'nacho-kumba',
-                'name_en' => 'NACHO Kumba',
-                'name_fr' => 'NACHO Kumba',
+                'name_en' => 'NOVETESCO Kumba',
+                'name_fr' => 'NOVETESCO Kumba',
                 'city_en' => 'Kumba',
                 'city_fr' => 'Kumba',
                 'region_en' => 'Southwest',
@@ -139,7 +135,11 @@ class CenterSeeder extends Seeder
                 'target_date_text_en' => 'Before November 2026',
                 'target_date_text_fr' => 'Avant novembre 2026',
                 'display_order' => 5,
-                'featured_image' => 'images/center-nacho-kumba-coming-soon.png',
+                'featured_image' => 'images/homepage/kumba-coming-soon.png',
+                'contacts' => [
+                    ['type' => 'email', 'value' => 'noblevehicletestingcompany@gmail.com', 'is_primary' => true],
+                ],
+                'hours' => $this->standardHours(),
             ],
         ];
 
@@ -213,6 +213,13 @@ class CenterSeeder extends Seeder
                 );
             }
 
+            if ($contacts !== []) {
+                DB::table('center_contacts')
+                    ->where('center_id', $centerId)
+                    ->whereNotIn('value', collect($contacts)->pluck('value'))
+                    ->delete();
+            }
+
             foreach ($hours as $hour) {
                 DB::table('center_hours')->updateOrInsert(
                     [
@@ -256,20 +263,27 @@ class CenterSeeder extends Seeder
     }
 
     /**
-     * Shared Bamenda Monday-Saturday schedule.
+     * Shared weekday and Saturday schedule for every center.
      *
      * @return array<int, array<string, string>>
      */
-    private function bamendaHours(): array
+    private function standardHours(): array
     {
-        return collect(['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'])
+        $weekdays = collect(['monday', 'tuesday', 'wednesday', 'thursday', 'friday'])
             ->map(fn (string $day): array => [
                 'day' => $day,
                 'opens_at' => '08:00',
-                'closes_at' => '16:00',
-                'note_en' => 'Monday-Saturday',
-                'note_fr' => 'Lundi-samedi',
-            ])
-            ->all();
+                'closes_at' => '18:00',
+                'note_en' => 'Weekdays',
+                'note_fr' => 'Jours ouvrables',
+            ]);
+
+        return $weekdays->push([
+            'day' => 'saturday',
+            'opens_at' => '08:00',
+            'closes_at' => '14:00',
+            'note_en' => 'Saturday',
+            'note_fr' => 'Samedi',
+        ])->all();
     }
 }

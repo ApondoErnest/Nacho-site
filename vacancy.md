@@ -1,6 +1,6 @@
 # Vacancy Detail Archive
 
-These vacancy profiles are not currently published on the public Careers page. Keep this file as the source reference for restoring the saved job-detail content when NACHO officially opens recruitment.
+These vacancy profiles are not currently published on the public Careers page. Keep this file as the source reference for restoring the saved job-detail content when NOVETESCO officially opens recruitment.
 
 ## Vehicle Inspection Technician
 
@@ -10,7 +10,7 @@ Reference: NCH-CAR-2026-004
 
 Department: Technical Inspection
 
-Center: NACHO Yaounde
+Center: NOVETESCO Yaounde
 
 Employment type: Full-time
 
@@ -20,7 +20,7 @@ Available positions: 2
 
 ### Role Purpose
 
-Perform vehicle inspections according to NACHO standards and legal requirements to ensure roadworthiness, emissions compliance, and customer satisfaction while maintaining the highest levels of safety and integrity.
+Perform vehicle inspections according to NOVETESCO standards and legal requirements to ensure roadworthiness, emissions compliance, and customer satisfaction while maintaining the highest levels of safety and integrity.
 
 ### Main Responsibilities
 
@@ -28,7 +28,7 @@ Perform vehicle inspections according to NACHO standards and legal requirements 
 - Operate inspection equipment accurately.
 - Record inspection findings in the system.
 - Provide clear feedback to customers.
-- Follow NACHO inspection procedures and safety rules.
+- Follow NOVETESCO inspection procedures and safety rules.
 
 ### Essential Requirements
 
@@ -65,7 +65,7 @@ Subject: Application - Vehicle Inspection Technician - NCH-CAR-2026-004
 Body:
 
 ```text
-Dear NACHO Recruitment Team,
+Dear NOVETESCO Recruitment Team,
 
 I wish to apply for the position of Vehicle Inspection Technician, reference NCH-CAR-2026-004.
 
@@ -86,7 +86,7 @@ Reference: NCH-OPS-2026-002
 
 Department: Center Operations
 
-Center: NACHO Nkwen-Bamenda
+Center: NOVETESCO Nkwen-Bamenda
 
 Employment type: Full-time
 
@@ -140,7 +140,7 @@ Subject: Application - Customer Service Officer - NCH-OPS-2026-002
 Body:
 
 ```text
-Dear NACHO Recruitment Team,
+Dear NOVETESCO Recruitment Team,
 
 I wish to apply for the position of Customer Service Officer, reference NCH-OPS-2026-002.
 
@@ -161,7 +161,7 @@ Reference: NCH-ITS-2026-001
 
 Department: Digital and Technical Support
 
-Center: NACHO Nacho-Bamenda / Headquarters
+Center: NOVETESCO Mankon-Bamenda / Headquarters
 
 Employment type: Contract
 
@@ -216,7 +216,7 @@ Subject: Application - IT Support Technician - NCH-ITS-2026-001
 Body:
 
 ```text
-Dear NACHO Recruitment Team,
+Dear NOVETESCO Recruitment Team,
 
 I wish to apply for the position of IT Support Technician, reference NCH-ITS-2026-001.
 

@@ -1,6 +1,6 @@
-# Brand & Visual Identity - NACHO Vehicle Inspection
+# Brand & Visual Identity - NOVETESCO Vehicle Inspection
 
-NACHO's preferred theme color is a brownish red / burnt orange. The site should read as a **premium vehicle inspection and road-safety platform** — not a simple brochure. Full UX direction: [DESIGN.md](DESIGN.md).
+NOVETESCO's preferred theme color is a brownish red / burnt orange. The site should read as a **premium vehicle inspection and road-safety platform** — not a simple brochure. Full UX direction: [DESIGN.md](DESIGN.md).
 
 ## 1. Color system
 
@@ -20,12 +20,12 @@ Recommended brand direction: **burnt orange + dark charcoal + white + small gree
 
 ## 2. Tailwind tokens
 
-Brand colors are exposed as `nacho-*` Tailwind tokens so markup stays semantic and themable:
+Brand colors are exposed as `novetesco-*` Tailwind tokens so markup stays semantic and themable:
 
-- `nacho-primary`, `nacho-primary-dark`
-- `nacho-dark`
-- `nacho-cream`
-- `nacho-success`, `nacho-warning`, `nacho-danger`
+- `novetesco-primary`, `novetesco-primary-dark`
+- `novetesco-dark`
+- `novetesco-cream`
+- `novetesco-success`, `novetesco-warning`, `novetesco-danger`
 
 Defined in `tailwind.config.js` under `theme.extend.colors`. A `primary_color` value in `site_settings` may later override the primary token at runtime if needed (see [ADMIN_MODULES.md](ADMIN_MODULES.md)).
 
@@ -37,12 +37,12 @@ Defined in `tailwind.config.js` under `theme.extend.colors`. A `primary_color` v
 
 ## 4. Logo
 
-- Official logo asset: `public/images/nacho-logo.png` (NACHO Industries Cameroon — Vehicle Inspection).
-- Rendered via the `<x-nacho-logo>` Blade component (header, footer, Breeze guest/auth layout).
+- Official logo asset: `public/images/novetesco-logo.png` (NOVETESCO — Vehicle Inspection).
+- Rendered via the `<x-novetesco-logo>` Blade component (header, footer, Breeze guest/auth layout).
 - Accessible alt text: `lang/*/branding.php` → `branding.logo_alt`.
 - Path is configurable in `config/branding.php`; later overridable through `site_settings` (`logo`) in admin (Step 38).
-- Text wordmark (`<x-nacho-wordmark>`) remains as fallback if the image file is missing.
-- The admin dashboard uses a simple "NACHO Admin" text wordmark (Step 27).
+- Text wordmark (`<x-novetesco-wordmark>`) remains as fallback if the image file is missing.
+- The admin dashboard uses a simple "NOVETESCO Admin" text wordmark (Step 27).
 
 ## 5. Imagery
 

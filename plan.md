@@ -1,6 +1,6 @@
-# NACHO Vehicle Inspection — Implementation Plan
+# NOVETESCO Vehicle Inspection — Implementation Plan
 
-Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (documentation) is complete.** Application code has not started.
+Chronological build plan for the NOVETESCO Vehicle Inspection website. **Step 0 (documentation) is complete.** Application code has not started.
 
 ## How to use this plan
 
@@ -68,9 +68,9 @@ Chronological build plan for the NACHO Vehicle Inspection website. **Step 0 (doc
 | Step | Deliverable |
 |:----:|-------------|
 | 0 | Documentation (**done**) |
-| 1 | Local environment (PHP, Composer, Node, MySQL `nacho_vehicle_inspection`) |
+| 1 | Local environment (PHP, Composer, Node, MySQL `novetesco_vehicle_inspection`) |
 | 2 | Laravel project created; docs preserved; git initialized |
-| 3 | Tailwind `nacho-*` tokens, Breeze, base CSS |
+| 3 | Tailwind `novetesco-*` tokens, Breeze, base CSS |
 | 4 | Public layout (nav, footer, `FR \| EN` switcher) |
 | 5 | Reusable Blade components |
 | 6 | Homepage — 14 sections per [docs/DESIGN.md](docs/DESIGN.md) |
@@ -130,7 +130,7 @@ The unified proposal specifies designing the frontend structure before backend l
 | Topic | Decision |
 |-------|----------|
 | Stack | Laravel, Blade, Tailwind, Vite, Breeze |
-| Database | MySQL `nacho_vehicle_inspection` |
+| Database | MySQL `novetesco_vehicle_inspection` |
 | i18n | Session locale, French default, single URLs |
 | URL paths | English (`/centers` index-only, English service slugs) |
 | Roles | 6 roles — Super Admin through Content Manager |
@@ -142,7 +142,7 @@ ADRs: [docs/adr/](docs/adr/)
 ## Critical content rules
 
 - **3 operational + 2 under construction** centers (opening before November 2026). Never present 5 as operational.
-- Slogans: *Drive Safe. Stay Compliant. Trust NACHO.* / *Roulez en sécurité. Restez conforme. Faites confiance à NACHO.*
+- Slogans: *Safety, Quality, Trust.* / *Sécurité, qualité, confiance.*
 - Booking forms: **no** reminder or expiry fields.
 - Compliance: safe wording unless certifications are verified.
 

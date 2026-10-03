@@ -1,4 +1,4 @@
-# Testing - NACHO Vehicle Inspection
+# Testing - NOVETESCO Vehicle Inspection
 
 Testing happens incrementally after each major module. Automated tests use PHPUnit with model factories; manual testing follows [UAT_CHECKLIST.md](UAT_CHECKLIST.md).
 
