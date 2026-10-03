@@ -60,7 +60,7 @@ return [
             'eyebrow' => 'Our Services',
             'title_line_1' => 'Professional Services.',
             'title_line_2' => 'Safer Roads. Greater Confidence.',
-            'subtitle' => 'NACHO provides a full range of vehicle inspection services designed to keep your vehicle compliant, reliable, and safe.',
+            'subtitle' => 'NOVETESCO provides a full range of vehicle inspection services designed to keep your vehicle compliant, reliable, and safe.',
             'proof_label' => 'Service strengths',
             'proof' => [
                 'advanced_testing' => 'Advanced Testing',
@@ -180,7 +180,7 @@ return [
         'cta' => [
             'title_prefix' => 'Ready to Choose Your',
             'title_highlight' => 'Inspection Service?',
-            'text' => 'Select your service, choose your nearest NACHO center, and request your inspection appointment today.',
+            'text' => 'Select your service, choose your nearest NOVETESCO center, and request your inspection appointment today.',
             'book' => 'Book an Inspection',
             'tariffs' => 'View Official Tariffs',
             'contact' => 'Contact Us',

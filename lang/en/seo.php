@@ -35,9 +35,9 @@ return [
             'image' => 'images/centers/hero.png',
         ],
         'services' => [
-            'title' => 'Vehicle Inspection Services',
-            'description' => 'Explore NACHO vehicle inspection services including periodic technical inspection, counter-visit, heavy vehicle inspection, and pre-purchase checks.',
-            'image' => 'images/hero-services-2.png',
+            'title' => 'NOVETESCO Vehicle Inspection Services',
+            'description' => 'Explore NOVETESCO vehicle inspection services including periodic technical inspection, counter-visit, heavy vehicle inspection, and pre-purchase checks.',
+            'image' => 'images/services/hero.png',
         ],
         'book_inspection' => [
             'title' => 'Book a Vehicle Inspection',

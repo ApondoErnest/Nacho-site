@@ -38,7 +38,7 @@
 
     <section class="services-hero" aria-labelledby="services-hero-title">
         <img
-            src="{{ asset('images/here-services-1.png') }}"
+            src="{{ asset('images/services/hero.png') }}"
             alt=""
             class="services-hero-image"
             loading="eager"
@@ -74,7 +74,7 @@
         <div class="services-showcase-grid">
             <article id="periodic-inspection" class="services-featured-card">
                 <img
-                    src="{{ asset('images/hero-services-2.png') }}"
+                    src="{{ asset('images/services/services-list.png') }}"
                     alt=""
                     class="services-featured-image"
                     loading="lazy"
@@ -212,7 +212,7 @@
     <section class="services-booking-cta-section" aria-labelledby="services-booking-cta-title">
         <div class="services-booking-cta">
             <img
-                src="{{ asset('images/advert-about.png') }}"
+                src="{{ asset('images/services/cta.png') }}"
                 alt=""
                 class="services-booking-cta-image"
                 loading="lazy"

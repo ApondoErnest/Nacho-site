@@ -2205,7 +2205,6 @@
 
     .services-hero {
         @apply relative isolate overflow-hidden bg-white text-nacho-dark;
-        min-height: 35rem;
     }
 
     .services-hero-image {
@@ -2221,7 +2220,7 @@
     }
 
     .services-hero-inner {
-        @apply mx-auto flex min-h-[35rem] w-full items-center px-4 py-10 sm:px-6 sm:py-12 lg:px-8;
+        @apply mx-auto flex w-full items-center px-4 py-6 sm:px-6 sm:py-7 xl:min-h-[35rem] xl:px-8 xl:py-12;
         max-width: min(calc(100vw - 2rem), 120rem);
     }
 
@@ -2230,21 +2229,21 @@
     }
 
     .services-hero-kicker {
-        @apply text-base font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-xl;
+        @apply text-xs font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-sm xl:text-xl;
         letter-spacing: 0;
     }
 
     .services-hero-title {
-        @apply mt-4 text-[2.45rem] font-extrabold leading-[1.08] tracking-normal text-[#071016] sm:text-[3.25rem] lg:text-[4rem];
+        @apply mt-2 text-[1.7rem] font-extrabold leading-[1.12] tracking-normal text-[#071016] sm:mt-2.5 sm:text-[2.15rem] xl:mt-4 xl:text-[4rem] xl:leading-[1.08];
         letter-spacing: 0;
     }
 
     .services-hero-rule {
-        @apply mt-6 block h-1.5 w-[8.25rem] rounded-full bg-[#f15a24];
+        @apply mt-3 block h-1 w-14 rounded-full bg-[#f15a24] sm:mt-3.5 xl:mt-6 xl:h-1.5 xl:w-[8.25rem];
     }
 
     .services-hero-text {
-        @apply mt-6 max-w-[53rem] text-lg font-semibold leading-8 tracking-normal text-[#071016]/80 sm:text-xl lg:text-2xl lg:leading-10;
+        @apply mt-3 max-w-[53rem] text-sm font-semibold leading-5 tracking-normal text-[#071016]/80 sm:mt-3.5 sm:text-base sm:leading-6 xl:mt-6 xl:text-2xl xl:leading-10;
         letter-spacing: 0;
     }
 
@@ -2947,20 +2946,20 @@
     }
 
     .services-proof-grid {
-        @apply mt-7 grid max-w-[58rem] grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4;
+        @apply mt-4 grid max-w-[58rem] grid-cols-2 gap-2 sm:mt-5 sm:gap-2.5 xl:mt-7 xl:grid-cols-4 xl:gap-3;
     }
 
     .services-proof-card {
-        @apply flex min-h-[4.85rem] min-w-0 items-center gap-3 rounded-lg border border-nacho-dark/10 bg-white/95 px-4 py-3 text-sm font-extrabold leading-tight tracking-normal text-[#071016] shadow-[0_12px_28px_-24px_rgba(7,16,22,0.9)] backdrop-blur sm:text-base;
+        @apply flex min-h-0 min-w-0 items-center gap-2 rounded-lg border border-nacho-dark/10 bg-white/95 px-2.5 py-2 text-xs font-extrabold leading-tight tracking-normal text-[#071016] shadow-[0_12px_28px_-24px_rgba(7,16,22,0.9)] backdrop-blur sm:px-3 sm:py-2.5 sm:text-sm xl:min-h-[4.85rem] xl:gap-3 xl:px-4 xl:py-3 xl:text-base;
         letter-spacing: 0;
     }
 
     .services-proof-icon {
-        @apply flex h-11 w-11 shrink-0 items-center justify-center text-[#f15a24];
+        @apply flex h-8 w-8 shrink-0 items-center justify-center text-[#f15a24] sm:h-9 sm:w-9 xl:h-11 xl:w-11;
     }
 
     .services-proof-icon svg {
-        @apply h-9 w-9 stroke-[2.15];
+        @apply h-6 w-6 stroke-[2.15] sm:h-7 sm:w-7 xl:h-9 xl:w-9;
     }
 
     .services-showcase-section {
@@ -2973,12 +2972,12 @@
     }
 
     .services-featured-card {
-        @apply relative isolate min-h-[36rem] scroll-mt-32 overflow-hidden rounded-lg bg-[#071016] text-white shadow-[0_20px_52px_-34px_rgba(7,16,22,0.95)] ring-1 ring-nacho-dark/10;
+        @apply relative isolate scroll-mt-32 overflow-hidden rounded-lg bg-[#071016] text-white shadow-[0_20px_52px_-34px_rgba(7,16,22,0.95)] ring-1 ring-nacho-dark/10;
     }
 
     .services-featured-image {
         @apply absolute inset-0 -z-20 h-full w-full object-cover;
-        object-position: 55% center;
+        object-position: center 42%;
     }
 
     .services-featured-shade {
@@ -2989,51 +2988,51 @@
     }
 
     .services-featured-content {
-        @apply relative z-10 flex min-h-[36rem] max-w-[42rem] flex-col justify-center px-6 py-8 sm:px-8 lg:px-10 xl:px-12;
+        @apply relative z-10 flex h-full max-w-[40rem] flex-col justify-center px-5 py-7 sm:px-7 sm:py-8 xl:px-9 xl:py-9;
     }
 
     .services-featured-icon {
-        @apply mb-5 flex h-[5.75rem] w-[5.75rem] shrink-0 items-center justify-center rounded-lg border-2 border-[#f15a24] text-[#f15a24];
+        @apply mb-4 flex h-14 w-14 shrink-0 items-center justify-center rounded-md border-2 border-[#f15a24] text-[#f15a24] sm:mb-5 sm:h-16 sm:w-16 xl:h-[4.25rem] xl:w-[4.25rem];
     }
 
     .services-featured-icon svg {
-        @apply h-14 w-14 stroke-[2.05];
+        @apply h-7 w-7 stroke-[2.05] sm:h-8 sm:w-8 xl:h-9 xl:w-9;
     }
 
     .services-featured-content h2 {
-        @apply text-[2.2rem] font-extrabold leading-[1.08] tracking-normal text-white sm:text-[3rem] lg:text-[3.15rem];
+        @apply text-[1.7rem] font-extrabold leading-[1.12] tracking-normal text-white sm:text-[2rem] xl:text-[2.35rem];
         letter-spacing: 0;
     }
 
     .services-featured-content p {
-        @apply mt-4 max-w-[38rem] text-base font-semibold leading-7 tracking-normal text-white/90 sm:text-lg sm:leading-8;
+        @apply mt-3 max-w-[36rem] text-sm font-semibold leading-6 tracking-normal text-white/90 sm:text-base sm:leading-7 xl:text-lg xl:leading-8;
         letter-spacing: 0;
     }
 
     .services-featured-checks {
-        @apply mt-7 grid gap-3;
+        @apply mt-4 grid gap-2 sm:mt-5 sm:grid-cols-2 sm:gap-x-5 sm:gap-y-2.5 xl:mt-6;
     }
 
     .services-featured-checks li {
-        @apply flex min-w-0 items-start gap-3 text-base font-semibold leading-7 tracking-normal text-white/90 sm:text-lg;
+        @apply flex min-w-0 items-start gap-2 text-[0.8125rem] font-semibold leading-5 tracking-normal text-white/90 sm:text-sm sm:leading-5 xl:text-[0.9375rem] xl:leading-6;
         letter-spacing: 0;
     }
 
     .services-featured-checks svg {
-        @apply mt-0.5 h-6 w-6 shrink-0 fill-[#f15a24] text-[#f15a24] stroke-white;
+        @apply mt-0.5 h-4 w-4 shrink-0 fill-[#f15a24] text-[#f15a24] stroke-white sm:h-5 sm:w-5;
     }
 
     .services-featured-actions {
-        @apply mt-8 flex flex-col gap-4 sm:flex-row sm:items-center sm:gap-5;
+        @apply mt-5 flex flex-row gap-2.5 sm:mt-6 sm:gap-3 xl:mt-7;
     }
 
     .services-featured-button {
-        @apply inline-flex min-h-[4rem] items-center justify-center gap-3 rounded-lg px-6 text-center text-base font-extrabold tracking-normal transition-all sm:min-w-[13.5rem] sm:text-lg;
+        @apply inline-flex min-h-10 flex-1 items-center justify-center gap-2 rounded-md px-3 text-center text-sm font-extrabold leading-5 tracking-normal transition-all sm:min-h-11 sm:flex-none sm:px-5 sm:text-base xl:min-h-12 xl:min-w-[11.5rem];
         letter-spacing: 0;
     }
 
     .services-featured-button svg {
-        @apply h-6 w-6 shrink-0;
+        @apply h-4 w-4 shrink-0 sm:h-5 sm:w-5;
     }
 
     .services-featured-button--primary {
@@ -3045,15 +3044,15 @@
     }
 
     .services-list {
-        @apply grid content-start gap-5;
+        @apply grid content-start gap-2 sm:gap-2.5 xl:gap-3;
     }
 
     .services-list-card {
-        @apply grid min-h-[7.45rem] scroll-mt-32 grid-cols-[4.75rem_minmax(0,1fr)_3.5rem] items-center gap-5 rounded-lg border border-nacho-dark/10 bg-white px-6 py-5 text-[#071016] shadow-[0_14px_34px_-28px_rgba(7,16,22,0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f15a24]/30 hover:shadow-[0_18px_42px_-30px_rgba(191,75,35,0.5)];
+        @apply grid min-h-0 scroll-mt-32 grid-cols-[2.5rem_minmax(0,1fr)_2rem] items-center gap-2.5 rounded-lg border border-nacho-dark/10 bg-white px-3 py-2.5 text-[#071016] shadow-[0_14px_34px_-28px_rgba(7,16,22,0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f15a24]/30 hover:shadow-[0_18px_42px_-30px_rgba(191,75,35,0.5)] sm:grid-cols-[3rem_minmax(0,1fr)_2.25rem] sm:gap-3 sm:px-3.5 sm:py-3 xl:grid-cols-[3.25rem_minmax(0,1fr)_2.5rem] xl:px-4 xl:py-3;
     }
 
     .services-list-icon {
-        @apply flex h-[4.75rem] w-[4.75rem] shrink-0 items-center justify-center text-[#f15a24];
+        @apply flex h-10 w-10 shrink-0 items-center justify-center text-[#f15a24] sm:h-12 sm:w-12 xl:h-[3.25rem] xl:w-[3.25rem];
     }
 
     .services-list-icon svg {
@@ -3065,19 +3064,17 @@
     }
 
     .services-list-title {
-        @apply block text-[1.45rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[1.7rem];
+        @apply block text-sm font-extrabold leading-tight tracking-normal text-[#071016] sm:text-base xl:text-lg;
         letter-spacing: 0;
-        overflow-wrap: anywhere;
     }
 
     .services-list-text {
-        @apply mt-2 block text-base font-semibold leading-7 tracking-normal text-[#071016]/75 sm:text-lg;
+        @apply mt-0.5 block text-xs font-semibold leading-4 tracking-normal text-[#071016]/75 sm:mt-1 sm:text-sm sm:leading-5 xl:text-[0.9375rem] xl:leading-5;
         letter-spacing: 0;
-        overflow-wrap: anywhere;
     }
 
     .services-list-arrow {
-        @apply flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#f15a24] text-white shadow-lg shadow-[#f15a24]/20 transition-colors;
+        @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#f15a24] text-white shadow-lg shadow-[#f15a24]/20 transition-colors sm:h-9 sm:w-9 xl:h-10 xl:w-10;
     }
 
     .services-list-card:hover .services-list-arrow {
@@ -3085,11 +3082,23 @@
     }
 
     .services-list-arrow svg {
-        @apply h-6 w-6;
+        @apply h-4 w-4 xl:h-5 xl:w-5;
+    }
+
+    @media (min-width: 1024px) {
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            align-self: stretch;
+        }
+
+        .services-list-card {
+            flex: 1 1 auto;
+        }
     }
 
     .services-checks-section {
-        @apply bg-white pb-14 pt-0 sm:pb-16 lg:pb-20;
+        @apply bg-white pb-8 pt-0 sm:pb-10 xl:pb-12;
     }
 
     .services-checks-inner {
@@ -3102,54 +3111,52 @@
     }
 
     .services-checks-heading h2 {
-        @apply text-[2rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[2.55rem] lg:text-[3rem];
+        @apply text-xl font-extrabold leading-tight tracking-normal text-[#071016] sm:text-2xl xl:text-[2.15rem];
         letter-spacing: 0;
     }
 
     .services-checks-heading span {
-        @apply mx-auto mt-3 block h-1.5 w-[4.25rem] rounded-full;
+        @apply mx-auto mt-2 block h-1 w-12 rounded-full xl:mt-3 xl:h-1.5 xl:w-16;
         background: linear-gradient(90deg, #f15a24 0 22%, transparent 22% 38%, #f15a24 38% 62%, transparent 62% 78%, #f15a24 78% 100%);
     }
 
     .services-checks-grid {
-        @apply mt-5 grid gap-5 sm:grid-cols-2 xl:grid-cols-4;
+        @apply mt-4 grid grid-cols-2 gap-2 sm:mt-5 sm:gap-3 xl:mt-5 xl:grid-cols-4 xl:gap-4;
     }
 
     .services-check-card {
-        @apply flex min-h-[11.75rem] min-w-0 flex-col items-center justify-start rounded-lg border border-[#edf0f2] bg-white px-5 py-6 text-center shadow-[0_12px_32px_-28px_rgba(7,16,22,0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f15a24]/25 hover:shadow-[0_18px_40px_-30px_rgba(191,75,35,0.35)];
+        @apply flex min-h-0 min-w-0 flex-col items-center justify-start rounded-lg border border-[#edf0f2] bg-white px-2.5 py-3 text-center shadow-[0_12px_32px_-28px_rgba(7,16,22,0.9)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f15a24]/25 hover:shadow-[0_18px_40px_-30px_rgba(191,75,35,0.35)] sm:px-3.5 sm:py-4 xl:px-4 xl:py-5;
     }
 
     .services-check-icon {
-        @apply relative isolate flex h-[5.15rem] w-[5.15rem] shrink-0 items-center justify-center text-[#f15a24];
+        @apply relative isolate flex h-10 w-10 shrink-0 items-center justify-center text-[#f15a24] sm:h-12 sm:w-12 xl:h-14 xl:w-14;
     }
 
     .services-check-icon::before {
         content: '';
-        @apply absolute left-1/2 top-1/2 -z-10 h-[4.6rem] w-[4.6rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f4f4f4];
+        @apply absolute left-1/2 top-1/2 -z-10 h-9 w-9 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f4f4f4] sm:h-11 sm:w-11 xl:h-12 xl:w-12;
     }
 
     .services-check-icon svg {
-        @apply h-[4.05rem] w-[4.05rem] stroke-[1.95];
+        @apply h-7 w-7 stroke-[1.95] sm:h-8 sm:w-8 xl:h-9 xl:w-9;
     }
 
     .services-check-card h3 {
-        @apply mt-2 text-xl font-extrabold leading-tight tracking-normal text-[#071016] sm:text-2xl;
+        @apply mt-1.5 text-xs font-extrabold leading-tight tracking-normal text-[#071016] sm:mt-2 sm:text-sm xl:text-base;
         letter-spacing: 0;
-        overflow-wrap: anywhere;
     }
 
     .services-check-card p {
-        @apply mt-2 max-w-[16rem] text-base font-semibold leading-7 tracking-normal text-[#071016]/75 sm:text-lg;
+        @apply mt-1 max-w-[16rem] text-[0.6875rem] font-semibold leading-4 tracking-normal text-[#071016]/75 sm:text-xs sm:leading-5 xl:text-sm xl:leading-5;
         letter-spacing: 0;
-        overflow-wrap: anywhere;
     }
 
     .services-lifecycle-section {
-        @apply bg-white pb-14 pt-0 sm:pb-16 lg:pb-20;
+        @apply bg-white pb-8 pt-0 sm:pb-10 xl:pb-20;
     }
 
     .services-lifecycle-panel {
-        @apply relative isolate mx-auto grid w-full overflow-hidden rounded-lg bg-[#071016] px-5 py-8 text-white shadow-[0_20px_54px_-34px_rgba(7,16,22,0.95)] ring-1 ring-white/10 sm:px-8 sm:py-9 lg:grid-cols-[minmax(0,1.62fr)_1px_minmax(22rem,0.98fr)] lg:gap-9 lg:px-10 xl:gap-12 xl:px-14;
+        @apply relative isolate mx-auto grid w-full overflow-hidden rounded-lg bg-[#071016] px-4 py-5 text-white shadow-[0_20px_54px_-34px_rgba(7,16,22,0.95)] ring-1 ring-white/10 sm:px-5 sm:py-6 lg:grid-cols-[minmax(0,1.62fr)_1px_minmax(22rem,0.98fr)] lg:gap-6 lg:px-8 lg:py-7 xl:gap-12 xl:px-14 xl:py-9;
         max-width: min(calc(100vw - 2rem), 120rem);
     }
 
@@ -3167,7 +3174,7 @@
     }
 
     .services-dark-heading h2 {
-        @apply max-w-[34rem] text-[2rem] font-extrabold leading-[1.14] tracking-normal text-white sm:text-[2.55rem] lg:text-[2.45rem] xl:text-[2.85rem];
+        @apply max-w-[34rem] text-xl font-extrabold leading-tight tracking-normal text-white sm:text-[1.55rem] lg:text-[1.85rem] xl:text-[2.85rem] xl:leading-[1.14];
         letter-spacing: 0;
     }
 
@@ -3181,7 +3188,7 @@
     }
 
     .services-dark-heading > span {
-        @apply mt-4 block h-1 w-10 rounded-full;
+        @apply mt-2.5 block h-1 w-10 rounded-full xl:mt-4;
         background: linear-gradient(90deg, #f15a24 0 72%, transparent 72% 86%, #f15a24 86% 100%);
     }
 
@@ -3190,7 +3197,7 @@
     }
 
     .services-lifecycle-steps {
-        @apply relative mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-5 lg:gap-4;
+        @apply relative mt-4 grid gap-2.5 sm:mt-5 sm:gap-3 lg:mt-6 lg:grid-cols-5 lg:gap-3 xl:mt-8 xl:gap-4;
     }
 
     .services-lifecycle-steps::before {
@@ -3203,11 +3210,11 @@
     }
 
     .services-lifecycle-number {
-        @apply relative z-10 mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-[#f15a24] text-2xl font-extrabold leading-none text-white shadow-lg shadow-[#f15a24]/25;
+        @apply relative z-10 mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-[#f15a24] text-lg font-extrabold leading-none text-white shadow-lg shadow-[#f15a24]/25 lg:h-10 lg:w-10 xl:h-11 xl:w-11 xl:text-2xl;
     }
 
     .services-lifecycle-icon {
-        @apply mx-auto mt-5 flex h-[4.35rem] w-[4.35rem] items-center justify-center text-white/90;
+        @apply mx-auto mt-3 flex h-12 w-12 items-center justify-center text-white/90 lg:mt-4 lg:h-14 lg:w-14 xl:mt-5 xl:h-[4.35rem] xl:w-[4.35rem];
     }
 
     .services-lifecycle-icon svg {
@@ -3215,15 +3222,13 @@
     }
 
     .services-lifecycle-step h3 {
-        @apply mt-4 text-base font-extrabold leading-snug tracking-normal text-white sm:text-lg xl:text-xl;
+        @apply mt-2 text-sm font-extrabold leading-snug tracking-normal text-white lg:mt-3 lg:text-base xl:mt-4 xl:text-xl;
         letter-spacing: 0;
-        overflow-wrap: anywhere;
     }
 
     .services-lifecycle-step p {
-        @apply mx-auto mt-2 max-w-[11rem] text-sm font-semibold leading-6 tracking-normal text-white/75 sm:text-base;
+        @apply mx-auto mt-1 max-w-[11rem] text-xs font-semibold leading-4 tracking-normal text-white/75 lg:text-sm lg:leading-5 xl:mt-2 xl:text-base xl:leading-6;
         letter-spacing: 0;
-        overflow-wrap: anywhere;
     }
 
     .services-lifecycle-divider {
@@ -3231,11 +3236,11 @@
     }
 
     .services-result-list {
-        @apply mt-6 grid;
+        @apply mt-4 grid xl:mt-6;
     }
 
     .services-result-row {
-        @apply grid min-w-0 grid-cols-[4.6rem_minmax(6.5rem,0.42fr)_minmax(0,1fr)] items-center gap-4 border-b border-white/10 py-5;
+        @apply grid min-w-0 grid-cols-[2.75rem_minmax(0,1fr)] items-center gap-x-3 gap-y-0.5 border-b border-white/10 py-2.5 sm:py-3 lg:grid-cols-[3.25rem_minmax(5rem,0.4fr)_minmax(0,1fr)] lg:gap-3 lg:py-3.5 xl:grid-cols-[4.6rem_minmax(6.5rem,0.42fr)_minmax(0,1fr)] xl:gap-4 xl:py-5;
     }
 
     .services-result-row:last-child {
@@ -3243,23 +3248,21 @@
     }
 
     .services-result-icon {
-        @apply flex h-16 w-16 shrink-0 items-center justify-center rounded-full border-4;
+        @apply row-span-2 flex h-11 w-11 shrink-0 items-center justify-center rounded-full border-[3px] lg:row-span-1 lg:h-12 lg:w-12 xl:h-16 xl:w-16 xl:border-4;
     }
 
     .services-result-icon svg {
-        @apply h-11 w-11 stroke-[2.15];
+        @apply h-7 w-7 stroke-[2.15] lg:h-8 lg:w-8 xl:h-11 xl:w-11;
     }
 
     .services-result-row h3 {
-        @apply text-xl font-extrabold leading-tight tracking-normal sm:text-2xl;
+        @apply text-base font-extrabold leading-tight tracking-normal lg:text-lg xl:text-2xl;
         letter-spacing: 0;
-        overflow-wrap: anywhere;
     }
 
     .services-result-row p {
-        @apply text-sm font-semibold leading-6 tracking-normal text-white/80 sm:text-base sm:leading-7;
+        @apply text-xs font-semibold leading-4 tracking-normal text-white/80 lg:text-sm lg:leading-5 xl:text-base xl:leading-7;
         letter-spacing: 0;
-        overflow-wrap: anywhere;
     }
 
     .services-result-row--accepted .services-result-icon {
@@ -3297,7 +3300,7 @@
 
     .services-booking-cta-image {
         @apply absolute inset-0 -z-20 h-full w-full object-cover;
-        object-position: 0% 44%;
+        object-position: 62% 34%;
     }
 
     .services-booking-cta-overlay {
@@ -3402,15 +3405,52 @@
         }
 
         .services-lifecycle-panel {
-            @apply gap-9;
+            @apply gap-5;
+        }
+
+        .services-lifecycle-step {
+            display: grid;
+            grid-template-columns: 2rem 2.15rem minmax(0, 1fr);
+            column-gap: 0.7rem;
+            row-gap: 0.1rem;
+            align-items: center;
+            text-align: left;
+        }
+
+        .services-lifecycle-number,
+        .services-lifecycle-icon {
+            grid-row: 1 / span 2;
+            margin: 0;
+        }
+
+        .services-lifecycle-number {
+            height: 2rem;
+            width: 2rem;
+            font-size: 0.95rem;
+        }
+
+        .services-lifecycle-icon {
+            height: 2.15rem;
+            width: 2.15rem;
+        }
+
+        .services-lifecycle-step h3,
+        .services-lifecycle-step p {
+            margin: 0;
+            max-width: none;
+            text-align: left;
         }
 
         .services-result-summary {
-            @apply border-t border-white/20 pt-8;
+            @apply border-t border-white/20 pt-4;
         }
 
         .services-booking-cta {
             @apply min-h-[18rem] content-end;
+        }
+
+        .services-booking-cta-image {
+            object-position: center 22%;
         }
 
         .services-booking-cta-overlay {
@@ -3518,159 +3558,8 @@
             @apply h-10 w-10;
         }
 
-        .services-hero,
-        .services-hero-inner {
-            min-height: 0;
-        }
-
-        .services-hero-inner {
-            @apply py-8;
-        }
-
-        .services-hero-title {
-            @apply text-[2.05rem];
-        }
-
-        .services-hero-text {
-            @apply mt-5 text-base leading-7;
-        }
-
-        .services-proof-grid {
-            @apply mt-6;
-        }
-
-        .services-proof-card {
-            @apply min-h-[4.25rem] px-4 text-sm;
-        }
-
         .services-showcase-section {
             @apply pt-3;
-        }
-
-        .services-featured-card,
-        .services-featured-content {
-            min-height: 0;
-        }
-
-        .services-featured-content {
-            @apply px-5 py-7;
-        }
-
-        .services-featured-icon {
-            @apply h-20 w-20;
-        }
-
-        .services-featured-icon svg {
-            @apply h-12 w-12;
-        }
-
-        .services-featured-content h2 {
-            @apply text-[2rem];
-        }
-
-        .services-featured-content p,
-        .services-featured-checks li {
-            @apply text-base leading-7;
-        }
-
-        .services-featured-actions {
-            @apply mt-6 gap-3;
-        }
-
-        .services-featured-button {
-            @apply min-h-[3.5rem] w-full px-4 text-base;
-        }
-
-        .services-list-card {
-            @apply min-h-[6.5rem] grid-cols-[3.75rem_minmax(0,1fr)_2.75rem] gap-3 px-4 py-4;
-        }
-
-        .services-list-icon {
-            @apply h-[3.75rem] w-[3.75rem];
-        }
-
-        .services-list-title {
-            @apply text-xl;
-        }
-
-        .services-list-text {
-            @apply mt-1 text-sm leading-6;
-        }
-
-        .services-list-arrow {
-            @apply h-10 w-10;
-        }
-
-        .services-list-arrow svg {
-            @apply h-5 w-5;
-        }
-
-        .services-checks-section {
-            @apply pb-12;
-        }
-
-        .services-checks-heading h2 {
-            @apply text-[1.9rem];
-        }
-
-        .services-checks-grid {
-            @apply mt-5 grid-cols-1;
-        }
-
-        .services-check-card {
-            @apply min-h-[10.5rem] px-5 py-5;
-        }
-
-        .services-check-card h3 {
-            @apply text-xl;
-        }
-
-        .services-check-card p {
-            @apply text-base leading-7;
-        }
-
-        .services-lifecycle-section {
-            @apply pb-12;
-        }
-
-        .services-lifecycle-panel {
-            @apply px-5 py-7;
-        }
-
-        .services-dark-heading h2 {
-            @apply text-[1.85rem];
-        }
-
-        .services-lifecycle-steps {
-            @apply mt-6 grid-cols-1 gap-7;
-        }
-
-        .services-lifecycle-icon {
-            @apply mt-4 h-16 w-16;
-        }
-
-        .services-lifecycle-step h3 {
-            @apply mt-3 text-lg;
-        }
-
-        .services-result-row {
-            @apply grid-cols-[4rem_minmax(0,1fr)] gap-x-4 gap-y-1 py-4;
-        }
-
-        .services-result-icon {
-            @apply row-span-2 h-14 w-14 border-[3px];
-        }
-
-        .services-result-icon svg {
-            @apply h-9 w-9;
-        }
-
-        .services-result-row h3 {
-            @apply text-xl;
-        }
-
-        .services-result-row p {
-            @apply text-sm leading-6;
         }
 
         .services-booking-cta-section {
@@ -3682,7 +3571,7 @@
         }
 
         .services-booking-cta-image {
-            object-position: 28% center;
+            object-position: center 24%;
         }
 
         .services-booking-cta-content h2 {

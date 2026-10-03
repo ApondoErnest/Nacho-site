@@ -35,9 +35,9 @@ return [
             'image' => 'images/centers/hero.png',
         ],
         'services' => [
-            'title' => 'Services de contrôle technique automobile',
-            'description' => 'Découvrez les services NACHO : visite technique périodique, contre-visite, inspection poids lourds et contrôle avant achat.',
-            'image' => 'images/hero-services-2.png',
+            'title' => 'Services de contrôle technique NOVETESCO',
+            'description' => 'Découvrez les services NOVETESCO : visite technique périodique, contre-visite, inspection poids lourds et contrôle avant achat.',
+            'image' => 'images/services/hero.png',
         ],
         'book_inspection' => [
             'title' => 'Réserver une visite technique',

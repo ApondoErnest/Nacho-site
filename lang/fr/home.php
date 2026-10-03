@@ -60,7 +60,7 @@ return [
             'eyebrow' => 'Nos services',
             'title_line_1' => 'Services professionnels.',
             'title_line_2' => 'Routes plus sûres. Confiance renforcée.',
-            'subtitle' => 'NACHO propose une gamme complète de services d\'inspection automobile pour garder votre véhicule conforme, fiable et sûr.',
+            'subtitle' => 'NOVETESCO propose une gamme complète de services d\'inspection automobile pour garder votre véhicule conforme, fiable et sûr.',
             'proof_label' => 'Points forts du service',
             'proof' => [
                 'advanced_testing' => 'Tests avancés',
@@ -180,7 +180,7 @@ return [
         'cta' => [
             'title_prefix' => 'Prêt à choisir votre',
             'title_highlight' => 'service d\'inspection ?',
-            'text' => 'Sélectionnez votre service, choisissez le centre NACHO le plus proche et demandez votre rendez-vous d\'inspection dès aujourd\'hui.',
+            'text' => 'Sélectionnez votre service, choisissez le centre NOVETESCO le plus proche et demandez votre rendez-vous d\'inspection dès aujourd\'hui.',
             'book' => 'Réserver une inspection',
             'tariffs' => 'Voir les tarifs officiels',
             'contact' => 'Nous contacter',
