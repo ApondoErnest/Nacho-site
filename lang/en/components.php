@@ -89,14 +89,14 @@ return [
 
     'centers_hero' => [
         'eyebrow' => 'Our Inspection Centers',
-        'title' => 'Find the NACHO Center Nearest to You',
-        'subtitle' => 'Explore the NACHO inspection-center network, review available services and opening hours, get directions, and request your vehicle inspection appointment.',
-        'stats_label' => 'NACHO inspection center network statistics',
+        'title' => 'Find the NOVETESCO Center Nearest to You',
+        'subtitle' => 'Explore the NOVETESCO inspection-center network, review available services and opening hours, get directions, and request your vehicle inspection appointment.',
+        'stats_label' => 'NOVETESCO inspection center network statistics',
         'stats' => [
             'current_centers' => 'Current Inspection Centers',
             'expansion_centers' => 'Expansion Centers',
             'locations' => 'Locations Across the Growing Network',
-            'experience_value' => '10+ Years',
+            'experience_value' => '20+ Years',
             'experience_label' => 'of Operational Experience',
         ],
     ],
@@ -125,6 +125,7 @@ return [
         'location_unavailable' => 'Your browser could not provide a location. You can still search manually and use Google Maps links.',
         'nearest_found' => 'Nearest operational center: :center, about :distance km away.',
         'current_centers' => 'Current Inspection Centers',
+        'current_hours' => '8:00 AM – 6:00 PM (Mon–Fri) · 8:00 AM – 2:00 PM (Sat and public holidays)',
         'selected_profile' => 'Selected center profile',
         'selected_center' => 'Selected Center',
         'available_services' => 'Available Services',

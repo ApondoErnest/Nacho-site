@@ -89,14 +89,14 @@ return [
 
     'centers_hero' => [
         'eyebrow' => 'Nos centres d\'inspection',
-        'title' => 'Trouvez le centre NACHO le plus proche',
-        'subtitle' => 'Explorez le réseau des centres d\'inspection NACHO, consultez les services disponibles et les horaires, obtenez un itinéraire et demandez votre rendez-vous d\'inspection.',
-        'stats_label' => 'Statistiques du réseau de centres d\'inspection NACHO',
+        'title' => 'Trouvez le centre NOVETESCO le plus proche',
+        'subtitle' => 'Explorez le réseau des centres d\'inspection NOVETESCO, consultez les services disponibles et les horaires, obtenez un itinéraire et demandez votre rendez-vous d\'inspection.',
+        'stats_label' => 'Statistiques du réseau de centres d\'inspection NOVETESCO',
         'stats' => [
             'current_centers' => 'Centres d\'inspection actuels',
             'expansion_centers' => 'Centres en extension',
             'locations' => 'Sites dans le réseau en développement',
-            'experience_value' => '10+ ans',
+            'experience_value' => '20+ ans',
             'experience_label' => 'd\'expérience opérationnelle',
         ],
     ],
@@ -125,6 +125,7 @@ return [
         'location_unavailable' => 'Votre navigateur n\'a pas pu fournir de position. Vous pouvez toujours rechercher manuellement et utiliser les liens Google Maps.',
         'nearest_found' => 'Centre opérationnel le plus proche : :center, à environ :distance km.',
         'current_centers' => 'Centres d\'inspection actuels',
+        'current_hours' => '8h00 – 18h00 (lun.–ven.) · 8h00 – 14h00 (sam. et jours fériés)',
         'selected_profile' => 'Profil du centre sélectionné',
         'selected_center' => 'Centre sélectionné',
         'available_services' => 'Services disponibles',

@@ -30,9 +30,9 @@ return [
             'image' => 'images/about/hero-about-page.png',
         ],
         'centers' => [
-            'title' => 'Centres de contrôle technique NACHO au Cameroun',
-            'description' => 'Trouvez les centres NACHO de contrôle technique automobile, horaires, contacts, itinéraires et sites en extension à Yaoundé, Bamenda, Douala et Kumba.',
-            'image' => 'images/hero-centers.png',
+            'title' => 'Centres de contrôle technique NOVETESCO au Cameroun',
+            'description' => 'Trouvez les centres NOVETESCO de contrôle technique automobile, horaires, contacts, itinéraires et sites en extension à Yaoundé, Bamenda, Douala et Kumba.',
+            'image' => 'images/centers/hero.png',
         ],
         'services' => [
             'title' => 'Services de contrôle technique automobile',

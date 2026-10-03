@@ -269,7 +269,7 @@ Alpine.data('centersLocator', (config = {}) => ({
         this.viewMode = mode;
 
         if (mode === 'map') {
-            this.ensureMap();
+            this.$nextTick(() => this.ensureMap());
         }
     },
 
@@ -310,26 +310,13 @@ Alpine.data('centersLocator', (config = {}) => ({
 
             if (! this.map) {
                 this.map = this.leaflet.map(this.$refs.map, {
-                    scrollWheelZoom: false,
+                    scrollWheelZoom: true,
                     zoomControl: true,
+                    zoomSnap: 0.25,
+                    wheelPxPerZoomLevel: 80,
                 });
                 this.markerLayer = this.leaflet.layerGroup().addTo(this.map);
-
-                const tileLayer = this.leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '&copy; OpenStreetMap contributors',
-                    maxZoom: 18,
-                });
-                let hasLoadedTile = false;
-
-                tileLayer.on('tileload', () => {
-                    hasLoadedTile = true;
-                });
-                tileLayer.on('tileerror', () => {
-                    if (! hasLoadedTile) {
-                        this.failMap();
-                    }
-                });
-                tileLayer.addTo(this.map);
+                this.attachCenterTiles(this.map);
             }
 
             this.refreshMapMarkers();
@@ -344,6 +331,49 @@ Alpine.data('centersLocator', (config = {}) => ({
         this.mapLoading = false;
         this.viewMode = 'list';
         this.statusMessage = this.labels.map_unavailable ?? 'The map could not load.';
+    },
+
+    attachCenterTiles(map) {
+        const tileLayer = this.leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors',
+            maxZoom: 19,
+        });
+        let hasLoadedTile = false;
+
+        tileLayer.on('tileload', () => {
+            hasLoadedTile = true;
+        });
+        tileLayer.on('tileerror', () => {
+            if (! hasLoadedTile) {
+                this.failMap();
+            }
+        });
+        tileLayer.addTo(map);
+    },
+
+    centerPopupHtml(center) {
+        const hours = Array.isArray(center.hours_lines) ? center.hours_lines.filter(Boolean).join(' ') : '';
+        const image = center.image_url
+            ? `<img src="${escapeHtml(center.image_url)}" alt="" />`
+            : '';
+        const actions = [
+            center.is_operational && center.book_url
+                ? `<a class="is-primary" href="${escapeHtml(center.book_url)}">${escapeHtml(this.labels.book ?? 'Book')}</a>`
+                : '',
+            center.email_href
+                ? `<a href="${escapeHtml(center.email_href)}">${escapeHtml(this.labels.send_email ?? 'Email')}</a>`
+                : '',
+        ].filter(Boolean).join('');
+
+        return `
+            <div class="centers-map-popup">
+                ${image}
+                <strong>${escapeHtml(center.name)}</strong>
+                <span>${escapeHtml(center.address_line ?? '')}</span>
+                ${hours ? `<span>${escapeHtml(hours)}</span>` : ''}
+                ${actions ? `<div class="centers-map-popup-actions">${actions}</div>` : ''}
+            </div>
+        `;
     },
 
     refreshMapMarkers() {
@@ -378,25 +408,21 @@ Alpine.data('centersLocator', (config = {}) => ({
                 const marker = this.leaflet.marker([latitude, longitude], {
                     icon: createMapMarkerIcon(this.leaflet, center, 'centers-leaflet', center.slug === this.selectedSlug),
                     title: center.name,
+                    riseOnHover: true,
                 });
-                const popupRows = [
-                    center.address_line,
-                    center.status_label,
-                    center.status_note,
-                ].filter(Boolean);
 
                 marker
                     .addTo(this.markerLayer)
-                    .bindPopup(`
-                        <div class="centers-map-popup">
-                            <strong>${escapeHtml(center.name)}</strong>
-                            ${popupRows.map((row, index) => `<span class="${index === 1 ? 'centers-map-popup-status' : ''}">${escapeHtml(row)}</span>`).join('')}
-                            <a href="${escapeHtml(center.maps_url)}" target="_blank" rel="noopener">${escapeHtml(this.labels.directions ?? 'Get directions')}</a>
-                        </div>
-                    `)
+                    .bindPopup(this.centerPopupHtml(center), {
+                        className: 'centers-map-popup-wrap',
+                        maxWidth: 280,
+                        minWidth: 220,
+                        autoPanPadding: [24, 24],
+                    })
                     .on('click', () => {
                         this.selectedSlug = center.slug;
                         this.updateMarkerStyles();
+                        this.focusMarker(center.slug, false);
                     });
 
                 this.markers[center.slug] = marker;
@@ -440,9 +466,14 @@ Alpine.data('centersLocator', (config = {}) => ({
             return;
         }
 
-        this.map.setView(marker.getLatLng(), Math.max(this.map.getZoom(), 10), {
-            animate: true,
-        });
+        const targetZoom = Math.max(this.map.getZoom(), 14);
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (reduceMotion) {
+            this.map.setView(marker.getLatLng(), targetZoom, { animate: false });
+        } else {
+            this.map.flyTo(marker.getLatLng(), targetZoom, { duration: 0.85 });
+        }
 
         if (openPopup) {
             marker.openPopup();

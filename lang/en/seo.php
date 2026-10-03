@@ -30,9 +30,9 @@ return [
             'image' => 'images/about/hero-about-page.png',
         ],
         'centers' => [
-            'title' => 'NACHO Inspection Centers in Cameroon',
-            'description' => 'Find NACHO vehicle inspection centers, opening hours, contacts, directions, and expansion locations in Yaounde, Bamenda, Douala, and Kumba.',
-            'image' => 'images/hero-centers.png',
+            'title' => 'NOVETESCO Inspection Centers in Cameroon',
+            'description' => 'Find NOVETESCO vehicle inspection centers, opening hours, contacts, directions, and expansion locations in Yaounde, Bamenda, Douala, and Kumba.',
+            'image' => 'images/centers/hero.png',
         ],
         'services' => [
             'title' => 'Vehicle Inspection Services',

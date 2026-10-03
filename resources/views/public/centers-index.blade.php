@@ -6,13 +6,12 @@
     @php
         $locale = app()->getLocale();
         $centers = collect($centerRecords ?? config('centers.centers', []));
-        $operationalCenterCount = $centers->where('status', 'operational')->count();
         $expansionCenterCount = $centers->where('status', 'under_construction')->count();
         $totalLocations = $centers->count();
         $heroStats = [
             [
                 'icon' => 'building-2',
-                'value' => $operationalCenterCount,
+                'value' => $totalLocations,
                 'label' => __('components.centers_hero.stats.current_centers'),
             ],
             [
@@ -51,11 +50,9 @@
         $serviceCatalog = collect($serviceOptions)->keyBy('slug');
         $regionOptions = ['Centre', 'Northwest', 'Littoral', 'Southwest'];
         $centerImageMap = [
-            'nacho-yaounde' => 'images/center-nacho-yaounde.png',
-            'nacho-nkwen-bamenda' => 'images/center-nacho-nkwen-bamenda.png',
-            'nacho-mankon-bamenda' => 'images/center-nacho-nacho-bamenda.png',
-            'nacho-douala' => 'images/center-nacho-douala-coming-soon.png',
-            'nacho-kumba' => 'images/center-nacho-kumba-coming-soon.png',
+            'nacho-yaounde' => 'images/centers/yaounde-1.png',
+            'nacho-nkwen-bamenda' => 'images/centers/nkwen-bamenda-1.png',
+            'nacho-mankon-bamenda' => 'images/centers/mankon-bamenda-1.png',
         ];
         $expansionImageMap = [
             'nacho-douala' => 'images/centers-douala.png',
@@ -73,10 +70,15 @@
                 $displayName = trim($center['name'] . ' ' . $suffix);
                 $hours = $locale === 'fr' ? ($center['hours_fr'] ?? null) : ($center['hours_en'] ?? null);
                 $hoursLines = $locale === 'fr' ? ($center['hours_lines_fr'] ?? []) : ($center['hours_lines_en'] ?? []);
-                $imagePath = $center['featured_image'] ?? ($centerImageMap[$center['slug']] ?? null);
+                $imagePath = $centerImageMap[$center['slug']] ?? ($center['featured_image'] ?? null);
                 $latitude = $center['latitude'] ?? ($approximateCityCoordinates[$center['slug']]['latitude'] ?? null);
                 $longitude = $center['longitude'] ?? ($approximateCityCoordinates[$center['slug']]['longitude'] ?? null);
                 $isOperational = $center['status'] === 'operational';
+
+                if ($isOperational) {
+                    $hours = __('components.centers_locator.current_hours');
+                    $hoursLines = [$hours];
+                }
                 $addressLine = $center['address'] ?: trim($center['city'] . ', ' . $center['region']);
                 $mapsUrl = $center['maps_url']
                     ?: 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode(trim($center['name'] . ' ' . $center['city'] . ' Cameroon'));
@@ -188,7 +190,7 @@
 
     <section class="centers-page-hero" aria-labelledby="centers-hero-title">
         <img
-            src="{{ asset('images/hero-centers.png') }}"
+            src="{{ asset('images/centers/hero.png') }}"
             alt=""
             class="centers-page-hero-image"
             loading="eager"
@@ -491,17 +493,9 @@
                                     <x-lucide-calendar-days aria-hidden="true" />
                                     <span>{{ __('components.center.book_at_center') }}</span>
                                 </a>
-                                <a x-show="selectedCenter.phone_primary" :href="selectedCenter.phone_primary ? selectedCenter.phone_primary.href : '#'" class="centers-profile-action">
-                                    <x-lucide-phone aria-hidden="true" />
-                                    <span>{{ __('components.centers_locator.call_center') }}</span>
-                                </a>
                                 <a x-show="selectedCenter.email_href" :href="selectedCenter.email_href" class="centers-profile-action">
                                     <x-lucide-mail aria-hidden="true" />
                                     <span>{{ __('components.centers_locator.send_email') }}</span>
-                                </a>
-                                <a :href="selectedCenter.maps_url" class="centers-profile-action" target="_blank" rel="noopener">
-                                    <x-lucide-map-pin aria-hidden="true" />
-                                    <span>{{ __('components.centers_locator.view_google_maps') }}</span>
                                 </a>
                             </div>
                         </article>
