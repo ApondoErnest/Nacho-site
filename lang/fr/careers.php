@@ -1,20 +1,20 @@
 <?php
 
 return [
-    'meta_title' => 'Carrières chez NACHO',
+    'meta_title' => 'Carrières chez NOVETESCO',
 
     'hero' => [
-        'eyebrow' => 'Carrières chez NACHO',
+        'eyebrow' => 'Carrières chez NOVETESCO',
         'title' => 'Construisez votre carrière en contribuant à rendre les routes du Cameroun plus sûres',
         'subtitle' => 'Rejoignez un réseau de centres d’inspection en croissance, où expertise technique, intégrité, service client et sécurité routière se rencontrent.',
         'actions_label' => 'Actions carrières',
         'view_positions' => 'Voir les postes ouverts',
         'general_application' => 'Envoyer une candidature spontanée',
-        'image_alt' => 'Membres de l’équipe NACHO travaillant dans un centre professionnel d’inspection automobile.',
+        'image_alt' => 'Membres de l’équipe NOVETESCO travaillant dans un centre professionnel d’inspection automobile.',
     ],
 
     'trust' => [
-        'label' => 'Pourquoi travailler avec NACHO',
+        'label' => 'Pourquoi travailler avec NOVETESCO',
         'items' => [
             [
                 'icon' => 'shield-check',
@@ -36,7 +36,7 @@ return [
     ],
 
     'purpose' => [
-        'eyebrow' => 'Pourquoi construire votre carrière chez NACHO ?',
+        'eyebrow' => 'Pourquoi construire votre carrière chez NOVETESCO ?',
         'title' => 'Travaillez avec un objectif. Grandissez avec une équipe professionnelle.',
         'cards' => [
             [
@@ -63,8 +63,8 @@ return [
     ],
 
     'opportunities' => [
-        'title' => 'Explorer les opportunités de carrière chez NACHO',
-        'subtitle' => 'Parcourez les domaines de carrière dans les départements techniques, opérationnels, administratifs et de support digital de NACHO.',
+        'title' => 'Explorer les opportunités de carrière chez NOVETESCO',
+        'subtitle' => 'Parcourez les domaines de carrière dans les départements techniques, opérationnels, administratifs et de support digital de NOVETESCO.',
         'path_note' => 'Ces cartes présentent des parcours professionnels possibles. Elles ne constituent pas des postes ouverts sauf si le recrutement est officiellement lancé.',
         'areas' => [
             [
@@ -136,10 +136,10 @@ return [
         'print_job' => 'Imprimer la fiche de poste',
         'share_copied' => 'Lien du poste copié.',
         'general_heading' => 'Vous ne voyez pas le poste recherché ?',
-        'general_text' => 'Vous pouvez envoyer une candidature spontanée en indiquant votre domaine de carrière préféré et le centre NACHO souhaité.',
+        'general_text' => 'Vous pouvez envoyer une candidature spontanée en indiquant votre domaine de carrière préféré et le centre NOVETESCO souhaité.',
         'general_action' => 'Envoyer une candidature spontanée par e-mail',
         'general_note' => 'Une candidature spontanée n’est pas une offre d’emploi et ne garantit pas une prise en compte pour un futur poste.',
-        'learn_about' => 'Découvrir NACHO',
+        'learn_about' => 'Découvrir NOVETESCO',
         'contact_hr' => 'Contacter les ressources humaines',
         'application_steps_title' => 'Comment soumettre votre candidature',
         'application_steps' => [
@@ -159,13 +159,13 @@ return [
                 'text' => 'Envoyez votre candidature à l’adresse officielle de recrutement indiquée.',
             ],
         ],
-        'safety_notice' => 'Avis de sécurité recrutement : transmettez vos documents uniquement via l’e-mail officiel de recrutement affiché sur le site NACHO ou un autre canal approuvé par l’entreprise.',
+        'safety_notice' => 'Avis de sécurité recrutement : transmettez vos documents uniquement via l’e-mail officiel de recrutement affiché sur le site NOVETESCO ou un autre canal approuvé par l’entreprise.',
         'application_notice' => 'Les candidatures sont transmises uniquement par l’e-mail officiel de recrutement. Nous n’acceptons pas les candidatures via des formulaires.',
         'attach_notice' => 'Le candidat doit joindre manuellement le CV et les pièces justificatives requises avant l’envoi.',
         'no_matches_title' => 'Aucun poste ne correspond à vos filtres',
         'no_matches_text' => 'Modifiez votre recherche ou réinitialisez les filtres pour voir les postes disponibles.',
         'empty_title' => 'Il n’y a actuellement aucun poste ouvert',
-        'empty_text' => 'Vous pouvez envoyer une candidature spontanée pour de futures opportunités dans les départements techniques, opérationnels, administratifs ou de support digital de NACHO.',
+        'empty_text' => 'Vous pouvez envoyer une candidature spontanée pour de futures opportunités dans les départements techniques, opérationnels, administratifs ou de support digital de NOVETESCO.',
         'not_currently_open' => 'Pas actuellement ouvert',
         'card_deadline' => 'Date limite : :date',
         'labels' => [
@@ -205,7 +205,7 @@ return [
                 'title' => 'Technicien d’inspection automobile',
                 'department' => 'Inspection technique',
                 'department_key' => 'technical-inspection',
-                'center' => 'NACHO Yaounde',
+                'center' => 'NOVETESCO Yaounde',
                 'center_key' => 'nacho-yaounde',
                 'employment_type' => 'Temps plein',
                 'employment_type_key' => 'full-time',
@@ -213,14 +213,14 @@ return [
                 'reference' => 'NCH-CAR-2026-004',
                 'positions' => 2,
                 'status' => 'draft',
-                'summary' => 'Réaliser les contrôles de conformité, d’émissions et de sécurité selon les procédures NACHO.',
-                'role_purpose' => 'Réaliser les inspections de véhicules conformément aux standards NACHO et aux exigences légales afin d’assurer la conformité routière, le respect des émissions et la satisfaction client, tout en maintenant les plus hauts niveaux de sécurité et d’intégrité.',
+                'summary' => 'Réaliser les contrôles de conformité, d’émissions et de sécurité selon les procédures NOVETESCO.',
+                'role_purpose' => 'Réaliser les inspections de véhicules conformément aux standards NOVETESCO et aux exigences légales afin d’assurer la conformité routière, le respect des émissions et la satisfaction client, tout en maintenant les plus hauts niveaux de sécurité et d’intégrité.',
                 'responsibilities' => [
                     'Réaliser des inspections mécaniques et de sécurité.',
                     'Utiliser correctement les équipements d’inspection.',
                     'Enregistrer les résultats d’inspection dans le système.',
                     'Fournir des explications claires aux clients.',
-                    'Respecter les procédures d’inspection et les règles de sécurité NACHO.',
+                    'Respecter les procédures d’inspection et les règles de sécurité NOVETESCO.',
                 ],
                 'essential' => [
                     'Diplôme en automobile, mécanique ou domaine similaire.',
@@ -254,7 +254,7 @@ return [
                 'title' => 'Agent service client',
                 'department' => 'Opérations des centres',
                 'department_key' => 'center-operations',
-                'center' => 'NACHO Nkwen-Bamenda',
+                'center' => 'NOVETESCO Nkwen-Bamenda',
                 'center_key' => 'nacho-nkwen-bamenda',
                 'employment_type' => 'Temps plein',
                 'employment_type_key' => 'full-time',
@@ -302,7 +302,7 @@ return [
                 'title' => 'Technicien support IT',
                 'department' => 'Support digital et technique',
                 'department_key' => 'digital-technical-support',
-                'center' => 'NACHO Nacho-Bamenda / Siège',
+                'center' => 'NOVETESCO Mankon-Bamenda / Siège',
                 'center_key' => 'nacho-mankon-bamenda',
                 'employment_type' => 'Contrat',
                 'employment_type_key' => 'contract',
@@ -347,7 +347,7 @@ return [
             ],
         ],
         'mailto_subject' => 'Candidature — :title — :reference',
-        'mailto_body' => "Bonjour l’équipe recrutement NACHO,\n\nJe souhaite postuler au poste de :title, référence :reference.\n\nVeuillez trouver mes documents de candidature en pièces jointes à cet e-mail.\n\nNom complet :\nNuméro de téléphone :\nVille actuelle :\n\nCordialement,",
+        'mailto_body' => "Bonjour l’équipe recrutement NOVETESCO,\n\nJe souhaite postuler au poste de :title, référence :reference.\n\nVeuillez trouver mes documents de candidature en pièces jointes à cet e-mail.\n\nNom complet :\nNuméro de téléphone :\nVille actuelle :\n\nCordialement,",
     ],
 
     'fallbacks' => [
@@ -366,11 +366,11 @@ return [
     'legacy_vacancies' => [
         'title' => 'Postes ouverts',
         'empty_title' => 'Les postes seront publiés ici.',
-        'empty_text' => 'Lorsque le recrutement sera ouvert, NACHO publiera les postes actifs et les consignes de candidature par e-mail dans cette section.',
+        'empty_text' => 'Lorsque le recrutement sera ouvert, NOVETESCO publiera les postes actifs et les consignes de candidature par e-mail dans cette section.',
     ],
 
     'mailto' => [
         'subject' => 'Candidature spontanée — Domaine de carrière — Nom du candidat',
-        'body' => "Bonjour l’équipe recrutement NACHO,\n\nJe soumets une candidature spontanée pour de futures opportunités chez NACHO Vehicle Inspection.\n\nDomaine de carrière souhaité :\nCentre NACHO préféré :\nVille actuelle :\nNuméro de téléphone :\n\nVeuillez trouver mon CV et les pièces justificatives pertinentes en pièces jointes.\n\nCordialement,",
+        'body' => "Bonjour l’équipe recrutement NOVETESCO,\n\nJe soumets une candidature spontanée pour de futures opportunités chez NOVETESCO Vehicle Inspection.\n\nDomaine de carrière souhaité :\nCentre NOVETESCO préféré :\nVille actuelle :\nNuméro de téléphone :\n\nVeuillez trouver mon CV et les pièces justificatives pertinentes en pièces jointes.\n\nCordialement,",
     ],
 ];

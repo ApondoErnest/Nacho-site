@@ -65,9 +65,9 @@ return [
             'image' => 'images/technician-inside-vehicle.png',
         ],
         'careers' => [
-            'title' => 'Careers at NACHO',
-            'description' => 'Explore technical, operational, administrative, and digital-support career opportunities with NACHO Vehicle Inspection in Cameroon.',
-            'image' => 'images/hero-careers.png',
+            'title' => 'Careers at NOVETESCO',
+            'description' => 'Explore technical, operational, administrative, and digital-support career opportunities with NOVETESCO Vehicle Inspection in Cameroon.',
+            'image' => 'images/carriers/hero.png',
         ],
         'contact' => [
             'title' => 'Contact NACHO Vehicle Inspection',
