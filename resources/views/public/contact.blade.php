@@ -32,10 +32,11 @@
             ],
         ];
         $centerImages = [
-            'nacho-yaounde' => 'images/center-nacho-yaounde.png',
-            'nacho-nkwen-bamenda' => 'images/center-nacho-nkwen-bamenda.png',
-            'nacho-mankon-bamenda' => 'images/center-nacho-nacho-bamenda.png',
+            'nacho-yaounde' => 'images/contact/yaounde-1.png',
+            'nacho-nkwen-bamenda' => 'images/contact/nkwen-bamenda-1.png',
+            'nacho-mankon-bamenda' => 'images/contact/mankon-bamenda-1.png',
         ];
+        $centerHours = __('components.centers_locator.current_hours');
         $centers = collect($centerRecords ?? config('centers.centers', []));
         $headquarters = $headquarters ?? app(\App\Support\PublicSiteData::class)->headquarters();
         $operationalCenters = $centers->where('status', 'operational')->values();
@@ -45,7 +46,7 @@
             'nacho-kumba' => ['latitude' => 4.6363, 'longitude' => 9.4469],
         ];
         $mapCenters = $centers
-            ->map(function (array $center) use ($locale, $approximateCityCoordinates) {
+            ->map(function (array $center) use ($locale, $approximateCityCoordinates, $centerImages, $centerHours) {
                 $suffix = $locale === 'fr'
                     ? ($center['name_suffix_fr'] ?? '')
                     : ($center['name_suffix_en'] ?? '');
@@ -55,6 +56,9 @@
                 if ($latitude === null || $longitude === null) {
                     return null;
                 }
+
+                $imagePath = $centerImages[$center['slug']] ?? null;
+                $mapsQuery = trim($center['name'] . ' ' . ($center['city'] ?? '') . ' Cameroon');
 
                 return [
                     'slug' => $center['slug'],
@@ -70,6 +74,13 @@
                     'longitude' => $longitude,
                     'is_approximate' => empty($center['latitude']) || empty($center['longitude']),
                     'approximate_label' => __('contact.centers.map.approximate'),
+                    'hours' => $centerHours,
+                    'image_url' => $imagePath && file_exists(public_path($imagePath)) ? asset($imagePath) : null,
+                    'maps_url' => $center['maps_url']
+                        ?: 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode($mapsQuery),
+                    'book_url' => $center['status'] === 'operational'
+                        ? route('book-inspection', ['center' => $center['slug']])
+                        : null,
                 ];
             })
             ->filter()
@@ -78,7 +89,7 @@
 
     <section class="contact-hero" aria-labelledby="contact-hero-title">
         <img
-            src="{{ asset('images/hero-contacts.png') }}"
+            src="{{ asset('images/contact/hero.png') }}"
             alt=""
             class="contact-hero-image"
             loading="eager"
@@ -88,12 +99,12 @@
 
         <div class="contact-hero-inner">
             <div class="contact-hero-copy">
-                <div class="contact-hero-brand" aria-label="NACHO Vehicle Inspection">
+                <div class="contact-hero-brand" aria-label="NOVETESCO Vehicle Inspection">
                     <span class="contact-hero-brand-mark" aria-hidden="true">
                         <x-lucide-shield-check />
                     </span>
                     <span class="contact-hero-brand-copy">
-                        <span class="contact-hero-brand-name">NACHO</span>
+                        <span class="contact-hero-brand-name">NOVETESCO</span>
                         <span class="contact-hero-brand-subtitle">Vehicle Inspection</span>
                     </span>
                 </div>
@@ -141,18 +152,20 @@
                             $isHeadquarters = $center['slug'] === 'nacho-mankon-bamenda';
                             $imagePath = $centerImages[$center['slug']] ?? null;
                             $imageUrl = $imagePath && file_exists(public_path($imagePath)) ? asset($imagePath) : null;
-                            $hours = $locale === 'fr' ? ($center['hours_fr'] ?? null) : ($center['hours_en'] ?? null);
+                            $hours = $centerHours;
                             $phonesLine = implode(' / ', $center['phones'] ?? []);
                             $primaryPhone = $center['phones'][0] ?? null;
                             $phoneHref = $primaryPhone ? preg_replace('/[^\d+]/', '', $primaryPhone) : null;
-                            $centerTitle = $isHeadquarters
-                                ? $center['name'] . ' / ' . __('contact.centers.headquarters')
+                            $headquartersLabel = __('contact.centers.headquarters');
+                            $centerTitle = $isHeadquarters && ! str_contains($center['name'], $headquartersLabel)
+                                ? $center['name'] . ' / ' . $headquartersLabel
                                 : $center['name'];
                         @endphp
 
                         <article
                             id="{{ $isHeadquarters ? 'contact-headquarters' : 'contact-center-' . $center['slug'] }}"
                             class="contact-center-card"
+                            data-contact-center="{{ $center['slug'] }}"
                         >
                             <div class="contact-center-thumb">
                                 @if ($imageUrl)
@@ -210,7 +223,7 @@
 
                     <div class="contact-coming-list" aria-label="{{ __('contact.centers.coming_label') }}">
                         @foreach ($comingCenters as $center)
-                            <article class="contact-coming-card">
+                            <article class="contact-coming-card" data-contact-center="{{ $center['slug'] }}">
                                 <span class="contact-coming-icon" aria-hidden="true">
                                     <x-lucide-building-2 />
                                 </span>
@@ -220,6 +233,7 @@
                                 </span>
                                 <span class="contact-coming-phase">{{ __('contact.centers.expansion_phase') }}</span>
                                 <span class="contact-coming-date">{{ __('contact.centers.coming_before') }}</span>
+                                <span class="contact-coming-hours">{{ $centerHours }}</span>
                             </article>
                         @endforeach
                     </div>
@@ -233,9 +247,21 @@
                         aria-label="{{ __('contact.centers.map.label') }}"
                     ></div>
 
+                    <iframe
+                        id="contact-google-map"
+                        class="contact-google-map"
+                        title="{{ __('contact.centers.map.title') }}"
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        allowfullscreen
+                    ></iframe>
+
                     <div class="contact-centers-map-heading">
-                        <span>{{ __('contact.centers.map.title') }}</span>
-                        <x-lucide-layers aria-hidden="true" />
+                        <div class="contact-map-modes" role="group" aria-label="{{ __('contact.centers.map.label') }}">
+                            <button type="button" class="is-active" data-contact-map-mode="network">{{ __('contact.centers.map.network') }}</button>
+                            <button type="button" data-contact-map-mode="google">Google Maps</button>
+                        </div>
+                        <span class="contact-centers-map-title">{{ __('contact.centers.map.title') }}</span>
                     </div>
 
                     <p class="contact-map-loading" data-contact-map-loading>
@@ -246,7 +272,7 @@
         </div>
     </section>
 
-    <script type="application/json" id="contact-centers-map-data">{!! json_encode($mapCenters, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES) !!}</script>
+    <script type="application/json" id="contact-centers-map-data">{!! json_encode(['centers' => $mapCenters, 'labels' => ['book' => __('components.center.book_at_center'), 'directions' => __('components.centers_locator.view_google_maps'), 'streets' => __('contact.centers.map.streets'), 'satellite' => __('contact.centers.map.satellite')]], JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_AMP | JSON_HEX_QUOT | JSON_UNESCAPED_SLASHES) !!}</script>
 
     <section
         id="contact-form"

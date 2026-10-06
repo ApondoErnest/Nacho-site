@@ -42,7 +42,7 @@ class PublicBookingTest extends TestCase
 
         $booking = Booking::query()->sole();
 
-        $this->assertMatchesRegularExpression('/^NACHO-'.today()->addDays(2)->format('Ymd').'-\d{4}$/', $booking->booking_reference);
+        $this->assertMatchesRegularExpression('/^NOVETESCO-'.today()->addDays(2)->format('Ymd').'-\d{4}$/', $booking->booking_reference);
         $this->assertSame(BookingStatus::PENDING, $booking->status);
         $this->assertTrue($booking->center->is($center));
         $this->assertTrue($booking->service->is($service));

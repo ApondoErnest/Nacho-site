@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'meta_title' => 'Contact NACHO Vehicle Inspection',
+    'meta_title' => 'Contact NOVETESCO Vehicle Inspection',
 
     'hero' => [
-        'title' => 'Contact NACHO Vehicle Inspection',
+        'title' => 'Contact NOVETESCO Vehicle Inspection',
         'subtitle' => 'Reach our team, locate your nearest inspection center, or request assistance for your vehicle inspection appointment.',
         'actions_label' => 'Contact options',
         'actions' => [
@@ -22,34 +22,37 @@ return [
             ],
             'hq' => [
                 'title' => 'Administrative & HQ',
-                'text' => "Reach NACHO's main administrative office.",
+                'text' => "Reach NOVETESCO's main administrative office.",
             ],
         ],
     ],
 
     'feedback' => [
         'success_title' => 'Message sent',
-        'success_body' => 'Thank you. Your message has been received and will be reviewed by the NACHO team.',
+        'success_body' => 'Thank you. Your message has been received and will be reviewed by the NOVETESCO team.',
         'error_title' => 'Please review the contact form',
     ],
 
     'centers' => [
-        'title' => 'Find and Contact Your Nearest NACHO Center',
+        'title' => 'Find and Contact Your Nearest NOVETESCO Center',
         'headquarters' => 'Headquarters',
         'region' => 'Region',
         'call_center' => 'Call Center',
         'call_hub' => 'Call Hub',
         'maps' => 'View on Google Maps',
-        'hq_note' => "This location serves as both an operational inspection center and NACHO's main administrative headquarters.",
+        'hq_note' => "This location serves as both an operational inspection center and NOVETESCO's main administrative headquarters.",
         'coming_label' => 'Centers in expansion phase',
         'expansion_phase' => 'Expansion Phase',
         'coming_before' => 'Coming before November 2026',
         'map' => [
             'label' => 'Center map',
             'title' => 'Interactive Center Map',
-            'hq_label' => 'Nacho-Bamenda / HQ',
+            'hq_label' => 'Mankon-Bamenda / HQ',
             'loading' => 'Loading interactive map...',
             'approximate' => 'Approximate city marker',
+            'streets' => 'Map',
+            'satellite' => 'Satellite',
+            'network' => 'All centers',
         ],
     ],
 
@@ -81,13 +84,13 @@ return [
             'Corporate Partnership',
             'Careers',
         ],
-        'consent' => 'I agree that NACHO may use the information provided to respond to my request.',
+        'consent' => 'I agree that NOVETESCO may use the information provided to respond to my request.',
         'submit' => 'Send Message',
     ],
 
     'validation' => [
-        'center_unavailable' => 'Please choose an operational NACHO center.',
-        'reason_unavailable' => 'Please choose a valid reason for contacting NACHO.',
+        'center_unavailable' => 'Please choose an operational NOVETESCO center.',
+        'reason_unavailable' => 'Please choose a valid reason for contacting NOVETESCO.',
         'consent_accepted' => 'Please accept the contact consent statement before submitting.',
         'phone' => 'Please enter a valid phone number.',
     ],
@@ -110,7 +113,7 @@ return [
             [
                 'icon' => 'user-round',
                 'title' => 'Expert Review',
-                'text' => 'A NACHO staff member reviews your request and checks the required details.',
+                'text' => 'A NOVETESCO staff member reviews your request and checks the required details.',
             ],
             [
                 'icon' => 'mail',
@@ -137,7 +140,7 @@ return [
                 'answer' => 'Yes. Each operational center has a “View on Google Maps” button.',
             ],
             [
-                'question' => 'What information should I provide when contacting NACHO?',
+                'question' => 'What information should I provide when contacting NOVETESCO?',
                 'answer' => 'Your name, phone number, preferred center, and the reason for your request are enough.',
             ],
             [

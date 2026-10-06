@@ -84,7 +84,7 @@ return [
             'label' => 'Additional Information',
             'placeholder' => 'Any details we should know?',
         ],
-        'consent' => 'I agree that NACHO may use the information provided to process and respond to my booking request.',
+        'consent' => 'I agree that NOVETESCO may use the information provided to process and respond to my booking request.',
         'submit' => 'Submit Inspection Request',
         'payment_note' => 'No online payment is required at this stage.',
     ],
@@ -130,7 +130,7 @@ return [
     ],
 
     'benefits' => [
-        'title' => 'Why Book With NACHO?',
+        'title' => 'Why Book With NOVETESCO?',
         'items' => [
             'professional' => 'Professional Inspection Services',
             'assessment' => 'Accurate & Fair Assessment',

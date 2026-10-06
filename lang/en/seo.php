@@ -41,7 +41,7 @@ return [
         ],
         'book_inspection' => [
             'title' => 'Book a Vehicle Inspection',
-            'description' => 'Request a vehicle technical inspection appointment at a NACHO center and choose your preferred center, vehicle category, date, and service.',
+            'description' => 'Request a vehicle technical inspection appointment at a NOVETESCO center and choose your preferred center, vehicle category, date, and service.',
             'image' => 'images/hero-inspection-bay-2.png',
         ],
         'tariffs' => [
@@ -70,9 +70,9 @@ return [
             'image' => 'images/carriers/hero.png',
         ],
         'contact' => [
-            'title' => 'Contact NACHO Vehicle Inspection',
-            'description' => 'Contact NACHO headquarters or an inspection center for booking support, inspection questions, center information, and customer assistance.',
-            'image' => 'images/hero-contacts.png',
+            'title' => 'Contact NOVETESCO Vehicle Inspection',
+            'description' => 'Contact NOVETESCO headquarters or an inspection center for booking support, inspection questions, center information, and customer assistance.',
+            'image' => 'images/contact/hero.png',
         ],
         'privacy' => [
             'title' => 'Privacy Policy',

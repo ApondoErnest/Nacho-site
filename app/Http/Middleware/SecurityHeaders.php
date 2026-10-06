@@ -50,6 +50,7 @@ class SecurityHeaders
             "font-src 'self' data: https://fonts.bunny.net",
             "form-action 'self'",
             "frame-ancestors 'self'",
+            "frame-src 'self' https://www.google.com https://maps.google.com https://www.google.com/maps/",
             "img-src 'self' data: https:",
             "object-src 'none'",
             "script-src 'self' 'unsafe-inline' 'unsafe-eval' http://localhost:* http://127.0.0.1:* http://[::1]:*",

@@ -16,7 +16,7 @@ class BookingReferenceService
             : ($date ? Carbon::parse($date) : today());
 
         for ($attempt = 0; $attempt < 20; $attempt++) {
-            $reference = sprintf('NACHO-%s-%04d', $date->format('Ymd'), random_int(0, 9999));
+            $reference = sprintf('NOVETESCO-%s-%04d', $date->format('Ymd'), random_int(0, 9999));
 
             if (! Booking::query()->where('booking_reference', $reference)->exists()) {
                 return $reference;

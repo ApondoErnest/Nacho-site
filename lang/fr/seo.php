@@ -41,7 +41,7 @@ return [
         ],
         'book_inspection' => [
             'title' => 'Réserver une visite technique',
-            'description' => 'Demandez un rendez-vous de contrôle technique NACHO en choisissant votre centre, catégorie de véhicule, date et service.',
+            'description' => 'Demandez un rendez-vous de contrôle technique NOVETESCO en choisissant votre centre, catégorie de véhicule, date et service.',
             'image' => 'images/hero-inspection-bay-2.png',
         ],
         'tariffs' => [
@@ -70,9 +70,9 @@ return [
             'image' => 'images/carriers/hero.png',
         ],
         'contact' => [
-            'title' => 'Contacter NACHO Vehicle Inspection',
-            'description' => 'Contactez le siège ou un centre NACHO pour une réservation, une question d’inspection, une information de centre ou une assistance client.',
-            'image' => 'images/hero-contacts.png',
+            'title' => 'Contacter NOVETESCO Vehicle Inspection',
+            'description' => 'Contactez le siège ou un centre NOVETESCO pour une réservation, une question d’inspection, une information de centre ou une assistance client.',
+            'image' => 'images/contact/hero.png',
         ],
         'privacy' => [
             'title' => 'Politique de confidentialité',

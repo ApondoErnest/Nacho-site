@@ -75,18 +75,23 @@ const createMapMarkerIcon = (L, center, classPrefix, selected = false) => {
 const initContactCentersMap = async () => {
     const mapElement = document.getElementById('contact-centers-map');
     const dataElement = document.getElementById('contact-centers-map-data');
+    const panel = mapElement?.closest('.contact-centers-map-panel');
+    const googleFrame = document.getElementById('contact-google-map');
 
-    if (!mapElement || !dataElement || mapElement.dataset.initialized === 'true') {
+    if (!mapElement || !dataElement || !panel || mapElement.dataset.initialized === 'true') {
         return;
     }
 
-    let centers = [];
+    let payload = {};
 
     try {
-        centers = JSON.parse(dataElement.textContent || '[]');
+        payload = JSON.parse(dataElement.textContent || '{}');
     } catch {
-        centers = [];
+        payload = {};
     }
+
+    const labels = Array.isArray(payload) ? {} : (payload.labels ?? {});
+    let centers = Array.isArray(payload) ? payload : (payload.centers ?? []);
 
     centers = centers.filter((center) => Number.isFinite(Number(center.latitude)) && Number.isFinite(Number(center.longitude)));
 
@@ -97,78 +102,239 @@ const initContactCentersMap = async () => {
     mapElement.dataset.initialized = 'true';
 
     const loadingElement = document.querySelector('[data-contact-map-loading]');
+    const cards = Array.from(document.querySelectorAll('[data-contact-center]'));
+    const modeButtons = Array.from(panel.querySelectorAll('[data-contact-map-mode]'));
 
     try {
         const L = await loadLeaflet();
         const map = L.map(mapElement, {
-            scrollWheelZoom: false,
-            zoomControl: true,
+            scrollWheelZoom: true,
+            zoomControl: false,
+            zoomSnap: 0.25,
+            wheelPxPerZoomLevel: 70,
+            minZoom: 6,
         });
 
-        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            attribution: '&copy; OpenStreetMap contributors',
-            maxZoom: 18,
+        L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+        const streets = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap',
+            maxZoom: 19,
+        });
+        const satellite = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri',
+            maxZoom: 19,
+        });
+
+        streets.addTo(map);
+        L.control.layers({
+            [labels.streets || 'Map']: streets,
+            [labels.satellite || 'Satellite']: satellite,
+        }, null, {
+            collapsed: false,
+            position: 'bottomleft',
         }).addTo(map);
 
+        const markers = {};
         const bounds = L.latLngBounds([]);
+        let selectedSlug = centers.find((center) => center.status === 'operational')?.slug ?? centers[0].slug;
+        let mapMode = 'network';
+        let googleSlug = null;
+
+        const updateModeButtons = () => {
+            modeButtons.forEach((button) => {
+                button.classList.toggle('is-active', button.dataset.contactMapMode === mapMode);
+            });
+        };
+
+        const setSelected = (slug) => {
+            selectedSlug = slug;
+
+            cards.forEach((card) => {
+                card.classList.toggle('is-selected', card.dataset.contactCenter === slug);
+            });
+
+            centers.forEach((center) => {
+                const marker = markers[center.slug];
+
+                if (marker) {
+                    marker.setIcon(createMapMarkerIcon(L, center, 'contact-leaflet', center.slug === slug));
+                    marker.setZIndexOffset(center.slug === slug ? 700 : 0);
+                }
+            });
+        };
+
+        const googleSrc = (center) => {
+            const language = document.documentElement.lang || 'fr';
+
+            return `https://maps.google.com/maps?q=${Number(center.latitude)},${Number(center.longitude)}&z=16&hl=${encodeURIComponent(language)}&output=embed`;
+        };
+
+        const showGoogle = (slug) => {
+            const center = centers.find((item) => item.slug === slug) ?? centers[0];
+
+            if (!center || !googleFrame) {
+                return;
+            }
+
+            mapMode = 'google';
+            panel.classList.add('is-google');
+            setSelected(center.slug);
+            updateModeButtons();
+
+            if (googleSlug !== center.slug) {
+                loadingElement?.classList.remove('is-hidden');
+                googleFrame.src = googleSrc(center);
+                googleSlug = center.slug;
+                window.setTimeout(() => {
+                    if (mapMode === 'google') {
+                        loadingElement?.classList.add('is-hidden');
+                    }
+                }, 1200);
+            }
+        };
+
+        const showNetwork = () => {
+            mapMode = 'network';
+            panel.classList.remove('is-google');
+            updateModeButtons();
+            loadingElement?.classList.add('is-hidden');
+
+            window.setTimeout(() => map.invalidateSize(), 60);
+        };
+
+        const focusCenter = (slug, openPopup = true) => {
+            const marker = markers[slug];
+
+            if (!marker) {
+                return;
+            }
+
+            if (mapMode === 'google') {
+                showGoogle(slug);
+
+                return;
+            }
+
+            setSelected(slug);
+
+            const targetZoom = Math.max(map.getZoom(), 14);
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            if (reduceMotion) {
+                map.setView(marker.getLatLng(), targetZoom, { animate: false });
+            } else {
+                map.flyTo(marker.getLatLng(), targetZoom, { duration: 0.8 });
+            }
+
+            if (openPopup) {
+                window.setTimeout(() => marker.openPopup(), reduceMotion ? 0 : 380);
+            }
+        };
+
+        const popupHtml = (center) => {
+            const image = center.image_url
+                ? `<img src="${escapeHtml(center.image_url)}" alt="" />`
+                : '';
+            const hours = center.hours ? `<span>${escapeHtml(center.hours)}</span>` : '';
+            const approximate = center.is_approximate && center.approximate_label
+                ? `<span>${escapeHtml(center.approximate_label)}</span>`
+                : '';
+            const actions = [
+                center.book_url
+                    ? `<a class="is-primary" href="${escapeHtml(center.book_url)}">${escapeHtml(labels.book || 'Book')}</a>`
+                    : '',
+                `<button type="button" data-contact-open-google="${escapeHtml(center.slug)}">${escapeHtml(labels.directions || 'Google Maps')}</button>`,
+            ].join('');
+
+            return `
+                <div class="contact-map-popup">
+                    ${image}
+                    <strong>${escapeHtml(center.name)}</strong>
+                    <span>${escapeHtml(center.address || '')}</span>
+                    <span>${escapeHtml([center.city, center.region].filter(Boolean).join(', '))}</span>
+                    ${hours}
+                    <span class="contact-map-popup-status">${escapeHtml(center.status_label || '')}</span>
+                    ${approximate}
+                    <div class="contact-map-popup-actions">${actions}</div>
+                </div>
+            `;
+        };
 
         centers.forEach((center) => {
             const latitude = Number(center.latitude);
             const longitude = Number(center.longitude);
-            const isOperational = center.status === 'operational';
-            const statusClass = isOperational ? 'operational' : 'coming';
-            const popupRows = [
-                center.address,
-                [center.city, center.region].filter(Boolean).join(', '),
-                center.status_label,
-                center.is_approximate ? center.approximate_label : null,
-            ].filter(Boolean);
-            const tooltipPlacement = {
-                'nacho-nkwen-bamenda': { direction: 'top', offset: [0, -48] },
-                'nacho-mankon-bamenda': { direction: 'right', offset: [14, -28] },
-            }[center.slug] ?? { direction: 'right', offset: [14, -28] };
-
-            L.marker([latitude, longitude], {
-                icon: createMapMarkerIcon(L, center, 'contact-leaflet'),
+            const marker = L.marker([latitude, longitude], {
+                icon: createMapMarkerIcon(L, center, 'contact-leaflet', center.slug === selectedSlug),
                 title: center.name,
-            })
-                .addTo(map)
-                .bindPopup(`
-                    <div class="contact-map-popup">
-                        <strong>${escapeHtml(center.name)}</strong>
-                        ${popupRows.map((row, index) => `<span class="${index === 2 ? 'contact-map-popup-status' : ''}">${escapeHtml(row)}</span>`).join('')}
-                    </div>
-                `)
-                .bindTooltip(escapeHtml(center.name), {
-                    className: `contact-leaflet-tooltip contact-leaflet-tooltip--${statusClass}`,
-                    permanent: true,
-                    ...tooltipPlacement,
-                });
+                riseOnHover: true,
+            });
 
+            marker
+                .addTo(map)
+                .bindPopup(popupHtml(center), {
+                    autoPanPadding: [28, 28],
+                    className: 'contact-map-popup-wrap',
+                    maxWidth: 280,
+                    minWidth: 230,
+                })
+                .on('click', () => focusCenter(center.slug, false));
+
+            markers[center.slug] = marker;
             bounds.extend([latitude, longitude]);
+        });
+
+        mapElement.addEventListener('click', (event) => {
+            const button = event.target.closest('[data-contact-open-google]');
+
+            if (!button) {
+                return;
+            }
+
+            event.preventDefault();
+            showGoogle(button.dataset.contactOpenGoogle);
+        });
+
+        cards.forEach((card) => {
+            card.addEventListener('click', (event) => {
+                if (event.target.closest('a, button, input, select, textarea')) {
+                    return;
+                }
+
+                focusCenter(card.dataset.contactCenter);
+            });
+        });
+
+        modeButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                if (button.dataset.contactMapMode === 'google') {
+                    showGoogle(selectedSlug);
+
+                    return;
+                }
+
+                showNetwork();
+            });
         });
 
         if (bounds.isValid()) {
             map.fitBounds(bounds, {
                 maxZoom: 8,
-                paddingBottomRight: [44, 44],
-                paddingTopLeft: [44, 104],
+                paddingBottomRight: [36, 64],
+                paddingTopLeft: [24, 72],
             });
         }
 
+        setSelected(selectedSlug);
         loadingElement?.classList.add('is-hidden');
 
-        window.setTimeout(() => {
-            map.invalidateSize();
-
-            if (bounds.isValid()) {
-                map.fitBounds(bounds, {
-                    maxZoom: 8,
-                    paddingBottomRight: [44, 44],
-                    paddingTopLeft: [44, 104],
-                });
+        googleFrame?.addEventListener('load', () => {
+            if (mapMode === 'google') {
+                loadingElement?.classList.add('is-hidden');
             }
-        }, 200);
+        });
+
+        window.setTimeout(() => map.invalidateSize(), 200);
     } catch {
         if (loadingElement) {
             loadingElement.textContent = 'Map could not load.';

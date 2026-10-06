@@ -17,7 +17,7 @@ class BookingFactory extends Factory
     public function definition(): array
     {
         return [
-            'booking_reference' => 'NACHO-'.now()->format('Ymd').'-'.fake()->unique()->numerify('####'),
+            'booking_reference' => 'NOVETESCO-'.now()->format('Ymd').'-'.fake()->unique()->numerify('####'),
             'full_name' => fake()->name(),
             'phone' => fake()->phoneNumber(),
             'email' => fake()->safeEmail(),

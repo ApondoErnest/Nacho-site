@@ -84,7 +84,7 @@ return [
             'label' => 'Informations complémentaires',
             'placeholder' => 'Un détail à nous signaler ?',
         ],
-        'consent' => 'J’accepte que NACHO utilise les informations fournies pour traiter et répondre à ma demande de réservation.',
+        'consent' => 'J’accepte que NOVETESCO utilise les informations fournies pour traiter et répondre à ma demande de réservation.',
         'submit' => 'Envoyer la demande d’inspection',
         'payment_note' => 'Aucun paiement en ligne n’est requis à cette étape.',
     ],
@@ -130,7 +130,7 @@ return [
     ],
 
     'benefits' => [
-        'title' => 'Pourquoi réserver avec NACHO ?',
+        'title' => 'Pourquoi réserver avec NOVETESCO ?',
         'items' => [
             'professional' => 'Services d’inspection professionnels',
             'assessment' => 'Évaluation précise & équitable',

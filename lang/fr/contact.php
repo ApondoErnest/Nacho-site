@@ -1,10 +1,10 @@
 <?php
 
 return [
-    'meta_title' => 'Contacter NACHO Vehicle Inspection',
+    'meta_title' => 'Contacter NOVETESCO Vehicle Inspection',
 
     'hero' => [
-        'title' => 'Contacter NACHO Vehicle Inspection',
+        'title' => 'Contacter NOVETESCO Vehicle Inspection',
         'subtitle' => 'Joignez notre équipe, trouvez le centre d\'inspection le plus proche ou demandez de l\'aide pour votre rendez-vous.',
         'actions_label' => 'Options de contact',
         'actions' => [
@@ -22,34 +22,37 @@ return [
             ],
             'hq' => [
                 'title' => 'Administration & siège',
-                'text' => 'Contactez le bureau administratif principal de NACHO.',
+                'text' => 'Contactez le bureau administratif principal de NOVETESCO.',
             ],
         ],
     ],
 
     'feedback' => [
         'success_title' => 'Message envoyé',
-        'success_body' => 'Merci. Votre message a été reçu et sera examiné par l’équipe NACHO.',
+        'success_body' => 'Merci. Votre message a été reçu et sera examiné par l’équipe NOVETESCO.',
         'error_title' => 'Veuillez vérifier le formulaire de contact',
     ],
 
     'centers' => [
-        'title' => 'Trouvez et contactez le centre NACHO le plus proche',
+        'title' => 'Trouvez et contactez le centre NOVETESCO le plus proche',
         'headquarters' => 'Siège',
         'region' => 'Région',
         'call_center' => 'Appeler le centre',
         'call_hub' => 'Appeler le siège',
         'maps' => 'Voir sur Google Maps',
-        'hq_note' => 'Ce site sert à la fois de centre d\'inspection opérationnel et de siège administratif principal de NACHO.',
+        'hq_note' => 'Ce site sert à la fois de centre d\'inspection opérationnel et de siège administratif principal de NOVETESCO.',
         'coming_label' => 'Centres en phase d\'extension',
         'expansion_phase' => 'Phase d\'extension',
         'coming_before' => 'Ouverture avant novembre 2026',
         'map' => [
             'label' => 'Carte des centres',
             'title' => 'Carte interactive des centres',
-            'hq_label' => 'Nacho-Bamenda / Siège',
+            'hq_label' => 'Mankon-Bamenda / Siège',
             'loading' => 'Chargement de la carte interactive...',
             'approximate' => 'Repère approximatif de la ville',
+            'streets' => 'Carte',
+            'satellite' => 'Satellite',
+            'network' => 'Tous les centres',
         ],
     ],
 
@@ -81,12 +84,12 @@ return [
             'Partenariat d’entreprise',
             'Carrières',
         ],
-        'consent' => 'J’accepte que NACHO utilise les informations fournies pour répondre à ma demande.',
+        'consent' => 'J’accepte que NOVETESCO utilise les informations fournies pour répondre à ma demande.',
         'submit' => 'Envoyer le message',
     ],
 
     'validation' => [
-        'center_unavailable' => 'Veuillez choisir un centre NACHO opérationnel.',
+        'center_unavailable' => 'Veuillez choisir un centre NOVETESCO opérationnel.',
         'reason_unavailable' => 'Veuillez choisir un motif de contact valide.',
         'consent_accepted' => 'Veuillez accepter le consentement de contact avant l’envoi.',
         'phone' => 'Veuillez saisir un numéro de téléphone valide.',
@@ -110,7 +113,7 @@ return [
             [
                 'icon' => 'user-round',
                 'title' => 'Examen par un expert',
-                'text' => 'Un membre de l’équipe NACHO examine votre demande et vérifie les détails requis.',
+                'text' => 'Un membre de l’équipe NOVETESCO examine votre demande et vérifie les détails requis.',
             ],
             [
                 'icon' => 'mail',
@@ -137,7 +140,7 @@ return [
                 'answer' => 'Oui. Chaque centre opérationnel dispose d’un bouton « Voir sur Google Maps ».',
             ],
             [
-                'question' => 'Quelles informations dois-je fournir en contactant NACHO ?',
+                'question' => 'Quelles informations dois-je fournir en contactant NOVETESCO ?',
                 'answer' => 'Votre nom, votre numéro de téléphone, le centre souhaité et le motif de votre demande suffisent.',
             ],
             [
