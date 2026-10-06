@@ -7,7 +7,7 @@ return [
         'eyebrow' => 'How Your Inspection Works',
         'title_line_1' => 'A Clear, Professional',
         'title_line_2' => 'Vehicle Inspection Journey',
-        'subtitle' => 'From booking and check-in to technical testing, reporting, and certification, NACHO guides every customer through a structured and transparent inspection process.',
+        'subtitle' => 'From booking and check-in to technical testing, reporting, and certification, NOVETESCO guides every customer through a structured and transparent inspection process.',
         'proof_label' => 'Inspection process strengths',
         'proof' => [
             [
@@ -39,7 +39,7 @@ return [
                 'number' => 1,
                 'icon' => 'calendar-days',
                 'title' => 'Book Your Inspection',
-                'description' => 'Select your inspection service, preferred NACHO center, date, and available visit time.',
+                'description' => 'Select your inspection service, preferred NOVETESCO center, date, and available visit time.',
             ],
             [
                 'key' => 'checkin',
@@ -76,7 +76,7 @@ return [
             'button' => 'Book Visit',
             'fields' => [
                 ['type' => 'select', 'label' => 'Service', 'value' => 'Vehicle Inspection'],
-                ['type' => 'select', 'label' => 'Center', 'value' => 'NACHO Mankon, Bamenda'],
+                ['type' => 'select', 'label' => 'Center', 'value' => 'NOVETESCO Mankon, Bamenda'],
                 ['type' => 'date', 'label' => 'Preferred Date', 'value' => 'June 24, 2026'],
             ],
             'receives_title' => 'You will receive:',
@@ -284,7 +284,7 @@ return [
         'vehicle_title' => 'Quick Vehicle Self-Check',
         'administrative_items' => [
             'Confirm your booking information',
-            'Confirm your selected NACHO center',
+            'Confirm your selected NOVETESCO center',
             'Bring the required registration and identification documents',
             'Remove unnecessary personal items from the vehicle',
             'Arrive within the recommended check-in period',

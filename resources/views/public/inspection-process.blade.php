@@ -9,7 +9,7 @@
 
     <section class="inspection-process-hero" aria-labelledby="inspection-process-hero-title">
         <img
-            src="{{ asset('images/hero-inspection-process.png') }}"
+            src="{{ asset('images/inspection-process/hero.png') }}"
             alt=""
             class="inspection-process-hero-image"
             loading="eager"
@@ -46,7 +46,7 @@
         </div>
     </section>
 
-    <div class="nacho-container nacho-section space-y-12">
+    <div class="nacho-container nacho-section space-y-8 sm:space-y-10 xl:space-y-12">
         <x-public.inspection-journey />
         <x-public.inspection-preparation />
     </div>

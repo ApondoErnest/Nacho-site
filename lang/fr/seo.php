@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'site_name' => 'NACHO Vehicle Inspection',
+    'site_name' => 'NOVETESCO Vehicle Inspection',
     'default_image' => 'images/hero-inspection-bay-1.png',
 
     'organization' => [
-        'name' => 'NACHO Vehicle Inspection',
+        'name' => 'NOVETESCO Vehicle Inspection',
         'area_served' => 'Cameroun',
     ],
 
@@ -15,7 +15,7 @@ return [
 
     'pages' => [
         'default' => [
-            'title' => 'NACHO Vehicle Inspection',
+            'title' => 'NOVETESCO Vehicle Inspection',
             'description' => 'NACHO propose des services professionnels de contrôle technique automobile pour des routes plus sûres et conformes au Cameroun.',
             'image' => 'images/hero-inspection-bay-1.png',
         ],
@@ -50,9 +50,9 @@ return [
             'image' => 'images/tariffs/hero.png',
         ],
         'inspection_process' => [
-            'title' => 'Processus de contrôle technique automobile',
-            'description' => 'Comprenez le parcours NACHO : réservation, vérification des documents, tests machine, contrôle visuel, validation du résultat et rapport.',
-            'image' => 'images/hero-inspection-process.png',
+            'title' => 'Processus de contrôle technique NOVETESCO',
+            'description' => 'Comprenez le parcours NOVETESCO : réservation, vérification des documents, tests machine, contrôle visuel, validation du résultat et rapport.',
+            'image' => 'images/inspection-process/hero.png',
         ],
         'blog' => [
             'title' => 'Blog sécurité routière',

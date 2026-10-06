@@ -22,7 +22,7 @@ class SeoTest extends TestCase
     {
         $this->get(route('home'))
             ->assertOk()
-            ->assertSee('<title>Contrôle technique automobile professionnel au Cameroun | NACHO Vehicle Inspection</title>', false)
+            ->assertSee('<title>Contrôle technique automobile professionnel au Cameroun | NOVETESCO Vehicle Inspection</title>', false)
             ->assertSee('<meta name="description" content="Réservez votre visite technique avec NACHO', false)
             ->assertSee('<link rel="canonical" href="'.route('home').'">', false)
             ->assertSee('<meta property="og:locale" content="fr_CM">', false)
@@ -49,13 +49,13 @@ class SeoTest extends TestCase
 
         $this->get(route('legal.privacy'))
             ->assertOk()
-            ->assertSee('<title>Confidentialite SEO | NACHO Vehicle Inspection</title>', false)
+            ->assertSee('<title>Confidentialite SEO | NOVETESCO Vehicle Inspection</title>', false)
             ->assertSee('<meta name="description" content="Description SEO confidentialite.">', false);
 
         $this->withSession(['locale' => 'en'])
             ->get(route('legal.privacy'))
             ->assertOk()
-            ->assertSee('<title>Database Privacy SEO | NACHO Vehicle Inspection</title>', false)
+            ->assertSee('<title>Database Privacy SEO | NOVETESCO Vehicle Inspection</title>', false)
             ->assertSee('<meta name="description" content="English privacy SEO description.">', false);
     }
 

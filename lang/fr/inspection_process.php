@@ -7,7 +7,7 @@ return [
         'eyebrow' => 'Comment fonctionne votre inspection',
         'title_line_1' => 'Un parcours d\'inspection',
         'title_line_2' => 'clair et professionnel',
-        'subtitle' => 'De la réservation et l\'accueil aux tests techniques, au rapport et à la certification, NACHO accompagne chaque client dans un processus structuré et transparent.',
+        'subtitle' => 'De la réservation et l\'accueil aux tests techniques, au rapport et à la certification, NOVETESCO accompagne chaque client dans un processus structuré et transparent.',
         'proof_label' => 'Points forts du processus d\'inspection',
         'proof' => [
             [
@@ -39,7 +39,7 @@ return [
                 'number' => 1,
                 'icon' => 'calendar-days',
                 'title' => 'Réserver votre inspection',
-                'description' => 'Sélectionnez le service d\'inspection, le centre NACHO souhaité, la date et l\'heure de visite disponible.',
+                'description' => 'Sélectionnez le service d\'inspection, le centre NOVETESCO souhaité, la date et l\'heure de visite disponible.',
             ],
             [
                 'key' => 'checkin',
@@ -76,7 +76,7 @@ return [
             'button' => 'Réserver la visite',
             'fields' => [
                 ['type' => 'select', 'label' => 'Service', 'value' => 'Inspection véhicule'],
-                ['type' => 'select', 'label' => 'Centre', 'value' => 'NACHO Mankon, Bamenda'],
+                ['type' => 'select', 'label' => 'Centre', 'value' => 'NOVETESCO Mankon, Bamenda'],
                 ['type' => 'date', 'label' => 'Date souhaitée', 'value' => '24 juin 2026'],
             ],
             'receives_title' => 'Vous recevrez :',
@@ -284,7 +284,7 @@ return [
         'vehicle_title' => 'Auto-vérification rapide du véhicule',
         'administrative_items' => [
             'Confirmez les informations de votre réservation',
-            'Confirmez le centre NACHO sélectionné',
+            'Confirmez le centre NOVETESCO sélectionné',
             'Apportez les documents d\'immatriculation et d\'identification requis',
             'Retirez les objets personnels inutiles du véhicule',
             'Arrivez dans la période d\'accueil recommandée',
