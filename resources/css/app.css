@@ -3599,13 +3599,12 @@
     }
 
     .tariffs-hero {
-        @apply relative isolate overflow-hidden bg-white text-[#071016];
-        min-height: 35.5rem;
+        @apply relative isolate overflow-hidden bg-white text-[#071016] xl:min-h-[35.5rem];
     }
 
     .tariffs-hero-image {
         @apply absolute inset-y-0 right-0 -z-20 h-full w-full object-cover;
-        object-position: 64% center;
+        object-position: 72% center;
     }
 
     .tariffs-hero-overlay {
@@ -3616,8 +3615,7 @@
     }
 
     .tariffs-hero-inner {
-        @apply mx-auto flex w-full items-center px-4 py-10 sm:px-6 lg:px-8;
-        min-height: 35.5rem;
+        @apply mx-auto flex w-full items-center px-4 py-6 sm:px-6 sm:py-7 xl:min-h-[35.5rem] xl:px-8 xl:py-10;
         max-width: min(calc(100vw - 2rem), 120rem);
     }
 
@@ -3626,62 +3624,62 @@
     }
 
     .tariffs-hero-eyebrow {
-        @apply text-sm font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-base lg:text-lg;
+        @apply text-xs font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-sm xl:text-lg;
         letter-spacing: 0;
     }
 
     .tariffs-hero-title {
-        @apply mt-4 max-w-[43rem] text-[2.35rem] font-extrabold leading-[1.08] tracking-normal text-[#071016] sm:text-[2.9rem] lg:text-[3.15rem];
+        @apply mt-2 max-w-[43rem] text-[1.75rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:mt-3 sm:text-[2.15rem] xl:mt-4 xl:text-[3.15rem] xl:leading-[1.08];
         letter-spacing: 0;
     }
 
     .tariffs-hero-text {
-        @apply mt-4 max-w-[48rem] text-base font-semibold leading-7 tracking-normal text-[#071016]/80 sm:text-xl sm:leading-8;
+        @apply mt-2 max-w-[48rem] text-sm font-semibold leading-6 tracking-normal text-[#071016]/80 sm:mt-3 sm:text-base sm:leading-7 xl:mt-4 xl:text-xl xl:leading-8;
         letter-spacing: 0;
     }
 
     .tariffs-hero-proof {
-        @apply mt-6 grid max-w-[47rem] grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5;
+        @apply mt-4 grid max-w-[47rem] grid-cols-1 gap-2 sm:mt-5 sm:grid-cols-3 sm:gap-3 xl:mt-6 xl:gap-5;
     }
 
     .tariffs-hero-proof-item {
-        @apply flex min-h-[4.15rem] min-w-0 items-center gap-3 text-sm font-extrabold leading-tight tracking-normal text-[#071016] sm:text-base;
+        @apply flex min-h-0 min-w-0 items-center gap-2 text-xs font-extrabold leading-tight tracking-normal text-[#071016] sm:min-h-[3.25rem] sm:gap-2.5 sm:text-sm xl:min-h-[4.15rem] xl:gap-3 xl:text-base;
         letter-spacing: 0;
     }
 
     .tariffs-hero-proof-icon {
-        @apply flex h-12 w-12 shrink-0 items-center justify-center text-[#f15a24];
+        @apply flex h-8 w-8 shrink-0 items-center justify-center text-[#f15a24] sm:h-10 sm:w-10 xl:h-12 xl:w-12;
     }
 
     .tariffs-hero-proof-icon svg {
-        @apply h-10 w-10 stroke-[2.05];
+        @apply h-6 w-6 stroke-[2.05] sm:h-8 sm:w-8 xl:h-10 xl:w-10;
     }
 
     .tariffs-hero-notice {
-        @apply mt-4 grid max-w-[54rem] grid-cols-[2.75rem_minmax(0,1fr)] gap-4 rounded-lg border border-[#f15a24]/15 px-5 py-4 shadow-[0_14px_38px_-31px_rgba(181,71,31,0.85)] backdrop-blur-sm sm:px-6;
+        @apply mt-3 grid max-w-[54rem] grid-cols-[2.25rem_minmax(0,1fr)] gap-2.5 rounded-lg border border-[#f15a24]/15 px-3.5 py-3 shadow-[0_14px_38px_-31px_rgba(181,71,31,0.85)] backdrop-blur-sm sm:mt-4 sm:gap-3 sm:px-4 sm:py-3.5 xl:grid-cols-[2.75rem_minmax(0,1fr)] xl:gap-4 xl:px-6 xl:py-4;
         background-color: rgba(255, 250, 241, 0.86);
     }
 
     .tariffs-hero-notice-icon {
-        @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-[#f15a24] text-[#f15a24];
+        @apply flex h-8 w-8 shrink-0 items-center justify-center rounded-full border-2 border-[#f15a24] text-[#f15a24] sm:h-9 sm:w-9 xl:h-10 xl:w-10;
     }
 
     .tariffs-hero-notice-icon svg {
-        @apply h-5 w-5 stroke-[2.6];
+        @apply h-4 w-4 stroke-[2.6] xl:h-5 xl:w-5;
     }
 
     .tariffs-hero-notice-copy h2 {
-        @apply text-base font-extrabold leading-tight tracking-normal text-[#f15a24] sm:text-lg;
+        @apply text-sm font-extrabold leading-tight tracking-normal text-[#f15a24] sm:text-base xl:text-lg;
         letter-spacing: 0;
     }
 
     .tariffs-hero-notice-copy p {
-        @apply mt-2 max-w-[44rem] text-sm font-semibold leading-7 tracking-normal text-[#071016]/80 sm:text-base;
+        @apply mt-1 max-w-[44rem] text-xs font-semibold leading-5 tracking-normal text-[#071016]/80 sm:mt-1.5 sm:text-sm sm:leading-6 xl:mt-2 xl:text-base xl:leading-7;
         letter-spacing: 0;
     }
 
     .tariffs-hero-meta {
-        @apply mt-3 flex max-w-[54rem] flex-col gap-3 text-sm font-extrabold leading-tight tracking-normal text-[#071016] sm:flex-row sm:flex-wrap sm:items-center sm:gap-5 sm:text-base;
+        @apply mt-2.5 flex max-w-[54rem] flex-col gap-2 text-xs font-extrabold leading-tight tracking-normal text-[#071016] sm:mt-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-3 sm:text-sm xl:gap-5 xl:text-base;
         letter-spacing: 0;
     }
 
@@ -3699,7 +3697,7 @@
     }
 
     .tariffs-hero-notice-link {
-        @apply inline-flex min-h-[2.75rem] items-center gap-3 rounded-md text-[#f15a24] transition-colors hover:text-nacho-primary-dark sm:ml-auto;
+        @apply inline-flex min-h-[2.25rem] items-center gap-2 rounded-md text-sm text-[#f15a24] transition-colors hover:text-nacho-primary-dark sm:ml-auto xl:min-h-[2.75rem] xl:gap-3 xl:text-base;
     }
 
     .tariffs-hero-notice-link svg {
@@ -3723,15 +3721,6 @@
     }
 
     @media (max-width: 767px) {
-        .tariffs-hero,
-        .tariffs-hero-inner {
-            min-height: 0;
-        }
-
-        .tariffs-hero-inner {
-            @apply py-8;
-        }
-
         .tariffs-hero-image {
             object-position: 78% center;
         }
@@ -3742,49 +3731,17 @@
                 linear-gradient(180deg, rgba(255, 255, 255, 0.36) 0%, #ffffff 100%);
         }
 
-        .tariffs-hero-title {
-            @apply text-[2.05rem];
-        }
-
-        .tariffs-hero-text {
-            @apply text-base leading-7;
-        }
-
-        .tariffs-hero-proof {
-            @apply mt-6 gap-2;
-        }
-
         .tariffs-hero-proof-item {
-            @apply min-h-[3.75rem] gap-3 rounded-lg bg-white/80 px-3 shadow-[0_10px_26px_-24px_rgba(7,16,22,0.8)] backdrop-blur;
-        }
-
-        .tariffs-hero-proof-icon {
-            @apply h-10 w-10;
-        }
-
-        .tariffs-hero-proof-icon svg {
-            @apply h-8 w-8;
-        }
-
-        .tariffs-hero-notice {
-            @apply grid-cols-[2.25rem_minmax(0,1fr)] gap-3 px-4 py-4;
-        }
-
-        .tariffs-hero-notice-icon {
-            @apply h-8 w-8;
-        }
-
-        .tariffs-hero-notice-copy p {
-            @apply leading-6;
+            @apply rounded-lg bg-white/80 px-2.5 py-2 shadow-[0_10px_26px_-24px_rgba(7,16,22,0.8)] backdrop-blur;
         }
     }
 
     .tariffs-console-section {
-        @apply bg-white px-4 py-10 sm:px-6 sm:py-12 lg:px-8 lg:py-14;
+        @apply bg-white px-4 py-6 sm:px-6 sm:py-8 xl:px-8 xl:py-14;
     }
 
     .tariffs-console-grid {
-        @apply mx-auto grid w-full items-start gap-8 lg:grid-cols-[minmax(0,1.02fr)_minmax(27rem,0.98fr)] lg:gap-10;
+        @apply mx-auto grid w-full items-start gap-5 sm:gap-6 lg:grid-cols-[minmax(0,1.02fr)_minmax(27rem,0.98fr)] xl:gap-10;
         max-width: min(calc(100vw - 2rem), 120rem);
     }
 
@@ -3793,26 +3750,26 @@
     }
 
     .tariffs-console-step {
-        @apply text-sm font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-base;
+        @apply text-xs font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-sm xl:text-base;
         letter-spacing: 0;
     }
 
     .tariffs-console-picker h2 {
-        @apply mt-3 text-[1.75rem] font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[2rem] lg:text-[2.3rem];
+        @apply mt-2 text-xl font-extrabold leading-tight tracking-normal text-[#071016] sm:text-[1.65rem] xl:mt-3 xl:text-[2.3rem];
         letter-spacing: 0;
     }
 
     .tariffs-console-intro {
-        @apply mt-2 text-base font-semibold leading-7 tracking-normal text-[#071016]/80 sm:text-xl;
+        @apply mt-1.5 text-sm font-semibold leading-6 tracking-normal text-[#071016]/80 sm:text-base xl:mt-2 xl:text-xl xl:leading-7;
         letter-spacing: 0;
     }
 
     .tariffs-console-cards {
-        @apply mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-12;
+        @apply mt-4 grid grid-cols-1 gap-2.5 sm:mt-5 sm:grid-cols-2 sm:gap-3 xl:mt-6 xl:grid-cols-12 xl:gap-4;
     }
 
     .tariffs-console-category-card {
-        @apply relative flex min-h-[12.6rem] min-w-0 flex-col items-center justify-center rounded-lg border-2 border-[#e8ecef] bg-white px-4 py-5 text-center text-[#071016] shadow-[0_12px_30px_-28px_rgba(7,16,22,0.8)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f15a24]/50 hover:shadow-[0_18px_42px_-31px_rgba(181,71,31,0.55)] focus-visible:ring-[#f15a24] xl:col-span-3;
+        @apply relative flex min-h-[8.5rem] min-w-0 flex-col items-center justify-center rounded-lg border-2 border-[#e8ecef] bg-white px-3 py-3 text-center text-[#071016] shadow-[0_12px_30px_-28px_rgba(7,16,22,0.8)] transition-all duration-200 hover:-translate-y-0.5 hover:border-[#f15a24]/50 hover:shadow-[0_18px_42px_-31px_rgba(181,71,31,0.55)] focus-visible:ring-[#f15a24] sm:min-h-[9.25rem] sm:py-4 xl:col-span-3 xl:min-h-[12.6rem] xl:px-4 xl:py-5;
     }
 
     .tariffs-console-category-card:nth-child(n+5) {
@@ -3824,15 +3781,15 @@
     }
 
     .tariffs-console-selected-check {
-        @apply absolute -right-3 -top-3 flex h-10 w-10 items-center justify-center rounded-full bg-[#f15a24] text-white shadow-lg shadow-[#f15a24]/30;
+        @apply absolute -right-2.5 -top-2.5 flex h-8 w-8 items-center justify-center rounded-full bg-[#f15a24] text-white shadow-lg shadow-[#f15a24]/30 sm:h-9 sm:w-9 xl:-right-3 xl:-top-3 xl:h-10 xl:w-10;
     }
 
     .tariffs-console-selected-check svg {
-        @apply h-6 w-6 stroke-[3];
+        @apply h-5 w-5 stroke-[3] xl:h-6 xl:w-6;
     }
 
     .tariffs-console-card-icon {
-        @apply flex h-14 w-20 items-center justify-center text-[#071016];
+        @apply flex h-10 w-14 items-center justify-center text-[#071016] sm:h-12 sm:w-16 xl:h-14 xl:w-20;
     }
 
     .tariffs-console-card-icon svg {
@@ -3840,22 +3797,21 @@
     }
 
     .tariffs-console-card-code {
-        @apply mt-4 block text-base font-extrabold leading-none tracking-normal text-[#071016];
+        @apply mt-2 block text-sm font-extrabold leading-none tracking-normal text-[#071016] xl:mt-4 xl:text-base;
         letter-spacing: 0;
     }
 
     .tariffs-console-card-title {
-        @apply mt-2 block max-w-[13rem] text-base font-extrabold leading-snug tracking-normal text-[#071016] sm:text-lg;
+        @apply mt-1 block max-w-[13rem] text-sm font-extrabold leading-snug tracking-normal text-[#071016] xl:mt-2 xl:text-lg;
         letter-spacing: 0;
-        overflow-wrap: anywhere;
     }
 
     .tariffs-console-help {
-        @apply mt-6 grid min-h-[4.65rem] min-w-0 grid-cols-[2.75rem_minmax(0,1fr)] items-center gap-4 rounded-lg bg-[#f4f5f6] px-5 py-4 text-[#071016] sm:grid-cols-[2.75rem_minmax(0,1fr)_auto];
+        @apply mt-4 grid min-h-0 min-w-0 grid-cols-[2.25rem_minmax(0,1fr)] items-center gap-3 rounded-lg bg-[#f4f5f6] px-3.5 py-3 text-[#071016] sm:mt-5 sm:grid-cols-[2.5rem_minmax(0,1fr)_auto] xl:mt-6 xl:min-h-[4.65rem] xl:grid-cols-[2.75rem_minmax(0,1fr)_auto] xl:gap-4 xl:px-5 xl:py-4;
     }
 
     .tariffs-console-help-icon {
-        @apply flex h-9 w-9 items-center justify-center rounded-full border-2 border-[#8a939b] text-[#071016]/75;
+        @apply flex h-8 w-8 items-center justify-center rounded-full border-2 border-[#8a939b] text-[#071016]/75 xl:h-9 xl:w-9;
     }
 
     .tariffs-console-help-icon svg {
@@ -3863,12 +3819,12 @@
     }
 
     .tariffs-console-help p {
-        @apply text-sm font-extrabold leading-6 tracking-normal sm:text-base;
+        @apply text-xs font-extrabold leading-5 tracking-normal sm:text-sm xl:text-base xl:leading-6;
         letter-spacing: 0;
     }
 
     .tariffs-console-help a {
-        @apply col-span-2 inline-flex min-h-[2.75rem] items-center justify-start gap-3 rounded-md text-sm font-extrabold leading-none tracking-normal text-[#f15a24] hover:text-nacho-primary-dark sm:col-span-1 sm:justify-center sm:text-base;
+        @apply col-span-2 inline-flex min-h-[2.25rem] items-center justify-start gap-2 rounded-md text-xs font-extrabold leading-none tracking-normal text-[#f15a24] hover:text-nacho-primary-dark sm:col-span-1 sm:justify-center sm:text-sm xl:min-h-[2.75rem] xl:gap-3 xl:text-base;
         letter-spacing: 0;
     }
 
@@ -3894,20 +3850,20 @@
     }
 
     .tariffs-console-result {
-        @apply min-h-[36.5rem] px-6 py-7 sm:px-8 lg:px-10;
+        @apply min-h-0 px-5 py-5 sm:px-6 sm:py-6 xl:min-h-[36.5rem] xl:px-10 xl:py-7;
     }
 
     .tariffs-console-result-eyebrow {
-        @apply text-sm font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-base;
+        @apply text-xs font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-sm xl:text-base;
         letter-spacing: 0;
     }
 
     .tariffs-console-result-header {
-        @apply mt-8 grid min-w-0 grid-cols-[5.5rem_3.75rem_minmax(0,1fr)] items-center gap-5;
+        @apply mt-4 grid min-w-0 grid-cols-[3.75rem_2.75rem_minmax(0,1fr)] items-center gap-3 sm:mt-5 sm:grid-cols-[4.5rem_3rem_minmax(0,1fr)] sm:gap-4 xl:mt-8 xl:grid-cols-[5.5rem_3.75rem_minmax(0,1fr)] xl:gap-5;
     }
 
     .tariffs-console-result-icon {
-        @apply flex h-16 w-20 items-center justify-center text-white;
+        @apply flex h-12 w-14 items-center justify-center text-white sm:h-14 sm:w-16 xl:h-16 xl:w-20;
     }
 
     .tariffs-console-result-icon svg {
@@ -3915,7 +3871,7 @@
     }
 
     .tariffs-console-result-code {
-        @apply flex h-12 w-12 items-center justify-center rounded-md bg-[#f15a24] text-2xl font-extrabold leading-none text-white shadow-lg shadow-[#f15a24]/25;
+        @apply flex h-9 w-9 items-center justify-center rounded-md bg-[#f15a24] text-lg font-extrabold leading-none text-white shadow-lg shadow-[#f15a24]/25 sm:h-10 sm:w-10 sm:text-xl xl:h-12 xl:w-12 xl:text-2xl;
     }
 
     .tariffs-console-result-heading {
@@ -3923,18 +3879,17 @@
     }
 
     .tariffs-console-result-heading h3 {
-        @apply text-[1.7rem] font-extrabold leading-tight tracking-normal text-white sm:text-[2rem];
+        @apply text-[1.25rem] font-extrabold leading-tight tracking-normal text-white sm:text-[1.45rem] xl:text-[2rem];
         letter-spacing: 0;
-        overflow-wrap: anywhere;
     }
 
     .tariffs-console-result-heading p {
-        @apply mt-3 max-w-[26rem] text-base font-semibold leading-7 tracking-normal text-white/80 sm:text-lg;
+        @apply mt-1.5 max-w-[26rem] text-sm font-semibold leading-5 tracking-normal text-white/80 sm:mt-2 sm:text-[0.9375rem] sm:leading-6 xl:mt-3 xl:text-lg xl:leading-7;
         letter-spacing: 0;
     }
 
     .tariffs-console-result-stats {
-        @apply mt-8 grid gap-6 border-y border-dashed border-white/15 py-7 sm:grid-cols-2;
+        @apply mt-5 grid gap-4 border-y border-dashed border-white/15 py-4 sm:mt-6 sm:grid-cols-2 sm:gap-5 sm:py-5 xl:mt-8 xl:gap-6 xl:py-7;
     }
 
     .tariffs-console-result-stat {
@@ -3942,25 +3897,25 @@
     }
 
     .tariffs-console-result-stat--validity {
-        @apply sm:border-l sm:border-dashed sm:border-white/20 sm:pl-8;
+        @apply sm:border-l sm:border-dashed sm:border-white/20 sm:pl-5 xl:pl-8;
     }
 
     .tariffs-console-result-stat p {
-        @apply text-sm font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-base;
+        @apply text-xs font-extrabold uppercase leading-none tracking-normal text-[#f15a24] sm:text-sm xl:text-base;
         letter-spacing: 0;
     }
 
     .tariffs-console-result-stat strong {
-        @apply mt-3 flex min-w-0 flex-wrap items-end gap-3 text-white;
+        @apply mt-2 flex min-w-0 flex-wrap items-end gap-2 text-white xl:mt-3 xl:gap-3;
     }
 
     .tariffs-console-result-stat strong > span {
-        @apply text-[2.6rem] font-extrabold leading-none tracking-normal text-[#ff5a00] sm:text-[3.4rem];
+        @apply text-[2rem] font-extrabold leading-none tracking-normal text-[#ff5a00] sm:text-[2.45rem] xl:text-[3.4rem];
         letter-spacing: 0;
     }
 
     .tariffs-console-result-stat strong small {
-        @apply pb-1 text-2xl font-extrabold leading-none tracking-normal text-white sm:text-[2rem];
+        @apply pb-1 text-lg font-extrabold leading-none tracking-normal text-white sm:text-xl xl:text-[2rem];
         letter-spacing: 0;
     }
 
@@ -3969,7 +3924,7 @@
     }
 
     .tariffs-console-result-stat--validity svg {
-        @apply h-9 w-9 shrink-0 text-white;
+        @apply h-7 w-7 shrink-0 text-white sm:h-8 sm:w-8 xl:h-9 xl:w-9;
     }
 
     .tariffs-console-result-stat--validity strong > span,
@@ -3978,12 +3933,12 @@
     }
 
     .tariffs-console-result-actions {
-        @apply mt-7 grid gap-3;
+        @apply mt-5 grid gap-2.5 xl:mt-7 xl:gap-3;
     }
 
     .tariffs-console-book,
     .tariffs-console-documents {
-        @apply inline-flex min-h-[4rem] items-center justify-center gap-4 rounded-lg text-base font-extrabold leading-none tracking-normal transition-all sm:text-lg;
+        @apply inline-flex min-h-[3.25rem] items-center justify-center gap-3 rounded-lg text-sm font-extrabold leading-none tracking-normal transition-all sm:min-h-[3.5rem] sm:text-base xl:min-h-[4rem] xl:gap-4 xl:text-lg;
         letter-spacing: 0;
     }
 
@@ -3997,7 +3952,7 @@
 
     .tariffs-console-book svg,
     .tariffs-console-documents svg {
-        @apply h-6 w-6 shrink-0;
+        @apply h-5 w-5 shrink-0 xl:h-6 xl:w-6;
     }
 
     .tariffs-console-book svg:last-child {
@@ -4005,7 +3960,7 @@
     }
 
     .tariffs-console-show-all {
-        @apply mx-auto mt-7 flex min-h-[3rem] w-fit items-center justify-center gap-3 rounded-md border-t border-dashed border-white/15 px-3 pt-6 text-sm font-extrabold leading-none tracking-normal text-[#ff5a00] hover:text-[#ff7a2b] sm:text-base;
+        @apply mx-auto mt-4 flex min-h-[2.5rem] w-fit items-center justify-center gap-2 rounded-md border-t border-dashed border-white/15 px-3 pt-4 text-xs font-extrabold leading-none tracking-normal text-[#ff5a00] hover:text-[#ff7a2b] sm:text-sm xl:mt-7 xl:min-h-[3rem] xl:gap-3 xl:pt-6 xl:text-base;
         letter-spacing: 0;
     }
 
@@ -4014,16 +3969,12 @@
     }
 
     @media (max-width: 767px) {
-        .tariffs-console-section {
-            @apply py-8;
-        }
-
         .tariffs-console-picker {
             @apply hidden;
         }
 
         .tariffs-console-mobile-control {
-            @apply grid gap-2 px-5 pt-5;
+            @apply grid gap-1.5 px-4 pt-4;
         }
 
         .tariffs-console-mobile-control label {
@@ -4032,53 +3983,8 @@
         }
 
         .tariffs-console-mobile-control select {
-            @apply h-11 w-full rounded-md border border-white/20 bg-white px-3 text-sm font-extrabold leading-none tracking-normal text-[#071016] shadow-sm focus:border-[#f15a24] focus:ring-[#f15a24];
+            @apply h-10 w-full rounded-md border border-white/20 bg-white px-3 text-sm font-extrabold leading-none tracking-normal text-[#071016] shadow-sm focus:border-[#f15a24] focus:ring-[#f15a24];
             letter-spacing: 0;
-        }
-
-        .tariffs-console-picker h2 {
-            @apply text-[1.65rem];
-        }
-
-        .tariffs-console-category-card {
-            @apply min-h-[10.25rem];
-        }
-
-        .tariffs-console-result {
-            @apply min-h-0 px-5 py-6;
-        }
-
-        .tariffs-console-result-header {
-            @apply mt-6 grid-cols-[4.5rem_3rem_minmax(0,1fr)] gap-3;
-        }
-
-        .tariffs-console-result-icon {
-            @apply h-12 w-16;
-        }
-
-        .tariffs-console-result-code {
-            @apply h-10 w-10 text-xl;
-        }
-
-        .tariffs-console-result-heading h3 {
-            @apply text-[1.35rem];
-        }
-
-        .tariffs-console-result-heading p {
-            @apply text-sm leading-6;
-        }
-
-        .tariffs-console-result-stat strong > span {
-            @apply text-[2.3rem];
-        }
-
-        .tariffs-console-result-stat strong small {
-            @apply text-2xl;
-        }
-
-        .tariffs-console-book,
-        .tariffs-console-documents {
-            @apply min-h-[3.65rem] text-base;
         }
     }
 

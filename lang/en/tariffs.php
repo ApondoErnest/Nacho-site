@@ -8,7 +8,7 @@ return [
     'hero' => [
         'eyebrow' => 'Inspection Tariffs',
         'title' => 'Transparent Vehicle Inspection Tariffs',
-        'subtitle' => 'Find the applicable inspection fee and validity period for your vehicle category before visiting a NACHO center.',
+        'subtitle' => 'Find the applicable inspection fee and validity period for your vehicle category before visiting a NOVETESCO center.',
         'proof_label' => 'Tariff highlights',
         'proof' => [
             'categories' => 'Clear vehicle categories',

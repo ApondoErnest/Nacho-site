@@ -45,9 +45,9 @@ return [
             'image' => 'images/hero-inspection-bay-2.png',
         ],
         'tariffs' => [
-            'title' => 'Vehicle Inspection Tariffs',
-            'description' => 'Review transparent NACHO inspection tariffs, vehicle categories, validity periods, and documents required before visiting a center.',
-            'image' => 'images/hero-tariffs.png',
+            'title' => 'NOVETESCO Vehicle Inspection Tariffs',
+            'description' => 'Review transparent NOVETESCO inspection tariffs, vehicle categories, validity periods, and documents required before visiting a center.',
+            'image' => 'images/tariffs/hero.png',
         ],
         'inspection_process' => [
             'title' => 'Vehicle Inspection Process',

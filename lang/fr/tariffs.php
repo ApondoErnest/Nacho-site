@@ -8,7 +8,7 @@ return [
     'hero' => [
         'eyebrow' => 'Tarifs d\'inspection',
         'title' => 'Tarifs transparents de contrôle technique',
-        'subtitle' => 'Trouvez le tarif applicable et la période de validité selon la catégorie de votre véhicule avant de vous rendre dans un centre NACHO.',
+        'subtitle' => 'Trouvez le tarif applicable et la période de validité selon la catégorie de votre véhicule avant de vous rendre dans un centre NOVETESCO.',
         'proof_label' => 'Points clés des tarifs',
         'proof' => [
             'categories' => 'Catégories de véhicules claires',

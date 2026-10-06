@@ -45,7 +45,7 @@
 
     <section class="tariffs-hero" aria-labelledby="tariffs-hero-title">
         <img
-            src="{{ asset('images/hero-tariffs.png') }}"
+            src="{{ asset('images/tariffs/hero.png') }}"
             alt=""
             class="tariffs-hero-image"
             loading="eager"

@@ -45,9 +45,9 @@ return [
             'image' => 'images/hero-inspection-bay-2.png',
         ],
         'tariffs' => [
-            'title' => 'Tarifs de contrôle technique automobile',
-            'description' => 'Consultez les tarifs NACHO de contrôle technique, catégories de véhicules, périodes de validité et documents requis avant votre visite.',
-            'image' => 'images/hero-tariffs.png',
+            'title' => 'Tarifs de contrôle technique NOVETESCO',
+            'description' => 'Consultez les tarifs NOVETESCO de contrôle technique, catégories de véhicules, périodes de validité et documents requis avant votre visite.',
+            'image' => 'images/tariffs/hero.png',
         ],
         'inspection_process' => [
             'title' => 'Processus de contrôle technique automobile',
