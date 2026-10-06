@@ -1,6 +1,6 @@
 @props([
     'title' => 'Admin',
-    'eyebrow' => 'NACHO Admin',
+    'eyebrow' => 'NOVETESCO Admin',
     'pendingBookings' => null,
     'unreadMessages' => null,
 ])
@@ -67,7 +67,7 @@
             >
                 <div class="flex h-20 items-center justify-between border-b border-gray-200 px-5">
                     <a href="{{ route('admin.home') }}" class="inline-flex flex-col rounded-md">
-                        <span class="text-xl font-extrabold leading-none text-nacho-primary">NACHO</span>
+                        <span class="text-xl font-extrabold leading-none text-nacho-primary">NOVETESCO</span>
                         <span class="mt-1 text-xs font-bold uppercase tracking-[0.2em] text-gray-500">Admin</span>
                     </a>
                     <button

@@ -184,7 +184,7 @@ class CareerPostController extends Controller
         $subject = $post->application_subject
             ? strtr($post->application_subject, ['{title}' => $title, '{reference}' => $reference])
             : "Application - {$title} - {$reference}";
-        $body = $post->application_instructions_en ?: "Hello NACHO team,\n\nI would like to apply for {$title} ({$reference}).";
+        $body = $post->application_instructions_en ?: "Hello NOVETESCO team,\n\nI would like to apply for {$title} ({$reference}).";
 
         return 'mailto:'.$post->application_email.'?'.http_build_query([
             'subject' => $subject,

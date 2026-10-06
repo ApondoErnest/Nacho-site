@@ -6347,7 +6347,7 @@
     }
 
     .book-inspection-date-picker-header button {
-        @apply flex h-9 w-9 items-center justify-center rounded-md text-[#071016] transition-colors hover:bg-white hover:text-[#ff5a00] focus-visible:ring-[#ff5a00];
+        @apply flex h-9 w-9 items-center justify-center rounded-md text-[#071016] transition-colors hover:bg-white hover:text-[#ff5a00] focus-visible:ring-[#ff5a00] disabled:cursor-not-allowed disabled:text-[#c5ccd3] disabled:hover:bg-transparent disabled:hover:text-[#c5ccd3];
     }
 
     .book-inspection-date-picker-header svg {
@@ -6383,6 +6383,11 @@
 
     .book-inspection-date-day.is-selected {
         @apply border-[#ff5a00] bg-[#ff5a00] text-white shadow-sm shadow-[#ff5a00]/25 hover:bg-[#ff5a00] hover:text-white;
+    }
+
+    .book-inspection-date-day.is-disabled,
+    .book-inspection-date-day:disabled {
+        @apply cursor-not-allowed border-transparent bg-transparent text-[#c5ccd3] shadow-none hover:border-transparent hover:bg-transparent hover:text-[#c5ccd3];
     }
 
     .book-inspection-time-selects {

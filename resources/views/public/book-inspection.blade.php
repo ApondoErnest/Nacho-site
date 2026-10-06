@@ -110,6 +110,11 @@
             preferredMinute: @js($initialMinute),
             datePickerOpen: false,
             calendarCursor: new Date(),
+            init() {
+                if (this.preferredDate && this.isPast(this.preferredDate)) {
+                    this.preferredDate = '';
+                }
+            },
             notSelected: @js(__('book_inspection.summary.not_selected')),
             samplePlate: @js(__('book_inspection.form.registration.sample_plate')),
             browserLocale: @js($browserLocale),
@@ -138,30 +143,54 @@
                     year: 'numeric',
                 }).format(this.calendarCursor);
             },
+            get todayValue() {
+                return this.toDateValue(new Date());
+            },
+            get canMoveToPreviousMonth() {
+                const today = new Date();
+
+                return this.calendarCursor.getFullYear() > today.getFullYear()
+                    || (this.calendarCursor.getFullYear() === today.getFullYear()
+                        && this.calendarCursor.getMonth() > today.getMonth());
+            },
             get calendarCells() {
                 const year = this.calendarCursor.getFullYear();
                 const month = this.calendarCursor.getMonth();
                 const firstDay = new Date(year, month, 1);
                 const startOffset = (firstDay.getDay() + 6) % 7;
+                const todayValue = this.todayValue;
 
                 return Array.from({ length: 42 }, (_, index) => {
                     const date = new Date(year, month, index - startOffset + 1);
+                    const value = this.toDateValue(date);
 
                     return {
                         label: date.getDate(),
-                        value: this.toDateValue(date),
+                        value,
                         currentMonth: date.getMonth() === month,
+                        past: value < todayValue,
                     };
                 });
             },
             moveCalendar(offset) {
+                if (offset < 0 && ! this.canMoveToPreviousMonth) {
+                    return;
+                }
+
                 this.calendarCursor = new Date(
                     this.calendarCursor.getFullYear(),
                     this.calendarCursor.getMonth() + offset,
                     1,
                 );
             },
+            isPast(value) {
+                return value < this.todayValue;
+            },
             selectDate(value) {
+                if (this.isPast(value)) {
+                    return;
+                }
+
                 const selected = new Date(`${value}T00:00:00`);
                 this.preferredDate = value;
                 this.calendarCursor = new Date(selected.getFullYear(), selected.getMonth(), 1);
@@ -423,7 +452,7 @@
                                         :aria-hidden="(! datePickerOpen).toString()"
                                     >
                                         <div class="book-inspection-date-picker-header">
-                                            <button type="button" @click="moveCalendar(-1)" aria-label="{{ __('book_inspection.form.date.previous_month') }}">
+                                            <button type="button" @click="moveCalendar(-1)" :disabled="! canMoveToPreviousMonth" aria-label="{{ __('book_inspection.form.date.previous_month') }}">
                                                 <x-lucide-chevron-left aria-hidden="true" />
                                             </button>
                                             <strong x-text="currentMonthLabel"></strong>
@@ -444,10 +473,12 @@
                                                     type="button"
                                                     class="book-inspection-date-day"
                                                     :class="{
-                                                        'is-muted': ! day.currentMonth,
-                                                        'is-selected': isSelectedDate(day.value),
+                                                        'is-muted': ! day.currentMonth && ! day.past,
+                                                        'is-disabled': day.past,
+                                                        'is-selected': isSelectedDate(day.value) && ! day.past,
                                                         'is-today': isToday(day.value),
                                                     }"
+                                                    :disabled="day.past"
                                                     :aria-pressed="isSelectedDate(day.value).toString()"
                                                     @click="selectDate(day.value)"
                                                 >

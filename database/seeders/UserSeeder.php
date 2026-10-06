@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
             DB::table('users')
                 ->where('id', $existingUser->id)
                 ->update([
-                    'name' => 'NACHO Super Admin',
+                    'name' => 'NOVETESCO Super Admin',
                     'role_id' => $roleId,
                     'status' => 'active',
                     'email_verified_at' => $existingUser->email_verified_at ?? $now,
@@ -34,7 +34,7 @@ class UserSeeder extends Seeder
         }
 
         DB::table('users')->insert([
-            'name' => 'NACHO Super Admin',
+            'name' => 'NOVETESCO Super Admin',
             'email' => $email,
             'email_verified_at' => $now,
             'password' => Hash::make(env('SEED_ADMIN_PASSWORD', 'NachoAdmin2026!')),

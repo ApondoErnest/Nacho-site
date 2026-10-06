@@ -13,7 +13,7 @@
 
 <div {{ $attributes->merge(['class' => 'inline-flex flex-col']) }}>
     <span @class(['text-2xl font-bold tracking-tight sm:text-3xl', $nameClass])>
-        NACHO
+        NOVETESCO
     </span>
     @if ($tagline)
         <span @class(['mt-1 text-xs font-medium uppercase tracking-wider sm:text-sm', $taglineClass])>

@@ -42,8 +42,8 @@ class PageSeeder extends Seeder
                 ['slug' => $page['slug']],
                 [
                     ...$page,
-                    'content_en' => 'Content to be validated by NACHO.',
-                    'content_fr' => 'Contenu a valider par NACHO.',
+                    'content_en' => 'Content to be validated by NOVETESCO.',
+                    'content_fr' => 'Contenu a valider par NOVETESCO.',
                     'status' => 'published',
                     'seo_title_en' => $page['title_en'],
                     'seo_title_fr' => $page['title_fr'],

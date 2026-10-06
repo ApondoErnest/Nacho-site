@@ -23,7 +23,7 @@
 
         <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
             <div>
-                <p class="text-sm font-semibold text-gray-500">Manage road-safety education and NACHO news content</p>
+                <p class="text-sm font-semibold text-gray-500">Manage road-safety education and NOVETESCO news content</p>
                 <h2 class="mt-1 text-xl font-bold tracking-normal text-gray-950">Blog management</h2>
             </div>
 
