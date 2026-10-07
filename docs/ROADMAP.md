@@ -40,18 +40,18 @@ flowchart LR
 | 4 | Public layout shell | done |
 | 5 | Reusable Blade components | done |
 | 6 | Static homepage (14 sections per [DESIGN.md](DESIGN.md)) | done |
-| 7 | Static About page | pending |
-| 8 | Centers page — Dynamic Center Finder (4 blocks) | pending |
-| 9 | Static Services index | pending |
-| 10 | Static Service detail pages (×5) | pending |
-| 11 | Static Tariffs page — Master Pricing Console (4 blocks) | pending |
-| 12 | Static Inspection process page | pending |
-| 13 | Static Booking form UI | pending |
-| 14 | Static Contact page | pending |
-| 15 | Static Blog index + detail | pending |
-| 16 | Careers page — 4-block email apply (index-only) | pending |
-| 17 | Static Compliance page | pending |
-| 18 | Static Legal pages (×4) | pending |
+| 7 | Static About page | done (UI refresh 2026-10) |
+| 8 | Centers page — Dynamic Center Finder (4 blocks) | done (UI refresh 2026-10) |
+| 9 | Static Services index | done (UI refresh 2026-10) |
+| 10 | Static Service detail pages (×5) | done |
+| 11 | Static Tariffs page — Master Pricing Console (4 blocks) | done (UI refresh 2026-10) |
+| 12 | Static Inspection process page | done (UI refresh 2026-10) |
+| 13 | Static Booking form UI | done (UI refresh 2026-10) |
+| 14 | Static Contact page | done (UI refresh 2026-10) |
+| 15 | Static Blog index + detail | done |
+| 16 | Careers page — 4-block email apply (index-only) | done (UI refresh 2026-10) |
+| 17 | Static Compliance page | done |
+| 18 | Static Legal pages (×4) | done |
 | 19 | Database migrations | done |
 | 20 | Seed data | done |
 | 21 | Models, enums, factories | done |

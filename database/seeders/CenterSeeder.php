@@ -34,7 +34,7 @@ class CenterSeeder extends Seeder
                 'nearby_landmark' => 'Mendong market',
                 'search_keywords' => 'Yaounde, Mendong, Mendong Market, Centre',
                 'display_order' => 1,
-                'featured_image' => 'images/homepage/yaounde.png',
+                'featured_image' => 'images/homepage/yaounde-1.png',
                 'contacts' => [
                     ['type' => 'email', 'value' => 'noblevehicletestingcompany@gmail.com', 'is_primary' => true],
                     ['type' => 'phone', 'value' => '(+237) 675117327', 'is_primary' => true],
@@ -61,7 +61,7 @@ class CenterSeeder extends Seeder
                 'nearby_landmark' => 'NTEFINKI Quarter mile 6 Nkwen',
                 'search_keywords' => 'Bamenda, Nkwen, NTEFINKI, Northwest',
                 'display_order' => 2,
-                'featured_image' => 'images/homepage/nkwen-bamenda.png',
+                'featured_image' => 'images/homepage/nkwen-bamenda-1.png',
                 'contacts' => [
                     ['type' => 'email', 'value' => 'noblevehicletestingcompany@gmail.com', 'is_primary' => true],
                     ['type' => 'phone', 'value' => '(+237) 674036182', 'is_primary' => true],
@@ -91,7 +91,7 @@ class CenterSeeder extends Seeder
                 'nearby_landmark' => 'Atuakum Mankon',
                 'search_keywords' => 'Bamenda, Atuakum, Mankon, Northwest, Headquarters',
                 'display_order' => 3,
-                'featured_image' => 'images/homepage/mankon-bamenda.png',
+                'featured_image' => 'images/homepage/mankon-bamenda-1.png',
                 'contacts' => [
                     ['type' => 'email', 'value' => 'noblevehicletestingcompany@gmail.com', 'is_primary' => true],
                     ['type' => 'phone', 'value' => '(+237) 33142037', 'is_primary' => true],

@@ -1,13 +1,13 @@
 # NOVETESCO Vehicle Inspection — Implementation Plan
 
-Chronological build plan for the NOVETESCO Vehicle Inspection website. **Step 0 (documentation) is complete.** Application code has not started.
+Chronological build plan for the NOVETESCO Vehicle Inspection website. **Steps 0–47 and the public UI refresh are complete** on `main`; production is live at https://noblevehicletestingcompany.com.
 
 ## How to use this plan
 
 - Work proceeds **one step at a time**, in order.
-- Say **"do Phase 7"** or **"do Step 7"** to approve and start that step only.
+- Say **"do Phase N"** or **"do Step N"** to approve and start that step only.
 - Each step ends with: smoke test → [CHANGELOG.md](CHANGELOG.md) entry → [docs/ROADMAP.md](docs/ROADMAP.md) status update.
-- Steps **45–50** (deployment) are deferred until Step 44 UAT sign-off.
+- **Next:** Step **48** (backups, monitoring); Steps **49–50** (production UAT polish, Search Console).
 
 ## Current state
 
@@ -61,7 +61,7 @@ Chronological build plan for the NOVETESCO Vehicle Inspection website. **Step 0 
 | Admin shell | 26–27 | Auth, roles, dashboard |
 | Admin CRUD | 28–38 | One admin module per step |
 | Polish & UAT | 39–44 | i18n, SEO, security, tests, sign-off |
-| Deploy | 45–50 | Docker, VPS, SSL, launch (**deferred**) |
+| Deploy | 45–50 | Docker + VPS live; ops hardening + launch (**Step 48 next**) |
 
 ## All steps at a glance
 

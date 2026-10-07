@@ -42,7 +42,7 @@ return [
         'show_all' => 'Afficher tous les tarifs',
         'help' => [
             'text' => 'Vous ne savez pas quelle catégorie s\'applique à votre véhicule ?',
-            'link' => 'Demander à un centre NACHO',
+            'link' => 'Demander à un centre NOVETESCO',
         ],
         'rows' => [
             'row_1' => [
@@ -154,11 +154,11 @@ return [
             'items' => [
                 [
                     'question' => 'Comment connaître la catégorie de mon véhicule ?',
-                    'answer' => 'Votre catégorie dépend du type de véhicule, de son usage, de son poids et de la classification réglementaire applicable. Contactez un centre NACHO en cas de doute.',
+                    'answer' => 'Votre catégorie dépend du type de véhicule, de son usage, de son poids et de la classification réglementaire applicable. Contactez un centre NOVETESCO en cas de doute.',
                 ],
                 [
-                    'question' => 'Les tarifs sont-ils les mêmes dans tous les centres NACHO ?',
-                    'answer' => 'NACHO publiera ici la politique confirmée dès sa validation officielle. Veuillez confirmer le tarif applicable auprès du centre choisi avant votre visite.',
+                    'question' => 'Les tarifs sont-ils les mêmes dans tous les centres NOVETESCO ?',
+                    'answer' => 'NOVETESCO publiera ici la politique confirmée dès sa validation officielle. Veuillez confirmer le tarif applicable auprès du centre choisi avant votre visite.',
                 ],
                 [
                     'question' => 'Les frais d\'inspection incluent-ils les réparations ?',

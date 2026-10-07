@@ -23,13 +23,13 @@ class SeoTest extends TestCase
         $this->get(route('home'))
             ->assertOk()
             ->assertSee('<title>Contrôle technique automobile professionnel au Cameroun | NOVETESCO Vehicle Inspection</title>', false)
-            ->assertSee('<meta name="description" content="Réservez votre visite technique avec NACHO', false)
+            ->assertSee('<meta name="description" content="Réservez votre visite technique avec NOVETESCO', false)
             ->assertSee('<link rel="canonical" href="'.route('home').'">', false)
             ->assertSee('<meta property="og:locale" content="fr_CM">', false)
             ->assertSee('<meta property="og:type" content="website">', false)
             ->assertSee('<meta name="twitter:card" content="summary_large_image">', false)
             ->assertSee('"@type": "AutomotiveBusiness"', false)
-            ->assertSee('"slogan": "Roulez en sécurité. Restez conforme. Faites confiance à NACHO."', false);
+            ->assertSee('"slogan": "Sécurité, qualité, confiance."', false);
     }
 
     public function test_legal_pages_prefer_database_seo_fields(): void

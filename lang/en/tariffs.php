@@ -42,7 +42,7 @@ return [
         'show_all' => 'Show All Tariffs',
         'help' => [
             'text' => 'Not sure which category applies to your vehicle?',
-            'link' => 'Ask a NACHO Center',
+            'link' => 'Ask a NOVETESCO Center',
         ],
         'rows' => [
             'row_1' => [
@@ -154,11 +154,11 @@ return [
             'items' => [
                 [
                     'question' => 'How do I know my vehicle category?',
-                    'answer' => 'Your category depends on the vehicle type, use, weight, and applicable regulatory classification. Contact a NACHO center when unsure.',
+                    'answer' => 'Your category depends on the vehicle type, use, weight, and applicable regulatory classification. Contact a NOVETESCO center when unsure.',
                 ],
                 [
-                    'question' => 'Are the tariffs the same at every NACHO center?',
-                    'answer' => 'NACHO will publish the confirmed policy here once officially validated. Please confirm the applicable tariff with your selected center before visiting.',
+                    'question' => 'Are the tariffs the same at every NOVETESCO center?',
+                    'answer' => 'NOVETESCO will publish the confirmed policy here once officially validated. Please confirm the applicable tariff with your selected center before visiting.',
                 ],
                 [
                     'question' => 'Does the inspection fee include repairs?',

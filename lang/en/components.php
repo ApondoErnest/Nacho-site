@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'slogan' => 'Drive Safe. Stay Compliant. Trust NACHO.',
+    'slogan' => 'Safety, Quality, Trust.',
 
     'hero' => [
         'eyebrow' => 'Safe vehicles. Safer roads.',
@@ -50,8 +50,8 @@ return [
         ],
         [
             'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7l7-4z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6M12 9v6" /></svg>',
-            'value' => '5',
-            'label' => 'Inspection Centers',
+            'value' => '3',
+            'label' => 'Operational Centers',
         ],
         [
             'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" stroke-linejoin="round" d="M8 12l3 3 5-6" /></svg>',
@@ -76,7 +76,7 @@ return [
     'center' => [
         'operational' => 'Operational',
         'under_construction' => 'Under Construction',
-        'institutional_headquarters' => 'NACHO Administrative Headquarters',
+        'institutional_headquarters' => 'NOVETESCO Administrative Headquarters',
         'opening_badge' => 'Opening before November 2026',
         'opening_notice' => 'Opening before November 2026.',
         'landmark' => 'Nearby landmark',
@@ -102,7 +102,7 @@ return [
     ],
 
     'centers_locator' => [
-        'title' => 'Search and filter NACHO centers',
+        'title' => 'Search and filter NOVETESCO centers',
         'search_placeholder' => 'Search by city or center name',
         'region_label' => 'Region',
         'service_label' => 'Service',
@@ -117,7 +117,7 @@ return [
         'list_hint' => 'List view loads faster and uses less data',
         'result_count' => ':count centers found',
         'no_results' => 'No centers match the selected filters. Reset filters or try another city, center, or region.',
-        'map_label' => 'NACHO centers map',
+        'map_label' => 'NOVETESCO centers map',
         'map_loading' => 'Loading map...',
         'map_unavailable' => 'The interactive map could not be loaded. You can still view all center details and open directions through Google Maps.',
         'locating' => 'Requesting your location...',
@@ -142,7 +142,7 @@ return [
         'expand_details' => 'Expand center details',
         'help_title' => 'Need help choosing a center?',
         'help_text' => 'Our team is available to help you find the most convenient location.',
-        'contact_nacho' => 'Contact NACHO',
+        'contact_nacho' => 'Contact NOVETESCO',
         'services' => [
             'periodic' => 'Periodic Technical Inspection',
             'light' => 'Light Vehicle Inspection',
@@ -160,8 +160,8 @@ return [
     ],
 
     'centers_expansion' => [
-        'title' => 'Expanding the NACHO Network',
-        'summary' => 'NACHO is developing two additional inspection centers to improve access to professional vehicle inspection services across Cameroon.',
+        'title' => 'Expanding the NOVETESCO Network',
+        'summary' => 'NOVETESCO is developing two additional inspection centers to improve access to professional vehicle inspection services across Cameroon.',
         'region_name' => ':region Region',
         'current_phase' => 'Current phase:',
         'target' => 'Target:',
@@ -219,7 +219,7 @@ return [
 
     'cta' => [
         'default_title' => 'Ready for Your Vehicle Inspection?',
-        'default_text' => 'Choose your nearest NACHO center and request your inspection booking today.',
+        'default_text' => 'Choose your nearest NOVETESCO center and request your inspection booking today.',
     ],
 
     'forms' => [

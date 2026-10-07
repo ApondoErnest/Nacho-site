@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'slogan' => 'Roulez en sécurité. Restez conforme. Faites confiance à NACHO.',
+    'slogan' => 'Sécurité, qualité, confiance.',
 
     'hero' => [
         'eyebrow' => 'Véhicules sûrs. Routes plus sûres.',
@@ -50,8 +50,8 @@ return [
         ],
         [
             'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7l7-4z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6M12 9v6" /></svg>',
-            'value' => '5',
-            'label' => 'Centres d\'inspection',
+            'value' => '3',
+            'label' => 'Centres opérationnels',
         ],
         [
             'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" stroke-linejoin="round" d="M8 12l3 3 5-6" /></svg>',
@@ -76,7 +76,7 @@ return [
     'center' => [
         'operational' => 'Opérationnel',
         'under_construction' => 'En construction',
-        'institutional_headquarters' => 'Siège administratif NACHO',
+        'institutional_headquarters' => 'Siège administratif NOVETESCO',
         'opening_badge' => 'Ouverture avant novembre 2026',
         'opening_notice' => 'Ouverture avant novembre 2026.',
         'landmark' => 'Repère',
@@ -102,7 +102,7 @@ return [
     ],
 
     'centers_locator' => [
-        'title' => 'Rechercher et filtrer les centres NACHO',
+        'title' => 'Rechercher et filtrer les centres NOVETESCO',
         'search_placeholder' => 'Rechercher par ville ou nom du centre',
         'region_label' => 'Région',
         'service_label' => 'Service',
@@ -117,7 +117,7 @@ return [
         'list_hint' => 'La liste charge plus vite et utilise moins de données',
         'result_count' => ':count centres trouvés',
         'no_results' => 'Aucun centre ne correspond aux filtres sélectionnés. Réinitialisez les filtres ou essayez une autre ville, un autre centre ou une autre région.',
-        'map_label' => 'Carte des centres NACHO',
+        'map_label' => 'Carte des centres NOVETESCO',
         'map_loading' => 'Chargement de la carte...',
         'map_unavailable' => 'La carte interactive n\'a pas pu être chargée. Vous pouvez toujours consulter les détails des centres et ouvrir les itinéraires dans Google Maps.',
         'locating' => 'Demande de votre position...',
@@ -142,7 +142,7 @@ return [
         'expand_details' => 'Afficher les détails du centre',
         'help_title' => 'Besoin d\'aide pour choisir un centre ?',
         'help_text' => 'Notre équipe peut vous aider à trouver le site le plus pratique.',
-        'contact_nacho' => 'Contacter NACHO',
+        'contact_nacho' => 'Contacter NOVETESCO',
         'services' => [
             'periodic' => 'Inspection technique périodique',
             'light' => 'Inspection véhicule léger',
@@ -160,8 +160,8 @@ return [
     ],
 
     'centers_expansion' => [
-        'title' => 'Extension du réseau NACHO',
-        'summary' => 'NACHO développe deux centres d\'inspection supplémentaires afin d\'améliorer l\'accès aux services professionnels d\'inspection automobile au Cameroun.',
+        'title' => 'Extension du réseau NOVETESCO',
+        'summary' => 'NOVETESCO développe deux centres d\'inspection supplémentaires afin d\'améliorer l\'accès aux services professionnels d\'inspection automobile au Cameroun.',
         'region_name' => 'Région :region',
         'current_phase' => 'Phase actuelle :',
         'target' => 'Objectif :',
@@ -219,7 +219,7 @@ return [
 
     'cta' => [
         'default_title' => 'Prêt à faire inspecter votre véhicule ?',
-        'default_text' => 'Réservez votre visite dès aujourd\'hui dans le centre NACHO le plus proche.',
+        'default_text' => 'Réservez votre visite dès aujourd\'hui dans le centre NOVETESCO le plus proche.',
     ],
 
     'forms' => [

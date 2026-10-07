@@ -2,7 +2,7 @@
 
 return [
     'hero' => [
-        'network_title' => 'NACHO Network',
+        'network_title' => 'NOVETESCO Network',
         'status_operational' => 'Centers operational',
         'status_operational_label' => 'Open for inspection today',
         'status_construction' => 'Opening before November 2026',
@@ -27,7 +27,8 @@ return [
         'link' => 'Learn About NOVETESCO',
         'list_label' => 'NOVETESCO highlights',
         'points' => [
-            '5 Operational Inspection Centers',
+            '3 Operational Inspection Centers',
+            '2 Additional Centers Under Construction',
             'Over 10 Years of Operational Experience',
             'Government Approved Centers',
             'State-of-the-art Equipment',
@@ -37,9 +38,9 @@ return [
         ],
         'image_alt' => 'NOVETESCO inspection team inside a modern vehicle inspection bay',
         'image_statement' => 'Safer Vehicles<br>Safer Roads<br>Safer Cameroon',
-        'count_value' => '5',
+        'count_value' => '3',
         'count_label' => 'Operational Centers',
-        'status_operational' => '5 Operational Inspection Centers',
+        'status_operational' => '3 operational · 2 under construction',
     ],
 
     'centers' => [
@@ -248,7 +249,7 @@ return [
 
     'technical_checks' => [
         'title' => 'Inspection Tests',
-        'intro' => 'Core technical checks performed at NACHO centers.',
+        'intro' => 'Core technical checks performed at NOVETESCO centers.',
         'items' => [
             ['key' => 'technical_inspection', 'title' => 'Technical Inspection', 'text' => 'Mandatory inspection for all vehicle types'],
             ['key' => 'emission_testing', 'title' => 'Emission Testing', 'text' => 'Ensure compliance with environmental standards'],
@@ -277,7 +278,7 @@ return [
             'price' => 'Price (FCFA)',
         ],
         'categories_label' => 'Vehicle category',
-        'other_hint' => 'For other vehicle categories, contact NACHO or see the full tariffs page.',
+        'other_hint' => 'For other vehicle categories, contact NOVETESCO or see the full tariffs page.',
     ],
 
     'blog' => [
@@ -309,7 +310,7 @@ return [
             ],
             [
                 'title' => 'Preparing Your Vehicle for Inspection',
-                'excerpt' => 'Simple checks to complete before arriving at a NACHO center.',
+                'excerpt' => 'Simple checks to complete before arriving at a NOVETESCO center.',
                 'category' => 'Inspection',
                 'date' => 'Apr 02, 2024',
                 'image' => 'images/homepage/articles/vehicle-preparation.png',
@@ -321,12 +322,12 @@ return [
         'title' => 'What Our Clients Say',
         'items' => [
             [
-                'quote' => 'Fast, professional and transparent service. NACHO is the best!',
+                'quote' => 'Fast, professional and transparent service. NOVETESCO is the best!',
                 'name' => 'Jean M.',
                 'location' => 'Yaounde',
             ],
             [
-                'quote' => 'I trust NACHO for all my vehicle inspections. Highly recommended!',
+                'quote' => 'I trust NOVETESCO for all my vehicle inspections. Highly recommended!',
                 'name' => 'Paul T.',
                 'location' => 'Douala',
             ],
@@ -350,8 +351,8 @@ return [
 
     'final_cta' => [
         'title' => 'Ready for Your Vehicle Inspection?',
-        'text' => 'Choose your nearest NACHO center, select your vehicle category, and request your inspection booking today.',
+        'text' => 'Choose your nearest NOVETESCO center, select your vehicle category, and request your inspection booking today.',
         'secondary_tariffs' => 'View Tariffs',
-        'secondary_contact' => 'Contact NACHO',
+        'secondary_contact' => 'Contact NOVETESCO',
     ],
 ];

@@ -28,11 +28,11 @@ return [
     'menu_descriptions' => [
         'services' => 'Contrôles techniques et professionnels',
         'tariffs' => 'Prix et validités des inspections',
-        'centers' => 'Trouver un centre NACHO',
+        'centers' => 'Trouver un centre NOVETESCO',
         'contact' => 'Contacter l’équipe pour assistance',
         'inspection_process' => 'Comprendre le processus',
         'blog' => 'Conseils et actualités sécurité routière',
         'compliance' => 'Inspections sûres et certifiées',
-        'careers' => 'Rejoindre l’équipe NACHO',
+        'careers' => 'Rejoindre l’équipe NOVETESCO',
     ],
 ];

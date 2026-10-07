@@ -28,11 +28,11 @@ return [
     'menu_descriptions' => [
         'services' => 'Technical and professional checks',
         'tariffs' => 'Inspection prices and validity',
-        'centers' => 'Find a NACHO inspection center',
+        'centers' => 'Find a NOVETESCO inspection center',
         'contact' => 'Reach the team for support',
         'inspection_process' => 'How inspections work',
         'blog' => 'Road safety updates and advice',
         'compliance' => 'Secure and certified inspections',
-        'careers' => 'Join the NACHO team',
+        'careers' => 'Join the NOVETESCO team',
     ],
 ];

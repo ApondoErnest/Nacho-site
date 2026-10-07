@@ -2,7 +2,7 @@
 
 return [
     'hero' => [
-        'network_title' => 'Réseau NACHO',
+        'network_title' => 'Réseau NOVETESCO',
         'status_operational' => 'Centres opérationnels',
         'status_operational_label' => 'Ouverts pour l\'inspection',
         'status_construction' => 'Ouverture avant novembre 2026',
@@ -27,7 +27,8 @@ return [
         'link' => 'Découvrir NOVETESCO',
         'list_label' => 'Points forts de NOVETESCO',
         'points' => [
-            '5 centres d\'inspection opérationnels',
+            '3 centres d\'inspection opérationnels',
+            '2 centres en construction',
             'Plus de 10 ans d\'expérience opérationnelle',
             'Centres agréés par l\'administration',
             'Équipements modernes',
@@ -37,9 +38,9 @@ return [
         ],
         'image_alt' => 'Équipe NOVETESCO dans une baie moderne de contrôle technique automobile',
         'image_statement' => 'Véhicules plus sûrs<br>Routes plus sûres<br>Cameroun plus sûr',
-        'count_value' => '5',
+        'count_value' => '3',
         'count_label' => 'Centres opérationnels',
-        'status_operational' => '5 centres d\'inspection opérationnels',
+        'status_operational' => '3 opérationnels · 2 en construction',
     ],
 
     'centers' => [
@@ -220,7 +221,7 @@ return [
             ['icon' => 'technician', 'tone' => 'navy', 'title' => 'Techniciens expérimentés', 'text' => 'Experts hautement formés et certifiés'],
             ['icon' => 'shield-alert', 'tone' => 'amber', 'title' => 'Équipements modernes', 'text' => 'Technologie précise pour des résultats fiables'],
             ['icon' => 'price-tag', 'tone' => 'red', 'title' => 'Tarifs justes', 'text' => 'Service de qualité à des prix équitables'],
-            ['icon' => 'map-pin', 'tone' => 'dark', 'title' => 'Couverture en croissance', 'text' => '5 centres opérationnels'],
+            ['icon' => 'map-pin', 'tone' => 'dark', 'title' => 'Couverture en croissance', 'text' => '3 centres opérationnels'],
         ],
         'benefits' => [
             ['icon' => 'shield-check', 'title' => 'Réseau d\'inspection agréé', 'text' => 'Centres agréés conformes aux normes nationales de contrôle technique.'],
@@ -248,7 +249,7 @@ return [
 
     'technical_checks' => [
         'title' => 'Tests d\'inspection',
-        'intro' => 'Contrôles techniques essentiels réalisés dans les centres NACHO.',
+        'intro' => 'Contrôles techniques essentiels réalisés dans les centres NOVETESCO.',
         'items' => [
             ['key' => 'technical_inspection', 'title' => 'Contrôle technique', 'text' => 'Inspection obligatoire pour tous les types de véhicules'],
             ['key' => 'emission_testing', 'title' => 'Test des émissions', 'text' => 'Vérification de la conformité environnementale'],
@@ -277,7 +278,7 @@ return [
             'price' => 'Prix (FCFA)',
         ],
         'categories_label' => 'Catégorie de véhicule',
-        'other_hint' => 'Pour d\'autres catégories, contactez NACHO ou consultez la page Tarifs complète.',
+        'other_hint' => 'Pour d\'autres catégories, contactez NOVETESCO ou consultez la page Tarifs complète.',
     ],
 
     'blog' => [
@@ -309,7 +310,7 @@ return [
             ],
             [
                 'title' => 'Préparer votre véhicule pour l\'inspection',
-                'excerpt' => 'Les vérifications simples à faire avant d\'arriver chez NACHO.',
+                'excerpt' => 'Les vérifications simples à faire avant d\'arriver chez NOVETESCO.',
                 'category' => 'Inspection',
                 'date' => '02 avr. 2024',
                 'image' => 'images/homepage/articles/vehicle-preparation.png',
@@ -321,12 +322,12 @@ return [
         'title' => 'Ce que disent nos clients',
         'items' => [
             [
-                'quote' => 'Service rapide, professionnel et transparent. NACHO est le meilleur !',
+                'quote' => 'Service rapide, professionnel et transparent. NOVETESCO est le meilleur !',
                 'name' => 'Jean M.',
                 'location' => 'Yaoundé',
             ],
             [
-                'quote' => 'Je fais confiance à NACHO pour toutes mes inspections. Je recommande vivement !',
+                'quote' => 'Je fais confiance à NOVETESCO pour toutes mes inspections. Je recommande vivement !',
                 'name' => 'Paul T.',
                 'location' => 'Douala',
             ],
@@ -350,8 +351,8 @@ return [
 
     'final_cta' => [
         'title' => 'Prêt pour votre inspection ?',
-        'text' => 'Choisissez le centre NACHO le plus proche, votre catégorie de véhicule et demandez votre réservation dès aujourd\'hui.',
+        'text' => 'Choisissez le centre NOVETESCO le plus proche, votre catégorie de véhicule et demandez votre réservation dès aujourd\'hui.',
         'secondary_tariffs' => 'Voir les tarifs',
-        'secondary_contact' => 'Contacter NACHO',
+        'secondary_contact' => 'Contacter NOVETESCO',
     ],
 ];
