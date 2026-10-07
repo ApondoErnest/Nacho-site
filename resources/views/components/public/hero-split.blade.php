@@ -60,18 +60,20 @@
 >
     <div class="absolute inset-0 -z-10 overflow-hidden">
         @foreach ($heroSlidePaths as $index => $path)
-            @php($sources = PublicImage::sources($path))
-            @if ($sources)
+            @php
+                $heroSlideSources = PublicImage::sources($path);
+            @endphp
+            @if ($heroSlideSources)
                 <picture
                     class="absolute inset-0 block h-full w-full transition-opacity duration-1000"
                     x-show="active === {{ $index }}"
                     x-transition.opacity
                 >
-                    @if ($sources['webp'])
-                        <source type="image/webp" srcset="{{ $sources['webp'] }}">
+                    @if ($heroSlideSources['webp'])
+                        <source type="image/webp" srcset="{{ $heroSlideSources['webp'] }}">
                     @endif
                     <img
-                        src="{{ $sources['src'] }}"
+                        src="{{ $heroSlideSources['src'] }}"
                         alt=""
                         decoding="async"
                         class="h-full w-full object-cover"
