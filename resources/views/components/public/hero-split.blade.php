@@ -5,13 +5,18 @@
 ])
 
 @php
+    use App\Support\PublicImage;
+
     $title = $title ?? __('components.hero.title');
     $subtitle = $subtitle ?? __('components.hero.subtitle');
     $eyebrow = $eyebrow ?? __('components.hero.eyebrow');
-    $heroImages = collect(range(1, 4))
+    $heroSlidePaths = collect(range(1, 4))
         ->map(fn ($index) => "images/homepage/hero-{$index}.png")
         ->filter(fn ($path) => file_exists(public_path($path)))
-        ->map(fn ($path) => asset($path))
+        ->values();
+    $heroPreloadUrls = $heroSlidePaths
+        ->map(fn (string $path) => PublicImage::preferredUrl($path))
+        ->filter()
         ->values();
     $stats = __('components.hero_stats');
     $statIcons = ['car-front', 'user-check', 'shield-plus', 'circle-check', 'star'];
@@ -21,26 +26,60 @@
     {{ $attributes->class(['hero-showcase relative isolate bg-nacho-dark text-white']) }}
     x-data="{
         active: 0,
-        slides: @js($heroImages),
+        slides: @js($heroPreloadUrls),
+        loaded: {},
+        timer: null,
         init() {
+            this.slides.forEach((src, index) => {
+                const img = new Image();
+                img.onload = () => { this.loaded[index] = true; };
+                img.onerror = () => { this.loaded[index] = true; };
+                img.src = src;
+            });
+
             if (this.slides.length > 1) {
-                setInterval(() => {
-                    this.active = (this.active + 1) % this.slides.length;
-                }, 5500);
+                this.timer = setInterval(() => this.advance(), 5500);
             }
-        }
+        },
+        advance() {
+            const len = this.slides.length;
+            for (let step = 1; step <= len; step++) {
+                const next = (this.active + step) % len;
+                if (this.loaded[next]) {
+                    this.active = next;
+                    return;
+                }
+            }
+        },
+        destroy() {
+            if (this.timer) {
+                clearInterval(this.timer);
+            }
+        },
     }"
 >
     <div class="absolute inset-0 -z-10 overflow-hidden">
-        @foreach ($heroImages as $index => $image)
-            <img
-                src="{{ $image }}"
-                alt=""
-                class="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000"
-                x-show="active === {{ $index }}"
-                x-transition.opacity
-                @if ($index === 0) loading="eager" fetchpriority="high" @else loading="lazy" @endif
-            />
+        @foreach ($heroSlidePaths as $index => $path)
+            @php($sources = PublicImage::sources($path))
+            @if ($sources)
+                <picture
+                    class="absolute inset-0 block h-full w-full transition-opacity duration-1000"
+                    x-show="active === {{ $index }}"
+                    x-transition.opacity
+                >
+                    @if ($sources['webp'])
+                        <source type="image/webp" srcset="{{ $sources['webp'] }}">
+                    @endif
+                    <img
+                        src="{{ $sources['src'] }}"
+                        alt=""
+                        decoding="async"
+                        class="h-full w-full object-cover"
+                        @load="loaded[{{ $index }}] = true"
+                        @if ($index === 0) loading="eager" fetchpriority="high" @else loading="eager" @endif
+                    />
+                </picture>
+            @endif
         @endforeach
         <div class="absolute inset-0 bg-gradient-to-r from-[#071016]/95 via-[#071016]/68 to-[#071016]/12"></div>
         <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#071016] to-transparent sm:h-28 xl:h-40"></div>

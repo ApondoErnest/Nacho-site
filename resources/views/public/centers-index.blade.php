@@ -142,7 +142,7 @@
                     'service_short_labels' => $assignedServices->pluck('short_label')->all(),
                     'maps_url' => $mapsUrl,
                     'book_url' => route('book-inspection', ['center' => $center['booking_key'] ?? $center['slug']]),
-                    'image_url' => $imagePath && file_exists(public_path($imagePath)) ? asset($imagePath) : null,
+                    'image_url' => $imagePath ? \App\Support\PublicImage::preferredUrl($imagePath) : null,
                     'search_index' => \Illuminate\Support\Str::lower(implode(' ', array_filter($searchTerms))),
                 ];
             })
@@ -167,7 +167,7 @@
                         ? ($center['expansion_last_updated_fr'] ?? null)
                         : ($center['expansion_last_updated_en'] ?? null),
                     'details_url' => '#expansion-' . $center['slug'],
-                    'image_url' => $imagePath && file_exists(public_path($imagePath)) ? asset($imagePath) : null,
+                    'image_url' => $imagePath ? \App\Support\PublicImage::preferredUrl($imagePath) : null,
                 ];
             })
             ->values();
@@ -189,8 +189,8 @@
     @endphp
 
     <section class="centers-page-hero" aria-labelledby="centers-hero-title">
-        <img
-            src="{{ asset('images/centers/hero.png') }}"
+        <x-public.optimized-image
+            path="images/centers/hero.png"
             alt=""
             class="centers-page-hero-image"
             loading="eager"

@@ -51,8 +51,8 @@
         </div>
 
         <div class="careers-hero-media" aria-hidden="true">
-            <img
-                src="{{ asset('images/carriers/hero.png') }}"
+            <x-public.optimized-image
+                path="images/carriers/hero.png"
                 alt=""
                 loading="eager"
                 fetchpriority="high"

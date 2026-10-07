@@ -4,7 +4,6 @@
 
 @php
     $image = $image ?? 'images/homepage/about.png';
-    $imageUrl = file_exists(public_path($image)) ? asset($image) : null;
 @endphp
 
 <section {{ $attributes->class(['about-nacho-section']) }}>
@@ -28,9 +27,12 @@
 
         <div class="about-nacho-visual-wrap">
             <div class="about-nacho-visual">
-                @if ($imageUrl)
-                    <img src="{{ $imageUrl }}" alt="{{ __('home.about.image_alt') }}" class="about-nacho-image" loading="lazy" />
-                @endif
+                <x-public.optimized-image
+                    :path="$image"
+                    :alt="__('home.about.image_alt')"
+                    class="about-nacho-image"
+                    loading="lazy"
+                />
                 <div class="about-nacho-image-shade" aria-hidden="true"></div>
                 <p class="about-nacho-image-text">{!! __('home.about.image_statement') !!}</p>
 

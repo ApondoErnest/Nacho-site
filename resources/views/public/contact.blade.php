@@ -75,7 +75,7 @@
                     'is_approximate' => empty($center['latitude']) || empty($center['longitude']),
                     'approximate_label' => __('contact.centers.map.approximate'),
                     'hours' => $centerHours,
-                    'image_url' => $imagePath && file_exists(public_path($imagePath)) ? asset($imagePath) : null,
+                    'image_url' => $imagePath ? \App\Support\PublicImage::preferredUrl($imagePath) : null,
                     'maps_url' => $center['maps_url']
                         ?: 'https://www.google.com/maps/search/?api=1&query=' . rawurlencode($mapsQuery),
                     'book_url' => $center['status'] === 'operational'
@@ -88,8 +88,8 @@
     @endphp
 
     <section class="contact-hero" aria-labelledby="contact-hero-title">
-        <img
-            src="{{ asset('images/contact/hero.png') }}"
+        <x-public.optimized-image
+            path="images/contact/hero.png"
             alt=""
             class="contact-hero-image"
             loading="eager"
@@ -151,7 +151,6 @@
                         @php
                             $isHeadquarters = $center['slug'] === 'nacho-mankon-bamenda';
                             $imagePath = $centerImages[$center['slug']] ?? null;
-                            $imageUrl = $imagePath && file_exists(public_path($imagePath)) ? asset($imagePath) : null;
                             $hours = $centerHours;
                             $phonesLine = implode(' / ', $center['phones'] ?? []);
                             $primaryPhone = $center['phones'][0] ?? null;
@@ -168,8 +167,12 @@
                             data-contact-center="{{ $center['slug'] }}"
                         >
                             <div class="contact-center-thumb">
-                                @if ($imageUrl)
-                                    <img src="{{ $imageUrl }}" alt="{{ $center['name'] }}" loading="lazy" />
+                                @if ($imagePath)
+                                    <x-public.optimized-image
+                                        :path="$imagePath"
+                                        :alt="$center['name']"
+                                        loading="lazy"
+                                    />
                                 @endif
                             </div>
 

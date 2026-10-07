@@ -44,8 +44,8 @@
     @endphp
 
     <section class="tariffs-hero" aria-labelledby="tariffs-hero-title">
-        <img
-            src="{{ asset('images/tariffs/hero.png') }}"
+        <x-public.optimized-image
+            path="images/tariffs/hero.png"
             alt=""
             class="tariffs-hero-image"
             loading="eager"

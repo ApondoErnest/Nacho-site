@@ -15,7 +15,10 @@
 
 <article {{ $attributes->class(['card-nacho flex flex-col']) }}>
     <div class="aspect-[16/10] bg-nacho-cream">
-        @if ($imageUrl)
+        @php($imagePath = \App\Support\PublicImage::resolvePath($imageUrl))
+        @if ($imagePath)
+            <x-public.optimized-image :path="$imagePath" alt="" class="h-full w-full object-cover" loading="lazy" />
+        @elseif ($imageUrl)
             <img src="{{ $imageUrl }}" alt="" class="h-full w-full object-cover" loading="lazy" />
         @else
             <div class="flex h-full items-center justify-center text-nacho-dark/25">

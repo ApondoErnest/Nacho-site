@@ -5,9 +5,11 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "test:frontend": "npm run build && php artisan test --filter=FrontendSmokeTest"
+        "test:frontend": "npm run build && php artisan test --filter=FrontendSmokeTest",
+        "images:optimize": "node scripts/optimize-public-images.mjs"
     },
     "devDependencies": {
+        "sharp": "^0.34.4",
         "@tailwindcss/forms": "^0.5.2",
         "@tailwindcss/vite": "^4.0.0",
         "alpinejs": "^3.4.2",

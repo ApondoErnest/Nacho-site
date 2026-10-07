@@ -9,8 +9,9 @@
 
 <article {{ $attributes->class(['card-nacho overflow-hidden']) }}>
     <div class="aspect-[16/9] bg-nacho-cream">
-        @if ($imageUrl)
-            <img src="{{ $imageUrl }}" alt="" class="h-full w-full object-cover" loading="lazy" />
+        @php($imagePath = \App\Support\PublicImage::resolvePath($imageUrl))
+        @if ($imagePath)
+            <x-public.optimized-image :path="$imagePath" alt="" class="h-full w-full object-cover" loading="lazy" />
         @endif
     </div>
     <div class="p-5">

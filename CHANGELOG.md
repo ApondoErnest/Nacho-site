@@ -6,6 +6,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Added
+
+- **Public image performance.** WebP companions for `public/images/` (`npm run images:optimize`), `PublicImage` helper and `<x-public.optimized-image>`, homepage LCP preload, hero carousel waits for loaded slides, lazy loading for below-fold blocks, and 30-day nginx cache for `/images/` and `/build/`.
+
 ### Removed
 
 - **Center availability strip.** Deleted `center-availability-strip` Blade component and `home.availability` lang keys; homepage no longer includes a separate operational/construction strip (hero status card and centers section remain).

@@ -37,8 +37,8 @@
     @endphp
 
     <section class="services-hero" aria-labelledby="services-hero-title">
-        <img
-            src="{{ asset('images/services/hero.png') }}"
+        <x-public.optimized-image
+            path="images/services/hero.png"
             alt=""
             class="services-hero-image"
             loading="eager"
@@ -73,8 +73,8 @@
     <section class="services-showcase-section" aria-label="{{ __('home.services.title') }}">
         <div class="services-showcase-grid">
             <article id="periodic-inspection" class="services-featured-card">
-                <img
-                    src="{{ asset('images/services/services-list.png') }}"
+                <x-public.optimized-image
+                    path="images/services/services-list.png"
                     alt=""
                     class="services-featured-image"
                     loading="lazy"
@@ -211,8 +211,8 @@
 
     <section class="services-booking-cta-section" aria-labelledby="services-booking-cta-title">
         <div class="services-booking-cta">
-            <img
-                src="{{ asset('images/services/cta.png') }}"
+            <x-public.optimized-image
+                path="images/services/cta.png"
                 alt=""
                 class="services-booking-cta-image"
                 loading="lazy"

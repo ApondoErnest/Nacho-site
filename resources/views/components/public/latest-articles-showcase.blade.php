@@ -12,14 +12,10 @@
 
     <div class="latest-articles-grid">
         @foreach ($posts as $post)
-            @php
-                $imageUrl = isset($post['image']) && file_exists(public_path($post['image'])) ? asset($post['image']) : null;
-            @endphp
-
             <article class="latest-article-card">
                 <a href="{{ route('blog.index') }}" class="latest-article-image" aria-label="{{ $post['title'] }}">
-                    @if ($imageUrl)
-                        <img src="{{ $imageUrl }}" alt="" loading="eager" />
+                    @if (! empty($post['image']) && file_exists(public_path($post['image'])))
+                        <x-public.optimized-image :path="$post['image']" alt="" loading="lazy" />
                     @endif
                 </a>
 

@@ -2,6 +2,15 @@
 
 @section('title', config('app.name'))
 
+@push('head')
+    @php
+        $lcpHero = \App\Support\PublicImage::preferredUrl('images/homepage/hero-1.png');
+    @endphp
+    @if ($lcpHero)
+        <link rel="preload" as="image" href="{{ $lcpHero }}" fetchpriority="high">
+    @endif
+@endpush
+
 @section('content')
     <x-public.hero-split>
         <x-slot:actions>

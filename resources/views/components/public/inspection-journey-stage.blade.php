@@ -80,8 +80,8 @@
         @case('checkin')
             <div class="inspection-checkin-layout">
                 <figure class="inspection-checkin-visual">
-                    <img
-                        src="{{ asset('images/inspection-process/inspection-process-checkin.png') }}"
+                    <x-public.optimized-image
+                        path="images/inspection-process/inspection-process-checkin.png"
                         alt=""
                         loading="lazy"
                     />

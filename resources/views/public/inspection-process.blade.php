@@ -8,8 +8,8 @@
     @endphp
 
     <section class="inspection-process-hero" aria-labelledby="inspection-process-hero-title">
-        <img
-            src="{{ asset('images/inspection-process/hero.png') }}"
+        <x-public.optimized-image
+            path="images/inspection-process/hero.png"
             alt=""
             class="inspection-process-hero-image"
             loading="eager"

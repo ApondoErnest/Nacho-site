@@ -4,7 +4,6 @@
 
 @php
     $image = $image ?? 'images/homepage/how-it-works.png';
-    $imageUrl = file_exists(public_path($image)) ? asset($image) : null;
     $steps = __('home.process.showcase_steps');
     $icons = [
         'booking' => 'calendar-check',
@@ -16,9 +15,12 @@
 @endphp
 
 <section {{ $attributes->class(['process-showcase']) }}>
-    @if ($imageUrl)
-        <img src="{{ $imageUrl }}" alt="" class="process-showcase-image" loading="eager" />
-    @endif
+    <x-public.optimized-image
+        :path="$image"
+        alt=""
+        class="process-showcase-image"
+        loading="lazy"
+    />
     <div class="process-showcase-overlay" aria-hidden="true"></div>
 
     <div class="process-showcase-content">

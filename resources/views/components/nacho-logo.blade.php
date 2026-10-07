@@ -23,14 +23,15 @@
         role="img"
         aria-label="{{ __(config('branding.logo_alt')) }}"
     >
-        <img
-            src="{{ asset($logoPath) }}"
+        <x-public.optimized-image
+            :path="$logoPath"
             alt=""
             class="block max-h-full w-auto max-w-full object-contain object-left"
             width="1774"
             height="887"
             decoding="async"
-            @if ($context === 'nav') fetchpriority="high" @endif
+            :fetchpriority="$context === 'nav' ? 'high' : null"
+            :loading="$context === 'nav' ? 'eager' : 'lazy'"
         />
     </span>
 @else

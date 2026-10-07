@@ -17,10 +17,10 @@
 
                 <div class="inspection-preparation-admin-body">
                     <figure class="inspection-preparation-image">
-                        <img
-                            src="{{ asset('images/inspection-process/inspection-process-carte-grise.png') }}"
+                        <x-public.optimized-image
+                            path="images/inspection-process/inspection-process-carte-grise.png"
                             alt=""
-                            loading="eager"
+                            loading="lazy"
                             decoding="async"
                         />
                     </figure>

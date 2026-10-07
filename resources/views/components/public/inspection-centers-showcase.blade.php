@@ -21,7 +21,6 @@
             @php
                 $isOperational = $center['status'] === 'operational';
                 $imagePath = $images[$center['slug']] ?? null;
-                $imageUrl = $imagePath && file_exists(public_path($imagePath)) ? asset($imagePath) : null;
                 $hours = $hoursSummary;
                 $primaryPhone = $center['phones'][0] ?? null;
                 $mapsUrl = $center['maps_url'] ?? route('centers.index');
@@ -32,8 +31,13 @@
 
                 @if ($isOperational)
                     <div class="inspection-center-photo">
-                        @if ($imageUrl)
-                            <img src="{{ $imageUrl }}" alt="{{ $center['name'] }}" loading="eager" />
+                        @if ($imagePath)
+                            <x-public.optimized-image
+                                :path="$imagePath"
+                                :alt="$center['name']"
+                                loading="lazy"
+                                decoding="async"
+                            />
                         @endif
                     </div>
 
@@ -81,8 +85,13 @@
                     </ul>
                 @else
                     <div class="inspection-center-coming-visual">
-                        @if ($imageUrl)
-                            <img src="{{ $imageUrl }}" alt="{{ $center['name'] }}" loading="eager" />
+                        @if ($imagePath)
+                            <x-public.optimized-image
+                                :path="$imagePath"
+                                :alt="$center['name']"
+                                loading="lazy"
+                                decoding="async"
+                            />
                         @endif
                     </div>
 

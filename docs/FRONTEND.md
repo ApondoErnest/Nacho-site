@@ -32,13 +32,25 @@ Main nav order (Book Inspection = CTA button at end):
 
 `FR | EN` in the top contact bar. Mobile: slide-in panel per [DESIGN.md](DESIGN.md) §4.
 
-## 3. Reusable components
+## 3. Static images (performance)
+
+Marketing photos live under `public/images/` as PNG/JPEG (~2MB each). For the web we generate **WebP companions** (same basename, `.webp`) via:
+
+```bash
+npm run images:optimize
+```
+
+Run this after adding or replacing assets under `public/images/`. Templates use `<x-public.optimized-image path="images/…" />` or `App\Support\PublicImage::preferredUrl()` so browsers load WebP when supported (PNG/JPEG remains fallback). Docker nginx caches `/images/` and `/build/` for 30 days.
+
+**Loading policy:** only the page LCP hero uses `loading="eager"` + `fetchpriority="high"` (and homepage preloads `hero-1`). Other sections use `loading="lazy"`.
+
+## 4. Reusable components
 
 Blade components (`resources/views/components/public/`):
 
 **Layout & chrome:** header (top bar + nav), footer (CTA band + columns + bottom), language switcher, mobile-menu (slide-in), floating-booking-button  
 
-**Marketing blocks:** hero-split (with status overlay card), trust-strip, about-preview-cards, cta-section (final + footer band)  
+**Marketing blocks:** hero-split (with status overlay card), optimized-image, trust-strip, about-preview-cards, cta-section (final + footer band)  
 
 **Content cards:** service-card, center-card (homepage preview), center-network-intro, center-filters, center-finder, center-list-item, center-profile-panel, center-expansion-card, center-expansion-detail, centers-visit-cta, center-map (lazy), tariff-card, tariff-table, tariff-category-selector, pricing-console, tariff-matrix, tariff-result-card, tariff-regulatory-section, tariff-logistics-strip, tariff-faq, tariff-mobile-action-bar, blog-card, career-card, careers-intro, careers-value-cards, career-area-card, careers-filters, careers-finder, vacancy-list-item, vacancy-detail-panel, careers-email-guidance, careers-visit-cta, careers-empty-state  
 
@@ -52,7 +64,7 @@ Blade components (`resources/views/components/public/`):
 
 Design-system preview: `/design-system` (Step 5).
 
-## 4. Home page (13 sections + layout chrome)
+## 5. Home page (13 sections + layout chrome)
 
 Full spec: [DESIGN.md](DESIGN.md) §5. Summary:
 
@@ -74,7 +86,7 @@ Full spec: [DESIGN.md](DESIGN.md) §5. Summary:
 
 **Note:** Step 6 build may require enhancing Steps 4–5 layout/components to match this spec if the first homepage pass used the older 10-section structure.
 
-## 5. Public pages
+## 6. Public pages
 
 ### About
 Company intro, mission, vision, values, road-safety commitment, professional inspection approach, center-expansion statement, CTA.
@@ -232,7 +244,7 @@ HQ data from [CENTERS_DATA.md](CENTERS_DATA.md); map; optional WhatsApp; contact
 
 Privacy, Terms, Cookies, Legal Notice — from `pages` table when wired.
 
-## 6. Responsiveness & accessibility
+## 7. Responsiveness & accessibility
 
 - Mobile-first; tariff tables → cards on small screens  
 - WCAG AA contrast; focus states; semantic landmarks; bilingual alt text  
@@ -240,6 +252,6 @@ Privacy, Terms, Cookies, Legal Notice — from `pages` table when wired.
 - **Centers finder:** keyboard navigation; visible focus on List/Map toggle and expandable cards (`aria-expanded`); screen-reader labels on phone/actions; map-independent access to all center info; marker distinction by colour **and** shape; geolocation consent copy before request
 - **Careers page:** accessible vacancy filters; meaningful `mailto` link labels; keyboard nav on list/detail panel; printable job descriptions  
 
-## 7. Language switcher
+## 8. Language switcher
 
 `FR | EN` in top bar; session persistence — [I18N.md](I18N.md). No mixed FR/EN on one rendered page.

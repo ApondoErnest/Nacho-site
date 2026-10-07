@@ -25,8 +25,8 @@
     @endphp
 
     <section class="about-page-hero" aria-labelledby="about-page-hero-title">
-        <img
-            src="{{ asset('images/about/hero-about-page.png') }}"
+        <x-public.optimized-image
+            path="images/about/hero-about-page.png"
             alt=""
             class="about-page-hero-image"
             loading="eager"
@@ -134,8 +134,8 @@
     <section class="about-advert-section" aria-labelledby="about-advert-title">
         <div class="about-advert">
             <div class="about-advert-image-wrap">
-                <img
-                    src="{{ asset('images/about/inspection-garage.png') }}"
+                <x-public.optimized-image
+                    path="images/about/inspection-garage.png"
                     alt=""
                     class="about-advert-image"
                     loading="lazy"
