@@ -39,7 +39,7 @@
             <h2 class="text-nacho-dark">{{ __('navigation.centers') }}</h2>
             <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 <x-public.center-card
-                    name="NACHO Yaoundé"
+                    name="NOVETESCO Yaounde"
                     city="Yaoundé"
                     status="operational"
                     :landmark="app()->getLocale() === 'fr' ? 'Près du rond-point…' : 'Near main roundabout…'"
@@ -48,7 +48,7 @@
                     href="#"
                 />
                 <x-public.center-card
-                    name="NACHO Garoua"
+                    name="NOVETESCO Douala"
                     city="Garoua"
                     status="under_construction"
                     :landmark="app()->getLocale() === 'fr' ? 'Zone industrielle' : 'Industrial zone'"

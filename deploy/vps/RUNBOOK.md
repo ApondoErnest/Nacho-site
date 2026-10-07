@@ -117,6 +117,7 @@ Verify:
 |--------|------------------|
 | `APP_DEBUG=false` | In `.env.production` |
 | Seed once | Set `RUN_DB_SEED=false`, `docker compose ... up -d app` |
+| NACHO → NOVETESCO on live copy | After deploy: `docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file .env.production exec -T app php artisan site:sync-public-branding` (updates centers + site contact settings only) |
 | Sessions / HTTPS | Login works on HTTPS (TrustProxies enabled in production) |
 | Forms | Booking + contact submit (mail in `storage/logs` until SMTP) |
 | Health | `https://noblevehicletestingcompany.com/up` |

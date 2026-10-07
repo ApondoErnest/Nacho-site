@@ -61,6 +61,8 @@ Automated config checks: `Step46DockerConfigTest` (optional `docker compose conf
 
 Production on VPS: set `APP_ENV=production`, `APP_DEBUG=false`, strong `APP_KEY`, `DB_*` and `SEED_ADMIN_PASSWORD`, set `RUN_DB_SEED=false` after first seed, then enable `config:cache` / `route:cache` / `view:cache` in your deploy script (Step 47).
 
+If the public site still shows old **NACHO** center names or Yahoo contact emails (data from the first seed), run **`php artisan site:sync-public-branding`** on the VPS app container after deploying the command—see [deploy/vps/RUNBOOK.md](../deploy/vps/RUNBOOK.md).
+
 Redis is optional and not included in v1 Compose.
 
 No reminder system is added during Dockerization.
