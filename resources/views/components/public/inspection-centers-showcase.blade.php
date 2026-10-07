@@ -1,12 +1,5 @@
 @php
     $locale = app()->getLocale();
-    $images = [
-        'nacho-yaounde' => 'images/homepage/yaounde-1.png',
-        'nacho-nkwen-bamenda' => 'images/homepage/nkwen-bamenda-1.png',
-        'nacho-mankon-bamenda' => 'images/homepage/mankon-bamenda-1.png',
-        'nacho-douala' => 'images/homepage/douala-coming-soon.png',
-        'nacho-kumba' => 'images/homepage/kumba-coming-soon.png',
-    ];
     $hoursSummary = $locale === 'fr'
         ? '8h00 – 18h00 (lun.–ven.) · 8h00 – 14h00 (sam.)'
         : '8:00 AM – 6:00 PM (Mon–Fri) · 8:00 AM – 2:00 PM (Sat)';
@@ -20,20 +13,13 @@
         @foreach ($centers as $center)
             @php
                 $isOperational = $center['status'] === 'operational';
-                $imagePath = null;
-                foreach ([
-                    $images[$center['slug']] ?? null,
+                $imagePath = \App\Support\PublicImage::centerImagePath(
+                    $center['slug'],
                     $center['featured_image'] ?? null,
-                ] as $candidate) {
-                    if ($candidate === null) {
-                        continue;
-                    }
-                    $resolved = \App\Support\PublicImage::resolvePath($candidate);
-                    if ($resolved !== null) {
-                        $imagePath = $resolved;
-                        break;
-                    }
-                }
+                    null,
+                    'homepage',
+                    'expansion',
+                );
                 $hours = $hoursSummary;
                 $primaryPhone = $center['phones'][0] ?? null;
                 $mapsUrl = $center['maps_url'] ?? route('centers.index');

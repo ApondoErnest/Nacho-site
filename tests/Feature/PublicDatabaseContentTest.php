@@ -44,6 +44,29 @@ class PublicDatabaseContentTest extends TestCase
             ->assertSee('Inspection Database');
     }
 
+    public function test_centers_page_renders_expansion_photos_for_novetesco_slugs(): void
+    {
+        Center::factory()->create([
+            'slug' => 'novetesco-douala',
+            'name_en' => 'NOVETESCO Douala',
+            'name_fr' => 'NOVETESCO Douala',
+            'city_en' => 'Douala',
+            'city_fr' => 'Douala',
+            'status' => CenterStatus::CONSTRUCTION->value,
+            'booking_enabled' => false,
+            'featured_image' => 'images/homepage/douala-coming-soon.png',
+        ]);
+
+        $response = $this->get(route('centers.index'));
+
+        $response->assertOk()
+            ->assertSee('expansion-novetesco-douala', false);
+        $this->assertMatchesRegularExpression(
+            '/centers-expansion-photo[^>]*>[\s\S]*?douala\.(webp|png)/',
+            $response->getContent(),
+        );
+    }
+
     public function test_booking_and_tariff_pages_use_database_rows(): void
     {
         Center::factory()->create([

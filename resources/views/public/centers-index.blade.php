@@ -49,28 +49,28 @@
             ];
         $serviceCatalog = collect($serviceOptions)->keyBy('slug');
         $regionOptions = ['Centre', 'Northwest', 'Littoral', 'Southwest'];
-        $centerImageMap = [
-            'nacho-yaounde' => 'images/centers/yaounde-1.png',
-            'nacho-nkwen-bamenda' => 'images/centers/nkwen-bamenda-1.png',
-            'nacho-mankon-bamenda' => 'images/centers/mankon-bamenda-1.png',
-        ];
-        $expansionImageMap = [
-            'nacho-douala' => 'images/centers/douala.png',
-            'nacho-kumba' => 'images/centers/kumba.png',
-        ];
         $approximateCityCoordinates = [
+            'novetesco-douala' => ['latitude' => 4.0511, 'longitude' => 9.7679],
             'nacho-douala' => ['latitude' => 4.0511, 'longitude' => 9.7679],
+            'novetesco-kumba' => ['latitude' => 4.6363, 'longitude' => 9.4469],
             'nacho-kumba' => ['latitude' => 4.6363, 'longitude' => 9.4469],
         ];
         $locatorCenters = $centers
-            ->map(function (array $center) use ($locale, $serviceCatalog, $centerImageMap, $approximateCityCoordinates) {
+            ->map(function (array $center) use ($locale, $serviceCatalog, $approximateCityCoordinates) {
                 $suffix = $locale === 'fr'
                     ? ($center['name_suffix_fr'] ?? '')
                     : ($center['name_suffix_en'] ?? '');
                 $displayName = trim($center['name'] . ' ' . $suffix);
                 $hours = $locale === 'fr' ? ($center['hours_fr'] ?? null) : ($center['hours_en'] ?? null);
                 $hoursLines = $locale === 'fr' ? ($center['hours_lines_fr'] ?? []) : ($center['hours_lines_en'] ?? []);
-                $imagePath = $centerImageMap[$center['slug']] ?? ($center['featured_image'] ?? null);
+                $imageUrl = \App\Support\PublicImage::centerImageUrl(
+                    $center['slug'],
+                    $center['featured_image'] ?? null,
+                    null,
+                    'operational',
+                    'expansion',
+                    'homepage',
+                );
                 $latitude = $center['latitude'] ?? ($approximateCityCoordinates[$center['slug']]['latitude'] ?? null);
                 $longitude = $center['longitude'] ?? ($approximateCityCoordinates[$center['slug']]['longitude'] ?? null);
                 $isOperational = $center['status'] === 'operational';
@@ -142,16 +142,14 @@
                     'service_short_labels' => $assignedServices->pluck('short_label')->all(),
                     'maps_url' => $mapsUrl,
                     'book_url' => route('book-inspection', ['center' => $center['booking_key'] ?? $center['slug']]),
-                    'image_url' => $imagePath ? \App\Support\PublicImage::preferredUrl($imagePath) : null,
+                    'image_url' => $imageUrl,
                     'search_index' => \Illuminate\Support\Str::lower(implode(' ', array_filter($searchTerms))),
                 ];
             })
             ->values();
         $expansionCenterCards = $centers
             ->where('status', 'under_construction')
-            ->map(function (array $center) use ($locale, $expansionImageMap) {
-                $imagePath = $expansionImageMap[$center['slug']] ?? null;
-
+            ->map(function (array $center) use ($locale) {
                 return [
                     'slug' => $center['slug'],
                     'name' => $center['name'],
@@ -167,7 +165,13 @@
                         ? ($center['expansion_last_updated_fr'] ?? null)
                         : ($center['expansion_last_updated_en'] ?? null),
                     'details_url' => '#expansion-' . $center['slug'],
-                    'image_url' => $imagePath ? \App\Support\PublicImage::preferredUrl($imagePath) : null,
+                    'image_url' => \App\Support\PublicImage::centerImageUrl(
+                        $center['slug'],
+                        $center['featured_image'] ?? null,
+                        null,
+                        'expansion',
+                        'homepage',
+                    ),
                 ];
             })
             ->values();

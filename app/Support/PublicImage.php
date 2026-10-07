@@ -63,4 +63,97 @@ final class PublicImage
 
         return is_file(public_path($path)) ? $path : null;
     }
+
+    /**
+     * Resolve a public URL for a center photo using slug maps, legacy slug aliases, and DB featured_image.
+     *
+     * @param  array<string, string|null>|null  $extraPaths  Optional slug => path overrides for a page
+     */
+    public static function centerImageUrl(string $slug, ?string $featuredImage = null, ?array $extraPaths = null, string ...$mapKeys): ?string
+    {
+        $maps = config('center_images', []);
+        $alternateSlug = self::alternateCenterSlug($slug);
+
+        $candidates = [];
+
+        if ($extraPaths !== null) {
+            $candidates[] = $extraPaths[$slug] ?? null;
+            if ($alternateSlug !== null) {
+                $candidates[] = $extraPaths[$alternateSlug] ?? null;
+            }
+        }
+
+        foreach ($mapKeys as $mapKey) {
+            $map = $maps[$mapKey] ?? [];
+            $candidates[] = $map[$slug] ?? null;
+            if ($alternateSlug !== null) {
+                $candidates[] = $map[$alternateSlug] ?? null;
+            }
+        }
+
+        $candidates[] = $featuredImage;
+
+        foreach (array_filter($candidates) as $candidate) {
+            $resolved = self::resolvePath($candidate);
+
+            if ($resolved !== null) {
+                return self::preferredUrl($resolved);
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * Resolve a relative public path for a center photo (for Blade optimized-image).
+     *
+     * @param  array<string, string|null>|null  $extraPaths
+     */
+    public static function centerImagePath(string $slug, ?string $featuredImage = null, ?array $extraPaths = null, string ...$mapKeys): ?string
+    {
+        $maps = config('center_images', []);
+        $alternateSlug = self::alternateCenterSlug($slug);
+
+        $candidates = [];
+
+        if ($extraPaths !== null) {
+            $candidates[] = $extraPaths[$slug] ?? null;
+            if ($alternateSlug !== null) {
+                $candidates[] = $extraPaths[$alternateSlug] ?? null;
+            }
+        }
+
+        foreach ($mapKeys as $mapKey) {
+            $map = $maps[$mapKey] ?? [];
+            $candidates[] = $map[$slug] ?? null;
+            if ($alternateSlug !== null) {
+                $candidates[] = $map[$alternateSlug] ?? null;
+            }
+        }
+
+        $candidates[] = $featuredImage;
+
+        foreach (array_filter($candidates) as $candidate) {
+            $resolved = self::resolvePath($candidate);
+
+            if ($resolved !== null) {
+                return $resolved;
+            }
+        }
+
+        return null;
+    }
+
+    private static function alternateCenterSlug(string $slug): ?string
+    {
+        if (str_starts_with($slug, 'novetesco-')) {
+            return 'nacho-'.substr($slug, strlen('novetesco-'));
+        }
+
+        if (str_starts_with($slug, 'nacho-')) {
+            return 'novetesco-'.substr($slug, strlen('nacho-'));
+        }
+
+        return null;
+    }
 }

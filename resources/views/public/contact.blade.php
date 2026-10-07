@@ -31,29 +31,13 @@
                 'href' => '#contact-headquarters',
             ],
         ];
-        $centerImages = [
-            'nacho-yaounde' => 'images/contact/yaounde-1.png',
-            'nacho-nkwen-bamenda' => 'images/contact/nkwen-bamenda-1.png',
-            'nacho-mankon-bamenda' => 'images/contact/mankon-bamenda-1.png',
-        ];
-        $resolveContactCenterImage = function (array $center) use ($centerImages): ?string {
-            foreach ([
-                $centerImages[$center['slug']] ?? null,
-                $center['featured_image'] ?? null,
-            ] as $candidate) {
-                if ($candidate === null) {
-                    continue;
-                }
-
-                $resolved = \App\Support\PublicImage::resolvePath($candidate);
-
-                if ($resolved !== null) {
-                    return $resolved;
-                }
-            }
-
-            return null;
-        };
+        $resolveContactCenterImage = fn (array $center): ?string => \App\Support\PublicImage::centerImagePath(
+            $center['slug'],
+            $center['featured_image'] ?? null,
+            null,
+            'contact',
+            'homepage',
+        );
         $centerHours = __('components.centers_locator.current_hours');
         $centers = collect($centerRecords ?? config('centers.centers', []));
         $headquarters = $headquarters ?? app(\App\Support\PublicSiteData::class)->headquarters();
