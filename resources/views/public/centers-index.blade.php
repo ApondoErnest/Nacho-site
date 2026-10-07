@@ -55,8 +55,8 @@
             'nacho-mankon-bamenda' => 'images/centers/mankon-bamenda-1.png',
         ];
         $expansionImageMap = [
-            'nacho-douala' => 'images/centers-douala.png',
-            'nacho-kumba' => 'images/centers-kumba.png',
+            'nacho-douala' => 'images/centers/douala.png',
+            'nacho-kumba' => 'images/centers/kumba.png',
         ];
         $approximateCityCoordinates = [
             'nacho-douala' => ['latitude' => 4.0511, 'longitude' => 9.7679],

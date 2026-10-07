@@ -18,7 +18,7 @@
                 <div class="inspection-preparation-admin-body">
                     <figure class="inspection-preparation-image">
                         <img
-                            src="{{ asset('images/inspection-process-carte-grise.png') }}"
+                            src="{{ asset('images/inspection-process/inspection-process-carte-grise.png') }}"
                             alt=""
                             loading="eager"
                             decoding="async"
