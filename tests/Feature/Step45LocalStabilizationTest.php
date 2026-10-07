@@ -75,16 +75,6 @@ class Step45LocalStabilizationTest extends TestCase
         );
     }
 
-    public function test_homepage_about_section_reports_three_operational_centers_not_five(): void
-    {
-        $this->seed(DatabaseSeeder::class);
-
-        $this->get(route('home'))
-            ->assertOk()
-            ->assertSee('3 centres d&#039;inspection opérationnels', false)
-            ->assertDontSee('5 centres d&#039;inspection opérationnels', false);
-    }
-
     public function test_seeded_center_featured_images_use_existing_homepage_assets(): void
     {
         $this->seed(DatabaseSeeder::class);

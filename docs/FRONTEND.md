@@ -38,7 +38,7 @@ Blade components (`resources/views/components/public/`):
 
 **Layout & chrome:** header (top bar + nav), footer (CTA band + columns + bottom), language switcher, mobile-menu (slide-in), floating-booking-button  
 
-**Marketing blocks:** hero-split (with status overlay card), center-availability-strip, trust-strip, about-preview-cards, cta-section (final + footer band)  
+**Marketing blocks:** hero-split (with status overlay card), trust-strip, about-preview-cards, cta-section (final + footer band)  
 
 **Content cards:** service-card, center-card (homepage preview), center-network-intro, center-filters, center-finder, center-list-item, center-profile-panel, center-expansion-card, center-expansion-detail, centers-visit-cta, center-map (lazy), tariff-card, tariff-table, tariff-category-selector, pricing-console, tariff-matrix, tariff-result-card, tariff-regulatory-section, tariff-logistics-strip, tariff-faq, tariff-mobile-action-bar, blog-card, career-card, careers-intro, careers-value-cards, career-area-card, careers-filters, careers-finder, vacancy-list-item, vacancy-detail-panel, careers-email-guidance, careers-visit-cta, careers-empty-state  
 
@@ -52,26 +52,25 @@ Blade components (`resources/views/components/public/`):
 
 Design-system preview: `/design-system` (Step 5).
 
-## 4. Home page (14 sections + layout chrome)
+## 4. Home page (13 sections + layout chrome)
 
 Full spec: [DESIGN.md](DESIGN.md) §5. Summary:
 
 | # | Section |
 |---|---------|
 | 1 | Hero (split + floating 3+2 status card + trust icons + CTAs) |
-| 2 | Center availability strip |
-| 3 | About preview (3 cards) |
-| 4 | Services preview (5 cards) |
-| 5 | Inspection process timeline (**6 steps**) |
-| 6 | Six technical checks |
-| 7 | Tariffs preview (+ category selector) |
-| 8 | Centers (verified data — [CENTERS_DATA.md](CENTERS_DATA.md)) |
-| 9 | Why choose NOVETESCO (6 benefits) |
-| 10 | Inspection result explanation (3 cards) |
-| 11 | Blog preview (3 articles) |
-| 12 | Final CTA |
-| 13 | Footer CTA band |
-| 14 | Main footer + footer bottom |
+| 2 | About preview (3 cards) |
+| 3 | Services preview (5 cards) |
+| 4 | Inspection process timeline (**6 steps**) |
+| 5 | Six technical checks |
+| 6 | Tariffs preview (+ category selector) |
+| 7 | Centers (verified data — [CENTERS_DATA.md](CENTERS_DATA.md)) |
+| 8 | Why choose NOVETESCO (6 benefits) |
+| 9 | Inspection result explanation (3 cards) |
+| 10 | Blog preview (3 articles) |
+| 11 | Final CTA |
+| 12 | Footer CTA band |
+| 13 | Main footer + footer bottom |
 
 **Note:** Step 6 build may require enhancing Steps 4–5 layout/components to match this spec if the first homepage pass used the older 10-section structure.
 

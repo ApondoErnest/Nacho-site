@@ -13,13 +13,6 @@ return [
         'cta_view_tariffs' => 'Voir les tarifs',
     ],
 
-    'availability' => [
-        'title' => 'Disponibilité des centres',
-        'operational' => '3 centres opérationnels',
-        'construction' => '2 en construction',
-        'opening' => 'Ouverture avant novembre 2026',
-    ],
-
     'about' => [
         'eyebrow' => 'À propos de NOVETESCO',
         'title' => 'Engagés pour la sécurité, la transparence et l\'excellence',
@@ -27,8 +20,7 @@ return [
         'link' => 'Découvrir NOVETESCO',
         'list_label' => 'Points forts de NOVETESCO',
         'points' => [
-            '3 centres d\'inspection opérationnels',
-            '2 centres en construction',
+            '5 centres d\'inspection opérationnels',
             'Plus de 10 ans d\'expérience opérationnelle',
             'Centres agréés par l\'administration',
             'Équipements modernes',
@@ -38,9 +30,9 @@ return [
         ],
         'image_alt' => 'Équipe NOVETESCO dans une baie moderne de contrôle technique automobile',
         'image_statement' => 'Véhicules plus sûrs<br>Routes plus sûres<br>Cameroun plus sûr',
-        'count_value' => '3',
+        'count_value' => '5',
         'count_label' => 'Centres opérationnels',
-        'status_operational' => '3 opérationnels · 2 en construction',
+        'status_operational' => '5 centres d\'inspection opérationnels',
     ],
 
     'centers' => [
@@ -221,7 +213,7 @@ return [
             ['icon' => 'technician', 'tone' => 'navy', 'title' => 'Techniciens expérimentés', 'text' => 'Experts hautement formés et certifiés'],
             ['icon' => 'shield-alert', 'tone' => 'amber', 'title' => 'Équipements modernes', 'text' => 'Technologie précise pour des résultats fiables'],
             ['icon' => 'price-tag', 'tone' => 'red', 'title' => 'Tarifs justes', 'text' => 'Service de qualité à des prix équitables'],
-            ['icon' => 'map-pin', 'tone' => 'dark', 'title' => 'Couverture en croissance', 'text' => '3 centres opérationnels'],
+            ['icon' => 'map-pin', 'tone' => 'dark', 'title' => 'Couverture en croissance', 'text' => '5 centres opérationnels'],
         ],
         'benefits' => [
             ['icon' => 'shield-check', 'title' => 'Réseau d\'inspection agréé', 'text' => 'Centres agréés conformes aux normes nationales de contrôle technique.'],

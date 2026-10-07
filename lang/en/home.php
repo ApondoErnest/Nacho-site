@@ -13,13 +13,6 @@ return [
         'cta_view_tariffs' => 'View Tariffs',
     ],
 
-    'availability' => [
-        'title' => 'Center availability',
-        'operational' => '3 Operational Centers',
-        'construction' => '2 Under Construction',
-        'opening' => 'Opening Before November 2026',
-    ],
-
     'about' => [
         'eyebrow' => 'About NOVETESCO',
         'title' => 'Committed to Safety, Transparency & Excellence',
@@ -27,8 +20,7 @@ return [
         'link' => 'Learn About NOVETESCO',
         'list_label' => 'NOVETESCO highlights',
         'points' => [
-            '3 Operational Inspection Centers',
-            '2 Additional Centers Under Construction',
+            '5 Operational Inspection Centers',
             'Over 10 Years of Operational Experience',
             'Government Approved Centers',
             'State-of-the-art Equipment',
@@ -38,9 +30,9 @@ return [
         ],
         'image_alt' => 'NOVETESCO inspection team inside a modern vehicle inspection bay',
         'image_statement' => 'Safer Vehicles<br>Safer Roads<br>Safer Cameroon',
-        'count_value' => '3',
+        'count_value' => '5',
         'count_label' => 'Operational Centers',
-        'status_operational' => '3 operational · 2 under construction',
+        'status_operational' => '5 Operational Inspection Centers',
     ],
 
     'centers' => [

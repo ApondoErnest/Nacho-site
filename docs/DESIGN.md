@@ -102,26 +102,25 @@ Menu order:
 
 ---
 
-## 5. Homepage structure (14 content sections)
+## 5. Homepage structure (13 content sections)
 
 Must answer: who, what, where, why, what next. Center data: [CENTERS_DATA.md](CENTERS_DATA.md).
 
 | # | Section | Summary |
 |---|---------|---------|
 | 1 | **Hero** | Split layout: left — headline, subtitle (3+2 centers), CTAs (Book primary, Find Center, View Tariffs link), trust icon row; right — hero image + **floating status card** (“3 Centers Operational / 2 Opening Before November 2026”) |
-| 2 | **Center availability strip** | Horizontal: `3 Operational \| 2 Under Construction \| Opening Before November 2026` — green / amber |
-| 3 | **About preview** | Title: *Vehicle Inspection Built Around Safety, Trust, and Compliance*; 3 cards (Safety First, Professional Inspection, Clear Customer Guidance); CTA: Learn About NOVETESCO |
-| 4 | **Services preview** | 5 cards — icon, short copy, Learn more, optional Book now; white card, shadow, orange icon |
-| 5 | **Inspection process timeline** | Title: *How Your Inspection Works* — **6 steps** (horizontal desktop / vertical mobile); CTA: View Full Inspection Process |
-| 6 | **Six technical checks** | Inspired by Satellite — ripage, braking, suspension, pollution, headlight alignment, visual; icon blocks (charcoal bg + orange icons or white + orange line icons) |
-| 7 | **Tariffs preview** | Common categories + price + validity + Book this category; **category selector** (Private Car \| Taxi \| Pickup \| Bus \| Truck \| Other); View All Tariffs |
-| 8 | **Centers** | *Find a NOVETESCO Center Near You* — cards with name, city, status badge, hours, phone, address, Get Directions, Book at this Center |
-| 9 | **Why choose NOVETESCO** | 6 benefit blocks (concrete, not vague “best”) |
-| 10 | **Inspection results** | 3 cards: Accepted (green), Suspended (amber), Refused (red) |
-| 11 | **Blog preview** | 3 articles with image, category, title, excerpt, read more |
-| 12 | **Final CTA** | Dark charcoal or orange gradient + road/vehicle overlay; Book, View Tariffs, Contact |
-| 13 | **Footer CTA band** | “Need help choosing the right inspection service?” — Contact + Book |
-| 14 | **Main footer** | See §6 |
+| 2 | **About preview** | Title: *Vehicle Inspection Built Around Safety, Trust, and Compliance*; 3 cards (Safety First, Professional Inspection, Clear Customer Guidance); CTA: Learn About NOVETESCO |
+| 3 | **Services preview** | 5 cards — icon, short copy, Learn more, optional Book now; white card, shadow, orange icon |
+| 4 | **Inspection process timeline** | Title: *How Your Inspection Works* — **6 steps** (horizontal desktop / vertical mobile); CTA: View Full Inspection Process |
+| 5 | **Six technical checks** | Inspired by Satellite — ripage, braking, suspension, pollution, headlight alignment, visual; icon blocks (charcoal bg + orange icons or white + orange line icons) |
+| 6 | **Tariffs preview** | Common categories + price + validity + Book this category; **category selector** (Private Car \| Taxi \| Pickup \| Bus \| Truck \| Other); View All Tariffs |
+| 7 | **Centers** | *Find a NOVETESCO Center Near You* — cards with name, city, status badge, hours, phone, address, Get Directions, Book at this Center |
+| 8 | **Why choose NOVETESCO** | 6 benefit blocks (concrete, not vague “best”) |
+| 9 | **Inspection results** | 3 cards: Accepted (green), Suspended (amber), Refused (red) |
+| 10 | **Blog preview** | 3 articles with image, category, title, excerpt, read more |
+| 11 | **Final CTA** | Dark charcoal or orange gradient + road/vehicle overlay; Book, View Tariffs, Contact |
+| 12 | **Footer CTA band** | “Need help choosing the right inspection service?” — Contact + Book |
+| 13 | **Main footer** | See §6 |
 
 **Slogan** in hero/tagline: *Safety, Quality, Trust.* / FR equivalent ([PROJECT_BRIEF.md](PROJECT_BRIEF.md)).
 
@@ -281,7 +280,7 @@ Professional **vacancy-discovery and employer-brand** page — not an online rec
 |------|-------------------|
 | 4 | Top bar + main nav + sticky/shrink + mobile panel shell |
 | 5 | Cards, timeline, result blocks, tariff preview, floating book button |
-| 6 | Full homepage §5 (14 sections + layout chrome §3–§6) |
+| 6 | Full homepage §5 (13 sections + layout chrome §3–§6) |
 | 8 | Centers page — 4-block Dynamic Center Finder (index-only) + mobile UX |
 | 11 | Tariffs page — 4-block Master Pricing Console + mobile UX |
 | 12 | Full 6-step process page |

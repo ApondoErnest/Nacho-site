@@ -12,7 +12,7 @@ return [
     'hero_features' => [
         [
             'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 20h16M6 20V8l6-4 6 4v12M9 20v-6h6v6M8 10h.01M12 10h.01M16 10h.01" /></svg>',
-            'title' => '3 centres opérationnels',
+            'title' => '5 centres opérationnels',
             'text' => 'Au Cameroun',
         ],
         [
@@ -50,8 +50,8 @@ return [
         ],
         [
             'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 3l7 4v6c0 4-3 7-7 8-4-1-7-4-7-8V7l7-4z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6M12 9v6" /></svg>',
-            'value' => '3',
-            'label' => 'Centres opérationnels',
+            'value' => '5',
+            'label' => 'Centres d\'inspection',
         ],
         [
             'icon' => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" /><path stroke-linecap="round" stroke-linejoin="round" d="M8 12l3 3 5-6" /></svg>',

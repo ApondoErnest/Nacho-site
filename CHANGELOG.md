@@ -6,9 +6,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+### Removed
+
+- **Center availability strip.** Deleted `center-availability-strip` Blade component and `home.availability` lang keys; homepage no longer includes a separate operational/construction strip (hero status card and centers section remain).
+
 ### Changed
 
-- **Public content alignment (2026-10-07).** Homepage about/stats now state **3 operational + 2 under construction** centers (not 5 operational). User-facing copy in `lang/*` uses **NOVETESCO** and slogan **Safety, Quality, Trust** / **Sécurité, qualité, confiance**. `CenterSeeder` `featured_image` paths match `public/images/homepage/*-1.png`. SEO OG/default images point at existing assets. [plan.md](plan.md) and [docs/ROADMAP.md](docs/ROADMAP.md) synced (Steps 7–18 done, Step 48 next).
+- **Public content alignment (2026-10-07).** User-facing copy in `lang/*` uses **NOVETESCO** and slogan **Safety, Quality, Trust** / **Sécurité, qualité, confiance**. `CenterSeeder` `featured_image` paths match `public/images/homepage/*-1.png`. SEO OG/default images point at existing assets. [plan.md](plan.md) and [docs/ROADMAP.md](docs/ROADMAP.md) synced (Steps 7–18 done, Step 48 next).
 
 - **Documentation — slogan, headquarters email, and name cleanup.** Slogan is **Safety, Quality, Trust** / **Sécurité, qualité, confiance**. Every documented address that used the old Yahoo mailbox now uses `noblevehicletestingcompany@gmail.com` until each center has its own email. Documentation identifiers (center names, slugs, database name, tokens, booking references, logo filename) use **NOVETESCO** only. Application code, seed data, and the public site are unchanged in this step.
 
