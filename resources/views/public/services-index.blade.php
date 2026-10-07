@@ -40,7 +40,6 @@
         <x-public.optimized-image
             path="images/services/hero.png"
             alt=""
-            class="services-hero-image"
             loading="eager"
             fetchpriority="high"
         />
@@ -76,7 +75,6 @@
                 <x-public.optimized-image
                     path="images/services/services-list.png"
                     alt=""
-                    class="services-featured-image"
                     loading="lazy"
                 />
                 <div class="services-featured-shade" aria-hidden="true"></div>
@@ -214,7 +212,6 @@
             <x-public.optimized-image
                 path="images/services/cta.png"
                 alt=""
-                class="services-booking-cta-image"
                 loading="lazy"
             />
             <div class="services-booking-cta-overlay" aria-hidden="true"></div>

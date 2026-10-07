@@ -2309,8 +2309,12 @@
         @apply relative isolate overflow-hidden bg-white text-nacho-dark;
     }
 
-    .services-hero-image {
-        @apply absolute inset-y-0 right-0 -z-20 h-full w-full object-cover;
+    .services-hero > picture {
+        @apply absolute inset-y-0 right-0 -z-20 block h-full w-full overflow-hidden;
+    }
+
+    .services-hero > picture img {
+        @apply h-full w-full object-cover;
         object-position: 63% center;
     }
 
@@ -3076,8 +3080,12 @@
         @apply relative isolate scroll-mt-32 overflow-hidden rounded-lg bg-[#071016] text-white shadow-[0_20px_52px_-34px_rgba(7,16,22,0.95)] ring-1 ring-nacho-dark/10;
     }
 
-    .services-featured-image {
-        @apply absolute inset-0 -z-20 h-full w-full object-cover;
+    .services-featured-card > picture {
+        @apply absolute inset-0 -z-20 block h-full w-full overflow-hidden;
+    }
+
+    .services-featured-card > picture img {
+        @apply h-full w-full object-cover;
         object-position: center 42%;
     }
 
@@ -3399,8 +3407,12 @@
         max-width: min(calc(100vw - 2rem), 120rem);
     }
 
-    .services-booking-cta-image {
-        @apply absolute inset-0 -z-20 h-full w-full object-cover;
+    .services-booking-cta > picture {
+        @apply absolute inset-0 -z-20 block h-full w-full overflow-hidden;
+    }
+
+    .services-booking-cta > picture img {
+        @apply h-full w-full object-cover;
         object-position: 62% 34%;
     }
 
@@ -3491,7 +3503,7 @@
                 linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.88) 100%);
         }
 
-        .services-hero-image {
+        .services-hero > picture img {
             object-position: 70% center;
         }
 
@@ -3550,7 +3562,7 @@
             @apply min-h-[18rem] content-end;
         }
 
-        .services-booking-cta-image {
+        .services-booking-cta > picture img {
             object-position: center 22%;
         }
 
@@ -3610,7 +3622,7 @@
             @apply min-h-[23rem] px-5 py-6;
         }
 
-        .services-booking-cta-image {
+        .services-booking-cta > picture img {
             object-position: center 24%;
         }
 
