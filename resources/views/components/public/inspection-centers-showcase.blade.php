@@ -20,7 +20,20 @@
         @foreach ($centers as $center)
             @php
                 $isOperational = $center['status'] === 'operational';
-                $imagePath = $images[$center['slug']] ?? null;
+                $imagePath = null;
+                foreach ([
+                    $images[$center['slug']] ?? null,
+                    $center['featured_image'] ?? null,
+                ] as $candidate) {
+                    if ($candidate === null) {
+                        continue;
+                    }
+                    $resolved = \App\Support\PublicImage::resolvePath($candidate);
+                    if ($resolved !== null) {
+                        $imagePath = $resolved;
+                        break;
+                    }
+                }
                 $hours = $hoursSummary;
                 $primaryPhone = $center['phones'][0] ?? null;
                 $mapsUrl = $center['maps_url'] ?? route('centers.index');

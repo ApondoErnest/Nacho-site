@@ -242,6 +242,78 @@
         @apply inline-flex shrink-0 items-center whitespace-nowrap rounded-md bg-nacho-primary px-5 py-2.5 text-base font-bold text-white shadow-sm shadow-nacho-primary/25 transition-all hover:bg-nacho-primary-dark;
     }
 
+    .public-optimized-picture {
+        @apply block h-full w-full max-w-full;
+    }
+
+    [class*='aspect-'] > .public-optimized-picture {
+        @apply h-full w-full;
+    }
+
+    [class*='aspect-'] > .public-optimized-picture img {
+        @apply h-full w-full object-cover;
+    }
+
+    .inspection-center-photo > .public-optimized-picture,
+    .inspection-center-coming-visual > .public-optimized-picture,
+    .latest-article-image > .public-optimized-picture,
+    .inspection-checkin-visual > .public-optimized-picture,
+    .inspection-preparation-image > .public-optimized-picture,
+    .careers-hero-media > .public-optimized-picture,
+    .about-advert-image-wrap > .public-optimized-picture {
+        @apply block h-full w-full;
+    }
+
+    .about-page-hero > .public-optimized-picture,
+    .process-showcase > .public-optimized-picture,
+    .tariffs-hero > .public-optimized-picture,
+    .inspection-process-hero > .public-optimized-picture {
+        @apply pointer-events-none absolute inset-0 -z-20 block h-full w-full overflow-hidden;
+    }
+
+    .process-showcase > .public-optimized-picture {
+        @apply inset-y-0 right-0 left-auto w-full opacity-30 lg:w-[49%] lg:opacity-100;
+    }
+
+    .tariffs-hero > .public-optimized-picture {
+        @apply inset-y-0 right-0 left-auto;
+    }
+
+    .centers-page-hero > .public-optimized-picture {
+        @apply absolute right-0 top-0 -z-20 hidden h-[17.5rem] w-[58vw] max-w-[58rem] overflow-hidden xl:block;
+    }
+
+    .about-page-hero > .public-optimized-picture img {
+        @apply h-full w-full object-cover;
+        object-position: 60% center;
+    }
+
+    .process-showcase > .public-optimized-picture img {
+        @apply h-full w-full object-cover object-right;
+    }
+
+    .tariffs-hero > .public-optimized-picture img,
+    .inspection-process-hero > .public-optimized-picture img {
+        @apply h-full w-full object-cover;
+    }
+
+    .tariffs-hero > .public-optimized-picture img {
+        object-position: 72% center;
+    }
+
+    .inspection-process-hero > .public-optimized-picture img {
+        object-position: 68% center;
+    }
+
+    .centers-page-hero > .public-optimized-picture img {
+        @apply h-full w-full object-cover;
+    }
+
+    .about-advert-image,
+    .about-advert-image-wrap > .public-optimized-picture img {
+        @apply h-full w-full object-cover object-[center_8%] xl:object-[35%_center];
+    }
+
     .hero-showcase {
         @apply z-10 xl:min-h-[44rem];
     }
@@ -259,8 +331,15 @@
         min-height: 32rem;
     }
 
+    .contact-hero > picture,
+    .contact-hero > .public-optimized-picture {
+        @apply absolute inset-0 -z-20 block h-full w-full overflow-hidden;
+    }
+
+    .contact-hero > picture img,
+    .contact-hero > .public-optimized-picture img,
     .contact-hero-image {
-        @apply absolute inset-0 -z-20 h-full w-full object-cover;
+        @apply h-full w-full object-cover;
         object-position: 72% center;
     }
 
@@ -480,6 +559,13 @@
         @apply mx-auto h-28 w-28 shrink-0 overflow-hidden rounded-full bg-nacho-cream ring-1 ring-nacho-dark/10 sm:mx-0 sm:h-32 sm:w-32;
     }
 
+    .contact-center-thumb > picture,
+    .contact-center-thumb > .public-optimized-picture {
+        @apply block h-full w-full;
+    }
+
+    .contact-center-thumb > picture img,
+    .contact-center-thumb > .public-optimized-picture img,
     .contact-center-thumb img {
         @apply h-full w-full object-cover;
     }
@@ -1559,7 +1645,12 @@
         @apply relative overflow-visible rounded-lg;
     }
 
-    .about-nacho-image {
+    .about-nacho-visual > .public-optimized-picture {
+        @apply w-full;
+    }
+
+    .about-nacho-image,
+    .about-nacho-visual > .public-optimized-picture img {
         @apply h-[15rem] w-full rounded-lg object-cover shadow-[0_18px_42px_-28px_rgba(7,16,22,0.9)] ring-1 ring-nacho-dark/15 sm:h-[17.5rem] lg:h-[20rem] xl:h-[28rem];
     }
 
@@ -1731,7 +1822,8 @@
         }
     }
 
-    .inspection-center-photo img {
+    .inspection-center-photo img,
+    .inspection-center-photo > .public-optimized-picture img {
         @apply h-full w-full object-cover;
     }
 
@@ -1779,7 +1871,8 @@
         @apply mx-auto flex h-28 items-center justify-center overflow-hidden rounded-md bg-white sm:h-32 xl:h-40;
     }
 
-    .inspection-center-coming-visual img {
+    .inspection-center-coming-visual img,
+    .inspection-center-coming-visual > .public-optimized-picture img {
         @apply h-full w-full object-contain;
     }
 
@@ -2057,11 +2150,13 @@
         }
     }
 
-    .latest-article-image img {
+    .latest-article-image img,
+    .latest-article-image > .public-optimized-picture img {
         @apply h-full w-full object-cover transition-transform duration-300;
     }
 
-    .latest-article-card:hover .latest-article-image img {
+    .latest-article-card:hover .latest-article-image img,
+    .latest-article-card:hover .latest-article-image > .public-optimized-picture img {
         @apply scale-[1.03];
     }
 
@@ -2309,11 +2404,13 @@
         @apply relative isolate overflow-hidden bg-white text-nacho-dark;
     }
 
-    .services-hero > picture {
+    .services-hero > picture,
+    .services-hero > .public-optimized-picture {
         @apply absolute inset-y-0 right-0 -z-20 block h-full w-full overflow-hidden;
     }
 
-    .services-hero > picture img {
+    .services-hero > picture img,
+    .services-hero > .public-optimized-picture img {
         @apply h-full w-full object-cover;
         object-position: 63% center;
     }
@@ -2645,7 +2742,8 @@
         @apply overflow-hidden rounded-lg border border-[#e3e8ed] bg-[#f6f8fa] shadow-[0_16px_38px_-34px_rgba(7,16,22,0.75)];
     }
 
-    .inspection-checkin-visual img {
+    .inspection-checkin-visual img,
+    .inspection-checkin-visual > .public-optimized-picture img {
         @apply h-full min-h-[22rem] w-full object-cover;
     }
 
@@ -3005,7 +3103,8 @@
         @apply mx-auto w-full max-w-[18rem] overflow-hidden;
     }
 
-    .inspection-preparation-image img {
+    .inspection-preparation-image img,
+    .inspection-preparation-image > .public-optimized-picture img {
         @apply block h-auto w-full;
     }
 
@@ -3080,11 +3179,13 @@
         @apply relative isolate scroll-mt-32 overflow-hidden rounded-lg bg-[#071016] text-white shadow-[0_20px_52px_-34px_rgba(7,16,22,0.95)] ring-1 ring-nacho-dark/10;
     }
 
-    .services-featured-card > picture {
+    .services-featured-card > picture,
+    .services-featured-card > .public-optimized-picture {
         @apply absolute inset-0 -z-20 block h-full w-full overflow-hidden;
     }
 
-    .services-featured-card > picture img {
+    .services-featured-card > picture img,
+    .services-featured-card > .public-optimized-picture img {
         @apply h-full w-full object-cover;
         object-position: center 42%;
     }
@@ -3407,11 +3508,13 @@
         max-width: min(calc(100vw - 2rem), 120rem);
     }
 
-    .services-booking-cta > picture {
+    .services-booking-cta > picture,
+    .services-booking-cta > .public-optimized-picture {
         @apply absolute inset-0 -z-20 block h-full w-full overflow-hidden;
     }
 
-    .services-booking-cta > picture img {
+    .services-booking-cta > picture img,
+    .services-booking-cta > .public-optimized-picture img {
         @apply h-full w-full object-cover;
         object-position: 62% 34%;
     }
@@ -4384,7 +4487,8 @@
         @apply relative order-first h-[12.5rem] overflow-hidden bg-[#d8d3ca] sm:h-[15rem] lg:order-none lg:h-full xl:min-h-[31rem];
     }
 
-    .careers-hero-media img {
+    .careers-hero-media img,
+    .careers-hero-media > .public-optimized-picture img {
         @apply h-full w-full object-cover;
         object-position: center 38%;
     }

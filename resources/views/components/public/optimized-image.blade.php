@@ -11,7 +11,7 @@
 @endphp
 
 @if ($sources)
-    <picture class="contents">
+    <picture class="public-optimized-picture">
         @if ($sources['webp'])
             <source type="image/webp" srcset="{{ $sources['webp'] }}">
         @endif

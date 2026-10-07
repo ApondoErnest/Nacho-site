@@ -11,7 +11,18 @@ final class PublicImage
     {
         $relativePath = ltrim(str_replace('\\', '/', $relativePath), '/');
 
-        if (! is_file(public_path($relativePath))) {
+        $absolute = public_path($relativePath);
+
+        if (! is_file($absolute)) {
+            $webpOnly = preg_replace('/\.(png|jpe?g)$/i', '.webp', $relativePath);
+
+            if ($webpOnly !== null && is_file(public_path($webpOnly))) {
+                return [
+                    'src' => asset($webpOnly),
+                    'webp' => null,
+                ];
+            }
+
             return null;
         }
 

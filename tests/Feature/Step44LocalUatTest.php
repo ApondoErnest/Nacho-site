@@ -32,6 +32,9 @@ class Step44LocalUatTest extends TestCase
         $this->assertStringContainsString('technical-check-inner', $html);
         $this->assertStringContainsString(route('book-inspection'), $html);
         $this->assertStringContainsString(__('home.hero.cta_book'), $html);
+        $this->assertStringContainsString('inspection-center-photo', $html);
+        $this->assertStringContainsString('public-optimized-picture', $html);
+        $this->assertMatchesRegularExpression('/yaounde-1\.(webp|png)/', $html);
     }
 
     public function test_inspection_process_page_renders_journey_and_preparation_sections(): void

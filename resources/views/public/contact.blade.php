@@ -36,6 +36,24 @@
             'nacho-nkwen-bamenda' => 'images/contact/nkwen-bamenda-1.png',
             'nacho-mankon-bamenda' => 'images/contact/mankon-bamenda-1.png',
         ];
+        $resolveContactCenterImage = function (array $center) use ($centerImages): ?string {
+            foreach ([
+                $centerImages[$center['slug']] ?? null,
+                $center['featured_image'] ?? null,
+            ] as $candidate) {
+                if ($candidate === null) {
+                    continue;
+                }
+
+                $resolved = \App\Support\PublicImage::resolvePath($candidate);
+
+                if ($resolved !== null) {
+                    return $resolved;
+                }
+            }
+
+            return null;
+        };
         $centerHours = __('components.centers_locator.current_hours');
         $centers = collect($centerRecords ?? config('centers.centers', []));
         $headquarters = $headquarters ?? app(\App\Support\PublicSiteData::class)->headquarters();
@@ -46,7 +64,7 @@
             'nacho-kumba' => ['latitude' => 4.6363, 'longitude' => 9.4469],
         ];
         $mapCenters = $centers
-            ->map(function (array $center) use ($locale, $approximateCityCoordinates, $centerImages, $centerHours) {
+            ->map(function (array $center) use ($locale, $approximateCityCoordinates, $centerHours, $resolveContactCenterImage) {
                 $suffix = $locale === 'fr'
                     ? ($center['name_suffix_fr'] ?? '')
                     : ($center['name_suffix_en'] ?? '');
@@ -57,7 +75,7 @@
                     return null;
                 }
 
-                $imagePath = $centerImages[$center['slug']] ?? null;
+                $imagePath = $resolveContactCenterImage($center);
                 $mapsQuery = trim($center['name'] . ' ' . ($center['city'] ?? '') . ' Cameroon');
 
                 return [
@@ -150,7 +168,7 @@
                     @foreach ($operationalCenters as $center)
                         @php
                             $isHeadquarters = $center['slug'] === 'nacho-mankon-bamenda';
-                            $imagePath = $centerImages[$center['slug']] ?? null;
+                            $imagePath = $resolveContactCenterImage($center);
                             $hours = $centerHours;
                             $phonesLine = implode(' / ', $center['phones'] ?? []);
                             $primaryPhone = $center['phones'][0] ?? null;
