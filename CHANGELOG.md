@@ -8,6 +8,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Added
 
+- **Step 48 — ops scripts and runbook (in progress).** `deploy/vps/backup.sh` (consistent `mysqldump` + storage volume, checksums, 14-day retention, optional rclone off-site copy), `restore.sh` (`--test` into a scratch DB, `--live` with typed confirmation, safety backup and maintenance mode), `monitor.sh` (local/public `/up`, containers, disk, TLS expiry, backup age, daily Laravel errors; healthchecks.io pings) and `logs.sh`, sharing `lib.sh` and a gitignored `.env.ops` (`env.ops.example`). Off-server copies go to the owner's Mac: `deploy/mac/pull-backups.sh` pulls finished backups over SSH, verifies checksums, keeps the last 14 days in `~/Backups/novetesco`, and installs itself as a launchd job (`--install`, `--status`, `--uninstall`; settings in gitignored `.env.backup-pull`). Production compose caps Docker logs (5 × 10 MB per service) and switches Laravel to daily logs kept 14 days. [deploy/vps/RUNBOOK.md](deploy/vps/RUNBOOK.md) §8 covers setup, cron, alerts, restore and sign-off. Scripts exercised against the local Docker stack (backup, restore test, live restore, monitor OK/fail, logs); `Step48OpsScriptsTest`.
+
 - **Public image performance.** WebP companions for `public/images/` (`npm run images:optimize`), `PublicImage` helper and `<x-public.optimized-image>`, homepage LCP preload, hero carousel waits for loaded slides, lazy loading for below-fold blocks, and 30-day nginx cache for `/images/` and `/build/`.
 
 ### Removed

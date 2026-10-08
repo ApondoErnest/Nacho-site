@@ -1,6 +1,6 @@
 # VPS runbook — NOVETESCO on Hostinger (Step 47)
 
-**Status:** Step **47 done** (2026-09-30) — production at **https://noblevehicletestingcompany.com**. Use this runbook for updates, TLS renewal checks, and troubleshooting.
+**Status:** Step **47 done** (2026-09-30) — production at **https://noblevehicletestingcompany.com**. Use this runbook for updates, TLS renewal checks, and troubleshooting. Step **48** (backups, monitoring, logs) — see §8.
 
 Deploy **NOVETESCO** on **srv1867313** alongside existing apps (`gs-autobilan` → `:8080`, `cashflow-summary` → `:8081`, `g3-control` → `:8082`).
 
@@ -142,10 +142,202 @@ If migrations changed, entrypoint runs `migrate --force` on `app` restart.
 
 ---
 
-## 8. Backups (recommended)
+## 8. Operations — backups, monitoring, logs (Step 48)
 
-- MySQL volume: `novetesco_mysql_data` — periodic `docker compose exec mysql mysqldump ...`
-- Files: volume `novetesco_app_storage` (uploads)
+Scripts live in `deploy/vps/` and run on the VPS as `ernesto` (must be in the `docker` group). They find the app directory from their own location and read:
+
+- `.env.production` — compose settings, `APP_URL`, `DOCKER_HOST_PORT`
+- `.env.ops` — backup folder, off-site remote, healthcheck URLs, monitor thresholds (gitignored; template `deploy/vps/env.ops.example`)
+
+| Script | Purpose | When |
+|--------|---------|------|
+| `backup.sh` | DB dump + storage volume → `$BACKUP_DIR/<timestamp>/`, prune, optional rclone copy | Cron nightly |
+| `deploy/mac/pull-backups.sh` | **On the Mac:** pull + verify backups into `~/Backups/novetesco` (14 days) | launchd, 3× daily |
+| `restore.sh --test [DIR]` | Restore newest (or given) backup into a scratch DB, print row counts, drop it | Monthly |
+| `restore.sh --live DIR` | Overwrite production DB + storage (safety backup + typed confirmation first) | Disaster only |
+| `monitor.sh` | `/up` local + public, containers, disk, TLS expiry, backup age, Laravel errors today | Cron every 10 min |
+| `logs.sh [DAYS]` | Laravel log files, errors per day, latest errors, container errors | Weekly / after an alert |
+
+Shorthand used below:
+
+```bash
+cd /var/www/novetesco-site
+DC="docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file .env.production"
+```
+
+### 8.1 One-time setup
+
+```bash
+cd /var/www/novetesco-site
+git pull origin main
+
+cp deploy/vps/env.ops.example .env.ops
+chmod 600 .env.ops
+nano .env.ops            # BACKUP_DIR, then later the rclone remote and healthcheck URLs
+mkdir -p ~/backups/nacho-site ~/logs
+
+# Add to .env.production (log rotation; the production compose file defaults to these anyway):
+#   LOG_STACK=daily
+#   LOG_DAILY_DAYS=14
+./deploy/vps/deploy.sh   # recreates containers with Docker log caps + daily Laravel logs
+```
+
+Verify the redeploy picked up the new settings:
+
+```bash
+$DC exec -T app printenv LOG_STACK                                   # daily
+docker inspect --format '{{json .HostConfig.LogConfig}}' $($DC ps -q app)   # max-size 10m, max-file 5
+```
+
+The old single `storage/logs/laravel.log` stops growing after this. Optionally compress it: `$DC exec -T app gzip storage/logs/laravel.log`.
+
+### 8.2 Backups
+
+```bash
+./deploy/vps/backup.sh
+ls -lh ~/backups/nacho-site/*/
+./deploy/vps/restore.sh --test      # must end with "Restore test passed"
+```
+
+Each backup folder contains `db.sql.gz` (full `mysqldump`, consistent snapshot), `storage.tar.gz` (uploads under `storage/app`, plus `storage/.app_key`) and `SHA256SUMS`. Each run keeps only backups dated within the last `BACKUP_RETENTION_DAYS` (14) days, today included, so at most 14 nightly backups (plus any manual or pre-restore safety backups from those days).
+
+**Not in the backup — keep these elsewhere:**
+
+- `.env.production` and `.env.ops` — store a copy in a password manager (not on the same Mac disk alone) (DB passwords, `APP_KEY`, admin seed password). Without them a restore on a new server needs new secrets.
+- Host nginx config — in git (`deploy/vps/nginx-host/`).
+- TLS certificates — re-issue with Certbot.
+- Laravel logs and framework caches — excluded on purpose.
+
+### 8.3 Off-server copy — pulled to your Mac
+
+A backup that only lives on the VPS is lost with the VPS. The Mac **pulls** backups over SSH (the VPS cannot push to a Mac behind a home router). `deploy/mac/pull-backups.sh` copies only finished backups, verifies each with `SHA256SUMS`, keeps the last **14 days** (same as the VPS), and retries when the network is not ready yet.
+
+Run on the **Mac**, in the repo checkout (`/Users/admin/NACHO-site`), after §8.2 has produced a backup on the VPS:
+
+```bash
+cp deploy/mac/env.backup-pull.example .env.backup-pull
+chmod 600 .env.backup-pull
+nano .env.backup-pull                       # defaults: ernesto@89.117.37.202, key ~/.ssh/g3-backup, ~/Backups/novetesco
+
+./deploy/mac/pull-backups.sh                # first pull — ends with "OK (newest ..., N new, ...)"
+./deploy/mac/pull-backups.sh --install      # launchd job: at login + daily 09:30, 14:30, 20:30
+./deploy/mac/pull-backups.sh --status       # job state, local backups, last log lines
+```
+
+- The SSH key must log in without a prompt: `ssh -i ~/.ssh/g3-backup -o BatchMode=yes ernesto@89.117.37.202 true`.
+- launchd catches up on a missed run when the Mac wakes from sleep; if the Mac is shut down, the next run is at login.
+- Log: `~/Library/Logs/novetesco-pull-backups.log`. Remove the job with `--uninstall` (local backups are kept).
+- The folder holds full database dumps (customer bookings, contact messages): keep **FileVault** on. Time Machine will also back up `~/Backups/novetesco`.
+- If the repo checkout moves, run `--install` again (the job stores the script path).
+
+**Optional extra cloud copy (rclone on the VPS).** Not needed with the Mac pull. If you want one, configure a remote (`curl https://rclone.org/install.sh | sudo bash`, `rclone config`), then set `BACKUP_RCLONE_REMOTE=b2:novetesco-backups/nacho-site` in `.env.ops`. The remote path must be **dedicated** to these backups: `backup.sh` deletes files older than `BACKUP_REMOTE_RETENTION_DAYS` under it.
+
+### 8.4 Restore
+
+**Monthly test** (safe; production untouched):
+
+```bash
+./deploy/vps/restore.sh --test                                   # newest local backup
+./deploy/vps/restore.sh --test ~/backups/nacho-site/2026-10-08_021500
+```
+
+**Live restore** (overwrites production data):
+
+```bash
+ls ~/backups/nacho-site/
+./deploy/vps/restore.sh --live ~/backups/nacho-site/<timestamp>
+```
+
+It verifies checksums, asks you to type the domain, takes a safety backup of the current state, puts the site in maintenance mode, restores DB + storage, runs migrations, rebuilds caches, and brings the site back up (also on failure). Uploads added after the backup are kept, not deleted.
+
+**From the Mac copy** (VPS lost or rebuilt): clone the repo (§2), restore `.env.production` / `.env.ops` from the password manager, `./deploy/vps/deploy.sh`, then upload a backup from the Mac and restore it on the VPS:
+
+```bash
+# On the Mac
+ls ~/Backups/novetesco/
+rsync -az -e "ssh -i ~/.ssh/g3-backup" --exclude=.verified \
+  ~/Backups/novetesco/<timestamp>/ ernesto@89.117.37.202:backups/nacho-site/<timestamp>/
+
+# On the VPS
+./deploy/vps/restore.sh --live ~/backups/nacho-site/<timestamp>
+```
+
+### 8.5 Monitoring and alerts
+
+`monitor.sh` prints one line and exits non-zero on any failure:
+
+```bash
+./deploy/vps/monitor.sh
+# 2026-10-08T02:20:00+0000 OK (disk 41%, tls 82d, backup 2026-10-08_021500, errors today 0)
+```
+
+Thresholds are in `.env.ops` (`MONITOR_DISK_MAX_PERCENT=85`, `MONITOR_TLS_MIN_DAYS=14`, `MONITOR_BACKUP_MAX_AGE_HOURS=26`, `MONITOR_MAX_DAILY_ERRORS=20`).
+
+**Alerts by email** — free [healthchecks.io](https://healthchecks.io) account, two checks:
+
+| Check | Period | Grace | `.env.ops` key |
+|-------|--------|-------|----------------|
+| `novetesco-backup` | 1 day | 2 hours | `BACKUP_HEALTHCHECK_URL` |
+| `novetesco-monitor` | 10 minutes | 10 minutes | `MONITOR_HEALTHCHECK_URL` |
+| `novetesco-mac-pull` | 1 day | 2 days | `BACKUP_PULL_HEALTHCHECK_URL` in the Mac's `.env.backup-pull` |
+
+Paste each check's ping URL (`https://hc-ping.com/<uuid>`). The scripts ping on success and `/fail` on failure, so you are emailed when a check fails **and** when the VPS or cron stops reporting.
+
+**External uptime** — free [UptimeRobot](https://uptimerobot.com) HTTP(s) monitor on `https://noblevehicletestingcompany.com/up`, 5-minute interval. This sees DNS, host nginx and TLS problems from outside the server.
+
+### 8.6 Cron
+
+`crontab -e` as `ernesto`:
+
+```cron
+PATH=/usr/local/bin:/usr/bin:/bin
+APP_DIR=/var/www/novetesco-site
+
+15 2 * * * $APP_DIR/deploy/vps/backup.sh >> $HOME/logs/nacho-backup.log 2>&1
+*/10 * * * * $APP_DIR/deploy/vps/monitor.sh >> $HOME/logs/nacho-monitor.log 2>&1
+```
+
+Keep the cron logs small with `/etc/logrotate.d/nacho-ops` (`sudo nano`):
+
+```text
+/home/ernesto/logs/nacho-*.log {
+    weekly
+    rotate 8
+    compress
+    missingok
+    notifempty
+    copytruncate
+}
+```
+
+### 8.7 Logs and TLS checks
+
+```bash
+./deploy/vps/logs.sh            # last 7 days
+./deploy/vps/logs.sh 30
+sudo tail -n 100 /var/log/nginx/error.log
+sudo grep -E '" 5[0-9]{2} ' /var/log/nginx/access.log | tail -n 20
+```
+
+Log retention: Laravel `storage/logs/laravel-YYYY-MM-DD.log` keeps 14 days; Docker container logs are capped at 5 × 10 MB per service; host nginx logs rotate via the system logrotate.
+
+TLS renewal is automatic (Certbot timer); `monitor.sh` alerts when fewer than 14 days remain. Check after any nginx change:
+
+```bash
+systemctl list-timers | grep certbot
+sudo certbot renew --dry-run
+```
+
+### 8.8 Step 48 sign-off
+
+- [ ] `.env.ops` created, `chmod 600`
+- [ ] Redeployed; `LOG_STACK=daily` and Docker log caps verified (§8.1)
+- [ ] `backup.sh` run manually; `restore.sh --test` passed
+- [ ] Mac: `pull-backups.sh` pulled and verified a backup; `--install` done; `--status` shows the job
+- [ ] healthchecks.io checks green (backup, monitor, mac-pull); UptimeRobot monitor green
+- [ ] Cron installed; next morning `~/logs/nacho-backup.log` shows `Done.`
+- [ ] `certbot renew --dry-run` succeeds
+- [ ] `.env.production` and `.env.ops` saved in the password manager
 
 ---
 

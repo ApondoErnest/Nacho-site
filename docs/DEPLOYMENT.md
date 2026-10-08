@@ -2,7 +2,9 @@
 
 **Step 46 (Dockerize):** **Done** — stack verified locally in Docker on **2026-09-30** (http://127.0.0.1:8080, migrate/seed, public site + logo).
 
-**Step 47 (VPS):** **Done** — production live at **https://noblevehicletestingcompany.com** (Hostinger **89.117.37.202**, Docker **8083**, Certbot TLS, admin login verified **2026-09-30**). **Next:** Step 48 (backups, monitoring).
+**Step 47 (VPS):** **Done** — production live at **https://noblevehicletestingcompany.com** (Hostinger **89.117.37.202**, Docker **8083**, Certbot TLS, admin login verified **2026-09-30**).
+
+**Step 48 (backups, monitoring, logs):** **In progress** — scripts in `deploy/vps/` and procedure in [deploy/vps/RUNBOOK.md §8](../deploy/vps/RUNBOOK.md); done once the §8.8 sign-off checklist passes on the VPS.
 
 Deployment follows this document step by step after the local stabilization gate ([UAT_CHECKLIST.md](UAT_CHECKLIST.md)).
 
@@ -77,10 +79,14 @@ No reminder system is added during Dockerization.
 | [deploy/vps/env.production.example](../deploy/vps/env.production.example) | VPS `.env.production` template |
 | [deploy/vps/deploy.sh](../deploy/vps/deploy.sh) | Build, up, Laravel caches |
 | [deploy/vps/nginx-host/*.conf](../deploy/vps/nginx-host/) | Host reverse proxy + HTTPS (apex canonical) |
+| [deploy/vps/backup.sh](../deploy/vps/backup.sh), [restore.sh](../deploy/vps/restore.sh) | Nightly DB + storage backup, restore test / live restore |
+| [deploy/mac/pull-backups.sh](../deploy/mac/pull-backups.sh) | Runs on the owner's Mac: pulls and verifies VPS backups (launchd) |
+| [deploy/vps/monitor.sh](../deploy/vps/monitor.sh), [logs.sh](../deploy/vps/logs.sh) | Health checks with healthchecks.io pings, log review |
+| [deploy/vps/env.ops.example](../deploy/vps/env.ops.example) | `.env.ops` template for the scripts above |
 
 **Production sign-off (2026-09-30):** HTTPS `/up` 200, public pages + booking form, `www` → apex, admin dashboard and centers CRUD reachable after login. Post-deploy: set `RUN_DB_SEED=false`, strong admin password, rotate away from seed defaults.
 
-Continue with Step 48 (automated backups, monitoring, log review) and Step 49–50 (optional production UAT, Search Console + sitemap submission).
+Continue with Step 48 (automated backups, monitoring, log review — [RUNBOOK §8](../deploy/vps/RUNBOOK.md)) and Step 49–50 (optional production UAT, Search Console + sitemap submission).
 
 ## 4. Production checklist
 

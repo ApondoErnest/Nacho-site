@@ -47,7 +47,7 @@ Chronological build plan for the NOVETESCO Vehicle Inspection website. **Steps 0
 | Step 45 — Local stabilization gate | **Done** (2026-09-29) |
 | Step 46 — Dockerize | **Done** (manual Docker pass 2026-09-30) |
 | Step 47 — Deploy on VPS | **Done** (2026-09-30 — https://noblevehicletestingcompany.com) |
-| Next step | **Step 48** — backups, monitoring, production log review (TLS already live on VPS) |
+| Step 48 — Backups, monitoring, logs | **In progress** — scripts + [RUNBOOK §8](deploy/vps/RUNBOOK.md) ready; apply on VPS |
 
 ## Timeline overview
 
@@ -163,4 +163,4 @@ ADRs: [docs/adr/](docs/adr/)
 
 ## Next action
 
-Production: **https://noblevehicletestingcompany.com**. Updates: `git pull` + [deploy/vps/deploy.sh](deploy/vps/deploy.sh). **Next:** Step 48 per [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+Production: **https://noblevehicletestingcompany.com**. Updates: `git pull` + [deploy/vps/deploy.sh](deploy/vps/deploy.sh). **Next:** finish Step 48 on the VPS per [deploy/vps/RUNBOOK.md §8](deploy/vps/RUNBOOK.md).

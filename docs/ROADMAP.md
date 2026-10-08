@@ -81,11 +81,11 @@ flowchart LR
 | 45 | Final local stabilization gate | done (2026-09-29) |
 | 46 | Dockerize | done (manual Docker pass 2026-09-30) |
 | 47 | Deploy on VPS | done (production **2026-09-30** — [noblevehicletestingcompany.com](https://noblevehicletestingcompany.com)) |
-| 48 | SSL, backups, monitoring, error logging | pending — **TLS live**; automate backups + uptime/logging |
+| 48 | SSL, backups, monitoring, error logging | in progress — scripts + runbook ready ([RUNBOOK §8](../deploy/vps/RUNBOOK.md)); done after VPS setup + sign-off checklist |
 | 49 | Final production testing | pending (smoke tests passed; optional deeper UAT) |
 | 50 | Launch + Search Console + sitemap submission | pending |
 
-Step **47** complete — Hostinger VPS, Docker on **127.0.0.1:8083**, host nginx + Let's Encrypt, HTTPS public site + admin verified **2026-09-30**. **Next:** Step 48 (backups, monitoring). See [DEPLOYMENT.md](DEPLOYMENT.md) and [deploy/vps/RUNBOOK.md](../deploy/vps/RUNBOOK.md).
+Step **47** complete — Hostinger VPS, Docker on **127.0.0.1:8083**, host nginx + Let's Encrypt, HTTPS public site + admin verified **2026-09-30**. **In progress:** Step 48 — `deploy/vps/backup.sh`, `restore.sh`, `monitor.sh`, `logs.sh`, Docker log caps and daily Laravel logs; apply on the VPS per [deploy/vps/RUNBOOK.md §8](../deploy/vps/RUNBOOK.md). See [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ## Working agreement
 

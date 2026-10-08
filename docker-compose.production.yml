@@ -2,14 +2,28 @@
 # Usage:
 #   docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file .env.production up -d --build
 
+# Cap Docker's own stdout logs (default json-file driver grows without limit).
+x-logging: &capped-logging
+  driver: json-file
+  options:
+    max-size: "10m"
+    max-file: "5"
+
 services:
   app:
     environment:
       APP_ENV: production
       APP_DEBUG: "false"
       LOG_LEVEL: ${LOG_LEVEL:-warning}
+      LOG_STACK: ${LOG_STACK:-daily}
+      LOG_DAILY_DAYS: ${LOG_DAILY_DAYS:-14}
+    logging: *capped-logging
 
   nginx:
     # Replace base compose `ports` (do not merge — avoids double-bind on DOCKER_HTTP_PORT).
     ports: !override
       - "127.0.0.1:${DOCKER_HOST_PORT:-8083}:80"
+    logging: *capped-logging
+
+  mysql:
+    logging: *capped-logging
