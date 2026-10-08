@@ -29,11 +29,11 @@ class Step45LocalStabilizationTest extends TestCase
         $this->seed(DatabaseSeeder::class);
 
         $expectedSlugs = [
-            'nacho-yaounde' => CenterStatus::ACTIVE,
-            'nacho-nkwen-bamenda' => CenterStatus::ACTIVE,
-            'nacho-mankon-bamenda' => CenterStatus::ACTIVE,
-            'nacho-douala' => CenterStatus::CONSTRUCTION,
-            'nacho-kumba' => CenterStatus::CONSTRUCTION,
+            'novetesco-yaounde' => CenterStatus::ACTIVE,
+            'novetesco-nkwen-bamenda' => CenterStatus::ACTIVE,
+            'novetesco-mankon-bamenda' => CenterStatus::ACTIVE,
+            'novetesco-douala' => CenterStatus::CONSTRUCTION,
+            'novetesco-kumba' => CenterStatus::CONSTRUCTION,
         ];
 
         foreach ($expectedSlugs as $slug => $status) {
@@ -42,15 +42,15 @@ class Step45LocalStabilizationTest extends TestCase
             $this->assertSame($status->value, $center->status->value);
         }
 
-        $hq = Center::query()->where('slug', 'nacho-mankon-bamenda')->firstOrFail();
+        $hq = Center::query()->where('slug', 'novetesco-mankon-bamenda')->firstOrFail();
         $this->assertTrue($hq->is_headquarters);
         $this->assertSame('P.O. Box 100 Mankon-Bamenda', $hq->postal_address);
         $this->assertTrue($hq->booking_enabled);
 
-        $yaounde = Center::query()->where('slug', 'nacho-yaounde')->firstOrFail();
+        $yaounde = Center::query()->where('slug', 'novetesco-yaounde')->firstOrFail();
         $this->assertSame('Mendong Market, Yaounde', $yaounde->address_en);
 
-        foreach (['nacho-douala', 'nacho-kumba'] as $constructionSlug) {
+        foreach (['novetesco-douala', 'novetesco-kumba'] as $constructionSlug) {
             $center = Center::query()->where('slug', $constructionSlug)->firstOrFail();
             $this->assertFalse($center->booking_enabled);
             $this->assertSame('Before November 2026', $center->target_date_text_en);
@@ -79,7 +79,7 @@ class Step45LocalStabilizationTest extends TestCase
     {
         $this->seed(DatabaseSeeder::class);
 
-        $yaounde = Center::query()->where('slug', 'nacho-yaounde')->firstOrFail();
+        $yaounde = Center::query()->where('slug', 'novetesco-yaounde')->firstOrFail();
         $this->assertSame('images/homepage/yaounde-1.png', $yaounde->featured_image);
         $this->assertFileExists(public_path($yaounde->featured_image));
     }
@@ -91,6 +91,8 @@ class Step45LocalStabilizationTest extends TestCase
         $this->get(route('contact'))
             ->assertOk()
             ->assertSee('noblevehicletestingcompany@gmail.com', false)
-            ->assertSee('33142037', false);
+            ->assertSee('33142037', false)
+            ->assertSee('id="contact-headquarters"', false)
+            ->assertSee('P.O. Box 100 Mankon-Bamenda', false);
     }
 }

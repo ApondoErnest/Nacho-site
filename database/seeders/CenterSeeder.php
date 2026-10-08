@@ -16,7 +16,7 @@ class CenterSeeder extends Seeder
 
         $centers = [
             [
-                'slug' => 'nacho-yaounde',
+                'slug' => 'novetesco-yaounde',
                 'name_en' => 'NOVETESCO Yaounde',
                 'name_fr' => 'NOVETESCO Yaounde',
                 'city_en' => 'Yaounde',
@@ -43,7 +43,7 @@ class CenterSeeder extends Seeder
                 'hours' => $this->standardHours(),
             ],
             [
-                'slug' => 'nacho-nkwen-bamenda',
+                'slug' => 'novetesco-nkwen-bamenda',
                 'name_en' => 'NOVETESCO Nkwen-Bamenda',
                 'name_fr' => 'NOVETESCO Nkwen-Bamenda',
                 'city_en' => 'Bamenda',
@@ -70,7 +70,7 @@ class CenterSeeder extends Seeder
                 'hours' => $this->standardHours(),
             ],
             [
-                'slug' => 'nacho-mankon-bamenda',
+                'slug' => 'novetesco-mankon-bamenda',
                 'name_en' => 'NOVETESCO Mankon-Bamenda / Headquarters',
                 'name_fr' => 'NOVETESCO Mankon-Bamenda / Siège',
                 'city_en' => 'Bamenda',
@@ -100,7 +100,7 @@ class CenterSeeder extends Seeder
                 'hours' => $this->standardHours(),
             ],
             [
-                'slug' => 'nacho-douala',
+                'slug' => 'novetesco-douala',
                 'name_en' => 'NOVETESCO Douala',
                 'name_fr' => 'NOVETESCO Douala',
                 'city_en' => 'Douala',
@@ -121,7 +121,7 @@ class CenterSeeder extends Seeder
                 'hours' => $this->standardHours(),
             ],
             [
-                'slug' => 'nacho-kumba',
+                'slug' => 'novetesco-kumba',
                 'name_en' => 'NOVETESCO Kumba',
                 'name_fr' => 'NOVETESCO Kumba',
                 'city_en' => 'Kumba',

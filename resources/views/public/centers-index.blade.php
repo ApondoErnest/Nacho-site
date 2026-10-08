@@ -51,9 +51,7 @@
         $regionOptions = ['Centre', 'Northwest', 'Littoral', 'Southwest'];
         $approximateCityCoordinates = [
             'novetesco-douala' => ['latitude' => 4.0511, 'longitude' => 9.7679],
-            'nacho-douala' => ['latitude' => 4.0511, 'longitude' => 9.7679],
             'novetesco-kumba' => ['latitude' => 4.6363, 'longitude' => 9.4469],
-            'nacho-kumba' => ['latitude' => 4.6363, 'longitude' => 9.4469],
         ];
         $locatorCenters = $centers
             ->map(function (array $center) use ($locale, $serviceCatalog, $approximateCityCoordinates) {

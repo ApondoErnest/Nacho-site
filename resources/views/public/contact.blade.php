@@ -44,8 +44,8 @@
         $operationalCenters = $centers->where('status', 'operational')->values();
         $comingCenters = $centers->where('status', 'under_construction')->values();
         $approximateCityCoordinates = [
-            'nacho-douala' => ['latitude' => 4.0511, 'longitude' => 9.7679],
-            'nacho-kumba' => ['latitude' => 4.6363, 'longitude' => 9.4469],
+            'novetesco-douala' => ['latitude' => 4.0511, 'longitude' => 9.7679],
+            'novetesco-kumba' => ['latitude' => 4.6363, 'longitude' => 9.4469],
         ];
         $mapCenters = $centers
             ->map(function (array $center) use ($locale, $approximateCityCoordinates, $centerHours, $resolveContactCenterImage) {
@@ -151,7 +151,7 @@
                 <div class="contact-centers-list">
                     @foreach ($operationalCenters as $center)
                         @php
-                            $isHeadquarters = $center['slug'] === 'nacho-mankon-bamenda';
+                            $isHeadquarters = (bool) ($center['is_headquarters'] ?? false);
                             $imagePath = $resolveContactCenterImage($center);
                             $hours = $centerHours;
                             $phonesLine = implode(' / ', $center['phones'] ?? []);

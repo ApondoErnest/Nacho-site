@@ -97,9 +97,9 @@ class BackendStabilityTest extends TestCase
     public function test_public_backend_state_supports_booking_preselect_and_email_only_careers(): void
     {
         $center = Center::factory()->create([
-            'name_en' => 'NACHO Yaounde',
-            'name_fr' => 'NACHO Yaounde',
-            'slug' => 'nacho-yaounde',
+            'name_en' => 'NOVETESCO Yaounde',
+            'name_fr' => 'NOVETESCO Yaounde',
+            'slug' => 'novetesco-yaounde',
             'city_en' => 'Yaounde',
             'city_fr' => 'Yaounde',
             'status' => CenterStatus::ACTIVE->value,
@@ -116,12 +116,12 @@ class BackendStabilityTest extends TestCase
         ]);
 
         $bookingResponse = $this->get(route('book-inspection', [
-            'center' => 'nacho-yaounde',
+            'center' => 'novetesco-yaounde',
             'category' => 'private',
         ]))->assertOk();
 
         $this->assertMatchesRegularExpression(
-            '/<option value="nacho-yaounde" selected>/',
+            '/<option value="novetesco-yaounde" selected>/',
             $bookingResponse->getContent(),
         );
         $this->assertMatchesRegularExpression(

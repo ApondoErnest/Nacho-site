@@ -16,7 +16,7 @@ class SyncPublicBrandingCommandTest extends TestCase
     {
         $this->seed(DatabaseSeeder::class);
 
-        Center::query()->where('slug', 'nacho-yaounde')->update([
+        Center::query()->where('slug', 'novetesco-yaounde')->update([
             'name_en' => 'NACHO Yaounde',
             'name_fr' => 'NACHO Yaounde',
         ]);
@@ -27,11 +27,20 @@ class SyncPublicBrandingCommandTest extends TestCase
 
         $this->artisan('site:sync-public-branding')->assertSuccessful();
 
-        $yaounde = Center::query()->where('slug', 'nacho-yaounde')->firstOrFail();
+        $yaounde = Center::query()->where('slug', 'novetesco-yaounde')->firstOrFail();
         $this->assertSame('NOVETESCO Yaounde', $yaounde->name_en);
         $this->assertSame('NOVETESCO Yaounde', $yaounde->name_fr);
 
         $email = SiteSetting::query()->where('key', 'contact_email')->value('value');
         $this->assertSame('noblevehicletestingcompany@gmail.com', $email);
+    }
+
+    public function test_command_does_not_duplicate_existing_centers(): void
+    {
+        $this->seed(DatabaseSeeder::class);
+
+        $this->artisan('site:sync-public-branding')->assertSuccessful();
+
+        $this->assertSame(5, Center::query()->count());
     }
 }

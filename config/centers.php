@@ -22,7 +22,7 @@ return [
 
     'centers' => [
         [
-            'slug' => 'nacho-yaounde',
+            'slug' => 'novetesco-yaounde',
             'name' => 'NOVETESCO Yaounde',
             'city' => 'Yaounde',
             'region' => 'Centre',
@@ -48,7 +48,7 @@ return [
             'maps_url' => 'https://www.google.com/maps?q=3.837496,11.473015',
         ],
         [
-            'slug' => 'nacho-nkwen-bamenda',
+            'slug' => 'novetesco-nkwen-bamenda',
             'name' => 'NOVETESCO Nkwen-Bamenda',
             'city' => 'Bamenda',
             'region' => 'Northwest',
@@ -74,7 +74,7 @@ return [
             'maps_url' => 'https://www.google.com/maps?q=6.000978,10.206111',
         ],
         [
-            'slug' => 'nacho-mankon-bamenda',
+            'slug' => 'novetesco-mankon-bamenda',
             'name' => 'NOVETESCO Mankon-Bamenda',
             'name_suffix_en' => '/ Headquarters',
             'name_suffix_fr' => '/ Siège',
@@ -104,11 +104,11 @@ return [
                 'counter-visit-re-inspection',
                 'pre-purchase-inspection',
             ],
-            'booking_key' => 'nacho-bamenda',
+            'booking_key' => 'mankon-bamenda',
             'maps_url' => 'https://www.google.com/maps?q=5.9418158,10.1493449',
         ],
         [
-            'slug' => 'nacho-douala',
+            'slug' => 'novetesco-douala',
             'name' => 'NOVETESCO Douala',
             'name_suffix_en' => '(Coming soon)',
             'name_suffix_fr' => '(Bientôt disponible)',
@@ -132,7 +132,7 @@ return [
             'expansion_last_updated_fr' => 'Juin 2026',
         ],
         [
-            'slug' => 'nacho-kumba',
+            'slug' => 'novetesco-kumba',
             'name' => 'NOVETESCO Kumba',
             'name_suffix_en' => '(coming soon)',
             'name_suffix_fr' => '(bientôt disponible)',

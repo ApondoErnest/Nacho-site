@@ -119,7 +119,7 @@ class FrontendSmokeTest extends TestCase
 
     public function test_public_forms_keep_accessible_controls_and_excluded_fields_absent(): void
     {
-        $this->get(route('book-inspection', ['center' => 'nacho-yaounde', 'category' => 'private']))
+        $this->get(route('book-inspection', ['center' => 'novetesco-yaounde', 'category' => 'private']))
             ->assertOk()
             ->assertSee('id="book-inspection-form"', false)
             ->assertSee('name="_token"', false)

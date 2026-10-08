@@ -16,6 +16,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Changed
 
+- **Center slugs aligned with production (2026-10-08).** `CenterSeeder`, `config/centers.php`, `config/center_images.php`, careers vacancy `center_key`s, and tests now use `novetesco-*` slugs (production already did). Migration `2026_10_08_000001_rename_legacy_center_slugs` renames any remaining `nacho-*` rows and is a no-op where the new slug exists, so `site:sync-public-branding` updates centers instead of inserting duplicates. Contact page now detects the headquarters via `is_headquarters` instead of a hardcoded slug, restoring the HQ postal box, note, and `#contact-headquarters` anchor on production.
+
 - **Public content alignment (2026-10-07).** User-facing copy in `lang/*` uses **NOVETESCO** and slogan **Safety, Quality, Trust** / **Sécurité, qualité, confiance**. `CenterSeeder` `featured_image` paths match `public/images/homepage/*-1.png`. SEO OG/default images point at existing assets. [plan.md](plan.md) and [docs/ROADMAP.md](docs/ROADMAP.md) synced (Steps 7–18 done, Step 48 next).
 
 - **Documentation — slogan, headquarters email, and name cleanup.** Slogan is **Safety, Quality, Trust** / **Sécurité, qualité, confiance**. Every documented address that used the old Yahoo mailbox now uses `noblevehicletestingcompany@gmail.com` until each center has its own email. Documentation identifiers (center names, slugs, database name, tokens, booking references, logo filename) use **NOVETESCO** only. Application code, seed data, and the public site are unchanged in this step.
