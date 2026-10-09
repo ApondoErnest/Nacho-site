@@ -1,6 +1,6 @@
 # VPS runbook — NOVETESCO on Hostinger (Step 47)
 
-**Status:** Step **47 done** (2026-09-30) — production at **https://noblevehicletestingcompany.com**. Use this runbook for updates, TLS renewal checks, and troubleshooting. Step **48** (backups, monitoring, logs) — see §8.
+**Status:** Step **47 done** (2026-09-30) — production at **https://noblevehicletestingcompany.com**. Use this runbook for updates, TLS renewal checks, and troubleshooting. Step **48 done** (2026-10-09) — backups, monitoring, logs; see §8.
 
 Deploy **NOVETESCO** on **srv1867313** alongside existing apps (`gs-autobilan` → `:8080`, `cashflow-summary` → `:8081`, `g3-control` → `:8082`).
 
@@ -9,9 +9,9 @@ Deploy **NOVETESCO** on **srv1867313** alongside existing apps (`gs-autobilan` �
 | VPS IP | `89.117.37.202` |
 | Domain (canonical) | `https://noblevehicletestingcompany.com` |
 | `www` | 301 → apex |
-| App path | `/var/www/novetesco-site` |
+| App path | `/var/www/nacho-site` |
 | Docker nginx bind | `127.0.0.1:8083` |
-| Git | `git@github.com:ApondoErnest/Novetesco-site.git` branch `main` |
+| Git | `git@github.com:ApondoErnest/Nacho-site.git` branch `main` |
 | Admin | `admin@novetesco.local` + `SEED_ADMIN_PASSWORD` |
 
 Host pattern: **host nginx (80/443 + Certbot)** → **Docker nginx (8083)** → **PHP-FPM** + **MySQL container**.
@@ -23,7 +23,7 @@ Host pattern: **host nginx (80/443 + Certbot)** → **Docker nginx (8083)** → 
 - [ ] DNS **A** `@` → `89.117.37.202` (`dig +short noblevehicletestingcompany.com A`)
 - [ ] SSH as `ernesto` with sudo
 - [ ] Port **8083** free: `ss -tlnp | grep 8083` (no output)
-- [ ] `git clone git@github.com:ApondoErnest/Novetesco-site.git` works
+- [ ] `git clone git@github.com:ApondoErnest/Nacho-site.git` works
 
 ---
 
@@ -32,8 +32,8 @@ Host pattern: **host nginx (80/443 + Certbot)** → **Docker nginx (8083)** → 
 ```bash
 sudo mkdir -p /var/www
 sudo chown ernesto:ernesto /var/www
-git clone git@github.com:ApondoErnest/Novetesco-site.git /var/www/novetesco-site
-cd /var/www/novetesco-site
+git clone git@github.com:ApondoErnest/Nacho-site.git /var/www/nacho-site
+cd /var/www/nacho-site
 
 cp deploy/vps/env.production.example .env.production
 chmod 600 .env.production
@@ -49,7 +49,7 @@ nano .env.production   # set DB passwords, SEED_ADMIN_PASSWORD, review APP_URL
 ## 3. Start Docker stack
 
 ```bash
-cd /var/www/novetesco-site
+cd /var/www/nacho-site
 chmod +x deploy/vps/deploy.sh
 ./deploy/vps/deploy.sh
 ```
@@ -77,7 +77,7 @@ docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file
 ## 4. Host nginx (HTTP first)
 
 ```bash
-cd /var/www/novetesco-site
+cd /var/www/nacho-site
 sudo cp deploy/vps/nginx-host/noblevehicletestingcompany.com.conf \
   /etc/nginx/sites-available/noblevehicletestingcompany.com
 sudo ln -sf /etc/nginx/sites-available/noblevehicletestingcompany.com /etc/nginx/sites-enabled/
@@ -97,7 +97,7 @@ sudo certbot --nginx -d noblevehicletestingcompany.com -d www.noblevehicletestin
 Then install the **canonical HTTPS** config (apex serves app, `www` redirects to apex):
 
 ```bash
-cd /var/www/novetesco-site
+cd /var/www/nacho-site
 sudo cp deploy/vps/nginx-host/noblevehicletestingcompany.com.ssl.conf \
   /etc/nginx/sites-available/noblevehicletestingcompany.com
 sudo nginx -t && sudo systemctl reload nginx
@@ -125,7 +125,7 @@ Verify:
 Optional scheduler (if you add scheduled tasks later):
 
 ```cron
-* * * * * cd /var/www/novetesco-site && docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file .env.production exec -T app php artisan schedule:run >> /dev/null 2>&1
+* * * * * cd /var/www/nacho-site && docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file .env.production exec -T app php artisan schedule:run >> /dev/null 2>&1
 ```
 
 ---
@@ -133,7 +133,7 @@ Optional scheduler (if you add scheduled tasks later):
 ## 7. Updates (new releases on `main`)
 
 ```bash
-cd /var/www/novetesco-site
+cd /var/www/nacho-site
 git pull origin main
 ./deploy/vps/deploy.sh
 ```
@@ -161,14 +161,14 @@ Scripts live in `deploy/vps/` and run on the VPS as `ernesto` (must be in the `d
 Shorthand used below:
 
 ```bash
-cd /var/www/novetesco-site
+cd /var/www/nacho-site
 DC="docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file .env.production"
 ```
 
 ### 8.1 One-time setup
 
 ```bash
-cd /var/www/novetesco-site
+cd /var/www/nacho-site
 git pull origin main
 
 cp deploy/vps/env.ops.example .env.ops
@@ -291,7 +291,7 @@ Paste each check's ping URL (`https://hc-ping.com/<uuid>`). The scripts ping on 
 
 ```cron
 PATH=/usr/local/bin:/usr/bin:/bin
-APP_DIR=/var/www/novetesco-site
+APP_DIR=/var/www/nacho-site
 
 15 2 * * * $APP_DIR/deploy/vps/backup.sh >> $HOME/logs/nacho-backup.log 2>&1
 */10 * * * * $APP_DIR/deploy/vps/monitor.sh >> $HOME/logs/nacho-monitor.log 2>&1
@@ -301,6 +301,7 @@ Keep the cron logs small with `/etc/logrotate.d/nacho-ops` (`sudo nano`):
 
 ```text
 /home/ernesto/logs/nacho-*.log {
+    su ernesto ernesto
     weekly
     rotate 8
     compress
@@ -328,16 +329,16 @@ systemctl list-timers | grep certbot
 sudo certbot renew --dry-run
 ```
 
-### 8.8 Step 48 sign-off
+### 8.8 Step 48 sign-off (completed 2026-10-09)
 
-- [ ] `.env.ops` created, `chmod 600`
-- [ ] Redeployed; `LOG_STACK=daily` and Docker log caps verified (§8.1)
-- [ ] `backup.sh` run manually; `restore.sh --test` passed
-- [ ] Mac: `pull-backups.sh` pulled and verified a backup; `--install` done; `--status` shows the job
-- [ ] healthchecks.io checks green (backup, monitor, mac-pull); UptimeRobot monitor green
-- [ ] Cron installed; next morning `~/logs/nacho-backup.log` shows `Done.`
-- [ ] `certbot renew --dry-run` succeeds
-- [ ] `.env.production` and `.env.ops` saved in the password manager
+- [x] `.env.ops` created, `chmod 600`
+- [x] Redeployed; `LOG_STACK=daily` and Docker log caps verified (§8.1)
+- [x] `backup.sh` run manually; `restore.sh --test` passed (users 1, centers 5, bookings 2, contact messages 4)
+- [x] Mac: `pull-backups.sh` pulled and verified a backup; `--install` done; `--status` shows the job
+- [x] healthchecks.io checks green (backup, monitor, mac-pull); UptimeRobot monitor green
+- [x] Cron installed; nightly backup `2026-10-09_021501` ran unattended and was pulled by the Mac
+- [x] `certbot renew --dry-run` succeeds
+- [x] `.env.production` and `.env.ops` saved in the password manager
 
 ---
 
@@ -348,7 +349,7 @@ sudo certbot renew --dry-run
 | 502 from host nginx | `docker compose ... ps`; `curl http://127.0.0.1:8083/up`; check `app` logs |
 | Redirect loop | `APP_URL` must match canonical HTTPS URL |
 | Login/session lost | Confirm host nginx sends `X-Forwarded-Proto https`; production TrustProxies |
-| `8083` bind error but `ss` empty | Remove **`DOCKER_HTTP_PORT`** from `.env.production` (double mapping with production compose). Ensure `docker-compose.production.yml` uses `ports: !override`. Then `docker rm -f novetesco-nginx-1` and `up -d nginx`. |
+| `8083` bind error but `ss` empty | Remove **`DOCKER_HTTP_PORT`** from `.env.production` (double mapping with production compose). Ensure `docker-compose.production.yml` uses `ports: !override`. Then `docker rm -f nacho-nginx-1` and `up -d nginx`. |
 | Port conflict (`8083` in use) | Set **`DOCKER_HOST_PORT=8084`**, update host nginx `proxy_pass`, `docker compose ... up -d nginx` |
 | Missing logo | Asset must be `public/images/novetesco-logo.png` (Linux case-sensitive) |
 | HTTP **500**, log `Uninitialized string offset 0` in `Request.php` (TrustProxies / CORS) | Pull latest `main` (nginx passes `$host` for `X-Forwarded-Host`, not empty client headers). Rebuild web image: `docker compose -f docker-compose.yml -f docker-compose.production.yml --env-file .env.production up -d --build nginx`. Then `curl -fsS http://127.0.0.1:8083/up`. |

@@ -55,7 +55,7 @@ These items are **intentionally out of scope** for v1 (documented in [SEO.md](SE
 - **Step 45 (local stabilization):** complete (2026-09-29) — see [UAT_CHECKLIST.md](UAT_CHECKLIST.md) §7.
 - **Step 46 Docker:** complete (2026-09-30 manual pass on Compose stack).
 - **Step 47 VPS:** complete (2026-09-30 — https://noblevehicletestingcompany.com, HTTPS, admin smoke test).
-- **Next:** Step 48 (backups, monitoring) per [DEPLOYMENT.md](DEPLOYMENT.md).
+- **Step 48** (backups, monitoring) done 2026-10-09. **Next:** Step 49 (final production testing) per [DEPLOYMENT.md](DEPLOYMENT.md).
 
 ---
 

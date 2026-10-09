@@ -7,7 +7,7 @@ Chronological build plan for the NOVETESCO Vehicle Inspection website. **Steps 0
 - Work proceeds **one step at a time**, in order.
 - Say **"do Phase N"** or **"do Step N"** to approve and start that step only.
 - Each step ends with: smoke test → [CHANGELOG.md](CHANGELOG.md) entry → [docs/ROADMAP.md](docs/ROADMAP.md) status update.
-- **Next:** Step **48** (backups, monitoring); Steps **49–50** (production UAT polish, Search Console).
+- **Next:** Steps **49–50** (production UAT polish, Search Console). Step **48** (backups, monitoring) done 2026-10-09.
 
 ## Current state
 
@@ -47,7 +47,8 @@ Chronological build plan for the NOVETESCO Vehicle Inspection website. **Steps 0
 | Step 45 — Local stabilization gate | **Done** (2026-09-29) |
 | Step 46 — Dockerize | **Done** (manual Docker pass 2026-09-30) |
 | Step 47 — Deploy on VPS | **Done** (2026-09-30 — https://noblevehicletestingcompany.com) |
-| Step 48 — Backups, monitoring, logs | **In progress** — scripts + [RUNBOOK §8](deploy/vps/RUNBOOK.md) ready; apply on VPS |
+| Step 48 — Backups, monitoring, logs | **Done** (2026-10-09 — [RUNBOOK §8](deploy/vps/RUNBOOK.md)) |
+| Next step | **Step 49** — final production testing |
 
 ## Timeline overview
 
@@ -61,7 +62,7 @@ Chronological build plan for the NOVETESCO Vehicle Inspection website. **Steps 0
 | Admin shell | 26–27 | Auth, roles, dashboard |
 | Admin CRUD | 28–38 | One admin module per step |
 | Polish & UAT | 39–44 | i18n, SEO, security, tests, sign-off |
-| Deploy | 45–50 | Docker + VPS live; ops hardening + launch (**Step 48 next**) |
+| Deploy | 45–50 | Docker + VPS live; ops hardening + launch (**Step 49 next**) |
 
 ## All steps at a glance
 
@@ -163,4 +164,4 @@ ADRs: [docs/adr/](docs/adr/)
 
 ## Next action
 
-Production: **https://noblevehicletestingcompany.com**. Updates: `git pull` + [deploy/vps/deploy.sh](deploy/vps/deploy.sh). **Next:** finish Step 48 on the VPS per [deploy/vps/RUNBOOK.md §8](deploy/vps/RUNBOOK.md).
+Production: **https://noblevehicletestingcompany.com**. Updates: `git pull` + [deploy/vps/deploy.sh](deploy/vps/deploy.sh). Backups and monitoring: [deploy/vps/RUNBOOK.md §8](deploy/vps/RUNBOOK.md) (Step 48 done). **Next:** Step 49.

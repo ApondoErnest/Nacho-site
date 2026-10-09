@@ -4,7 +4,7 @@
 
 **Step 47 (VPS):** **Done** — production live at **https://noblevehicletestingcompany.com** (Hostinger **89.117.37.202**, Docker **8083**, Certbot TLS, admin login verified **2026-09-30**).
 
-**Step 48 (backups, monitoring, logs):** **In progress** — scripts in `deploy/vps/` and procedure in [deploy/vps/RUNBOOK.md §8](../deploy/vps/RUNBOOK.md); done once the §8.8 sign-off checklist passes on the VPS.
+**Step 48 (backups, monitoring, logs):** **Done** (2026-10-09) — nightly backups pulled to the owner's Mac, monitoring with healthchecks.io + UptimeRobot, log rotation; procedure in [deploy/vps/RUNBOOK.md §8](../deploy/vps/RUNBOOK.md). **Next:** Step 49 (final production testing).
 
 Deployment follows this document step by step after the local stabilization gate ([UAT_CHECKLIST.md](UAT_CHECKLIST.md)).
 
@@ -86,7 +86,7 @@ No reminder system is added during Dockerization.
 
 **Production sign-off (2026-09-30):** HTTPS `/up` 200, public pages + booking form, `www` → apex, admin dashboard and centers CRUD reachable after login. Post-deploy: set `RUN_DB_SEED=false`, strong admin password, rotate away from seed defaults.
 
-Continue with Step 48 (automated backups, monitoring, log review — [RUNBOOK §8](../deploy/vps/RUNBOOK.md)) and Step 49–50 (optional production UAT, Search Console + sitemap submission).
+Step 48 (automated backups, monitoring, log review — [RUNBOOK §8](../deploy/vps/RUNBOOK.md)) is done; continue with Step 49–50 (optional production UAT, Search Console + sitemap submission).
 
 ## 4. Production checklist
 
