@@ -82,7 +82,7 @@ flowchart LR
 | 46 | Dockerize | done (manual Docker pass 2026-09-30) |
 | 47 | Deploy on VPS | done (production **2026-09-30** — [noblevehicletestingcompany.com](https://noblevehicletestingcompany.com)) |
 | 48 | SSL, backups, monitoring, error logging | done (**2026-10-09** — nightly backups + Mac pull, healthchecks.io + UptimeRobot, log rotation; [RUNBOOK §8](../deploy/vps/RUNBOOK.md)) |
-| 49 | Final production testing | pending (smoke tests passed; optional deeper UAT) |
+| 49 | Final production testing | in progress — runbook [PRODUCTION_UAT.md](PRODUCTION_UAT.md); automated pre-check 2026-10-12 (findings F1–F7) |
 | 50 | Launch + Search Console + sitemap submission | pending |
 
 Step **47** complete — Hostinger VPS, Docker on **127.0.0.1:8083**, host nginx + Let's Encrypt, HTTPS public site + admin verified **2026-09-30**. Step **48** complete **2026-10-09** — nightly VPS backups (02:15, 14 days) pulled to the owner's Mac (14 days), monitor every 10 minutes, healthchecks.io + UptimeRobot alerts, Docker log caps and daily Laravel logs; see [deploy/vps/RUNBOOK.md §8](../deploy/vps/RUNBOOK.md). **Next:** Step 49 (final production testing). See [DEPLOYMENT.md](DEPLOYMENT.md).
